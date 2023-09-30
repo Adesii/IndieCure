@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://cavkiimaw4l4w"]
 
-[ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Shaders/MainMenu/MainMenuBackground.tres" id="1_s70df"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
+[ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
 [ext_resource type="Shader" uid="uid://temhylg2ghpn" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuParticles.tres" id="3_fa547"]
 [ext_resource type="Script" path="res://Scripts/UI/TabController.gd" id="4_eewjv"]
 [ext_resource type="Script" path="res://Scripts/UI/TabTransitionButton.gd" id="5_y57mj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
-shader = ExtResource("1_s70df")
+shader = ExtResource("2_8k7pa")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_kikhu"]
 
