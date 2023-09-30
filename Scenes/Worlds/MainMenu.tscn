@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cavkiimaw4l4w"]
+[gd_scene load_steps=20 format=3 uid="uid://cavkiimaw4l4w"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
 [ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Settings.gd" id="9_1ijjy"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/ResolutionSelection.gd" id="10_5mpgb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
 shader = ExtResource("2_8k7pa")
@@ -340,7 +341,7 @@ selected = 0
 fit_to_longest_item = false
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
-popup/item_1/text = "Fullscreen"
+popup/item_1/text = "Borderless fullscreen"
 popup/item_1/id = 1
 popup/item_2/text = "Exclusive fullscreen"
 popup/item_2/id = 2
@@ -360,21 +361,9 @@ fit_content = true
 [node name="ResolutionSelection" type="OptionButton" parent="TabController/Settings/SettingsContainer/ResolutionContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-item_count = 6
 selected = 3
 fit_to_longest_item = false
-popup/item_0/text = "1280x720"
-popup/item_0/id = 0
-popup/item_1/text = "1366x768"
-popup/item_1/id = 1
-popup/item_2/text = "1600x900"
-popup/item_2/id = 2
-popup/item_3/text = "1920x1080"
-popup/item_3/id = 3
-popup/item_4/text = "2560x1440"
-popup/item_4/id = 4
-popup/item_5/text = "3840x2160"
-popup/item_5/id = 5
+script = ExtResource("10_5mpgb")
 
 [node name="Back" type="Button" parent="TabController/Settings" node_paths=PackedStringArray("tabController", "target")]
 custom_minimum_size = Vector2(200, 50)

@@ -5,7 +5,7 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Handle Jump.
 
 	# Get the input direction and handle the movement/deceleration.
