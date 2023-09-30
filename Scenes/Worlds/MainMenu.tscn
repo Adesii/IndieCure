@@ -1,0 +1,215 @@
+[gd_scene load_steps=15 format=3 uid="uid://cavkiimaw4l4w"]
+
+[ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Shaders/MainMenu/MainMenuBackground.tres" id="1_s70df"]
+[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
+[ext_resource type="Shader" uid="uid://temhylg2ghpn" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuParticles.tres" id="3_fa547"]
+[ext_resource type="Script" path="res://Scripts/UI/TabController.gd" id="4_eewjv"]
+[ext_resource type="Script" path="res://Scripts/UI/TabTransitionButton.gd" id="5_y57mj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
+shader = ExtResource("1_s70df")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kikhu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urrtj"]
+shader = ExtResource("3_fa547")
+
+[sub_resource type="Curve" id="Curve_itrqn"]
+max_value = 0.1
+_data = [Vector2(0, 0), 0.0, 0.286471, 0, 1, Vector2(0.349076, 0.1), 0.0, 0.0, 0, 0, Vector2(0.778234, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.00105263), -0.446179, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_w3qfw"]
+curve = SubResource("Curve_itrqn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tp3gc"]
+lifetime_randomness = 0.35
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+particle_flag_disable_z = true
+gravity = Vector3(50, 50, 0)
+initial_velocity_min = 31.37
+initial_velocity_max = 129.15
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 1.0
+damping_max = 1.0
+angle_min = -20.0
+angle_max = 20.0
+scale_min = 0.3
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_w3qfw")
+
+[sub_resource type="Gradient" id="Gradient_7t5iu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hb0jw"]
+color_ramp = SubResource("Gradient_7t5iu")
+
+[sub_resource type="Theme" id="Theme_1l5py"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w761w")
+
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_bexrh")
+custom_minimum_size = Vector2(3000, 3000)
+layout_mode = 2
+offset_left = 563.0
+offset_top = -1429.0
+offset_right = 3563.0
+offset_bottom = 1571.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.548453
+texture = SubResource("CanvasTexture_kikhu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_urrtj")
+position = Vector2(494, 369)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_tp3gc")
+texture = SubResource("NoiseTexture2D_hb0jw")
+lifetime = 4.0
+preprocess = 2.0
+
+[node name="TabController" type="Control" parent="." node_paths=PackedStringArray("current_panel")]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_eewjv")
+current_panel = NodePath("Main")
+
+[node name="Main" type="Control" parent="TabController"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabController/Main"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 671.5
+offset_right = 1212.5
+offset_bottom = 292.0
+grow_horizontal = 2
+text = "
+
+
+
+
+
+
+
+
+IndieCure"
+fit_content = true
+
+[node name="VFlowContainer" type="VFlowContainer" parent="TabController/Main"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1118.0
+offset_top = 401.0
+offset_right = 1884.0
+offset_bottom = 1038.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_1l5py")
+
+[node name="Start" type="Button" parent="TabController/Main/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Start Game"
+script = ExtResource("5_y57mj")
+tabController = NodePath("../../..")
+target = NodePath("../../../CharacterSelect")
+
+[node name="Exit" type="Button" parent="TabController/Main/VFlowContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Exit"
+
+[node name="CharacterSelect" type="Control" parent="TabController"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TabController/CharacterSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TabController/CharacterSelect/CenterContainer"]
+custom_minimum_size = Vector2(1700, 950)
+layout_mode = 2
+color = Color(0.843137, 0.603922, 0.643137, 1)
+
+[node name="VFlowContainer" type="VFlowContainer" parent="TabController/CharacterSelect/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -505.0
+offset_top = -105.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_1l5py")
+
+[node name="Start" type="Button" parent="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Back"
+script = ExtResource("5_y57mj")
+tabController = NodePath("../../../../..")
+target = NodePath("../../../../../Main")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 1047.0
+offset_right = 105.0
+offset_bottom = 1077.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "WIP Build"
+
+[connection signal="pressed" from="TabController/Main/VFlowContainer/Start" to="TabController/Main/VFlowContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="TabController/Main/VFlowContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" to="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" method="_on_pressed"]
