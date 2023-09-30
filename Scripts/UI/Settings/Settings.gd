@@ -13,9 +13,6 @@ func _on_window_mode_selection_item_selected(index):
 			_set_window_mode(Window.MODE_WINDOWED)
 			_enable_resolution_selection()
 			_update_window_size()
-		"WINDOWED FULLSCREEN":
-			_set_window_mode(Window.MODE_MAXIMIZED)
-			_disable_resolution_selection()
 		"FULLSCREEN":
 			_set_window_mode(Window.MODE_FULLSCREEN)
 			_disable_resolution_selection()
@@ -32,8 +29,7 @@ func _enable_resolution_selection():
 	
 func _update_window_size():
 	var values := resoultion_button.text.split_floats("x")
-	get_window().reset_size()
-	get_window().size = Vector2i(values[0], values[1])
+	DisplayServer.window_set_size(Vector2i(values[0], values[1]))
 	
 func _set_window_mode(window_mode):
-	get_window().mode = window_mode
+	DisplayServer.window_set_mode(window_mode)
