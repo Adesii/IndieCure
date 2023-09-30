@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cavkiimaw4l4w"]
+[gd_scene load_steps=18 format=3 uid="uid://cavkiimaw4l4w"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
 [ext_resource type="Shader" uid="uid://temhylg2ghpn" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuParticles.tres" id="3_fa547"]
 [ext_resource type="Script" path="res://Scripts/UI/TabController.gd" id="4_eewjv"]
 [ext_resource type="Script" path="res://Scripts/UI/TabTransitionButton.gd" id="5_y57mj"]
+[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
+[ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
+[ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
 shader = ExtResource("2_8k7pa")
@@ -150,13 +153,17 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 text = "Exit"
 
-[node name="CharacterSelect" type="Control" parent="TabController"]
+[node name="CharacterSelect" type="Control" parent="TabController" node_paths=PackedStringArray("character_previews_container")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_ijl74")
+character_preview = ExtResource("7_rk3bc")
+character_previews_container = NodePath("CenterContainer/ColorRect/ColorRect/GridContainer")
+temp_level = ExtResource("8_npjm8")
 
 [node name="CenterContainer" type="CenterContainer" parent="TabController/CharacterSelect"]
 layout_mode = 1
@@ -179,20 +186,89 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -505.0
-offset_top = -105.0
+offset_top = -315.0
 offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_1l5py")
 
-[node name="Start" type="Button" parent="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
-custom_minimum_size = Vector2(500, 100)
+[node name="Start" type="Button" parent="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 2
+text = "Start
+"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer"]
+custom_minimum_size = Vector2(0, 91.25)
+layout_mode = 2
+split_offset = 4440
+
+[node name="back" type="Button" parent="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(450, 100)
 layout_mode = 2
 text = "Back"
 script = ExtResource("5_y57mj")
 tabController = NodePath("../../../../..")
 target = NodePath("../../../../../Main")
+
+[node name="ColorRect" type="ColorRect" parent="TabController/CharacterSelect/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.796078, 0.533333, 0.576471, 1)
+
+[node name="GridContainer" type="GridContainer" parent="TabController/CharacterSelect/CenterContainer/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+
+[node name="Group" type="ColorRect" parent="TabController/CharacterSelect/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 635.0
+offset_right = -520.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stage Select" type="ColorRect" parent="TabController/CharacterSelect/CenterContainer/ColorRect/Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.584
+anchor_right = 0.913
+anchor_bottom = 1.0
+offset_left = -2.08008
+offset_right = 2.43994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.541176, 0.752941, 1)
+
+[node name="Character Info" type="ColorRect" parent="TabController/CharacterSelect/CenterContainer/ColorRect/Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.407
+anchor_bottom = 1.0
+offset_right = 70.16
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.670588, 0.34902, 0.839216, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(100, 30)
@@ -212,4 +288,5 @@ text = "WIP Build"
 
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Start" to="TabController/Main/VFlowContainer/Start" method="_on_pressed"]
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" to="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" to="TabController/CharacterSelect" method="_on_start_pressed"]
+[connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" to="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" method="_on_pressed"]

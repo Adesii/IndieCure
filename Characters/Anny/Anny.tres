@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="IndieCharacter" load_steps=3 format=3 uid="uid://dihwvcmey8md8"]
+[gd_resource type="Resource" script_class="IndieCharacter" load_steps=4 format=3 uid="uid://dihwvcmey8md8"]
 
 [ext_resource type="PackedScene" uid="uid://u400mstiaxwj" path="res://Characters/Anny/Anny.tscn" id="1_1e68f"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
+[ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Anny/Textures/annyicon.png" id="2_4eip0"]
 
 [resource]
 script = ExtResource("1_pguks")
 character_scene = ExtResource("1_1e68f")
+icon = ExtResource("2_4eip0")

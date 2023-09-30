@@ -4,11 +4,14 @@ class_name TabController
 
 @export var current_panel : Control
 
+signal tab_changed(panel: Control)
+
 func _ready():
 	# disable all children except the current panel
 	for child in get_children():
 		if child != current_panel:
 			child.hide()
+	current_panel.show()
 
 func set_current_tab(panel: Control):
 	var tween = get_tree().create_tween()
@@ -20,3 +23,6 @@ func set_current_tab(panel: Control):
 			current_panel.modulate.a = 0
 	)
 	tween.tween_property(panel,"modulate",Color(1,1,1,1),0.2)
+	tween.tween_callback(func(): tab_changed.emit(current_panel))
+
+
