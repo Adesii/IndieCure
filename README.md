@@ -8,5 +8,7 @@ Current FileStructure plan:
 - Global stuff that can be reused in the root folder in their respected folders
 
 example:
+
 Tab UI system is global and is found in the Scripts/UI folder
+
 Background shader for the main menu is found in Worlds/MainMenu/Shaders
