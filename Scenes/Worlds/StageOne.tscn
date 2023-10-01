@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=9 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
 [ext_resource type="PackedScene" uid="uid://dp8yvc824cmty" path="res://Enemies/Slime/Slime.tscn" id="2_jibay"]
+[ext_resource type="PackedScene" uid="uid://bu30pw7l51eth" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_1.tscn" id="4_qdfaf"]
+[ext_resource type="PackedScene" uid="uid://dysh3gmnvhg4b" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_2.tscn" id="5_6g1qn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -413,3 +415,42 @@ position = Vector2(593, 294)
 
 [node name="Slime120" parent="." instance=ExtResource("2_jibay")]
 position = Vector2(670, 192)
+
+[node name="tree_1" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(407, -120)
+
+[node name="tree_2" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(17, -344)
+
+[node name="tree_3" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(381, -416)
+
+[node name="tree_4" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(391, -182)
+
+[node name="tree_5" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(-86, -252)
+
+[node name="tree_6" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(-223, -114)
+
+[node name="tree_7" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(130, -14)
+
+[node name="tree_8" parent="." instance=ExtResource("4_qdfaf")]
+position = Vector2(217, -496)
+
+[node name="tree_9" parent="." instance=ExtResource("5_6g1qn")]
+position = Vector2(-217, -326)
+
+[node name="tree_10" parent="." instance=ExtResource("5_6g1qn")]
+position = Vector2(540, -289)
+
+[node name="tree_11" parent="." instance=ExtResource("5_6g1qn")]
+position = Vector2(-72, 69)
+
+[node name="tree_12" parent="." instance=ExtResource("5_6g1qn")]
+position = Vector2(-73, -566)
+
+[node name="tree_13" parent="." instance=ExtResource("5_6g1qn")]
+position = Vector2(428, 54)

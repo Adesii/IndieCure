@@ -36,9 +36,8 @@ script = ExtResource("3_y3i7y")
 fps = 6
 spriteparent = NodePath("..")
 
-[node name="Node" type="Node" parent="Sprite2D" node_paths=PackedStringArray("sprite")]
+[node name="Node" type="Node" parent="Sprite2D"]
 script = ExtResource("5_31g2g")
-sprite = NodePath("..")
 
 [node name="HitBoxArea" type="Area2D" parent="."]
 collision_layer = 4

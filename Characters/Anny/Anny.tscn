@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dlu55dsvovogv" path="res://Characters/Anny/Textures/idle_right.png" id="2_6w7ew"]
 [ext_resource type="Texture2D" uid="uid://i1pbd61vywao" path="res://Characters/Anny/Textures/dropshadow.png" id="2_xwct5"]
 [ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="3_x6sj6"]
-[ext_resource type="Script" path="res://Scripts/Characters/AccurateShadow.gd" id="5_akw7q"]
 [ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="5_hqotx"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="5_xwdog"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d65jx"]
 radius = 11.0454
@@ -31,9 +31,7 @@ script = ExtResource("3_x6sj6")
 playersprite = NodePath("..")
 fliptimelimit = 0
 
-[node name="Node" type="Node" parent="Sprite2D" node_paths=PackedStringArray("sprite")]
-script = ExtResource("5_akw7q")
-sprite = NodePath("..")
+[node name="Node" parent="Sprite2D" instance=ExtResource("5_xwdog")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -5)

@@ -1,6 +1,6 @@
 extends Node
 
-@export var sprite : Sprite2D
+@onready var sprite : Sprite2D = get_parent()
 
 var dummysprite2d : Sprite2D
 
@@ -12,8 +12,8 @@ func _ready():
 	dummysprite2d.frame_coords = sprite.frame_coords
 	dummysprite2d.hframes = sprite.hframes
 	dummysprite2d.vframes = sprite.vframes
-	dummysprite2d.offset = -sprite.offset
-	dummysprite2d.skew = 0.5
+	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
+	dummysprite2d.skew = 0.1
 	dummysprite2d.modulate = Color(0,0,0,0.2)
 	sprite.add_child.call_deferred(dummysprite2d)
 
