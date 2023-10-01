@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7w4skfyt8qlj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/fpsdisplay.gd" id="1_fa04g"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 128
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+text = "FPS: 100"
+script = ExtResource("1_fa04g")

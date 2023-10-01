@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@onready var playersprite : CharacterBody2D = self.owner
+@onready var playersprite : Node2D = self.owner
 
 @export var fliptimelimit = 400
 

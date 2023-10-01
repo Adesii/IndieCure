@@ -9,6 +9,7 @@ var map_size_per_cell = 8;
 var map_enemy_dict :Dictionary = {}
 
 func get_unique_key_for_position(position: Vector2) -> int:
+	#create unique index for position
 	return int(position.x / map_cell_size) + int(position.y / map_cell_size) * map_size_per_cell
 
 func get_collision_handle_request(character,positionkey):
@@ -40,7 +41,7 @@ func get_surrounding_cells(last_position_key):
 	return result
 
 
-func avoid_others(character,lastpositionkey,radius):
+func avoid_others(character,lastpositionkey,radius,with_surrounding = false):
 	var result = Vector2(0,0)
 
 	if map_enemy_dict.has(lastpositionkey):
@@ -53,18 +54,19 @@ func avoid_others(character,lastpositionkey,radius):
 					var falloff = 1 - distance / radius
 					result += direction * (radius - distance) * falloff
 	# do surrounding cells
-	var surrounding_cells = get_surrounding_cells(lastpositionkey)
-	for cell in surrounding_cells:
-		if map_enemy_dict.has(cell):
-			var enemies = map_enemy_dict[cell]
-			for enemy in enemies:
-				if enemy != character:
-					var distance = character.position.distance_to(enemy.position)
-					if distance < radius:
-						var direction = (character.position - enemy.position).normalized()
-						#spherical falloff
-						var falloff = 1 - distance / radius
-						result += direction * (radius - distance) * falloff
+	if with_surrounding:
+		var surrounding_cells = get_surrounding_cells(lastpositionkey)
+		for cell in surrounding_cells:
+			if map_enemy_dict.has(cell):
+				var enemies = map_enemy_dict[cell]
+				for enemy in enemies:
+					if enemy != character:
+						var distance = character.position.distance_to(enemy.position)
+						if distance < radius:
+							var direction = (character.position - enemy.position).normalized()
+							#spherical falloff
+							var falloff = 1 - distance / radius
+							result += direction * (radius - distance) * falloff
 	return result.normalized()
 
 func handle_collisiongroup(character,lastpositionkey):
@@ -82,7 +84,6 @@ func handle_collisiongroup(character,lastpositionkey):
 	
 	if map_enemy_dict.has(new_position_key):
 		if map_enemy_dict[new_position_key].size() >= map_size_per_cell:
-			print("cell full at " + str(new_position_key))
 			return {
 				"last_position_key": lastpositionkey,
 				"cellfull" : true

@@ -9,14 +9,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xh2r"]
 radius = 17.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ls4mf"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktmnl"]
+radius = 3.0
 
 [node name="Slime" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("1_mekom")
+collision_layer = 4
+collision_mask = 4
 
 [node name="Dropshadow" type="Sprite2D" parent="."]
 texture = ExtResource("1_vu6h0")
@@ -45,8 +44,10 @@ position = Vector2(1, -8)
 shape = SubResource("CircleShape2D_1xh2r")
 debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("1_mekom")
+character = NodePath("..")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 125
-position = Vector2(1, -6)
-shape = SubResource("CircleShape2D_ls4mf")
+shape = SubResource("CircleShape2D_ktmnl")
 disabled = true
