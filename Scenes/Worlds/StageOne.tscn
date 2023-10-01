@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=11 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bu30pw7l51eth" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_1.tscn" id="4_qdfaf"]
 [ext_resource type="PackedScene" uid="uid://dysh3gmnvhg4b" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_2.tscn" id="5_6g1qn"]
 [ext_resource type="PackedScene" uid="uid://dgv3rlahwsdqd" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree3.tscn" id="6_5nvir"]
+[ext_resource type="PackedScene" uid="uid://but6hoiqep8g3" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_4.tscn" id="7_d6ojx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -470,3 +471,18 @@ position = Vector2(-494, -13)
 
 [node name="tree7" parent="." instance=ExtResource("6_5nvir")]
 position = Vector2(35, -178)
+
+[node name="tree_14" parent="." instance=ExtResource("7_d6ojx")]
+position = Vector2(-389, 224)
+
+[node name="tree_15" parent="." instance=ExtResource("7_d6ojx")]
+position = Vector2(19, 343)
+
+[node name="tree_16" parent="." instance=ExtResource("7_d6ojx")]
+position = Vector2(758, -179)
+
+[node name="tree_17" parent="." instance=ExtResource("7_d6ojx")]
+position = Vector2(-769, 495)
+
+[node name="tree_18" parent="." instance=ExtResource("7_d6ojx")]
+position = Vector2(447, 447)
