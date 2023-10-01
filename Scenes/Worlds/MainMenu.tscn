@@ -102,7 +102,6 @@ script = ExtResource("4_eewjv")
 current_panel = NodePath("Main")
 
 [node name="Main" type="Control" parent="TabController"]
-visible = false
 layout_mode = 1
 anchors_preset = 0
 
@@ -282,6 +281,7 @@ grow_vertical = 2
 color = Color(0.670588, 0.34902, 0.839216, 1)
 
 [node name="Settings" type="Control" parent="TabController"]
+visible = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15

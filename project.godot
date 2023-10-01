@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 ProjectSettingsIc="res://Scripts/Tools/ProjectSettingsIC.gd"
 Global="*res://Scripts/Global/Global.gd"
+MessageBus="*res://Scripts/Global/MessageBus.gd"
+CollisionAvoidance="*res://Scripts/Global/CollisionAvoidance.gd"
 
 [display]
 

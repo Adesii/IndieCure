@@ -1,25 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://u400mstiaxwj"]
+[gd_scene load_steps=8 format=3 uid="uid://u400mstiaxwj"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_ey6nb"]
 [ext_resource type="Texture2D" uid="uid://dlu55dsvovogv" path="res://Characters/Anny/Textures/idle_right.png" id="2_6w7ew"]
+[ext_resource type="Texture2D" uid="uid://i1pbd61vywao" path="res://Characters/Anny/Textures/dropshadow.png" id="2_xwct5"]
 [ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="3_x6sj6"]
+[ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="5_hqotx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d65jx"]
-radius = 4.0
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3e8us"]
+radius = 12.0416
 
 [node name="Anny" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_ey6nb")
 
+[node name="Dropshadow" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("2_xwct5")
+offset = Vector2(0, 1.075)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5)
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_6w7ew")
+offset = Vector2(0, -20.36)
 script = ExtResource("3_x6sj6")
+fliptimelimit = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -5)
-zoom = Vector2(10, 10)
+zoom = Vector2(3, 3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+[node name="Collisionbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_d65jx")
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 2
+collision_mask = 4
+input_pickable = false
+monitorable = false
+script = ExtResource("5_hqotx")
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_3e8us")
+debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
+
+[connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_entered"]

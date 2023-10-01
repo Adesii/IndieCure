@@ -3,6 +3,8 @@ extends Node
 
 var current_character : IndieCharacter
 
+var player : CharacterBody2D
+
 var current_scene = null
 func _ready():
 	var root = get_tree().root
@@ -25,6 +27,9 @@ func load_stage(stage_scene : PackedScene):
 	#get_tree().current_scene = stage
 	
 	#add character scene
-	current_scene.add_child(current_character.character_scene.instantiate())
+	var player_scene = current_character.character_scene.instantiate();
+	current_scene.add_child(player_scene)
+
+	player = player_scene
 
 	oldscene.queue_free()

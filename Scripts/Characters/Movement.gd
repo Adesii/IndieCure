@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 75.0
+const SPEED = 90.0
 const JUMP_VELOCITY = -400.0
 
 
