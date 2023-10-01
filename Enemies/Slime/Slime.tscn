@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp8yvc824cmty"]
+[gd_scene load_steps=9 format=3 uid="uid://dp8yvc824cmty"]
 
 [ext_resource type="Script" path="res://Enemies/BasicEnemyMove.gd" id="1_mekom"]
 [ext_resource type="Texture2D" uid="uid://u5gajd0jsb44" path="res://Scenes/Worlds/TestStage/Textures/Sprites/Enemies/Enemy_Sheet.png" id="1_s8vew"]
 [ext_resource type="Texture2D" uid="uid://i1pbd61vywao" path="res://Characters/Anny/Textures/dropshadow.png" id="1_vu6h0"]
 [ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="3_8jsdr"]
 [ext_resource type="Script" path="res://Enemies/Slime/slimeanimation.gd" id="3_y3i7y"]
+[ext_resource type="Script" path="res://Scripts/Characters/AccurateShadow.gd" id="5_31g2g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xh2r"]
 radius = 17.0
@@ -18,20 +19,26 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Dropshadow" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_vu6h0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("playersprite")]
 y_sort_enabled = true
 texture = ExtResource("1_s8vew")
 offset = Vector2(0, -32)
 hframes = 5
 vframes = 2
 script = ExtResource("3_8jsdr")
+playersprite = NodePath("..")
 
 [node name="Node2D" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("spriteparent")]
 script = ExtResource("3_y3i7y")
 fps = 6
 spriteparent = NodePath("..")
+
+[node name="Node" type="Node" parent="Sprite2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_31g2g")
+sprite = NodePath("..")
 
 [node name="HitBoxArea" type="Area2D" parent="."]
 collision_layer = 4

@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@onready var playersprite : Node2D = self.owner
+@export var playersprite : Node2D
 
 @export var fliptimelimit = 400
 
@@ -8,6 +8,8 @@ var lastfliptime = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
+	if playersprite == null:
+		return
 	#add a little delay to the flip so it doesn't flip every frame
 	if playersprite.velocity.x > 0 and lastfliptime + fliptimelimit < Time.get_ticks_msec():
 		self.flip_h = false
