@@ -361,7 +361,6 @@ fit_content = true
 [node name="ResolutionSelection" type="OptionButton" parent="TabController/Settings/SettingsContainer/ResolutionContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-selected = 3
 fit_to_longest_item = false
 script = ExtResource("10_5mpgb")
 
