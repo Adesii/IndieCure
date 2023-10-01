@@ -1,7 +1,7 @@
 extends Node
 
 
-var current_character : IndieCharacter
+var current_character : IndieCharacter = load("res://Characters/Anny/Anny.tres")
 
 var player : CharacterBody2D
 
@@ -9,6 +9,13 @@ var current_scene = null
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+
+	if get_tree().current_scene is Control:
+		return
+	current_scene = get_tree().current_scene
+	var player_scene = current_character.character_scene.instantiate();
+	player = player_scene
+	current_scene.add_child(player_scene)
 
 func _input(event):
 	#just close the game if esc is pressed until a pause menu is implemented
