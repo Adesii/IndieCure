@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=10 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
 [ext_resource type="PackedScene" uid="uid://dp8yvc824cmty" path="res://Enemies/Slime/Slime.tscn" id="2_jibay"]
 [ext_resource type="PackedScene" uid="uid://bu30pw7l51eth" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_1.tscn" id="4_qdfaf"]
 [ext_resource type="PackedScene" uid="uid://dysh3gmnvhg4b" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_2.tscn" id="5_6g1qn"]
+[ext_resource type="PackedScene" uid="uid://dgv3rlahwsdqd" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree3.tscn" id="6_5nvir"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -454,3 +455,18 @@ position = Vector2(-73, -566)
 
 [node name="tree_13" parent="." instance=ExtResource("5_6g1qn")]
 position = Vector2(428, 54)
+
+[node name="tree3" parent="." instance=ExtResource("6_5nvir")]
+position = Vector2(210, 192)
+
+[node name="tree4" parent="." instance=ExtResource("6_5nvir")]
+position = Vector2(193, -325)
+
+[node name="tree5" parent="." instance=ExtResource("6_5nvir")]
+position = Vector2(-515, -253)
+
+[node name="tree6" parent="." instance=ExtResource("6_5nvir")]
+position = Vector2(-494, -13)
+
+[node name="tree7" parent="." instance=ExtResource("6_5nvir")]
+position = Vector2(35, -178)
