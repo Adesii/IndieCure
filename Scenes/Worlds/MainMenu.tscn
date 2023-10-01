@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cavkiimaw4l4w"]
+[gd_scene load_steps=20 format=3 uid="uid://cavkiimaw4l4w"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
 [ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/Settings.gd" id="9_1ijjy"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/ResolutionSelection.gd" id="10_5mpgb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
 shader = ExtResource("2_8k7pa")
@@ -148,12 +150,21 @@ script = ExtResource("5_y57mj")
 tabController = NodePath("../../..")
 target = NodePath("../../../CharacterSelect")
 
+[node name="Settings" type="Button" parent="TabController/Main/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Settings"
+script = ExtResource("5_y57mj")
+tabController = NodePath("../../..")
+target = NodePath("../../../Settings")
+
 [node name="Exit" type="Button" parent="TabController/Main/VFlowContainer"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 text = "Exit"
 
 [node name="CharacterSelect" type="Control" parent="TabController" node_paths=PackedStringArray("character_previews_container")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -270,6 +281,109 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.670588, 0.34902, 0.839216, 1)
 
+[node name="Settings" type="Control" parent="TabController"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_1ijjy")
+
+[node name="SettingsLabel" type="RichTextLabel" parent="TabController/Settings"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 200.0
+offset_right = 100.0
+offset_bottom = 300.0
+grow_horizontal = 2
+text = "				 Settings"
+fit_content = true
+
+[node name="SettingsContainer" type="VBoxContainer" parent="TabController/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -25.0
+offset_right = 200.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="WindowModeContainer" type="HBoxContainer" parent="TabController/Settings/SettingsContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+alignment = 1
+
+[node name="WindowModeLabel" type="RichTextLabel" parent="TabController/Settings/SettingsContainer/WindowModeContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Window mode
+"
+fit_content = true
+
+[node name="WindowModeSelection" type="OptionButton" parent="TabController/Settings/SettingsContainer/WindowModeContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive fullscreen"
+popup/item_2/id = 2
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="TabController/Settings/SettingsContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+alignment = 1
+
+[node name="ResolutionLabel" type="RichTextLabel" parent="TabController/Settings/SettingsContainer/ResolutionContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Resolution"
+fit_content = true
+
+[node name="ResolutionSelection" type="OptionButton" parent="TabController/Settings/SettingsContainer/ResolutionContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+selected = 3
+fit_to_longest_item = false
+script = ExtResource("10_5mpgb")
+
+[node name="Back" type="Button" parent="TabController/Settings" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -201.0
+offset_right = 123.0
+offset_bottom = -151.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+script = ExtResource("5_y57mj")
+tabController = NodePath("../..")
+target = NodePath("../../Main")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 1
@@ -287,6 +401,10 @@ grow_vertical = 0
 text = "WIP Build"
 
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Start" to="TabController/Main/VFlowContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="TabController/Main/VFlowContainer/Settings" to="TabController/Main/VFlowContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" to="TabController/CharacterSelect" method="_on_start_pressed"]
 [connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" to="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" method="_on_pressed"]
+[connection signal="item_selected" from="TabController/Settings/SettingsContainer/WindowModeContainer/WindowModeSelection" to="TabController/Settings" method="_on_window_mode_selection_item_selected"]
+[connection signal="item_selected" from="TabController/Settings/SettingsContainer/ResolutionContainer/ResolutionSelection" to="TabController/Settings" method="_on_resolution_item_selected"]
+[connection signal="pressed" from="TabController/Settings/Back" to="TabController/Settings/Back" method="_on_pressed"]
