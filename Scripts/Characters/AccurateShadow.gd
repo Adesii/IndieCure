@@ -1,18 +1,19 @@
 extends Node
 
-@onready var sprite : Sprite2D = get_parent()
+@onready var sprite : Node2D = get_parent()
 
 var dummysprite2d : Sprite2D
 var copy_transform : RemoteTransform2D
 
 func _ready():
 	dummysprite2d = Sprite2D.new()
-	dummysprite2d.texture = sprite.texture
 	dummysprite2d.scale = sprite.scale
 	dummysprite2d.flip_v = true
-	dummysprite2d.frame_coords = sprite.frame_coords
-	dummysprite2d.hframes = sprite.hframes
-	dummysprite2d.vframes = sprite.vframes
+	if sprite is Sprite2D:
+		dummysprite2d.texture = sprite.texture
+		dummysprite2d.frame_coords = sprite.frame_coords
+		dummysprite2d.hframes = sprite.hframes
+		dummysprite2d.vframes = sprite.vframes
 	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
 	dummysprite2d.position = sprite.position
 	dummysprite2d.show_behind_parent = true
@@ -29,6 +30,12 @@ func _physics_process(delta):
 		sprite.add_child(copy_transform)
 	if copy_transform != null :
 		copy_transform.position = sprite.position
-	dummysprite2d.frame = sprite.frame
+	
 	dummysprite2d.flip_h = sprite.flip_h
+	if sprite is Sprite2D:
+		dummysprite2d.frame = sprite.frame
+	else: if sprite is AnimatedSprite2D:
+		dummysprite2d.texture =sprite.sprite_frames.get_frame_texture(sprite.animation,sprite.frame)
+	else:
+		dummysprite2d.texture = null
 

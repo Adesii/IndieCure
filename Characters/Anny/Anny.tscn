@@ -1,11 +1,47 @@
-[gd_scene load_steps=9 format=3 uid="uid://u400mstiaxwj"]
+[gd_scene load_steps=14 format=3 uid="uid://u400mstiaxwj"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_ey6nb"]
-[ext_resource type="Texture2D" uid="uid://dlu55dsvovogv" path="res://Characters/Anny/Textures/idle_right.png" id="2_6w7ew"]
 [ext_resource type="Texture2D" uid="uid://i1pbd61vywao" path="res://Characters/Anny/Textures/dropshadow.png" id="2_xwct5"]
+[ext_resource type="Texture2D" uid="uid://divm0jwhvkmey" path="res://Characters/Anny/Textures/anny_idle_tileset.png" id="3_ihvr3"]
 [ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="3_x6sj6"]
 [ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="5_hqotx"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="5_xwdog"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l5cl"]
+atlas = ExtResource("3_ihvr3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3hja"]
+atlas = ExtResource("3_ihvr3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj3yd"]
+atlas = ExtResource("3_ihvr3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhc3m"]
+atlas = ExtResource("3_ihvr3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbw1g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l5cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3hja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj3yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhc3m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d65jx"]
 radius = 11.0454
@@ -24,9 +60,11 @@ scale = Vector2(0.54, 0.54)
 texture = ExtResource("2_xwct5")
 offset = Vector2(0, 1.075)
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("playersprite")]
-texture = ExtResource("2_6w7ew")
-offset = Vector2(0, -20.36)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("playersprite")]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wbw1g")
+animation = &"idle"
+offset = Vector2(0, -32)
 script = ExtResource("3_x6sj6")
 playersprite = NodePath("..")
 fliptimelimit = 0

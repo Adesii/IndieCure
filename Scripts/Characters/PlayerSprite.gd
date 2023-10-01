@@ -1,10 +1,14 @@
-extends Sprite2D
+extends Node2D
 
 @export var playersprite : Node2D
 
 @export var fliptimelimit = 400
 
 var lastfliptime = 0
+
+func _ready():
+	if self.has_method("play"):
+		self.call("play")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
