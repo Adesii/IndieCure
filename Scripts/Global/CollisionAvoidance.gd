@@ -18,60 +18,24 @@ func get_collision_handle_request(character,positionkey):
 		"last_position_key": positionkey
 	}
 
-func get_surrounding_cells(last_position_key):
-	var result = []
-	var x = last_position_key % map_size_per_cell
-	var y = int(last_position_key / map_size_per_cell)
-	if x > 0:
-		result.append(last_position_key - 1)
-	if x < map_size_per_cell - 1:
-		result.append(last_position_key + 1)
-	if y > 0:
-		result.append(last_position_key - map_size_per_cell)
-	if y < map_size_per_cell - 1:
-		result.append(last_position_key + map_size_per_cell)
-	if x > 0 and y > 0:
-		result.append(last_position_key - map_size_per_cell - 1)
-	if x < map_size_per_cell - 1 and y > 0:
-		result.append(last_position_key - map_size_per_cell + 1)
-	if x > 0 and y < map_size_per_cell - 1:
-		result.append(last_position_key + map_size_per_cell - 1)
-	if x < map_size_per_cell - 1 and y < map_size_per_cell - 1:
-		result.append(last_position_key + map_size_per_cell + 1)
-	return result
-
-
-func avoid_others(character,lastpositionkey,radius,with_surrounding = false):
+func avoid_others(character,lastpositionkey,radius):
 	var result = Vector2(0,0)
+	radius = radius * radius
 
 	if map_enemy_dict.has(lastpositionkey):
 		var enemies = map_enemy_dict[lastpositionkey]
 		for enemy in enemies:
 			if enemy != character:
-				var distance = character.position.distance_to(enemy.position)
+				var distance = character.global_position.distance_squared_to(enemy.global_position)
 				if distance < radius:
-					var direction = (character.position - enemy.position).normalized()
+					var direction = (character.global_position - enemy.global_position).normalized()
 					var falloff = 1 - distance / radius
 					result += direction * (radius - distance) * falloff
-	# do surrounding cells
-	if with_surrounding:
-		var surrounding_cells = get_surrounding_cells(lastpositionkey)
-		for cell in surrounding_cells:
-			if map_enemy_dict.has(cell):
-				var enemies = map_enemy_dict[cell]
-				for enemy in enemies:
-					if enemy != character:
-						var distance = character.position.distance_to(enemy.position)
-						if distance < radius:
-							var direction = (character.position - enemy.position).normalized()
-							#spherical falloff
-							var falloff = 1 - distance / radius
-							result += direction * (radius - distance) * falloff
 	return result.normalized()
 
 func handle_collisiongroup(character,lastpositionkey):
 
-	var new_position_key = get_unique_key_for_position(character.position+character.velocity)
+	var new_position_key = get_unique_key_for_position(character.global_position+character.velocity)
 
 	if new_position_key == lastpositionkey:
 		return {

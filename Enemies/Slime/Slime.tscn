@@ -11,7 +11,7 @@
 radius = 17.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktmnl"]
-radius = 3.0
+radius = 7.28011
 
 [node name="Slime" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -55,5 +55,6 @@ script = ExtResource("1_mekom")
 character = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_ktmnl")
 disabled = true
