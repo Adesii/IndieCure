@@ -14,6 +14,10 @@ func _ready():
 func _physics_process(_delta):
 	if playersprite == null:
 		return
+	if playersprite.velocity.length() > 1:
+		self.set("animation","run")
+	else:
+		self.set("animation","idle")
 	#add a little delay to the flip so it doesn't flip every frame
 	if playersprite.velocity.x > 0 and lastfliptime + fliptimelimit < Time.get_ticks_msec():
 		self.flip_h = false
