@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4sti1olp7fa7"]
+
+[ext_resource type="Texture2D" uid="uid://bqghta2x6g6io" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0004.png" id="1_vgmbj"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="2_3f1a1"]
+
+[node name="Grave" type="StaticBody2D"]
+
+[node name="Stone-0004" type="Sprite2D" parent="."]
+texture = ExtResource("1_vgmbj")
+offset = Vector2(5, -17)
+
+[node name="Node" parent="Stone-0004" instance=ExtResource("2_3f1a1")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 2, -22, 2, -22, -15, 22, -15, 22, 2)
