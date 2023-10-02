@@ -2,7 +2,7 @@
 name: Issue Group
 about: Combine many issues here that are known to be related
 title: "[Group]"
-labels: ''
+labels: Issue Group
 assignees: ''
 
 ---
