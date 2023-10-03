@@ -26,6 +26,6 @@ func _physics_process(_delta):
 	move_and_slide()
 
 
-func _on_hit_box_area_area_entered(area):
+func _on_pick_up_area_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)

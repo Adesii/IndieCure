@@ -15,8 +15,6 @@ func _on_area_shape_entered(area_rid:RID, area:Area2D, area_shape_index:int, loc
 func _on_area_shape_exited(area_rid:RID, area:Area2D, area_shape_index:int, local_shape_index:int):
 	#print("Area exited shape ", area_shape_index, " local shape ", local_shape_index)
 
-	if area == null:
-		return
 	if overlapping_areas[area] != null:
 		overlapping_areas[area].erase(area_shape_index)
 	if overlapping_areas[area].size() == 0:

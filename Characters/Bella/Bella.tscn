@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c501sllrniwhk"]
+[gd_scene load_steps=29 format=3 uid="uid://c501sllrniwhk"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_ey6nb"]
 [ext_resource type="Resource" uid="uid://brhlr5p7o47hw" path="res://Inventory/inventory.tres" id="2_1ijpr"]
@@ -140,6 +140,8 @@ radius = 11.0454
 [sub_resource type="CircleShape2D" id="CircleShape2D_3e8us"]
 radius = 92.6553
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sncsh"]
+
 [node name="Bella" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_ey6nb")
@@ -175,7 +177,7 @@ shape = SubResource("CircleShape2D_d65jx")
 [node name="HitBoxArea" type="Area2D" parent="."]
 position = Vector2(0, -1)
 collision_layer = 2
-collision_mask = 516
+collision_mask = 4
 input_pickable = false
 monitorable = false
 script = ExtResource("5_hqotx")
@@ -185,6 +187,15 @@ position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_3e8us")
 debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
+[node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="PickUp" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_sncsh")
+debug_color = Color(0, 0.647059, 0.243137, 0.419608)
+
 [connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_area_entered"]
 [connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]
+[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
