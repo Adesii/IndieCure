@@ -1,0 +1,25 @@
+extends Resource
+
+class_name Inventory
+
+signal updated
+
+@export var items: Array[InventoryItem]
+
+func insert(item: InventoryItem):
+	# Loops throuh inventory to find empty slot to add item to.
+	# If item is added to inventory: sends updated signal and returns true.
+	# Returns false if item couldn't be added to inventory.
+
+	for i in range(items.size() + 1):
+		# Check if inventory is full
+		if i == items.size():
+			return false
+
+		# Add item to empty inventory spot
+		if !items[i]:
+			items[i] = item
+			break
+
+	updated.emit()
+	return true
