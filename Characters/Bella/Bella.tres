@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IndieCharacter" load_steps=4 format=3 uid="uid://dkipks8tywoe7"]
+
+[ext_resource type="PackedScene" uid="uid://c501sllrniwhk" path="res://Characters/Bella/Bella.tscn" id="1_1e68f"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
+[ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Bella/Textures/bellaicon.png" id="2_nncx1"]
+
+[resource]
+script = ExtResource("1_pguks")
+character_scene = ExtResource("1_1e68f")
+icon = ExtResource("2_nncx1")
