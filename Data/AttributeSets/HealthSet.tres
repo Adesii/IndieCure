@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttributeSet" load_steps=2 format=3 uid="uid://tgcqt5trqe52"]
+
+[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="1_1ox0t"]
+
+[resource]
+script = ExtResource("1_1ox0t")
+attributes = {
+"Health": 100.0
+}

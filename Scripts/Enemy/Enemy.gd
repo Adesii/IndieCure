@@ -13,5 +13,7 @@ var image_offset : int = 0
 var layer : String = "front"
 var speed : float = 0.0
 
+var health : Attribute = Attribute.new(100,shape_id,"health")
+
 func _to_string():
-    return "Enemy: " + str(current_position) + " " + str(velocity) + " " + str(animation_lifetime) + " " + str(image_offset) + " " + str(layer) + " " + str(speed)
+    return "Enemy: " + str(current_position)+" Health:"+str(health.current_value) + " " + str(velocity) + " " + str(animation_lifetime) + " " + str(image_offset) + " " + str(layer) + " " + str(speed)

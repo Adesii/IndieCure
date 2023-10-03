@@ -137,7 +137,7 @@ animations = [{
 radius = 11.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3e8us"]
-radius = 12.0416
+radius = 92.6553
 
 [node name="Anny" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -183,4 +183,5 @@ position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_3e8us")
 debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
-[connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_entered"]
+[connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]

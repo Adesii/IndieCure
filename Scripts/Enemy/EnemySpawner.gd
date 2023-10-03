@@ -11,7 +11,8 @@ class_name EnemySpawner
 @onready var max_images = frames.size()
 
 
-var enemies : Array[Enemy] = []
+var enemies = []
+var enemyTypeStats : Array[StatHolder] = []
 var enemyCanvas : Array[RID] = []
 
 func _ready():
@@ -29,6 +30,8 @@ func _exit_tree():
 func _physics_process(delta):
 	var used_transform = Transform2D()
 
+	var queue_for_deletion : Array = []
+
 	for  i in range(0, enemies.size()):
 		var enemy = enemies[i]
 		var movement_vector =  Global.player.global_position - enemy.current_position
@@ -37,6 +40,10 @@ func _physics_process(delta):
 		enemy.animation_lifetime += delta
 
 		enemy.velocity = offset
+
+		if enemy.health.current_value <= 0:
+			queue_for_deletion.append(enemy)
+			continue
 
 		#var collisiongroupresult =CollisionAvoidance.handle_collisiongroup(enemy,enemy.positionkey)
 		#if collisiongroupresult.cellfull:
@@ -52,37 +59,14 @@ func _physics_process(delta):
 		PhysicsServer2D.area_set_shape_transform(
 			shared_area.get_rid(), i, used_transform
 		)
-	queue_redraw()
-		#animate
-		
-#func _process(delta):
-#	_customdraw()
 
-func _draw():
+	for del in queue_for_deletion:
+		PhysicsServer2D.free_rid(del.shape_id)
+		RenderingServer.free_rid(del.canvas_id)
+		enemies.erase(del)
+
 	_customdraw()
-	return
-	var offset = frames[0].get_size()/2
-	
-	#for i in range(0, enemies.size()):
-	#	var enemy = enemies[i]
-	#	var sizeoffset = Vector2(frames[enemy.image_offset].get_size().x,-frames[enemy.image_offset].get_size().y)
-	#	draw_texture_rect(
-	#		frames[enemy.image_offset], 
-	#		Rect2(enemy.current_position - offset - (Vector2(image_offset))+Vector2(0,-sizeoffset.y),sizeoffset),
-	#		false,
-	#		Color(0,0,0,0.5)
-	#	)
-	for i in range(0, enemies.size()):
-		var enemy = enemies[i]
-		if enemy.animation_lifetime >= image_change_offset:
-			enemy.image_offset += 1
-			enemy.animation_lifetime = 0
-			if enemy.image_offset >= max_images:
-				enemy.image_offset = 0
-		draw_texture(
-			frames[enemy.image_offset], 
-			enemy.current_position - offset - (Vector2(image_offset))
-		)
+
 func _customdraw():
 	var offset = frames[0].get_size()/2
 	
@@ -94,12 +78,11 @@ func _customdraw():
 			enemy.animation_lifetime -= image_change_offset 
 			if enemy.image_offset >= max_images:
 				enemy.image_offset = 0
-		
 		RenderingServer.canvas_item_clear(enemy.canvas_id)
 		RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
 		RenderingServer.canvas_item_set_transform(enemy.canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
 		var atlastexture = frames[enemy.image_offset] as AtlasTexture
-		atlastexture.draw(enemy.canvas_id,-offset-Vector2(0,image_offset.y))
+		atlastexture.draw(enemy.canvas_id,-offset-Vector2(0,image_offset.y),Color(1,1,1,1*enemy.health.current_value/100))
 	
 func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	var enemy = Enemy.new()
@@ -113,10 +96,11 @@ func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	_configure_collision_for_enemy(enemy)
 
 	enemy.canvas_id = RenderingServer.canvas_item_create()
-	
-
-
 	enemies.append(enemy)
+	
+	Stat.set_stat(self,"health",100,{"shape_id":enemies.size()-1})
+
+
 
 
 func _configure_collision_for_enemy(enemy:Enemy) -> void:
@@ -134,3 +118,44 @@ func _configure_collision_for_enemy(enemy:Enemy) -> void:
 	
 	# Register the generated id to the bullet
 	enemy.shape_id = _circle_shape
+
+
+func _set_stat(attribute,value,subobj):
+	if typeof(subobj) == TYPE_DICTIONARY :
+		if subobj.has("shape_id") and attribute.to_lower() == "health":
+			if enemies.size() <= subobj["shape_id"]:
+				return 0
+			var enemy = enemies[subobj["shape_id"]]
+			return enemy.health.set_value(value)
+		if subobj.has("enemy_type"):
+			return enemyTypeStats[subobj["enemy_type"]]._set_stat(attribute,value)
+	if typeof(subobj) == TYPE_INT:
+		return enemyTypeStats[subobj]._set_stat(attribute,value)
+	
+
+
+func _get_stat(attribute,subobj):
+	if typeof(subobj) == TYPE_DICTIONARY :
+		if subobj.has("shape_id") and attribute.to_lower() == "health":
+			if enemies.size() <= subobj["shape_id"]:
+				return 0
+			var enemy = enemies[subobj["shape_id"]]
+			return enemy.health.get_value()
+		if subobj.has("enemy_type"):
+			return enemyTypeStats[subobj["enemy_type"]]._get_stat(attribute)
+	if typeof(subobj) == TYPE_INT:
+		return enemyTypeStats[subobj]._get_stat(attribute)
+	return 0
+
+func _modify_stat(attributename : String,value,modificationoperator,subobj = null):
+	if typeof(subobj) == TYPE_DICTIONARY :
+		if subobj.has("shape_id") and attributename.to_lower() == "health":
+			if enemies.size() <= subobj["shape_id"]:
+				return 0
+			var enemy = enemies[subobj["shape_id"]]
+			return enemy.health.modify_value(value,modificationoperator)
+		if subobj.has("enemy_type"):
+			return enemyTypeStats[subobj["enemy_type"]]._modify_stat(attributename,value,modificationoperator)
+	if typeof(subobj) == TYPE_INT:
+		return enemyTypeStats[subobj]._modify_stat(attributename,value,modificationoperator)
+	return 0
