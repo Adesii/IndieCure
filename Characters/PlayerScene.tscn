@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cncnn0napeaex"]
+[gd_scene load_steps=12 format=3 uid="uid://cncnn0napeaex"]
 
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_0le1w"]
 [ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_o0pb6"]
@@ -6,12 +6,16 @@
 [ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="2_ua8hj"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="3_w8iq5"]
 [ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="4_k5x6x"]
+[ext_resource type="Script" path="res://Characters/DamagingArea.gd" id="6_tovbi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8jtf"]
 radius = 11.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdirg"]
-radius = 8.544
+radius = 83.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mk2d4"]
+radius = 5.09902
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0o0f"]
 
@@ -38,6 +42,19 @@ zoom = Vector2(3, 3)
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_d8jtf")
 
+[node name="Damaging" type="Area2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 2
+collision_mask = 4
+input_pickable = false
+monitorable = false
+script = ExtResource("6_tovbi")
+
+[node name="HitBox" type="CollisionShape2D" parent="Damaging"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_wdirg")
+debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
+
 [node name="HitBoxArea" type="Area2D" parent="."]
 position = Vector2(0, -1)
 collision_layer = 2
@@ -47,8 +64,8 @@ monitorable = false
 script = ExtResource("4_k5x6x")
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
-position = Vector2(0, -9)
-shape = SubResource("CircleShape2D_wdirg")
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_mk2d4")
 debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
 [node name="PickUpArea" type="Area2D" parent="."]
@@ -59,6 +76,8 @@ collision_mask = 512
 shape = SubResource("CircleShape2D_p0o0f")
 debug_color = Color(0, 0.647059, 0.243137, 0.419608)
 
+[connection signal="area_shape_entered" from="Damaging" to="Damaging" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Damaging" to="Damaging" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]

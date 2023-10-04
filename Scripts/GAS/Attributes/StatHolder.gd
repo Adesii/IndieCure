@@ -23,6 +23,14 @@ func _get_stat(attributename):
 	push_warning("StatHolder: Attribute " + attributename + " not found")
 	return 0
 
+func _get_attribute(attributename):
+	if attributes.has(attributename):
+		return attributes[attributename]
+	
+	push_warning("StatHolder: Attribute " + attributename + " not found")
+	return null
+
+
 func _set_stat(attributename, value):
 	if attributes.has(attributename):
 		attributes[attributename].set_value(value)

@@ -9,6 +9,8 @@ var statholder : StatHolder = StatHolder.new(self)
 func _get_stat(attributename,_subobj = null):
 	return statholder._get_stat(attributename)
 
+func _get_attribute(attributename,_subobj = null):
+	return statholder._get_attribute(attributename)
 func _set_stat(attributename, value,_subobj = null):
 	return statholder._set_stat(attributename, value)
 

@@ -12,6 +12,18 @@ func Get(obj,attributename : String,subobj = null):
 		
 	return statnode._get_stat(attributename,subobj)
 
+func Get_Attribute(obj,attributename : String,subobj = null):
+	if obj.has_method("_get_attribute"):
+		return obj._get_attribute(attributename,subobj)
+		
+	var statnode :Node
+	if not obj.has_node("Stats"):
+		statnode = add_new_stat_node(obj)
+	else:
+		statnode = obj.get_node("Stats")
+		
+	return statnode._get_attribute(attributename,subobj)
+
 func Set(obj,attributename : String,value,subobj = null):
 	if obj.has_method("_set_stat"):
 		return obj._set_stat(attributename,value,subobj)
