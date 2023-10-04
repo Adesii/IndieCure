@@ -40,5 +40,5 @@ func modify_value(value,modifieroperator):
     else:
         print("Invalid modifier operator")
 
-    value_changed.emit(ownerinfo,self)
+    value_changed.emit(self,ownerinfo)
     return self
