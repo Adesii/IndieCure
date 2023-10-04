@@ -40,6 +40,11 @@ func _physics_process(delta):
 		enemy.animation_lifetime += delta
 
 		enemy.velocity = offset
+		if enemy.lastfliptime > 0:
+			enemy.lastfliptime -= delta
+		else:
+			enemy.flip_h = offset.x < 0
+			enemy.lastfliptime = 0.5
 
 		if enemy.health.current_value <= 0:
 			queue_for_deletion.append(enemy)
@@ -82,7 +87,11 @@ func _customdraw():
 		RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
 		RenderingServer.canvas_item_set_transform(enemy.canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
 		var atlastexture = frames[enemy.image_offset] as AtlasTexture
-		atlastexture.draw(enemy.canvas_id,-offset-Vector2(0,image_offset.y),Color(1,1,1,1*enemy.health.current_value/100))
+		var drawrect = atlastexture.get_region()
+		drawrect.position = -offset-Vector2(0,image_offset.y)
+		if enemy.flip_h:
+			drawrect.size.x *= -1
+		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1*enemy.health.current_value/100))
 	
 func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	var enemy = Enemy.new()

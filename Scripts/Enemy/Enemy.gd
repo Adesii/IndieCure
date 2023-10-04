@@ -5,6 +5,10 @@ var shape_id : RID
 var canvas_id : RID
 var velocity : Vector2
 var positionkey :int
+
+var flip_h : bool
+var lastfliptime : float
+
 var current_position : Vector2
 var global_position : Vector2
 var animation_lifetime : float = 0.0
