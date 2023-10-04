@@ -1,17 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=20 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
 [ext_resource type="Texture2D" uid="uid://2ugw1nawdxja" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0001.png" id="3_g3xn5"]
 [ext_resource type="Texture2D" uid="uid://x7oeh3mxrcxs" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0003.png" id="4_ck4ih"]
-[ext_resource type="PackedScene" uid="uid://bu30pw7l51eth" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_1.tscn" id="4_qdfaf"]
-[ext_resource type="PackedScene" uid="uid://dysh3gmnvhg4b" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_2.tscn" id="5_6g1qn"]
-[ext_resource type="PackedScene" uid="uid://dgv3rlahwsdqd" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree3.tscn" id="6_5nvir"]
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
 [ext_resource type="Texture2D" uid="uid://u5gajd0jsb44" path="res://Scenes/Worlds/TestStage/Textures/Sprites/Enemies/Enemy_Sheet.png" id="10_iexej"]
-[ext_resource type="PackedScene" uid="uid://b0w2iww6g3w44" path="res://Inventory/Scenes/invetory_gui.tscn" id="11_efutv"]
-[ext_resource type="Script" path="res://Scenes/Worlds/HealthGUI.gd" id="12_p8g3l"]
+[ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
@@ -145,78 +141,6 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(1703872, 458752, 0, 1703873, 458752, 0, 1703874, 458752, 0, 1703875, 458752, 0, 1703876, 458752, 0, 1703877, 458752, 0, 1703878, 458752, 0, 1703879, 458752, 0, 1703880, 458752, 0, 1703881, 458752, 0, 1703882, 458752, 0, 1703883, 458752, 0, 1703884, 458752, 0, 1703885, 458752, 0, 1703886, 458752, 0, 1703887, 458752, 0, 1703888, 458752, 0, 1703889, 458752, 0, 1703890, 458752, 0, 1703891, 458752, 0, 1703892, 458752, 0, 1703893, 458752, 0, 1703894, 458752, 0, 1703895, 458752, 0, 1703896, 458752, 0, 1703897, 458752, 0, 1703898, 458752, 0, 1703899, 458752, 0, 1703900, 458752, 0, 1703901, 458752, 0, 1703902, 458752, 0, 1703903, 458752, 0, 1703904, 458752, 0, 1703905, 458752, 0, 1703906, 458752, 0, 1703907, 458752, 0, 1703908, 458752, 0, 1703909, 458752, 0, 1703910, 458752, 0, 1703911, 458752, 0, 1703912, 458752, 0, 1703913, 458752, 0, 1703914, 458752, 0, 1703915, 458752, 0, 1703916, 458752, 0, 1703917, 458752, 0, 1703918, 458752, 0, 1703919, 458752, 0, 1703920, 458752, 0, 1703921, 458752, 0, 1703922, 458752, 0, 1703923, 458752, 0, 1703924, 458752, 0, 1703925, 458752, 0, 1703926, 458752, 0, 1703927, 458752, 0, 1703928, 458752, 0, 1703929, 458752, 0, 1703930, 458752, 0, 1703931, 458752, 0, 1703932, 458752, 0, 1703933, 458752, 0, 1703934, 458752, 0, 1703935, 458752, 0, 1638400, 458752, 0, 1638401, 458752, 0, 1638402, 458752, 0, 1638403, 458752, 0, 1638404, 458752, 0, 1638405, 458752, 0, 1638406, 458752, 0, 1179589, 262147, 2, 1048520, 393219, 2, 1245129, 327683, 2, 1114058, 262147, 2, 1245131, 393219, 2, 1245132, 262147, 2, 1245133, 327683, 2, 1245136, 262147, 2, 1179602, 327683, 2, 1245138, 327683, 2, 1048531, 327683, 2, 1179605, 262147, 2, 1114072, 393219, 2, 1048540, 393219, 2, 1245149, 262147, 2, 1179615, 393219, 2, 1179618, 262147, 2, 1179620, 393219, 2, 1245159, 327683, 2, 1048552, 262147, 2, 1114088, 393219, 2, 1179624, 327683, 2, 1179625, 393219, 2, 1048554, 327683, 2, 1245164, 327683, 2, 1114094, 327683, 2, 1048559, 327683, 2, 1048561, 393219, 2, 1048562, 393219, 2, 1245170, 262147, 2, 1179636, 327683, 2, 1048565, 262147, 2, 1114101, 327683, 2, 1179640, 262147, 2, 1048569, 327683, 2, 1179643, 262147, 2, 1048573, 327683, 2, 1114109, 327683, 2, 1245181, 262147, 2, 1179646, 327683, 2, 1245182, 327683, 2, 1048576, 393219, 2, 983041, 262147, 2, 1114113, 393219, 2, 1048578, 262147, 2, 1114116, 262147, 2, 1114118, 262147, 2, 1179654, 262147, 2, 1179656, 262147, 2, 2228162, 393219, 2, 2228166, 327683, 2, 2228167, 262147, 2, 2228171, 262147, 2, 2162636, 393219, 2, 2162639, 327683, 2, 2228175, 262147, 2, 2162642, 393219, 2, 2228187, 393219, 2, 2162655, 327683, 2, 2228197, 262147, 2, 2162672, 262147, 2, 2162673, 327683, 2, 2162674, 327683, 2, 2228215, 262147, 2, 2228217, 327683, 2, 2162682, 393219, 2, 2162684, 327683, 2, 2162687, 327683, 2, 2097154, 327683, 2, 2293701, 262147, 2, 2293709, 327683, 2, 2293718, 327683, 2, 2293720, 327683, 2, 2293728, 327683, 2, 2293729, 262147, 2, 2293735, 393219, 2, 2293748, 262147, 2, 2293757, 262147, 2, 2228230, 327683, 2)
 
-[node name="tree_1" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(270, -113)
-
-[node name="tree_2" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(17, -344)
-
-[node name="tree_3" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(381, -416)
-
-[node name="tree_4" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(391, -182)
-
-[node name="tree_5" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(-86, -252)
-
-[node name="tree_6" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(-223, -114)
-
-[node name="tree_7" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(130, -14)
-
-[node name="tree_8" parent="." instance=ExtResource("4_qdfaf")]
-y_sort_enabled = true
-position = Vector2(217, -496)
-
-[node name="tree_9" parent="." instance=ExtResource("5_6g1qn")]
-y_sort_enabled = true
-position = Vector2(-217, -326)
-
-[node name="tree_10" parent="." instance=ExtResource("5_6g1qn")]
-y_sort_enabled = true
-position = Vector2(540, -289)
-
-[node name="tree_11" parent="." instance=ExtResource("5_6g1qn")]
-y_sort_enabled = true
-position = Vector2(-72, 69)
-
-[node name="tree_12" parent="." instance=ExtResource("5_6g1qn")]
-y_sort_enabled = true
-position = Vector2(-73, -566)
-
-[node name="tree_13" parent="." instance=ExtResource("5_6g1qn")]
-y_sort_enabled = true
-position = Vector2(428, 54)
-
-[node name="tree3" parent="." instance=ExtResource("6_5nvir")]
-y_sort_enabled = true
-position = Vector2(210, 192)
-
-[node name="tree4" parent="." instance=ExtResource("6_5nvir")]
-y_sort_enabled = true
-position = Vector2(193, -325)
-
-[node name="tree5" parent="." instance=ExtResource("6_5nvir")]
-y_sort_enabled = true
-position = Vector2(-515, -253)
-
-[node name="tree6" parent="." instance=ExtResource("6_5nvir")]
-y_sort_enabled = true
-position = Vector2(-494, -13)
-
-[node name="tree7" parent="." instance=ExtResource("6_5nvir")]
-y_sort_enabled = true
-position = Vector2(35, -178)
-
 [node name="Grave" parent="." instance=ExtResource("9_a8154")]
 y_sort_enabled = true
 position = Vector2(249, 240)
@@ -235,47 +159,40 @@ collision_layer = 4
 collision_mask = 4
 monitoring = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="InvetoryGUI" parent="CanvasLayer" instance=ExtResource("11_efutv")]
-anchors_preset = -1
-anchor_left = 0.02
-anchor_top = 0.1
-anchor_right = 0.03
-anchor_bottom = 0.1
-offset_right = 342.0
-offset_bottom = 128.0
-
-[node name="HealthGUI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 41.0
-offset_top = 14.0
-offset_right = 764.0
-offset_bottom = 92.0
-script = ExtResource("12_p8g3l")
-
-[node name="HealthBackground" type="ColorRect" parent="CanvasLayer/HealthGUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.203922, 0, 0, 1)
-
-[node name="Health" type="ColorRect" parent="CanvasLayer/HealthGUI"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -39.0
-offset_right = 723.0
-offset_bottom = 39.0
-grow_vertical = 2
-color = Color(0, 0.843137, 0.305882, 1)
-
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-1, 181)
 collision_layer = 512
 collision_mask = 0
+
+[node name="tree3" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(-69, -94)
+
+[node name="tree4" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(378, -105)
+
+[node name="tree5" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(72, -269)
+
+[node name="tree6" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(-234, 108)
+
+[node name="tree7" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(-413, -351)
+
+[node name="tree8" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(424, -346)
+
+[node name="tree9" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(559, 278)
+
+[node name="tree10" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(185, -64)
+
+[node name="tree11" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(151, 351)
+
+[node name="tree12" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(-332, 301)
+
+[node name="tree13" parent="." instance=ExtResource("11_70nbh")]
+position = Vector2(221, 141)

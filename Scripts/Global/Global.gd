@@ -2,6 +2,7 @@ extends Node
 
 
 var current_character : IndieCharacter = load("res://Characters/Anny/Anny.tres")
+var ingame_ui : PackedScene = load("res://Scenes/Global/ingame_ui.tscn")
 
 var player : CharacterBody2D
 
@@ -51,4 +52,7 @@ func setup_player():
 	player.get_node("PlayerSprite").set("sprite_frames", current_character.character_animations)
 	Stat.from_set(player,current_character.attribute_set)
 	current_scene.add_child(player)
+
+	var ingameui = ingame_ui.instantiate()
+	current_scene.add_child(ingameui)
 

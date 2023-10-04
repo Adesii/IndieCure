@@ -1,25 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0w2iww6g3w44"]
+[gd_scene load_steps=3 format=3 uid="uid://b0w2iww6g3w44"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/invetory_gui.gd" id="1_tq0to"]
 [ext_resource type="PackedScene" uid="uid://cwltoet3odb45" path="res://Inventory/Scenes/inventory_slot.tscn" id="2_lln1v"]
-[ext_resource type="Texture2D" uid="uid://cei17h7en8s01" path="res://Inventory/Textures/InventoryTempRect.png" id="2_njhpo"]
 
 [node name="InvetoryGUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 342.0
+offset_bottom = 127.0
 script = ExtResource("1_tq0to")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.266667, 0.266667, 0.266667, 0.337255)
+metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 127.0
-texture = ExtResource("2_njhpo")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_top = 19
+patch_margin_bottom = 16
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 1
