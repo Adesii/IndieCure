@@ -18,8 +18,10 @@ func get_collision_handle_request(character,positionkey):
 		"last_position_key": positionkey
 	}
 
+
 func avoid_others(character,lastpositionkey,radius):
 	var result = Vector2(0,0)
+	#var old = radius
 	radius = radius * radius
 
 	if map_enemy_dict.has(lastpositionkey):
@@ -33,9 +35,9 @@ func avoid_others(character,lastpositionkey,radius):
 					result += direction * (radius - distance) * falloff
 	return result.normalized()
 
-func handle_collisiongroup(character,lastpositionkey):
+func handle_collisiongroup(character,lastpositionkey,radius):
 
-	var new_position_key = get_unique_key_for_position(character.global_position+character.velocity)
+	var new_position_key = get_unique_key_for_position(character.global_position+character.velocity*radius)
 
 	if new_position_key == lastpositionkey:
 		return {
@@ -62,6 +64,10 @@ func handle_collisiongroup(character,lastpositionkey):
 	}
 		
 
+
+func free_unit(character,lastpositionkey):
+	if map_enemy_dict.has(lastpositionkey):
+		map_enemy_dict[lastpositionkey].erase(character)
 
 
 

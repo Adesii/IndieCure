@@ -17,8 +17,10 @@ var enemyCanvas : Array[RID] = []
 
 func _ready():
 	# spawn 600 enemies around 0,0 with a speed of 200 
-	for i in range(0, 1500):
+	for i in range(0, 1100):
 		spawn_enemy(Vector2(randf_range(-1000,1000),randf_range(-1000,1000))+Vector2(100,100), 32)
+	#for i in range(0, 100):
+	#	spawn_enemy(Vector2(randf_range(-100,100),randf_range(-100,100)), 32)
 
 
 func _exit_tree():
@@ -48,14 +50,14 @@ func _physics_process(delta):
 
 		if enemy.health.current_value <= 0:
 			queue_for_deletion.append(enemy)
+			CollisionAvoidance.free_unit(enemy,enemy.positionkey)
 			continue
-
-		#var collisiongroupresult =CollisionAvoidance.handle_collisiongroup(enemy,enemy.positionkey)
-		#if collisiongroupresult.cellfull:
-		#	continue
-		#enemy.positionkey = collisiongroupresult.last_position_key
-		#var collisionresult = CollisionAvoidance.avoid_others(enemy,enemy.positionkey,32)
-		#enemy.velocity += collisionresult *1
+		var collisiongroupresult =CollisionAvoidance.handle_collisiongroup(enemy,enemy.positionkey,8)
+		if collisiongroupresult.cellfull:
+			continue
+		enemy.positionkey = collisiongroupresult.last_position_key
+		var collisionresult = CollisionAvoidance.avoid_others(enemy,enemy.positionkey,32)
+		enemy.velocity += collisionresult *1
 
 		#move the enemy
 		enemy.current_position += enemy.velocity
@@ -91,7 +93,7 @@ func _customdraw():
 		drawrect.position = -offset-Vector2(0,image_offset.y)
 		if enemy.flip_h:
 			drawrect.size.x *= -1
-		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1*enemy.health.current_value/100))
+		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.current_value/100))
 	
 func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	var enemy = Enemy.new()
