@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 90.0
 const JUMP_VELOCITY = -400.0
+@export var inventory: Inventory
 
 
 func _physics_process(_delta):
@@ -23,3 +24,8 @@ func _physics_process(_delta):
 
 
 	move_and_slide()
+
+
+func _on_pick_up_area_area_entered(area):
+	if area.has_method("collect"):
+		area.collect(inventory)

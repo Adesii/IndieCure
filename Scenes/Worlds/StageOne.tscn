@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=23 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
 [ext_resource type="Texture2D" uid="uid://u5gajd0jsb44" path="res://Scenes/Worlds/TestStage/Textures/Sprites/Enemies/Enemy_Sheet.png" id="10_iexej"]
+[ext_resource type="PackedScene" uid="uid://b0w2iww6g3w44" path="res://Inventory/Scenes/invetory_gui.tscn" id="11_efutv"]
+[ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -230,3 +232,19 @@ shared_area = NodePath("Area2D")
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InvetoryGUI" parent="CanvasLayer" instance=ExtResource("11_efutv")]
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.1
+anchor_right = 0.03
+anchor_bottom = 0.1
+offset_right = 342.0
+offset_bottom = 128.0
+
+[node name="shoe" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(-1, 181)
+collision_layer = 512
+collision_mask = 0
