@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://cncnn0napeaex"]
+
+[ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_0le1w"]
+[ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_o0pb6"]
+[ext_resource type="Resource" uid="uid://brhlr5p7o47hw" path="res://Inventory/inventory.tres" id="2_jrxo8"]
+[ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="2_ua8hj"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="3_w8iq5"]
+[ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="4_k5x6x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8jtf"]
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdirg"]
+radius = 92.6553
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0o0f"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_o0pb6")
+inventory = ExtResource("2_jrxo8")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("character_sprite")]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("1_0le1w")
+animation = &"idle"
+offset = Vector2(0, -32)
+script = ExtResource("2_ua8hj")
+character_sprite = NodePath("..")
+fliptimelimit = 0
+
+[node name="Node" parent="PlayerSprite" instance=ExtResource("3_w8iq5")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -5)
+zoom = Vector2(3, 3)
+
+[node name="Collisionbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_d8jtf")
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 2
+collision_mask = 4
+input_pickable = false
+monitorable = false
+script = ExtResource("4_k5x6x")
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_wdirg")
+debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
+
+[node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="PickUp" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_p0o0f")
+debug_color = Color(0, 0.647059, 0.243137, 0.419608)
+
+[connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]
+[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
