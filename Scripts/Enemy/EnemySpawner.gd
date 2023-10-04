@@ -107,7 +107,7 @@ func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	enemy.canvas_id = RenderingServer.canvas_item_create()
 	enemies.append(enemy)
 	
-	Stat.set_stat(self,"health",100,{"shape_id":enemies.size()-1})
+	Stat.Set(self,"health",100,{"shape_id":enemies.size()-1})
 
 
 

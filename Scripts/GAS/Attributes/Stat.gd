@@ -1,6 +1,6 @@
 extends Node
 
-func get_stat(obj,attributename : String,subobj = null):
+func Get(obj,attributename : String,subobj = null):
 	if obj.has_method("_get_stat"):
 		return obj._get_stat(attributename,subobj)
 		
@@ -12,7 +12,7 @@ func get_stat(obj,attributename : String,subobj = null):
 		
 	return statnode._get_stat(attributename,subobj)
 
-func set_stat(obj,attributename : String,value,subobj = null):
+func Set(obj,attributename : String,value,subobj = null):
 	if obj.has_method("_set_stat"):
 		return obj._set_stat(attributename,value,subobj)
 
@@ -24,7 +24,7 @@ func set_stat(obj,attributename : String,value,subobj = null):
 
 	return statnode._set_stat(attributename,value,subobj)
 
-func modify_stat(obj,attributename : String,value,modificationoperator,subobj = null):
+func Modify(obj,attributename : String,value,modificationoperator,subobj = null):
 	if obj.has_method("_modify_stat"):
 		return obj._modify_stat(attributename,value,modificationoperator,subobj)
 	var statnode :Node
@@ -40,7 +40,7 @@ func from_set(obj,attributeset : AttributeSet,subobj = null):
 		print("attributeset is null on :"+str(obj))
 		return
 	for key in attributeset.attributes:
-		set_stat(obj,key.attribute_name,key.default_value,subobj)
+		Set(obj,key.attribute_name,key.default_value,subobj)
 
 
 func add_new_stat_node(obj) -> Node:
