@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=21 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://x7oeh3mxrcxs" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0003.png" id="4_ck4ih"]
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
+[ext_resource type="PackedScene" uid="uid://bg4cmgdd2sdw8" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_4.tscn" id="10_fldpj"]
 [ext_resource type="Texture2D" uid="uid://u5gajd0jsb44" path="res://Scenes/Worlds/TestStage/Textures/Sprites/Enemies/Enemy_Sheet.png" id="10_iexej"]
 [ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
@@ -196,3 +197,18 @@ position = Vector2(-332, 301)
 
 [node name="tree13" parent="." instance=ExtResource("11_70nbh")]
 position = Vector2(221, 141)
+
+[node name="tree14" parent="." instance=ExtResource("10_fldpj")]
+position = Vector2(-85, 285)
+
+[node name="tree15" parent="." instance=ExtResource("10_fldpj")]
+position = Vector2(240, 349)
+
+[node name="tree16" parent="." instance=ExtResource("10_fldpj")]
+position = Vector2(32, 87)
+
+[node name="tree17" parent="." instance=ExtResource("10_fldpj")]
+position = Vector2(-132, 16)
+
+[node name="tree18" parent="." instance=ExtResource("10_fldpj")]
+position = Vector2(-243, 448)

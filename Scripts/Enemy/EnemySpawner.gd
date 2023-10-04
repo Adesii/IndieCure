@@ -30,13 +30,13 @@ func _exit_tree():
 		RenderingServer.free_rid(enemy.canvas_id)
 	enemies.clear()
 
-@export var enemiestospawn = 1000
+@export var enemiestospawn = 100
 var enemyspawned = 0
 
 func _physics_process(delta):
 	if enemyspawned <= enemiestospawn:
 		for i in range(0, 10):
-			spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn),randf_range(-enemiestospawn,enemiestospawn)), 32)
+			spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*2,randf_range(-enemiestospawn,enemiestospawn)*2), 32)
 			enemyspawned += 1
 
 	var used_transform = Transform2D()
