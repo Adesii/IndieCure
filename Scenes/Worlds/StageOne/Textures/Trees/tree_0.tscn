@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://yu5wjlkg637o"]
+
+[ext_resource type="Texture2D" uid="uid://br2hb7ixpo52p" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree-0001.png" id="1_f1wiw"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="2_15gku"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgjjl"]
+radius = 7.99999
+height = 48.0
+
+[node name="tree3" type="StaticBody2D"]
+
+[node name="Tree-0004" type="Sprite2D" parent="."]
+texture = ExtResource("1_f1wiw")
+offset = Vector2(2, -60)
+
+[node name="Node" parent="Tree-0004" instance=ExtResource("2_15gku")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bgjjl")
