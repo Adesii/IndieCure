@@ -17,11 +17,11 @@ func _ready():
 		return
 	
 	current_scene = get_tree().current_scene
-	var player_scene = load("res://Characters/PlayerScene.tscn").instantiate();
-	player = player_scene
+	
+	setup_player()
+
 	current_scene.add_child(shadow_canvas_group)
-	current_scene.add_child(player_scene)
-	player.get_node("PlayerSprite").set("sprite_frames", current_character.character_animations)
+	
 
 func _input(event):
 	#just close the game if esc is pressed until a pause menu is implemented
@@ -40,10 +40,15 @@ func load_stage(stage_scene : PackedScene):
 	#get_tree().current_scene = stage
 	
 	#add character scene
-	var player_scene = load("res://Characters/PlayerScene.tscn").instantiate();
-	current_scene.add_child(player_scene)
-	
-	player = player_scene
-	player.get_node("PlayerSprite").set("sprite_frames", current_character.character_animations)
+	setup_player()
 
 	oldscene.queue_free()
+
+
+func setup_player():
+	var player_scene = load("res://Characters/PlayerScene.tscn").instantiate();
+	player = player_scene
+	player.get_node("PlayerSprite").set("sprite_frames", current_character.character_animations)
+	Stat.from_set(player,current_character.attribute_set)
+	current_scene.add_child(player)
+

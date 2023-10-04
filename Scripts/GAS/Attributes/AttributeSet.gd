@@ -1,5 +1,5 @@
 extends Resource
+
 class_name AttributeSet
 
-@export var attributes : Dictionary
-
+@export var attributes : Array[AttributePair]

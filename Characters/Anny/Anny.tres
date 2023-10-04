@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="IndieCharacter" load_steps=4 format=3 uid="uid://dj0fmrax7hujt"]
+[gd_resource type="Resource" script_class="IndieCharacter" load_steps=5 format=3 uid="uid://dj0fmrax7hujt"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_puejc"]
+[ext_resource type="Resource" uid="uid://cf8edtn2vh585" path="res://Characters/Template_Attribute_Set.tres" id="1_ycbv8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xmsmy"]
 load_path = "res://.godot/imported/annyicon.png-ebb0ef68d96a354fc960f95c6e953016.ctex"
@@ -10,3 +11,4 @@ load_path = "res://.godot/imported/annyicon.png-ebb0ef68d96a354fc960f95c6e953016
 script = ExtResource("1_pguks")
 character_animations = ExtResource("1_puejc")
 icon = SubResource("CompressedTexture2D_xmsmy")
+attribute_set = ExtResource("1_ycbv8")

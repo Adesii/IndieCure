@@ -13,11 +13,15 @@ func _init(owner):
 	owner_info = owner
 
 func _ready():
-	if default_attribute_set :
+	if default_attribute_set != null :
 		Stat.from_set(self, default_attribute_set)
 
 func _get_stat(attributename):
-	return attributes[attributename].get_value()
+	if attributes.has(attributename):
+		return attributes[attributename].get_value()
+	
+	push_warning("StatHolder: Attribute " + attributename + " not found")
+	return 0
 
 func _set_stat(attributename, value):
 	if attributes.has(attributename):

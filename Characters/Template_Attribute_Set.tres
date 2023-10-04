@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="AttributeSet" load_steps=7 format=3 uid="uid://cf8edtn2vh585"]
+
+[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="1_1agag"]
+[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="2_c7pl1"]
+
+[sub_resource type="Resource" id="Resource_afime"]
+script = ExtResource("1_1agag")
+attribute_name = "health"
+default_value = 100.0
+
+[sub_resource type="Resource" id="Resource_akykh"]
+script = ExtResource("1_1agag")
+attribute_name = "movement_speed"
+default_value = 90.0
+
+[sub_resource type="Resource" id="Resource_bgsvq"]
+script = ExtResource("1_1agag")
+attribute_name = "attack_speed"
+default_value = 10.0
+
+[sub_resource type="Resource" id="Resource_u276t"]
+script = ExtResource("1_1agag")
+attribute_name = "defense"
+default_value = 10.0
+
+[resource]
+script = ExtResource("2_c7pl1")
+attributes = Array[ExtResource("1_1agag")]([SubResource("Resource_afime"), SubResource("Resource_akykh"), SubResource("Resource_bgsvq"), SubResource("Resource_u276t")])

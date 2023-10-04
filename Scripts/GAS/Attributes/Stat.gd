@@ -36,8 +36,11 @@ func modify_stat(obj,attributename : String,value,modificationoperator,subobj = 
 	return statnode._modify_stat(attributename,value,modificationoperator,subobj)
 
 func from_set(obj,attributeset : AttributeSet,subobj = null):
-	for key in attributeset.attributes.keys():
-		set_stat(obj,key,attributeset[key],subobj)
+	if attributeset == null:
+		print("attributeset is null on :"+str(obj))
+		return
+	for key in attributeset.attributes:
+		set_stat(obj,key.attribute_name,key.default_value,subobj)
 
 
 func add_new_stat_node(obj) -> Node:
