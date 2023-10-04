@@ -13,12 +13,13 @@ class_name EnemySpawner
 
 var enemies = []
 var enemyTypeStats : Array[StatHolder] = []
-var enemyCanvas : Array[RID] = []
+var enemyCanvas : PackedInt64Array = []
 
 func _ready():
+	pass
 	# spawn 600 enemies around 0,0 with a speed of 200 
-	for i in range(0, 1100):
-		spawn_enemy(Vector2(randf_range(-1000,1000),randf_range(-1000,1000))+Vector2(100,100), 32)
+	#for i in range(0, 2000):
+	#	spawn_enemy(Vector2(randf_range(-1000,1000),randf_range(-1000,1000))+Vector2(100,100), 32)
 	#for i in range(0, 100):
 	#	spawn_enemy(Vector2(randf_range(-100,100),randf_range(-100,100)), 32)
 
@@ -29,7 +30,15 @@ func _exit_tree():
 		RenderingServer.free_rid(enemy.canvas_id)
 	enemies.clear()
 
+@export var enemiestospawn = 1000
+var enemyspawned = 0
+
 func _physics_process(delta):
+	if enemyspawned <= enemiestospawn:
+		for i in range(0, 10):
+			spawn_enemy(Vector2(randf_range(-1000,1000),randf_range(-1000,1000))+Vector2(100,100), 32)
+			enemyspawned += 1
+
 	var used_transform = Transform2D()
 
 	var queue_for_deletion : Array = []
