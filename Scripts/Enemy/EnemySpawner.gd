@@ -36,7 +36,7 @@ var enemyspawned = 0
 func _physics_process(delta):
 	if enemyspawned <= enemiestospawn:
 		for i in range(0, 10):
-			spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*2,randf_range(-enemiestospawn,enemiestospawn)*2), 32)
+			spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*10,randf_range(-enemiestospawn,enemiestospawn)*10), 32)
 			enemyspawned += 1
 
 	var used_transform = Transform2D()
