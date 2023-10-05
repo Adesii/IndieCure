@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cavkiimaw4l4w"]
+[gd_scene load_steps=23 format=3 uid="uid://cavkiimaw4l4w"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
 [ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Settings.gd" id="9_1ijjy"]
-[ext_resource type="Script" path="res://Scripts/UI/Settings/ResolutionSelection.gd" id="10_5mpgb"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/ResolutionSelection.gd" id="10_oug8h"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/WindowModeSelection.gd" id="10_ua40j"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/MaxFpsSelection.gd" id="11_jbk7n"]
+[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/VsyncCheckButton.gd" id="12_mjqvr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
 shader = ExtResource("2_8k7pa")
@@ -102,6 +105,7 @@ script = ExtResource("4_eewjv")
 current_panel = NodePath("Main")
 
 [node name="Main" type="Control" parent="TabController"]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 
@@ -281,7 +285,6 @@ grow_vertical = 2
 color = Color(0.670588, 0.34902, 0.839216, 1)
 
 [node name="Settings" type="Control" parent="TabController"]
-visible = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
@@ -312,10 +315,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -25.0
-offset_right = 200.0
-offset_bottom = 25.0
+offset_left = -202.0
+offset_top = -66.5
+offset_right = 202.0
+offset_bottom = 66.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -337,7 +340,6 @@ fit_content = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 item_count = 3
-selected = 0
 fit_to_longest_item = false
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
@@ -345,6 +347,7 @@ popup/item_1/text = "Borderless fullscreen"
 popup/item_1/id = 1
 popup/item_2/text = "Exclusive fullscreen"
 popup/item_2/id = 2
+script = ExtResource("10_ua40j")
 
 [node name="ResolutionContainer" type="HBoxContainer" parent="TabController/Settings/SettingsContainer"]
 custom_minimum_size = Vector2(400, 30)
@@ -362,7 +365,41 @@ fit_content = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 fit_to_longest_item = false
-script = ExtResource("10_5mpgb")
+script = ExtResource("10_oug8h")
+
+[node name="MaxFpsContainer" type="HBoxContainer" parent="TabController/Settings/SettingsContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+alignment = 1
+
+[node name="MaxFpsLabel" type="RichTextLabel" parent="TabController/Settings/SettingsContainer/MaxFpsContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Max FPS"
+fit_content = true
+
+[node name="MaxFpsSelection" type="OptionButton" parent="TabController/Settings/SettingsContainer/MaxFpsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+fit_to_longest_item = false
+script = ExtResource("11_jbk7n")
+
+[node name="VsyncContainer" type="HBoxContainer" parent="TabController/Settings/SettingsContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+alignment = 1
+
+[node name="VsyncLabel" type="RichTextLabel" parent="TabController/Settings/SettingsContainer/VsyncContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Vsync"
+fit_content = true
+
+[node name="VsyncCheckButton" type="CheckButton" parent="TabController/Settings/SettingsContainer/VsyncContainer"]
+layout_mode = 2
+script = ExtResource("12_mjqvr")
 
 [node name="Back" type="Button" parent="TabController/Settings" node_paths=PackedStringArray("tabController", "target")]
 custom_minimum_size = Vector2(200, 50)
@@ -406,4 +443,7 @@ text = "WIP Build"
 [connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" to="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" method="_on_pressed"]
 [connection signal="item_selected" from="TabController/Settings/SettingsContainer/WindowModeContainer/WindowModeSelection" to="TabController/Settings" method="_on_window_mode_selection_item_selected"]
 [connection signal="item_selected" from="TabController/Settings/SettingsContainer/ResolutionContainer/ResolutionSelection" to="TabController/Settings" method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="TabController/Settings/SettingsContainer/MaxFpsContainer/MaxFpsSelection" to="TabController/Settings" method="_on_max_fps_selection_item_selected"]
+[connection signal="pressed" from="TabController/Settings/SettingsContainer/VsyncContainer/VsyncCheckButton" to="TabController/Settings" method="_on_vsync_check_button_pressed"]
+[connection signal="toggled" from="TabController/Settings/SettingsContainer/VsyncContainer/VsyncCheckButton" to="TabController/Settings" method="_on_vsync_check_button_toggled"]
 [connection signal="pressed" from="TabController/Settings/Back" to="TabController/Settings/Back" method="_on_pressed"]

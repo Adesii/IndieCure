@@ -8,9 +8,12 @@ var resolutions = [
 	"2560x1440",
 	"3840x2160"
 	]
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var windowWidth = Settings.getSetting("windowWidth")
+	var windowHeight = Settings.getSetting("windowHeight")
+	var current_resolution = resolutions.find("%sx%s" % [windowWidth, windowHeight])
 	var display_resoultion = DisplayServer.screen_get_size()
 	
 	# Try adding only resolutions lower than actual screen resolution
@@ -25,4 +28,4 @@ func _ready():
 			self.add_item(item)
 			
 	# By default select highest possible resolution
-	self.selected = self.item_count - 1
+	self.selected = current_resolution
