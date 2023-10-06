@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cavkiimaw4l4w"]
+[gd_scene load_steps=25 format=3 uid="uid://cavkiimaw4l4w"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/WindowModeSelection.gd" id="10_ua40j"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/MaxFpsSelection.gd" id="11_jbk7n"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/VsyncCheckButton.gd" id="12_mjqvr"]
+[ext_resource type="AudioStream" uid="uid://c48uop41dh0f3" path="res://Music/MainMenu/background.wav" id="14_bt1ht"]
+[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="15_3uob1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
 shader = ExtResource("2_8k7pa")
@@ -436,6 +438,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "WIP Build"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_bt1ht")
+autoplay = true
+bus = &"Music"
+script = ExtResource("15_3uob1")
+
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Start" to="TabController/Main/VFlowContainer/Start" method="_on_pressed"]
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Settings" to="TabController/Main/VFlowContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Exit" to="." method="_on_exit_pressed"]
@@ -446,3 +454,4 @@ text = "WIP Build"
 [connection signal="item_selected" from="TabController/Settings/SettingsContainer/MaxFpsContainer/MaxFpsSelection" to="TabController/Settings" method="_on_max_fps_selection_item_selected"]
 [connection signal="pressed" from="TabController/Settings/SettingsContainer/VsyncContainer/VsyncCheckButton" to="TabController/Settings" method="_on_vsync_check_button_pressed"]
 [connection signal="pressed" from="TabController/Settings/Back" to="TabController/Settings/Back" method="_on_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
