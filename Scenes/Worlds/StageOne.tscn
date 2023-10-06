@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=32 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -15,13 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
-[ext_resource type="Texture2D" uid="uid://d3lp4e13yamg5" path="res://Textures/exp.png" id="16_kipyf"]
-[ext_resource type="Texture2D" uid="uid://cav63ncdxq45b" path="res://Textures/XP/exp-0002_G38vvP.png" id="17_n00g4"]
-[ext_resource type="Texture2D" uid="uid://d2vkir6qgby60" path="res://Textures/XP/exp-0003_G38vvP.png" id="18_ic8uu"]
-[ext_resource type="Texture2D" uid="uid://gobb74kr34an" path="res://Textures/XP/exp-0004_G38vvP.png" id="19_x0srg"]
-[ext_resource type="Texture2D" uid="uid://75ewu26jvfop" path="res://Textures/XP/exp-0005_G38vvP.png" id="20_52utd"]
-[ext_resource type="Texture2D" uid="uid://c4klwtl5j76ek" path="res://Textures/XP/exp-0006_G38vvP.png" id="21_wuytp"]
-[ext_resource type="PackedScene" uid="uid://dl0y8qc6rbm5t" path="res://Characters/Anny/Weapons/Guitar/WP_Guitar.tscn" id="22_vynl2"]
+[ext_resource type="AudioStream" uid="uid://brhlks5lka7df" path="res://Music/StageOne/Indiecore_-_Wild_Fields.mp3" id="16_5v32p"]
+[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -305,104 +300,76 @@ position = Vector2(-1, 181)
 collision_layer = 512
 collision_mask = 0
 
-[node name="tree3" parent="." instance=ExtResource("11_70nbh")]
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree3" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-69, -94)
 
-[node name="tree4" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree4" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(378, -105)
 
-[node name="tree5" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree5" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(72, -269)
 
-[node name="tree6" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree6" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-234, 108)
 
-[node name="tree7" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree7" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-413, -351)
 
-[node name="tree8" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree8" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(424, -346)
 
-[node name="tree9" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree9" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(559, 278)
 
-[node name="tree10" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree10" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(185, -64)
 
-[node name="tree11" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree11" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(151, 351)
 
-[node name="tree12" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree12" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-332, 301)
 
-[node name="tree13" parent="." instance=ExtResource("11_70nbh")]
+[node name="tree13" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(221, 141)
 
-[node name="tree14" parent="." instance=ExtResource("10_fldpj")]
+[node name="tree14" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-85, 285)
 
-[node name="tree15" parent="." instance=ExtResource("10_fldpj")]
+[node name="tree15" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(240, 349)
 
-[node name="tree16" parent="." instance=ExtResource("10_fldpj")]
+[node name="tree16" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(32, 87)
 
-[node name="tree17" parent="." instance=ExtResource("10_fldpj")]
+[node name="tree17" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-132, 16)
 
-[node name="tree18" parent="." instance=ExtResource("10_fldpj")]
+[node name="tree18" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-243, 448)
 
-[node name="tree19" parent="." instance=ExtResource("15_8pe3g")]
+[node name="tree19" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(-433, 72)
 
-[node name="tree20" parent="." instance=ExtResource("15_8pe3g")]
+[node name="tree20" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(619, -117)
 
-[node name="tree21" parent="." instance=ExtResource("15_8pe3g")]
+[node name="tree21" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(-407, -286)
 
-[node name="tree22" parent="." instance=ExtResource("15_8pe3g")]
+[node name="tree22" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(850, 597)
 
-[node name="tree23" parent="." instance=ExtResource("15_8pe3g")]
+[node name="tree23" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(442, 841)
 
-[node name="Exp" type="Sprite2D" parent="."]
-position = Vector2(30, 248)
-texture = ExtResource("16_kipyf")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_5v32p")
+autoplay = true
+bus = &"Music"
+script = ExtResource("17_qxask")
 
-[node name="Exp2" type="Sprite2D" parent="."]
-position = Vector2(-19, 226)
-texture = ExtResource("16_kipyf")
-
-[node name="Exp3" type="Sprite2D" parent="."]
-position = Vector2(-44, 269)
-texture = ExtResource("16_kipyf")
-
-[node name="Exp4" type="Sprite2D" parent="."]
-position = Vector2(-11, 278)
-texture = ExtResource("16_kipyf")
-
-[node name="Exp-0002G38VvP" type="Sprite2D" parent="."]
-position = Vector2(-123, 241)
-texture = ExtResource("17_n00g4")
-
-[node name="Exp-0003G38VvP" type="Sprite2D" parent="."]
-position = Vector2(-123, 254)
-texture = ExtResource("18_ic8uu")
-
-[node name="Exp-0004G38VvP" type="Sprite2D" parent="."]
-position = Vector2(-122, 268)
-texture = ExtResource("19_x0srg")
-
-[node name="Exp-0005G38VvP" type="Sprite2D" parent="."]
-position = Vector2(-122, 282)
-texture = ExtResource("20_52utd")
-
-[node name="Exp-0006G38VvP" type="Sprite2D" parent="."]
-position = Vector2(-122, 300)
-texture = ExtResource("21_wuytp")
-
-[node name="WP_Guitar" parent="." instance=ExtResource("22_vynl2")]
-position = Vector2(-71, 106)
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

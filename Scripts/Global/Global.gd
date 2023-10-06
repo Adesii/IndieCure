@@ -12,11 +12,10 @@ var current_scene = null
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
-
 	if get_tree().current_scene is Control:
 		return
-	
+	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
+
 	current_scene = get_tree().current_scene
 	
 	setup_player()
@@ -36,8 +35,13 @@ func load_stage(stage_scene : PackedScene):
 
 	current_scene = stage
 
+	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
+	current_scene.add_child(shadow_canvas_group)
+
 	
 	get_tree().root.add_child(stage)
+
+	
 	#get_tree().current_scene = stage
 	
 	#add character scene

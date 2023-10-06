@@ -30,14 +30,12 @@ func _exit_tree():
 		RenderingServer.free_rid(enemy.canvas_id)
 	enemies.clear()
 
-@export var enemiestospawn = 100
-var enemyspawned = 0
+@export var enemiestospawn = 800
 
 func _physics_process(delta):
-	if enemyspawned <= enemiestospawn:
+	if enemies.size() <= enemiestospawn:
 		for i in range(0, 10):
-			spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*10,randf_range(-enemiestospawn,enemiestospawn)*10), 32)
-			enemyspawned += 1
+			spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*1,randf_range(-enemiestospawn,enemiestospawn)*1), 32)
 
 	var used_transform = Transform2D()
 
@@ -97,12 +95,22 @@ func _customdraw():
 		RenderingServer.canvas_item_clear(enemy.canvas_id)
 		RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
 		RenderingServer.canvas_item_set_transform(enemy.canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
+
+		RenderingServer.canvas_item_clear(enemy.shadow_canvas_id)
+		RenderingServer.canvas_item_set_parent(enemy.shadow_canvas_id, Global.shadow_canvas_group.get_canvas_item())
+		RenderingServer.canvas_item_set_transform(enemy.shadow_canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
+
+
 		var atlastexture = frames[enemy.image_offset] as AtlasTexture
 		var drawrect = atlastexture.get_region()
 		drawrect.position = -offset-Vector2(0,image_offset.y)
 		if enemy.flip_h:
 			drawrect.size.x *= -1
 		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
+
+		drawrect.size.y *= -1
+		drawrect.position.y -= drawrect.size.y
+		atlastexture.draw_rect(enemy.shadow_canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
 	
 func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	var enemy = Enemy.new()
@@ -116,6 +124,7 @@ func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	_configure_collision_for_enemy(enemy)
 
 	enemy.canvas_id = RenderingServer.canvas_item_create()
+	enemy.shadow_canvas_id = RenderingServer.canvas_item_create()
 	enemies.append(enemy)
 	
 	Stat.Set(self,"health",100,{"shape_id":enemies.size()-1})

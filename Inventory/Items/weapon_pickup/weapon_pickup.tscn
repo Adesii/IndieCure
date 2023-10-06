@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8sf68dfc7ury"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/collect.gd" id="1_hdisq"]
+[ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="1_onala"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekvbj"]
+
+[node name="weapon_pickup" type="Area2D"]
+script = ExtResource("1_hdisq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ekvbj")
+debug_color = Color(0.964706, 0, 0.486275, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.5, -0.749999)
+scale = Vector2(0.921875, 0.929688)
+texture = ExtResource("1_onala")

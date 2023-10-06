@@ -3,6 +3,7 @@ extends RefCounted
 
 var shape_id : RID
 var canvas_id : RID
+var shadow_canvas_id : RID
 var velocity : Vector2
 var positionkey :int
 
