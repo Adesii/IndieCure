@@ -95,6 +95,7 @@ func _customdraw():
 		RenderingServer.canvas_item_clear(enemy.canvas_id)
 		RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
 		RenderingServer.canvas_item_set_transform(enemy.canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
+		RenderingServer.canvas_item_set_material(enemy.canvas_id,material)
 
 		RenderingServer.canvas_item_clear(enemy.shadow_canvas_id)
 		RenderingServer.canvas_item_set_parent(enemy.shadow_canvas_id, Global.shadow_canvas_group.get_canvas_item())
@@ -104,12 +105,13 @@ func _customdraw():
 		var atlastexture = frames[enemy.image_offset] as AtlasTexture
 		var drawrect = atlastexture.get_region()
 		drawrect.position = -offset-Vector2(0,image_offset.y)
-		if enemy.flip_h:
+		if !enemy.flip_h:
 			drawrect.size.x *= -1
 		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
 
+
 		drawrect.size.y *= -1
-		drawrect.position.y -= drawrect.size.y
+		drawrect.position.y -= drawrect.size.y+2
 		atlastexture.draw_rect(enemy.shadow_canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
 	
 func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:

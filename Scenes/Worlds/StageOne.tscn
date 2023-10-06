@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=35 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
 [ext_resource type="PackedScene" uid="uid://bg4cmgdd2sdw8" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_4.tscn" id="10_fldpj"]
-[ext_resource type="Texture2D" uid="uid://u5gajd0jsb44" path="res://Scenes/Worlds/TestStage/Textures/Sprites/Enemies/Enemy_Sheet.png" id="10_iexej"]
+[ext_resource type="Shader" path="res://Scenes/Worlds/enemyoutline.gdshader" id="10_v1m63"]
 [ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
+[ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="11_rnqhi"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
 [ext_resource type="AudioStream" uid="uid://brhlks5lka7df" path="res://Music/StageOne/Indiecore_-_Wild_Fields.mp3" id="16_5v32p"]
@@ -224,25 +225,41 @@ sources/5 = SubResource("TileSetAtlasSource_3nbj3")
 sources/6 = SubResource("TileSetAtlasSource_cbsie")
 sources/7 = SubResource("TileSetAtlasSource_hhfsq")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wm83"]
+shader = ExtResource("10_v1m63")
+shader_parameter/color = Color(0.462745, 0.270588, 0.137255, 1)
+shader_parameter/width = 0.8
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1rqn"]
-atlas = ExtResource("10_iexej")
-region = Rect2(0, 0, 64, 64)
+atlas = ExtResource("11_rnqhi")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvje5"]
-atlas = ExtResource("10_iexej")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykt5y"]
+atlas = ExtResource("11_rnqhi")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qk62f"]
-atlas = ExtResource("10_iexej")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_supgr"]
+atlas = ExtResource("11_rnqhi")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8akkh"]
-atlas = ExtResource("10_iexej")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jio5"]
+atlas = ExtResource("11_rnqhi")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptux6"]
-atlas = ExtResource("10_iexej")
-region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fluff"]
+atlas = ExtResource("11_rnqhi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl8b1"]
+shader = ExtResource("10_v1m63")
+shader_parameter/color = Color(1, 0.254902, 0.643137, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = false
 
 [node name="StageOne" type="Node2D"]
 y_sort_enabled = true
@@ -283,14 +300,17 @@ position = Vector2(249, 240)
 
 [node name="Node" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_6wm83")
 script = ExtResource("9_kwptk")
-frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_vvje5"), SubResource("AtlasTexture_qk62f"), SubResource("AtlasTexture_8akkh"), SubResource("AtlasTexture_ptux6")])
-image_offset = Vector2i(0, 32)
+frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_ykt5y"), SubResource("AtlasTexture_supgr"), SubResource("AtlasTexture_3jio5"), SubResource("AtlasTexture_fluff")])
+image_offset = Vector2i(0, 16)
 image_change_offset = 0.1
 shared_area = NodePath("Area2D")
+enemiestospawn = 100
 
 [node name="Area2D" type="Area2D" parent="Node"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_pl8b1")
 collision_layer = 4
 collision_mask = 4
 monitoring = false
