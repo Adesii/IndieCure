@@ -28,7 +28,7 @@ func _ready():
 	# load characters and create previews
 	var characters = get_characters()
 	for c in characters:
-		print(c)
+		#print(c)
 		var preview = character_preview.instantiate()
 		preview.character_resource = c
 		preview.connect("character_pressed",_on_character_pressed)

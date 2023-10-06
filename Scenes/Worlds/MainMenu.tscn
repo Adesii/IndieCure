@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
 [ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
-[ext_resource type="Script" path="res://Scripts/UI/Settings/Settings.gd" id="9_1ijjy"]
+[ext_resource type="Script" path="res://Scenes/Worlds/SettingsMenu.gd" id="9_igd67"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/ResolutionSelection.gd" id="10_oug8h"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/WindowModeSelection.gd" id="10_ua40j"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/MaxFpsSelection.gd" id="11_jbk7n"]
@@ -292,7 +292,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("9_1ijjy")
+script = ExtResource("9_igd67")
 
 [node name="SettingsLabel" type="RichTextLabel" parent="TabController/Settings"]
 custom_minimum_size = Vector2(200, 100)
@@ -445,5 +445,4 @@ text = "WIP Build"
 [connection signal="item_selected" from="TabController/Settings/SettingsContainer/ResolutionContainer/ResolutionSelection" to="TabController/Settings" method="_on_resolution_item_selected"]
 [connection signal="item_selected" from="TabController/Settings/SettingsContainer/MaxFpsContainer/MaxFpsSelection" to="TabController/Settings" method="_on_max_fps_selection_item_selected"]
 [connection signal="pressed" from="TabController/Settings/SettingsContainer/VsyncContainer/VsyncCheckButton" to="TabController/Settings" method="_on_vsync_check_button_pressed"]
-[connection signal="toggled" from="TabController/Settings/SettingsContainer/VsyncContainer/VsyncCheckButton" to="TabController/Settings" method="_on_vsync_check_button_toggled"]
 [connection signal="pressed" from="TabController/Settings/Back" to="TabController/Settings/Back" method="_on_pressed"]
