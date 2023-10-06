@@ -5,4 +5,4 @@ class_name AttributePair
 
 @export var attribute_name : String
 
-@export var default_value : float = 0.0
+@export var default_value : int = 0

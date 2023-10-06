@@ -2,9 +2,9 @@ extends RefCounted
 
 class_name Attribute
 
-var current_value : float
-var base_value : float
-var max_value : float
+var current_value : int
+var base_value : int
+var max_value : int
 
 var attribute_name : String
 var ownerinfo
@@ -20,15 +20,15 @@ func _init(start_value,owner_info,attributename):
     self.attribute_name = attributename
 
 
-func set_value(new_value):
+func set_value(new_value: int):
     self.current_value = new_value
     value_changed.emit(ownerinfo,self)
     return self
 
 func get_value():
-    return self.current_value
+    return float(self.current_value)
 
-func modify_value(value,modifieroperator):
+func modify_value(value : int,modifieroperator):
     if modifieroperator == "+":
         self.current_value += value
     elif modifieroperator == "-":
@@ -42,3 +42,6 @@ func modify_value(value,modifieroperator):
 
     value_changed.emit(self,ownerinfo)
     return self
+
+func get_value_scaled():
+    return float(self.current_value) / float(self.max_value)
