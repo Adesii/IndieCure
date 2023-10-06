@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=37 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -15,6 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
+[ext_resource type="Texture2D" uid="uid://d3lp4e13yamg5" path="res://Textures/exp.png" id="16_kipyf"]
+[ext_resource type="Texture2D" uid="uid://cav63ncdxq45b" path="res://Textures/XP/exp-0002_G38vvP.png" id="17_n00g4"]
+[ext_resource type="Texture2D" uid="uid://d2vkir6qgby60" path="res://Textures/XP/exp-0003_G38vvP.png" id="18_ic8uu"]
+[ext_resource type="Texture2D" uid="uid://gobb74kr34an" path="res://Textures/XP/exp-0004_G38vvP.png" id="19_x0srg"]
+[ext_resource type="Texture2D" uid="uid://75ewu26jvfop" path="res://Textures/XP/exp-0005_G38vvP.png" id="20_52utd"]
+[ext_resource type="Texture2D" uid="uid://c4klwtl5j76ek" path="res://Textures/XP/exp-0006_G38vvP.png" id="21_wuytp"]
+[ext_resource type="PackedScene" uid="uid://dl0y8qc6rbm5t" path="res://Characters/Anny/Weapons/Guitar/WP_Guitar.tscn" id="22_vynl2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -360,3 +367,42 @@ position = Vector2(850, 597)
 
 [node name="tree23" parent="." instance=ExtResource("15_8pe3g")]
 position = Vector2(442, 841)
+
+[node name="Exp" type="Sprite2D" parent="."]
+position = Vector2(30, 248)
+texture = ExtResource("16_kipyf")
+
+[node name="Exp2" type="Sprite2D" parent="."]
+position = Vector2(-19, 226)
+texture = ExtResource("16_kipyf")
+
+[node name="Exp3" type="Sprite2D" parent="."]
+position = Vector2(-44, 269)
+texture = ExtResource("16_kipyf")
+
+[node name="Exp4" type="Sprite2D" parent="."]
+position = Vector2(-11, 278)
+texture = ExtResource("16_kipyf")
+
+[node name="Exp-0002G38VvP" type="Sprite2D" parent="."]
+position = Vector2(-123, 241)
+texture = ExtResource("17_n00g4")
+
+[node name="Exp-0003G38VvP" type="Sprite2D" parent="."]
+position = Vector2(-123, 254)
+texture = ExtResource("18_ic8uu")
+
+[node name="Exp-0004G38VvP" type="Sprite2D" parent="."]
+position = Vector2(-122, 268)
+texture = ExtResource("19_x0srg")
+
+[node name="Exp-0005G38VvP" type="Sprite2D" parent="."]
+position = Vector2(-122, 282)
+texture = ExtResource("20_52utd")
+
+[node name="Exp-0006G38VvP" type="Sprite2D" parent="."]
+position = Vector2(-122, 300)
+texture = ExtResource("21_wuytp")
+
+[node name="WP_Guitar" parent="." instance=ExtResource("22_vynl2")]
+position = Vector2(-71, 106)
