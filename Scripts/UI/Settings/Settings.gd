@@ -6,8 +6,8 @@ var _config_file = ConfigFile.new()
 var _settings = {
 	"game_settings": {
 		"windowMode": 0,
-		"windowWidth": 1600,
-		"windowHeight": 900,
+		"windowWidth": 1280,
+		"windowHeight": 720,
 		"vsyncEnabled": 0,
 		"maxFps": 120,
 	}
