@@ -102,7 +102,7 @@ func _customdraw():
 		drawrect.position = -offset-Vector2(0,image_offset.y)
 		if enemy.flip_h:
 			drawrect.size.x *= -1
-		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1)*1/(float(enemy.health.get_value_scaled())))
+		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
 	
 func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	var enemy = Enemy.new()

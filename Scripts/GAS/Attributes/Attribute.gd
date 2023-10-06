@@ -2,9 +2,9 @@ extends RefCounted
 
 class_name Attribute
 
-var current_value 
-var base_value 
-var max_value
+var current_value : float
+var base_value : float
+var max_value : float
 
 var attribute_name : String
 var ownerinfo
@@ -26,7 +26,7 @@ func set_value(new_value):
     return self
 
 func get_value():
-    return float(self.current_value)
+    return self.current_value
 
 func modify_value(value,modifieroperator):
     if modifieroperator == "+":
@@ -44,4 +44,4 @@ func modify_value(value,modifieroperator):
     return self
 
 func get_value_scaled():
-    return float(self.current_value) / float(self.max_value)
+    return self.current_value / self.max_value

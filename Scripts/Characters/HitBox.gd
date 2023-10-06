@@ -26,7 +26,7 @@ func _on_area_shape_exited(area_rid:RID, area:Area2D, area_shape_index:int, loca
 
 
 func _physics_process(_delta):
-	var damage_multiplier = 1
+	var damage_multiplier = 1.0
 
 	for area in overlapping_areas.keys():
 		for shape in overlapping_areas[area]:
