@@ -5,7 +5,7 @@ extends Control
 @onready var max_fps_button: OptionButton = $SettingsContainer/MaxFpsContainer/MaxFpsSelection
 @onready var vsync_enabled_button: CheckButton = $SettingsContainer/VsyncContainer/VsyncCheckButton
 
-const SETTINGS_FILE = "res://Scripts/UI/Settings/config.cfg"
+const SETTINGS_FILE = "user://Settings/config.cfg"
 var _config_file = ConfigFile.new()
 
 var _settings = {
