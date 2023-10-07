@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=36 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
 [ext_resource type="AudioStream" uid="uid://brhlks5lka7df" path="res://Music/StageOne/Indiecore_-_Wild_Fields.mp3" id="16_5v32p"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
+[ext_resource type="Texture2D" uid="uid://cq0380elop0ko" path="res://Weapons/Thighble/Textures/thighble-0001.png" id="19_8dhc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -391,5 +392,35 @@ stream = ExtResource("16_5v32p")
 autoplay = true
 bus = &"Music"
 script = ExtResource("17_qxask")
+
+[node name="Thighble-0001" type="Sprite2D" parent="."]
+position = Vector2(-53, -46)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_8dhc6")
+
+[node name="Thighble-0002" type="Sprite2D" parent="."]
+position = Vector2(-13, -68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_8dhc6")
+
+[node name="Thighble-0003" type="Sprite2D" parent="."]
+position = Vector2(29, -52)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_8dhc6")
+
+[node name="Thighble-0004" type="Sprite2D" parent="."]
+position = Vector2(-51, -1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_8dhc6")
+
+[node name="Thighble-0005" type="Sprite2D" parent="."]
+position = Vector2(-7, 13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_8dhc6")
+
+[node name="Thighble-0006" type="Sprite2D" parent="."]
+position = Vector2(31, -7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_8dhc6")
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
