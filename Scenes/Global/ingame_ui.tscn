@@ -53,5 +53,5 @@ anchor_right = 0.5
 offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
-text = "xDDD"
+text = "00:00"
 script = ExtResource("3_4hjt5")
