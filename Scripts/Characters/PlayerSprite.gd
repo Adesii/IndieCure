@@ -41,7 +41,7 @@ func _physics_process(_delta):
 	
 	if damage_frames > 0:
 		if damage_frames == 20:
-			animated_sprite.modulate = Color(1, 0, 0, .8)
+			animated_sprite.modulate = Color(1, .4, .4)
 		if damage_frames == 1:
 			animated_sprite.modulate = Color(1, 1, 1)
 		damage_frames -= 1
