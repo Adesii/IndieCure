@@ -33,8 +33,10 @@ func _physics_process(_delta):
 			# increase damage taken by 1% for each overlapping area
 			damage_multiplier *= 1.01
 
+
 	if overlapping_areas.size() > 0 and invisiblitytime >= invisiblityframetime:
 		Stat.Modify(get_parent(),"health", 1*damage_multiplier,"-")
+		Stat.Set(get_parent(), "is_damaged", 1)
 		#print("damage taken: ",1*damage_multiplier)
 		invisiblitytime = 0
 	#print(Stat.get_stat(area.get_parent(),"health",{"shape_id" : shape}))

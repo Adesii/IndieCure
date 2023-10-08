@@ -3,10 +3,10 @@
 [ext_resource type="Resource" uid="uid://cf8edtn2vh585" path="res://Characters/Template_Attribute_Set.tres" id="1_a2ycu"]
 [ext_resource type="SpriteFrames" uid="uid://dnrmm221vgxdg" path="res://Characters/Bella/BellaAnimations.tres" id="1_i5e1t"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
-[ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Bella/Textures/bellaicon.png" id="2_nncx1"]
+[ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Bella/Textures/bellaicon.png" id="3_u55lk"]
 
 [resource]
 script = ExtResource("1_pguks")
 character_animations = ExtResource("1_i5e1t")
-icon = ExtResource("2_nncx1")
+icon = ExtResource("3_u55lk")
 attribute_set = ExtResource("1_a2ycu")
