@@ -15,7 +15,7 @@ func _ready():
 	_setup_timer()
 
 
-func _process(delta):
+func _process(_delta):
 	_process_next_wave()
 	_update_timer_label()
 
@@ -36,6 +36,7 @@ func _spawn_wave(wave_id):
 
 func _update_timer_label():
 	var seconds = fmod(elapsed_time, 60)
+	@warning_ignore("integer_division")
 	var minutes = elapsed_time / 60
 	var new_label = "%02d:%02d\nWave %2d/%2d" % [minutes, seconds, current_wave_id + 1, waves.size()]
 	UpdateTimerLabel.emit(new_label)

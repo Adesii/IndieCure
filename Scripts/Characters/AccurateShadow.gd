@@ -21,7 +21,7 @@ func _ready():
 	Global.shadow_canvas_group.add_child.call_deferred(dummysprite2d)
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if dummysprite2d.is_inside_tree() and copy_transform == null :
 		copy_transform = RemoteTransform2D.new()
 		#copy_transform.update_scale = false
