@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=37 format=3 uid="uid://c1gk4v3ulvpue"]
 
+[ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
 [ext_resource type="Texture2D" uid="uid://2ugw1nawdxja" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0001.png" id="3_g3xn5"]
@@ -264,6 +265,7 @@ shader_parameter/add_margins = false
 
 [node name="StageOne" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_hrxjt")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -4096
@@ -299,7 +301,7 @@ layer_3/tile_data = PackedInt32Array(2097151, 7, 0, 2031615, 65543, 1, 1966079, 
 y_sort_enabled = true
 position = Vector2(249, 240)
 
-[node name="Node" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
+[node name="TofSpawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_6wm83")
 script = ExtResource("9_kwptk")
@@ -309,7 +311,7 @@ image_change_offset = 0.1
 shared_area = NodePath("Area2D")
 enemiestospawn = 0
 
-[node name="Area2D" type="Area2D" parent="Node"]
+[node name="Area2D" type="Area2D" parent="TofSpawner"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_pl8b1")
 collision_layer = 4

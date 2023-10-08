@@ -7,6 +7,10 @@ var invisiblityframetime =0.1 #seconds
 var invisiblitytime = 0
 
 
+func _ready():
+	Stat.Set(get_parent(), "is_damaged", 0)
+
+
 func _on_area_shape_entered(area_rid:RID, area:Area2D, area_shape_index:int, local_shape_index:int):
 	#print("Area entered shape ", area_shape_index, " local shape ", local_shape_index)
 
