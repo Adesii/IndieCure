@@ -31,3 +31,8 @@ func on_item_added(item:InventoryItem):
 	if item.scene != null:
 		add_child(item.scene.instantiate())
 		print("scene added for item: ", item.name)
+	
+	if item.stats != null:
+		var keys = item.stats.keys()
+		for key in keys:
+			Stat.Modify(self, key, item.stats[key], "+")
