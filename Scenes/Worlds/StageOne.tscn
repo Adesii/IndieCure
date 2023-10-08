@@ -1,19 +1,28 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=36 format=3 uid="uid://c1gk4v3ulvpue"]
 
+[ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
+[ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
+[ext_resource type="Texture2D" uid="uid://2ugw1nawdxja" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0001.png" id="3_g3xn5"]
+[ext_resource type="Texture2D" uid="uid://cvxei2bsqxkbw" path="res://Scenes/Worlds/StageOne/Textures/Ground/flower-0002_G38vvP.png" id="3_opok5"]
+[ext_resource type="Texture2D" uid="uid://x7oeh3mxrcxs" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0003.png" id="4_ck4ih"]
+[ext_resource type="Texture2D" uid="uid://bqq5bu1mov82i" path="res://Scenes/Worlds/StageOne/Textures/Ground/ground-0001_G38vvP.png" id="6_77q36"]
+[ext_resource type="Texture2D" uid="uid://b4rgd6mu58o5e" path="res://Scenes/Worlds/StageOne/Textures/Ground/water-0001_G38vvP.png" id="7_srpi3"]
+[ext_resource type="Texture2D" uid="uid://7ebnk3ftrcg2" path="res://Scenes/Worlds/StageOne/Textures/Structures/Stone-0006_G38vvP.png" id="8_cl3ux"]
+[ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
 [ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
+[ext_resource type="PackedScene" uid="uid://bg4cmgdd2sdw8" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_4.tscn" id="10_fldpj"]
 [ext_resource type="Shader" path="res://Scenes/Worlds/enemyoutline.gdshader" id="10_v1m63"]
+[ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="11_rnqhi"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
+[ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
 [ext_resource type="AudioStream" uid="uid://brhlks5lka7df" path="res://Music/StageOne/Indiecore_-_Wild_Fields.mp3" id="16_5v32p"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 [ext_resource type="Texture2D" uid="uid://cq0380elop0ko" path="res://Weapons/Thighble/Textures/thighble-0001.png" id="19_8dhc6"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ww482"]
-load_path = "res://.godot/imported/dirt_tileset.png-8d8e555077652ecb2ba105bf78290aea.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
-texture = SubResource("CompressedTexture2D_ww482")
+texture = ExtResource("1_juxyd")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -24,11 +33,8 @@ texture = SubResource("CompressedTexture2D_ww482")
 7:0/0 = 0
 8:0/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sm8ck"]
-load_path = "res://.godot/imported/grass-0001.png-3875afa31cd5d2af04ab273d7ca08514.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f05g6"]
-texture = SubResource("CompressedTexture2D_sm8ck")
+texture = ExtResource("2_igm8l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 2:0/0 = 0
@@ -38,12 +44,9 @@ texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 3:3/0 = 0
 1:3/0 = 0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0jun4"]
-load_path = "res://.godot/imported/flower-0002_G38vvP.png-eaf54820a6360cee67db71c739d1ead3.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kh6c7"]
-texture = SubResource("CompressedTexture2D_0jun4")
+texture = ExtResource("3_opok5")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 2:0/0 = 0
@@ -54,11 +57,8 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_42ski"]
-load_path = "res://.godot/imported/stone-0001.png-82c07ca77cccf7bbcfe865e692dc249d.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gda7r"]
-texture = SubResource("CompressedTexture2D_42ski")
+texture = ExtResource("3_g3xn5")
 margins = Vector2i(8, 15)
 separation = Vector2i(1, 0)
 0:2/0 = 0
@@ -97,11 +97,8 @@ separation = Vector2i(1, 0)
 5:2/0 = 0
 6:2/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7nxq8"]
-load_path = "res://.godot/imported/stone-0003.png-ac4987babb992e43d407526147406d98.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6slms"]
-texture = SubResource("CompressedTexture2D_7nxq8")
+texture = ExtResource("4_ck4ih")
 2:1/0 = 0
 3:1/0 = 0
 4:1/0 = 0
@@ -109,11 +106,8 @@ texture = SubResource("CompressedTexture2D_7nxq8")
 3:2/0 = 0
 2:2/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ovm88"]
-load_path = "res://.godot/imported/ground-0001_G38vvP.png-84b82ca58b9a62713d3488f9ce7083eb.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nbj3"]
-texture = SubResource("CompressedTexture2D_ovm88")
+texture = ExtResource("6_77q36")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 2:0/0 = 0
@@ -124,22 +118,16 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ufop5"]
-load_path = "res://.godot/imported/water-0001_G38vvP.png-e9c9083aa0e270f59643d98b8461298a.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbsie"]
-texture = SubResource("CompressedTexture2D_ufop5")
+texture = ExtResource("7_srpi3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l0kct"]
-load_path = "res://.godot/imported/Stone-0006_G38vvP.png-3a3162432c077315aa5ed12620709e8a.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhfsq"]
-texture = SubResource("CompressedTexture2D_l0kct")
+texture = ExtResource("8_cl3ux")
 separation = Vector2i(0, 16)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -309,7 +297,7 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(2097151, 7, 0, 2031615, 65543, 1, 1966079, 65543, 1, 1900543, 65543, 1, 1835007, 65543, 1, 1769471, 65543, 1, 1703935, 65543, 1, 1638399, 65543, 1, 1572863, 65543, 1, 1507327, 65543, 1, 1441791, 65543, 1, 1376255, 65543, 1, 1310719, 65543, 1, 1245183, 65543, 1, 1179647, 65543, 1, 1114111, 65543, 1, 1048575, 65543, 1, 983039, 65543, 1, 917503, 65543, 1, 851967, 65543, 1, 786431, 65543, 1, 720895, 65543, 0, 2097150, 131079, 0, 2031614, 7, 1, 1966078, 7, 1, 1900542, 7, 1, 1835006, 7, 1, 1769470, 7, 1, 1703934, 7, 1, 1638398, 7, 1, 1572862, 7, 1, 1507326, 7, 1, 1441790, 7, 1, 1376254, 196615, 2, 1310718, 196615, 2, 1245182, 7, 1, 1179646, 7, 1, 1114110, 7, 1, 1048574, 7, 1, 983038, 7, 1, 917502, 7, 1, 851966, 7, 1, 786430, 7, 1, 720894, 7, 1, 1376253, 196615, 1, 1310717, 131079, 1, 1376252, 196615, 1, 1310716, 131079, 1, 1376251, 196615, 1, 1310715, 131079, 1, 1376250, 196615, 1, 1310714, 131079, 1, 1376249, 196615, 1, 1310713, 131079, 1, 1376248, 196615, 1, 1310712, 131079, 1, 1376247, 196615, 1, 1310711, 131079, 1, 1376246, 196615, 1, 1310710, 131079, 1, 1376245, 196615, 1, 1310709, 131079, 1, 1376244, 196615, 1, 1310708, 131079, 1, 1376243, 196615, 1, 1310707, 131079, 1, 1376242, 196615, 1, 1310706, 131079, 1, 1376241, 196615, 1, 1310705, 131079, 1, 1376240, 196615, 1, 1310704, 131079, 1, 1376239, 196615, 1, 1310703, 131079, 1, 1376238, 196615, 1, 1310702, 131079, 1, 1376237, 196615, 1, 1310701, 131079, 1, 1376236, 196615, 1, 1310700, 196615, 2, 1376235, 196615, 1, 1310699, 196615, 2, 1376234, 196615, 1, 1310698, 131079, 1, 1376233, 196615, 1, 1310697, 131079, 1, 1376232, 196615, 1, 1310696, 131079, 1, 1376231, 196615, 1, 1310695, 131079, 1, 1376230, 196615, 1, 1310694, 131079, 1, 1376229, 196615, 1, 1310693, 131079, 1, 1376228, 196615, 1, 1310692, 131079, 1, 1376227, 196615, 1, 1310691, 131079, 1, 1376226, 196615, 1, 1310690, 131079, 1, 1376225, 196615, 1, 1310689, 196615, 2, 1376224, 196615, 1, 1310688, 131079, 1, 1376223, 196615, 1, 1310687, 131079, 1, 1376222, 196615, 1, 1310686, 131079, 1, 1376221, 196615, 1, 1310685, 131079, 1, 1376220, 196615, 1, 1310684, 196615, 2, 1376219, 196615, 1, 1310683, 131079, 1, 1376218, 196615, 1, 1310682, 131079, 1, 1376217, 196615, 1, 1310681, 131079, 1, 1376216, 196615, 1, 1310680, 131079, 1, 1376215, 196615, 1, 1310679, 131079, 1, 1376214, 196615, 1, 1310678, 131079, 1, 1376213, 196615, 1, 1310677, 131079, 1, 1376212, 196615, 1, 1310676, 131079, 1, 1376211, 196615, 1, 1310675, 131079, 1, 1376210, 196615, 1, 1310674, 131079, 1, 1376209, 196615, 1, 1310673, 131079, 1, 1376208, 196615, 1, 1310672, 131079, 1, 1376207, 196615, 1, 1310671, 131079, 1, 1376206, 196615, 0, 1310670, 7, 1, 1245164, 65543, 1, 1179628, 196615, 2, 1114092, 196615, 2, 1179632, 7, 0, 1114096, 65543, 1, 1048560, 65543, 1, 983024, 65543, 1, 917488, 65543, 1, 851952, 65543, 0, 1179631, 196615, 1, 1114095, 196615, 2, 1048559, 196615, 2, 983023, 196615, 2, 917487, 196615, 2, 851951, 131079, 1, 1179630, 196615, 1, 1114094, 196615, 2, 1048558, 196615, 2, 983022, 196615, 2, 917486, 196615, 2, 851950, 131079, 1, 1179629, 196615, 1, 1114093, 196615, 2, 1048557, 196615, 2, 983021, 196615, 2, 917485, 196615, 2, 851949, 131079, 1, 1048556, 196615, 2, 983020, 196615, 2, 917484, 196615, 2, 851948, 131079, 1, 1179627, 196615, 2, 1114091, 196615, 2, 1048555, 196615, 2, 983019, 196615, 2, 917483, 196615, 2, 851947, 131079, 1, 1179626, 196615, 1, 1114090, 196615, 2, 1048554, 196615, 2, 983018, 196615, 2, 917482, 196615, 2, 851946, 131079, 1, 1179625, 7, 1, 1114089, 7, 1, 1048553, 7, 1, 983017, 7, 1, 917481, 7, 1, 851945, 7, 1, 1245163, 7, 1)
 
-[node name="Grave" type="StaticBody2D" parent="."]
+[node name="Grave" parent="." instance=ExtResource("9_a8154")]
 y_sort_enabled = true
 position = Vector2(249, 240)
 
@@ -338,67 +326,67 @@ collision_mask = 0
 [node name="Node2D" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="tree3" type="StaticBody2D" parent="Node2D"]
+[node name="tree3" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-69, -94)
 
-[node name="tree4" type="StaticBody2D" parent="Node2D"]
+[node name="tree4" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(378, -105)
 
-[node name="tree5" type="StaticBody2D" parent="Node2D"]
+[node name="tree5" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(72, -269)
 
-[node name="tree6" type="StaticBody2D" parent="Node2D"]
+[node name="tree6" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-234, 108)
 
-[node name="tree7" type="StaticBody2D" parent="Node2D"]
+[node name="tree7" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-413, -351)
 
-[node name="tree8" type="StaticBody2D" parent="Node2D"]
+[node name="tree8" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(424, -346)
 
-[node name="tree9" type="StaticBody2D" parent="Node2D"]
+[node name="tree9" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(559, 278)
 
-[node name="tree10" type="StaticBody2D" parent="Node2D"]
+[node name="tree10" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(185, -64)
 
-[node name="tree11" type="StaticBody2D" parent="Node2D"]
+[node name="tree11" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(151, 351)
 
-[node name="tree12" type="StaticBody2D" parent="Node2D"]
+[node name="tree12" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-332, 301)
 
-[node name="tree13" type="StaticBody2D" parent="Node2D"]
+[node name="tree13" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(221, 141)
 
-[node name="tree14" type="StaticBody2D" parent="Node2D"]
+[node name="tree14" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-85, 285)
 
-[node name="tree15" type="StaticBody2D" parent="Node2D"]
+[node name="tree15" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(240, 349)
 
-[node name="tree16" type="StaticBody2D" parent="Node2D"]
+[node name="tree16" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(32, 87)
 
-[node name="tree17" type="StaticBody2D" parent="Node2D"]
+[node name="tree17" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-132, 16)
 
-[node name="tree18" type="StaticBody2D" parent="Node2D"]
+[node name="tree18" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-243, 448)
 
-[node name="tree19" type="StaticBody2D" parent="Node2D"]
+[node name="tree19" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(-433, 72)
 
-[node name="tree20" type="StaticBody2D" parent="Node2D"]
+[node name="tree20" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(619, -117)
 
-[node name="tree21" type="StaticBody2D" parent="Node2D"]
+[node name="tree21" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(-407, -286)
 
-[node name="tree22" type="StaticBody2D" parent="Node2D"]
+[node name="tree22" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(850, 597)
 
-[node name="tree23" type="StaticBody2D" parent="Node2D"]
+[node name="tree23" parent="Node2D" instance=ExtResource("15_8pe3g")]
 position = Vector2(442, 841)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
