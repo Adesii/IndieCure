@@ -135,7 +135,7 @@ func _configure_collision_for_attackpoint(point: attackpoint):
 	used_transform.origin = point.offset
 	# Create the shape
 	var _circle_shape = PhysicsServer2D.circle_shape_create()
-	PhysicsServer2D.shape_set_data(_circle_shape, 8)
+	PhysicsServer2D.shape_set_data(_circle_shape, size)
 
 	# Add the shape to the shared area
 	PhysicsServer2D.area_add_shape(
