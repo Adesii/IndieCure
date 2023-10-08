@@ -7,3 +7,6 @@
 script = ExtResource("1_kh0kg")
 name = "shoe"
 texture = ExtResource("2_5g5cn")
+stats = {
+"movement_speed": 100
+}
