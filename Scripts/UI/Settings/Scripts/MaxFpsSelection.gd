@@ -1,6 +1,8 @@
 extends OptionButton
 
 const max_fps_list = [
+	"1",
+	"10",
 	"30",
 	"60",
 	"120",

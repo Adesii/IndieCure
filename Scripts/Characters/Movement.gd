@@ -3,6 +3,8 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 @export var inventory: Inventory
 
+func _ready():
+	inventory.item_added.connect(on_item_added)
 
 func _physics_process(_delta):
 	# Handle Jump.
@@ -23,3 +25,9 @@ func _physics_process(_delta):
 func _on_pick_up_area_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+
+func on_item_added(item:InventoryItem):
+	print("Item added: ", item.name)
+	if item.scene != null:
+		add_child(item.scene.instantiate())
+		print("scene added for item: ", item.name)

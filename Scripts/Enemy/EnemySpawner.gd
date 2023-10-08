@@ -28,6 +28,7 @@ func _exit_tree():
 	for enemy in enemies:
 		PhysicsServer2D.free_rid(enemy.shape_id)
 		RenderingServer.free_rid(enemy.canvas_id)
+		RenderingServer.free_rid(enemy.shadow_canvas_id)
 	enemies.clear()
 
 @export var enemiestospawn = 800
@@ -77,6 +78,7 @@ func _physics_process(delta):
 	for del in queue_for_deletion:
 		PhysicsServer2D.free_rid(del.shape_id)
 		RenderingServer.free_rid(del.canvas_id)
+		RenderingServer.free_rid(del.shadow_canvas_id)
 		enemies.erase(del)
 
 	_customdraw()
@@ -93,14 +95,10 @@ func _customdraw():
 			if enemy.image_offset >= max_images:
 				enemy.image_offset = 0
 		RenderingServer.canvas_item_clear(enemy.canvas_id)
-		RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
 		RenderingServer.canvas_item_set_transform(enemy.canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
-		RenderingServer.canvas_item_set_material(enemy.canvas_id,material)
 
 		RenderingServer.canvas_item_clear(enemy.shadow_canvas_id)
-		RenderingServer.canvas_item_set_parent(enemy.shadow_canvas_id, Global.shadow_canvas_group.get_canvas_item())
 		RenderingServer.canvas_item_set_transform(enemy.shadow_canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
-
 
 		var atlastexture = frames[enemy.image_offset] as AtlasTexture
 		var drawrect = atlastexture.get_region()
@@ -128,6 +126,13 @@ func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	enemy.canvas_id = RenderingServer.canvas_item_create()
 	enemy.shadow_canvas_id = RenderingServer.canvas_item_create()
 	enemies.append(enemy)
+
+	RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
+	RenderingServer.canvas_item_set_material(enemy.canvas_id,material)
+
+	RenderingServer.canvas_item_set_parent(enemy.shadow_canvas_id, Global.shadow_canvas_group.get_canvas_item())
+
+
 	
 	Stat.Set(self,"health",100,{"shape_id":enemies.size()-1})
 

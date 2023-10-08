@@ -3,6 +3,7 @@ extends Resource
 class_name Inventory
 
 signal updated
+signal item_added(item: InventoryItem)
 
 @export var items: Array[InventoryItem]
 
@@ -22,4 +23,5 @@ func insert(item: InventoryItem):
 			break
 
 	updated.emit()
+	item_added.emit(item)
 	return true

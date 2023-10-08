@@ -2,6 +2,8 @@ extends Area2D
 
 @export var itemResource: InventoryItem
 
+func _ready():
+	$Sprite2D.texture = itemResource.texture
 	
 
 func collect(inventory: Inventory):
