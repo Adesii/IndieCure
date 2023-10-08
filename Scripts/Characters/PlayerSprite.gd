@@ -9,6 +9,8 @@ extends Node2D
 
 var lastfliptime = 0
 
+var damage_frames = 0
+
 func _ready():
 	#fallback if not assigned
 	if animated_sprite == null:
@@ -32,4 +34,14 @@ func _physics_process(_delta):
 	elif character_sprite.velocity.x < 0 and lastfliptime + fliptimelimit < Time.get_ticks_msec():
 		animated_sprite.flip_h = true
 		lastfliptime = Time.get_ticks_msec()
-
+		
+	if Stat.Get(get_parent(), "is_damaged") == 1 and damage_frames == 0:
+		Stat.Set(get_parent(), "is_damaged", 0)
+		damage_frames = 20
+	
+	if damage_frames > 0:
+		if damage_frames == 20:
+			animated_sprite.modulate = Color(1, 0, 0, .8)
+		if damage_frames == 1:
+			animated_sprite.modulate = Color(1, 1, 1)
+		damage_frames -= 1
