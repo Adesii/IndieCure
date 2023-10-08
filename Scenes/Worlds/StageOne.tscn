@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=37 format=3 uid="uid://c1gk4v3ulvpue"]
 
+[ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
 [ext_resource type="Texture2D" uid="uid://2ugw1nawdxja" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0001.png" id="3_g3xn5"]
@@ -9,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b4rgd6mu58o5e" path="res://Scenes/Worlds/StageOne/Textures/Ground/water-0001_G38vvP.png" id="7_srpi3"]
 [ext_resource type="Texture2D" uid="uid://7ebnk3ftrcg2" path="res://Scenes/Worlds/StageOne/Textures/Structures/Stone-0006_G38vvP.png" id="8_cl3ux"]
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
-[ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
 [ext_resource type="PackedScene" uid="uid://bg4cmgdd2sdw8" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_4.tscn" id="10_fldpj"]
 [ext_resource type="Shader" path="res://Scenes/Worlds/enemyoutline.gdshader" id="10_v1m63"]
