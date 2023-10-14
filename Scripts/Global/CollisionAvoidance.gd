@@ -4,7 +4,7 @@ extends Node
 # allows enemies to avoid eachother without having to check every enemy by splitting the map into a grid
 
 var map_cell_size = 32;
-var map_size_per_cell = 8;
+var map_size_per_cell = 32;
 
 var map_enemy_dict :Dictionary = {}
 
@@ -41,15 +41,15 @@ func handle_collisiongroup(character,lastpositionkey,radius):
 
 	if new_position_key == lastpositionkey:
 		return {
-			"last_position_key": lastpositionkey,
+			"last_position_key": new_position_key,
 			"cellfull" : false
 		}
 	
 	if map_enemy_dict.has(lastpositionkey):
-		map_enemy_dict[lastpositionkey].erase(character)
+			map_enemy_dict[lastpositionkey].erase(character)
 	
 	if map_enemy_dict.has(new_position_key):
-		if map_enemy_dict[new_position_key].size() >= map_size_per_cell:
+		if map_enemy_dict[new_position_key].size() > map_size_per_cell:
 			return {
 				"last_position_key": lastpositionkey,
 				"cellfull" : true
