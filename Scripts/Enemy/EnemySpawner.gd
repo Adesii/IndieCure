@@ -30,47 +30,6 @@ func _physics_process(delta):
 		while renderer._objects.size() < enemiestospawn:
 			_new_spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*0.5,randf_range(-enemiestospawn,enemiestospawn)*0.5), 32)
 
-	var used_transform = Transform2D()
-
-	var queue_for_deletion : Array = []
-	#for  i in range(0, renderer._objects.size()):
-	#	var enemy = renderer._objects[i]
-	#	var movement_vector =  Global.player.global_position - enemy.global_position
-	#	var offset : Vector2 = (movement_vector.normalized()*enemy.speed*delta)
-#
-	#	enemy.animation_lifetime += delta
-#
-	#	enemy.velocity = offset
-	#	if enemy.lastfliptime > 0:
-	#		enemy.lastfliptime -= delta
-	#	else:
-	#		enemy.flip_h = offset.x < 0
-	#		enemy.lastfliptime = 0.5
-#
-	#	if enemy.health.current_value <= 0:
-	#		queue_for_deletion.append(enemy)
-	#		CollisionAvoidance.free_unit(enemy,enemy.positionkey)
-	#		continue
-	#	var collisiongroupresult =CollisionAvoidance.handle_collisiongroup(enemy,enemy.positionkey,8)
-	#	if collisiongroupresult.cellfull:
-	#		continue
-	#	enemy.positionkey = collisiongroupresult.last_position_key
-	#	var collisionresult = CollisionAvoidance.avoid_others(enemy,enemy.positionkey,32)
-	#	enemy.velocity += collisionresult *1
-#
-	#	#move the enemy
-	#	enemy.global_position += enemy.velocity
-	#	used_transform.origin = enemy.global_position
-	#	PhysicsServer2D.area_set_shape_transform(
-	#		shared_area.get_rid(), i, used_transform
-	#	)
-
-	#for del in queue_for_deletion:
-	#	renderer.remove_object(del)
-
-	#_customdraw()
-	#_newRender()
-	#calc(delta,renderer._objects.size(),0,Global.player.global_position)
 	gothrough(delta)
 	queue_redraw()
 
@@ -165,21 +124,8 @@ func calc(delta,count,startoffset,playerpos):
 		if enemy.health.current_value <= 0:
 			queue_for_deletion.append(enemy)
 			continue
-		#var collisiongroupresult =CollisionAvoidance.handle_collisiongroup(enemy,enemy.positionkey,8)
-		#enemy.positionkey = collisiongroupresult.last_position_key
-		#if collisiongroupresult.cellfull:
-		#	enemy.velocity *= 0.2
-		#	enemy.global_position += enemy.velocity
-		#	continue
-		#var collisionresult = CollisionAvoidance.avoid_others(enemy,enemy.positionkey,32)
-		#enemy.velocity += collisionresult *1
 
-		#move the enemy
 		enemy.global_position += enemy.velocity + enemy.avoidancevelocity
-	#for del in queue_for_deletion:
-	#	renderer.remove_object(del)
-
-	#print("thread ",startoffset," to ",startoffset+count," done")
 
 func _draw():
 	_newRender()
@@ -211,62 +157,8 @@ func _newRender():
 		drawrect.position.y -= drawrect.size.y+2
 		enemy.shadow_texture_rect = drawrect
 
-		renderer._draw_single(enemy)
-	#renderer.end_render()
-
-
-#func _customdraw():
-#	var offset = frames[0].get_size()/2
-#	
-#
-#	for i in range(0, enemies.size()):
-#		var enemy = enemies[i]
-#		if enemy.animation_lifetime >= image_change_offset:
-#			enemy.image_offset += 1
-#			enemy.animation_lifetime -= image_change_offset 
-#			if enemy.image_offset >= max_images:
-#				enemy.image_offset = 0
-#		RenderingServer.canvas_item_clear(enemy.canvas_id)
-#		RenderingServer.canvas_item_set_transform(enemy.canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
-#
-#		RenderingServer.canvas_item_clear(enemy.shadow_canvas_id)
-#		RenderingServer.canvas_item_set_transform(enemy.shadow_canvas_id, Transform2D(0, enemy.current_position+Vector2(image_offset.x,0)))
-#
-#		var atlastexture = frames[enemy.image_offset] as AtlasTexture
-#		var drawrect = atlastexture.get_region()
-#		drawrect.position = -offset-Vector2(0,image_offset.y)
-#		if !enemy.flip_h:
-#			drawrect.size.x *= -1
-#		atlastexture.draw_rect(enemy.canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
-#
-#
-#		drawrect.size.y *= -1
-#		drawrect.position.y -= drawrect.size.y+2
-#		atlastexture.draw_rect(enemy.shadow_canvas_id,drawrect,false,Color(1,1,1,1)*1/(enemy.health.get_value_scaled()))
-	
-#func spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
-#	var enemy = Enemy.new()
-#	enemy.current_position = spawn_location
-#	enemy.global_position = spawn_location
-#	enemy.speed = speed
-#
-#	enemy.image_offset = randi() % max_images
-#	enemy.animation_lifetime = randf_range(0,1)
-#
-#	_configure_collision_for_enemy(enemy)
-#
-#	enemy.canvas_id = RenderingServer.canvas_item_create()
-#	enemy.shadow_canvas_id = RenderingServer.canvas_item_create()
-#	enemies.append(enemy)
-#
-#	RenderingServer.canvas_item_set_parent(enemy.canvas_id, get_parent().get_canvas_item())
-#	RenderingServer.canvas_item_set_material(enemy.canvas_id,material)
-#
-#	RenderingServer.canvas_item_set_parent(enemy.shadow_canvas_id, Global.shadow_canvas_group.get_canvas_item())
-#
-#
-#	
-#	Stat.Set(self,"health",100,{"shape_id":enemies.size()-1})
+		#renderer._draw_single(enemy)
+	renderer.end_render() # figure out if this is a good idea
 
 func _new_spawn_enemy(spawn_location : Vector2,speed = 200) ->void:
 	var enemy = Enemy.new()

@@ -49,7 +49,7 @@ func remove_object(index : MassObject):
 	_objects.erase(mass_object)
 	#print_debug("MassRenderer: Object not found")
 
-func end_render():
+func end_render(): # multithreading rendering
 	@warning_ignore("integer_division")
 	var count = _objects.size() / rendering_threads
 	if count == 0:
