@@ -309,7 +309,7 @@ frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("Atlas
 image_offset = Vector2i(0, 16)
 image_change_offset = 0.1
 shared_area = NodePath("Area2D")
-enemiestospawn = 0
+enemiestospawn = 1000
 
 [node name="Area2D" type="Area2D" parent="TofSpawner"]
 y_sort_enabled = true
