@@ -10,7 +10,7 @@ class_name EnemySpawner
 
 @onready var max_images = frames.size()
 
-var renderer :MassRenderer;
+var renderer : MassRenderer;
 
 
 #var enemies = []
@@ -25,10 +25,21 @@ func _ready():
 
 @export var enemiestospawn = 800
 
+var amounttospawn = 10
+var spawndelay = 0.2
+var spawntimer = 0
+
 func _physics_process(delta):
+	spawntimer += delta
 	if renderer._objects.size() < enemiestospawn:
-		while renderer._objects.size() < enemiestospawn:
-			_new_spawn_enemy(Vector2(randf_range(-enemiestospawn,enemiestospawn)*0.5,randf_range(-enemiestospawn,enemiestospawn)*0.5), 32)
+		while renderer._objects.size() < enemiestospawn and amounttospawn > 0 and spawntimer > spawndelay:
+			var spawndirection = Vector2.from_angle(randf()*2*PI).normalized()*400
+			spawndirection += Global.player.position
+			_new_spawn_enemy(spawndirection, 32)
+			amounttospawn -= 1
+			spawntimer = 0
+		
+		amounttospawn = 10
 
 	gothrough(delta)
 	queue_redraw()
@@ -62,6 +73,8 @@ func gothrough(delta):
 	for del in queue_for_deletion:
 		renderer.remove_object(del)
 		CollisionAvoidance.free_unit(del,del.positionkey)
+
+		Global.xp_drop_node.drop_xp(del.global_position,randi_range(1,5))
 
 	queue_for_deletion.clear()
 	mutex.unlock()

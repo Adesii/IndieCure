@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="11_rnqhi"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
-[ext_resource type="AudioStream" uid="uid://brhlks5lka7df" path="res://Music/StageOne/Indiecore_-_Wild_Fields.mp3" id="16_5v32p"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
+[ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Weapons/Thighble/Tighble.tres" id="21_hqbda"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
@@ -359,13 +359,13 @@ collision_mask = 4
 monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-123, 58)
+position = Vector2(-89, 5)
 collision_layer = 512
 collision_mask = 0
 monitoring = false
 
 [node name="shoe2" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-45, 98)
+position = Vector2(-11, 45)
 collision_layer = 512
 collision_mask = 0
 monitoring = false
@@ -438,7 +438,7 @@ position = Vector2(850, 597)
 position = Vector2(442, 841)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_5v32p")
+stream = ExtResource("20_fgqjj")
 bus = &"Music"
 script = ExtResource("17_qxask")
 

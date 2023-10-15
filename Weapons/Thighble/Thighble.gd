@@ -52,12 +52,12 @@ var attack_timer : SceneTreeTimer
 var alpha : float = 1.0
 
 func _on_attack():
-	print("attack")
+	#print("attack")
 	
 	is_attacking = true
 	if attacks.size() < amount:
 		#create more attack points if needed
-		print("create more attack points")
+		#print("create more attack points")
 		while attacks.size() < amount:
 			create_new_attack_point()
 	for point in attacks:
@@ -79,7 +79,7 @@ func _on_attack():
 
 	finished_attack.emit()
 	is_attacking = false
-	print("finished attack")
+	#print("finished attack")
 
 
 func _physics_process(delta):

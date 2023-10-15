@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtma1gy8ltvqp"]
 
 [ext_resource type="Script" path="res://Weapons/Thighble/Thighble.gd" id="1_y6x4j"]
-[ext_resource type="Texture2D" uid="uid://cq0380elop0ko" path="res://Weapons/Thighble/Textures/thighble-0001.png" id="2_w6qr5"]
+[ext_resource type="Texture2D" uid="uid://n4scakt8c1du" path="res://Weapons/Thighble/Textures/thighble-0002.png" id="2_54owb"]
 
 [node name="Thighble" type="Node2D" node_paths=PackedStringArray("shared_area")]
-z_index = 4096
 z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_y6x4j")
-texture = ExtResource("2_w6qr5")
+texture = ExtResource("2_54owb")
 radius = 64.0
 amount = 3
-rotation_speed = 3.0
+rotation_speed = 2.0
 shared_area = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]

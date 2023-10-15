@@ -41,13 +41,19 @@ func remove_object(index : MassObject):
 	
 	if mass_object.rendering_rid.is_valid():
 		RenderingServer.free_rid(mass_object.rendering_rid)
-	if mass_object.rendering_shadow_rid.is_valid():
+	if mass_object.has_shadow and mass_object.rendering_shadow_rid.is_valid():
 		RenderingServer.free_rid(mass_object.rendering_shadow_rid)
 	if mass_object.physics_rid.is_valid():
 		PhysicsServer2D.free_rid(mass_object.physics_rid)
 
 	_objects.erase(mass_object)
 	#print_debug("MassRenderer: Object not found")
+
+func remove_object_at(index : int):
+	if index >= _objects.size():
+		return
+	var mass_object = _objects[index]
+	remove_object(mass_object)
 
 func end_render(): # multithreading rendering
 	@warning_ignore("integer_division")
@@ -76,11 +82,12 @@ func draw_batch(offset, count):
 
 func _draw_single(obj: MassObject):
 	RenderingServer.canvas_item_clear(obj.rendering_rid)
-	RenderingServer.canvas_item_clear(obj.rendering_shadow_rid)
-
 	RenderingServer.canvas_item_set_transform(obj.rendering_rid, obj.transform)
-	RenderingServer.canvas_item_set_transform(obj.rendering_shadow_rid, obj.transform)
-
 	obj.texture.draw_rect(obj.rendering_rid, obj.texture_rect ,false,obj.modulate)
+
+	if !obj.has_shadow:
+		return
+	RenderingServer.canvas_item_set_transform(obj.rendering_shadow_rid, obj.transform)
+	RenderingServer.canvas_item_clear(obj.rendering_shadow_rid)
 	obj.texture.draw_rect(obj.rendering_shadow_rid, obj.shadow_texture_rect ,false)
 

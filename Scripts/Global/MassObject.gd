@@ -4,13 +4,16 @@ class_name MassObject
 
 var physics_rid : RID
 var rendering_rid : RID
+
+var has_shadow : bool = true
 var rendering_shadow_rid : RID
+
 var texture : Texture2D
 var texture_rect : Rect2
 var shadow_texture_rect : Rect2
 var transform : Transform2D
 var image_offset : Vector2
-var modulate : Color
+var modulate : Color = Color.WHITE
 
 
 var global_position : Vector2 : set = set_global_position, get = get_global_position

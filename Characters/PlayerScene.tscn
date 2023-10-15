@@ -16,6 +16,7 @@ radius = 5.09902
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0o0f"]
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_o0pb6")
 inventory = ExtResource("2_jrxo8")
 
@@ -52,7 +53,7 @@ shape = SubResource("CircleShape2D_mk2d4")
 debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
 [node name="PickUpArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 512
 collision_mask = 512
 
 [node name="PickUp" type="CollisionShape2D" parent="PickUpArea"]

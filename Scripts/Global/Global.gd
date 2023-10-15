@@ -3,13 +3,18 @@ extends Node
 
 var current_character : IndieCharacter = load("res://Characters/Anny/Anny.tres")
 var ingame_ui : PackedScene = load("res://Scenes/Global/ingame_ui.tscn")
+var xp_drops : PackedScene = load("res://Scripts/Global/xp_drop.tscn")
 
 var player : CharacterBody2D
 
 var shadow_canvas_group : CanvasGroup
 
+var xp_drop_node : XPDrop
+
 var current_scene = null
 func _ready():
+
+	AudioServer.output_device = AudioServer.get_output_device_list()[4]
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 	if get_tree().current_scene is Control:
@@ -21,6 +26,9 @@ func _ready():
 	setup_player()
 
 	current_scene.add_child(shadow_canvas_group)
+
+	xp_drop_node = xp_drops.instantiate()
+	current_scene.add_child(xp_drop_node)
 	
 
 func _input(event):

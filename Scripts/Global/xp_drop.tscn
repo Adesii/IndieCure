@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://de4ecgg0kaj4j"]
+
+[ext_resource type="Script" path="res://Scripts/Global/XPDrop.gd" id="1_ki6uo"]
+[ext_resource type="Texture2D" uid="uid://cav63ncdxq45b" path="res://Textures/XP/exp-0002_G38vvP.png" id="2_ngx00"]
+
+[node name="xp_drop" type="Node2D" node_paths=PackedStringArray("shared_area")]
+z_index = 10
+y_sort_enabled = true
+use_parent_material = true
+script = ExtResource("1_ki6uo")
+shared_area = NodePath("Area2D")
+xp_texture = ExtResource("2_ngx00")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+monitorable = false
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
