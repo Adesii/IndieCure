@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8sf68dfc7ury"]
+[gd_scene load_steps=5 format=3 uid="uid://c8sf68dfc7ury"]
 
-[ext_resource type="Script" path="res://Inventory/Scripts/collect.gd" id="1_hdisq"]
+[ext_resource type="Script" path="res://Inventory/Items/weapon_pickup/weapon_pickup.gd" id="1_4qc65"]
 [ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="1_onala"]
+[ext_resource type="PackedScene" uid="uid://dnha3qbkl4y7q" path="res://Inventory/Items/weapon_pickup/weapon_pickup_select_ui.tscn" id="2_3atdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekvbj"]
 
 [node name="weapon_pickup" type="Area2D"]
-script = ExtResource("1_hdisq")
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_4qc65")
+to_open_ui_panel = ExtResource("2_3atdt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ekvbj")

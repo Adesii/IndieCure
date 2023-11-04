@@ -7,6 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8cvp"]
 
 [node name="shoe" type="Area2D"]
+collision_layer = 512
+collision_mask = 0
 script = ExtResource("1_qi7tw")
 itemResource = ExtResource("2_lloe1")
 

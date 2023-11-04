@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scenes/Worlds/TimerLabel.gd" id="3_4hjt5"]
 
 [node name="IngameUI" type="CanvasLayer"]
+process_mode = 3
 
 [node name="InvetoryGUI" parent="." instance=ExtResource("1_ypl32")]
 anchors_preset = -1

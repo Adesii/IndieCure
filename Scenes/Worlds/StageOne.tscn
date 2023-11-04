@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=40 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Weapons/Thighble/Tighble.tres" id="21_hqbda"]
+[ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/Items/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -359,15 +360,11 @@ collision_mask = 4
 monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-89, 5)
-collision_layer = 512
-collision_mask = 0
+position = Vector2(-20, 121)
 monitoring = false
 
 [node name="shoe2" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-11, 45)
-collision_layer = 512
-collision_mask = 0
+position = Vector2(-85, 118)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
@@ -441,5 +438,8 @@ position = Vector2(442, 841)
 stream = ExtResource("20_fgqjj")
 bus = &"Music"
 script = ExtResource("17_qxask")
+
+[node name="weapon_pickup" parent="." instance=ExtResource("22_4lw8j")]
+position = Vector2(97, 25)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

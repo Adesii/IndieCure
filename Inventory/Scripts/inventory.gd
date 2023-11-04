@@ -25,3 +25,18 @@ func insert(item: InventoryItem):
 	updated.emit()
 	item_added.emit(item)
 	return true
+
+
+func is_full():
+	# Returns true if inventory is full, false if not.
+
+	for i in range(items.size() + 1):
+		# Check if inventory is full
+		if i == items.size():
+			return true
+
+		# Add item to empty inventory spot
+		if !items[i]:
+			return false
+
+	return true

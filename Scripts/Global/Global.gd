@@ -6,6 +6,7 @@ var ingame_ui : PackedScene = load("res://Scenes/Global/ingame_ui.tscn")
 var xp_drops : PackedScene = load("res://Scripts/Global/xp_drop.tscn")
 
 var player : CharacterBody2D
+var ui : CanvasLayer
 
 var shadow_canvas_group : CanvasGroup
 
@@ -13,6 +14,7 @@ var xp_drop_node : XPDrop
 
 var current_scene = null
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	AudioServer.output_device = AudioServer.get_output_device_list()[4]
 	var root = get_tree().root
@@ -67,4 +69,18 @@ func setup_player():
 
 	var ingameui = ingame_ui.instantiate()
 	current_scene.add_child(ingameui)
+	ui = ingameui
 
+
+func open_pause_panel(panel):
+	if panel.has_signal("close"):
+		panel.connect("close", close_pause_panel)
+	
+	ui.add_child(panel)
+	get_tree().paused = true
+
+
+func close_pause_panel(panel):
+	#panel.close.emit()
+	panel.queue_free()
+	get_tree().paused = false
