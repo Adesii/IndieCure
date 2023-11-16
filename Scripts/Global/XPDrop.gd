@@ -74,4 +74,7 @@ func drop_xp(dropposition : Vector2,amount : int):
 
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	renderer.remove_object_at(local_shape_index)
+	var obj = renderer.remove_object_at(local_shape_index)
+	# TODO: add xp to global player... needs a way to get the player later on when multiplayer is a thing
+
+	Stat.Modify(Global.player,"xp",obj.amount,"+")

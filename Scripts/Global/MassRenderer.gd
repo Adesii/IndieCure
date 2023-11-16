@@ -54,6 +54,7 @@ func remove_object_at(index : int):
 		return
 	var mass_object = _objects[index]
 	remove_object(mass_object)
+	return mass_object
 
 func end_render(): # multithreading rendering
 	var count = ceil(float(_objects.size()) / rendering_threads)
@@ -75,6 +76,8 @@ func end_render(): # multithreading rendering
 
 func draw_batch(offset, count):
 	for i in count:
+		if !_objects.size() > i + offset:
+			continue
 		var _obj = _objects[i + offset]
 		if _obj != null:
 			_draw_single(_obj)

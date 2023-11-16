@@ -360,11 +360,11 @@ collision_mask = 4
 monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-20, 121)
+position = Vector2(2, 41)
 monitoring = false
 
 [node name="shoe2" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-85, 118)
+position = Vector2(-58, 38)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 

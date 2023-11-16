@@ -74,7 +74,7 @@ func gothrough(delta):
 		renderer.remove_object(del)
 		CollisionAvoidance.free_unit(del,del.positionkey)
 
-		Global.xp_drop_node.drop_xp(del.global_position,randi_range(1,5))
+		Global.xp_drop_node.drop_xp(del.global_position,randi_range(10,50))
 
 	queue_for_deletion.clear()
 	mutex.unlock()
@@ -121,6 +121,8 @@ func avoidance_calc():
 
 func calc(delta,count,startoffset,playerpos):
 	for i in count:
+		if i + startoffset >= renderer._objects.size():
+			break
 		var enemy = renderer._objects[i + startoffset]
 		var movement_vector = playerpos - enemy.global_position
 		var offset : Vector2 = (movement_vector.normalized()*enemy.speed*delta)

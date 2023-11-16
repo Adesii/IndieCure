@@ -11,6 +11,8 @@ var ownerinfo
 
 signal value_changed
 
+signal value_maxed
+
 
 func _init(start_value,owner_info,attributename):
     self.base_value = start_value
@@ -22,7 +24,7 @@ func _init(start_value,owner_info,attributename):
 
 func set_value(new_value):
     self.current_value = new_value
-    value_changed.emit(ownerinfo,self)
+    value_changed.emit(self,ownerinfo)
     return self
 
 func get_value():
@@ -31,6 +33,8 @@ func get_value():
 func modify_value(value,modifieroperator):
     if modifieroperator == "+":
         self.current_value += value
+        if current_value >= max_value:
+            value_maxed.emit(self,ownerinfo)
     elif modifieroperator == "-":
         self.current_value -= value
     elif modifieroperator == "*":
