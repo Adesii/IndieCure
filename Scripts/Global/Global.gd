@@ -84,3 +84,7 @@ func close_pause_panel(panel):
 	#panel.close.emit()
 	panel.queue_free()
 	get_tree().paused = false
+
+
+func is_in_game():
+	return get_tree().current_scene is WavesController
