@@ -56,8 +56,7 @@ func remove_object_at(index : int):
 	remove_object(mass_object)
 
 func end_render(): # multithreading rendering
-	@warning_ignore("integer_division")
-	var count = _objects.size() / rendering_threads
+	var count = ceil(float(_objects.size()) / rendering_threads)
 	if count == 0:
 		return
 	for i in rendering_threads:
