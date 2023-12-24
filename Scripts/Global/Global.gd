@@ -29,8 +29,7 @@ func _ready():
 
 	current_scene.add_child(shadow_canvas_group)
 
-	xp_drop_node = xp_drops.instantiate()
-	current_scene.add_child(xp_drop_node)
+	
 	
 
 func _input(event):
@@ -56,6 +55,7 @@ func load_stage(stage_scene : PackedScene):
 	
 	#add character scene
 	setup_player()
+	setup_rest()
 
 	oldscene.queue_free()
 
@@ -70,6 +70,12 @@ func setup_player():
 	var ingameui = ingame_ui.instantiate()
 	current_scene.add_child(ingameui)
 	ui = ingameui
+
+func setup_rest():
+	if xp_drop_node != null:
+		return
+	xp_drop_node = xp_drops.instantiate()
+	current_scene.add_child(xp_drop_node)
 
 
 func open_pause_panel(panel):

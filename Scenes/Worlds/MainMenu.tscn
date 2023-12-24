@@ -34,18 +34,16 @@ curve = SubResource("Curve_itrqn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tp3gc"]
 lifetime_randomness = 0.35
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(1000, 1000, 1)
-particle_flag_disable_z = true
-gravity = Vector3(50, 50, 0)
-initial_velocity_min = 31.37
-initial_velocity_max = 129.15
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-damping_min = 1.0
-damping_max = 1.0
 angle_min = -20.0
 angle_max = 20.0
+initial_velocity_min = 31.37
+initial_velocity_max = 129.15
+gravity = Vector3(50, 50, 0)
+damping_min = 1.0
+damping_max = 1.0
 scale_min = 0.3
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_w3qfw")
@@ -107,7 +105,6 @@ script = ExtResource("4_eewjv")
 current_panel = NodePath("Main")
 
 [node name="Main" type="Control" parent="TabController"]
-visible = false
 layout_mode = 1
 anchors_preset = 0
 
@@ -287,6 +284,7 @@ grow_vertical = 2
 color = Color(0.670588, 0.34902, 0.839216, 1)
 
 [node name="Settings" type="Control" parent="TabController"]
+visible = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
