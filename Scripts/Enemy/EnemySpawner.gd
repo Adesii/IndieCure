@@ -74,7 +74,7 @@ func gothrough(delta):
 		renderer.remove_object(del)
 		CollisionAvoidance.free_unit(del,del.positionkey)
 
-		Global.xp_drop_node.drop_xp(del.global_position,randi_range(10,50))
+		Global.xp_drop_node.drop_xp(del.global_position,randi_range(10,30))
 
 	queue_for_deletion.clear()
 	mutex.unlock()

@@ -11,16 +11,17 @@ var transition : Tween
 
 
 
+
 func _ready():
 	var xpAttribute = Stat.Get_Attribute(Global.player, "xp")
-	xpAttribute.max_value = 100
+	xpAttribute.max_value = round((pow(level, 1.8) + level * 4)*10)
 	xpAttribute.value_changed.connect(_on_xp_changed)
 	xpAttribute.value_maxed.connect(_on_xp_maxed)
 	xp_bar.scale.x = 0
 
 func _on_xp_changed(attr,_info):
 	var xpAttribute = attr
-	lvl_text.text ="lvl: "+ str(level)
+	lvl_text.text ="lvl: "+ str(level) + "\nXP: " + str(xpAttribute.current_value) + " / "+ str(xpAttribute.max_value)
 
 	#TODO: figure out how to do this correctly so it actually wraps around instead of snapping to the new value when a level up happens
 	var curvalclamped = clamp(xpAttribute.get_value_scaled(), 0, 1)
@@ -42,5 +43,6 @@ func _on_xp_maxed(attr,_info):
 	var xpAttribute = attr
 	xpAttribute.current_value -= xpAttribute.max_value
 	level += 1
+	xpAttribute.max_value = round((pow(level, 2.3) + level * 4) * 10)
 	xp_bar.scale.x = 0
 	Global.open_pause_panel(to_open_ui_panel.instantiate())
