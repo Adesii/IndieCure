@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Global/HealthGUI.gd" id="2_aauh5"]
 [ext_resource type="Script" path="res://Scenes/Global/XPBarGUI.gd" id="2_sfrwg"]
 [ext_resource type="Script" path="res://Scenes/Global/TimerLabel.gd" id="3_mtsjj"]
-[ext_resource type="PackedScene" uid="uid://dnha3qbkl4y7q" path="res://Inventory/Items/weapon_pickup/weapon_pickup_select_ui.tscn" id="3_pmp7x"]
+[ext_resource type="PackedScene" path="res://Inventory/Items/weapon_pickup/weapon_pickup_select_ui.tscn" id="3_pmp7x"]
 [ext_resource type="Shader" path="res://Scenes/Global/xp_backgroundfix.gdshader" id="3_ujh8m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x7pvg"]
@@ -69,7 +69,8 @@ offset_left = 1796.0
 offset_top = 1.0
 offset_right = 1916.0
 offset_bottom = 63.0
-text = "LVL: 1"
+text = "LVL: 1
+XP: 0/50"
 
 [node name="HealthGUI" type="Control" parent="."]
 layout_mode = 3
