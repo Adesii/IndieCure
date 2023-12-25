@@ -16,7 +16,6 @@ var current_scene = null
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	AudioServer.output_device = AudioServer.get_output_device_list()[4]
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 	if get_tree().current_scene is Control:
