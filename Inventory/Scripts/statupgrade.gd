@@ -3,7 +3,6 @@ class_name StatUpgrade
 
 @export var stats: Array[StatUpgradeResource]
 
-
-func apply():
+func apply(target_node):
     for stat in stats:
-        stat.apply()
+        stat.apply(target_node)

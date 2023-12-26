@@ -24,6 +24,7 @@ func _ready():
 	current_scene = get_tree().current_scene
 	
 	setup_player()
+	setup_rest()
 
 	current_scene.add_child(shadow_canvas_group)
 

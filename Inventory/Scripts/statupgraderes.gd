@@ -14,11 +14,11 @@ enum Modifier{
 @export var modifier: Modifier
 
 
-func apply():
+func apply(obj):
     match modifier:
         Modifier.ADD:
-            Stat.Modify(Global.player,attribute_name,amount,"+")
+            Stat.Modify(obj,attribute_name,amount,"+")
         Modifier.MULTIPLY:
-            Stat.Modify(Global.player,attribute_name,amount,"*")
+            Stat.Modify(obj,attribute_name,amount,"*")
         Modifier.SET:
-            Stat.Set(Global.player,attribute_name,amount)
+            Stat.Set(obj,attribute_name,amount)

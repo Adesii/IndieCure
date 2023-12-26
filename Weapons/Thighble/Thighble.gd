@@ -2,8 +2,6 @@ extends Node2D
 
 @export var texture : Texture2D
 @export var radius : float
-@export var amount : int = 2
-@export var rotation_speed : float = 20
 @export var attack_stay_time : float = 2.0
 @export var attack_time : float = 0.3
 @export var size : float = 16
@@ -52,6 +50,7 @@ var attack_timer : SceneTreeTimer
 var alpha : float = 1.0
 
 func _on_attack():
+	var amount = Stat.Get(self,"projectile_amount")
 	#print("attack")
 	
 	is_attacking = true
@@ -67,6 +66,9 @@ func _on_attack():
 			alpha =  x
 			,0.0,1.0,0.3
 		)
+		if Stat.Get(self,"never_ending"):
+			point.tweener.play()
+			continue
 		point.tweener.tween_interval(attack_stay_time)
 		point.tweener.tween_method(func(x: float):
 			point.offset = Vector2(radius * x,0)
@@ -74,6 +76,8 @@ func _on_attack():
 			,1.0,0.0,0.3
 		)
 		point.tweener.play()
+	if Stat.Get(self,"never_ending"):
+		return
 	await attacks[0].tweener.finished
 	await get_tree().create_timer(attack_time).timeout
 
@@ -81,22 +85,22 @@ func _on_attack():
 	is_attacking = false
 	#print("finished attack")
 
+func cancel_attack():
+	for point in attacks:
+		point.tweener.stop()
+		point.offset = Vector2(0,0)
+		alpha = 1.0
+	is_attacking = false
 
 func _physics_process(delta):
-
 	if !is_attacking:
 		_on_attack()
 		return
-	if attacks.size() < amount:
-		#create more attack points if needed
-		print("create more attack points")
-		while attacks.size() < amount:
-			create_new_attack_point()
-	rotation += rotation_speed * delta
+	rotation += Stat.Get(self,"projectile_speed") * delta
 
 	for i in range(attacks.size()):
 		var point = attacks[i]
-		var point_rotation_offset =  (i * (360.0 / amount))
+		var point_rotation_offset =  (i * (360.0 / attacks.size()))
 		var poinoffset = point.offset.rotated(deg_to_rad(point_rotation_offset))
 		var used_transform := Transform2D(-rotation, poinoffset)
 		PhysicsServer2D.area_set_shape_transform(
@@ -146,4 +150,6 @@ func _configure_collision_for_attackpoint(point: attackpoint):
 	# Register the generated id to the bullet
 	point.shape_id = _circle_shape
 
-	
+
+func upgraded():
+	cancel_attack()

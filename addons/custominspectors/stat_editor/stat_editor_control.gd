@@ -51,7 +51,7 @@ func updateall():
 
 
 func update():
-	print(statobject)
+	#print(statobject)
 	line.text = statobject.attribute_name
 	if statobject is StatUpgradeResource:
 		option.selected = statobject.modifier

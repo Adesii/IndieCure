@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_7l7t7")
-items = Array[Resource("res://Inventory/Scripts/inventoryItem.gd")]([null, null, null, null, null, null, null, null, null, null])
+items = {}
+max_slots = 5

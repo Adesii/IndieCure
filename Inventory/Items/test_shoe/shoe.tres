@@ -10,3 +10,4 @@ texture = ExtResource("2_5g5cn")
 stats = {
 "movement_speed": 100
 }
+type = 2

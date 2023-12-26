@@ -353,6 +353,21 @@ position = Vector2(-58, 38)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
+[node name="shoe3" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(100, 169)
+monitoring = false
+itemResource = ExtResource("21_hqbda")
+
+[node name="shoe4" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(92, 236)
+monitoring = false
+itemResource = ExtResource("21_hqbda")
+
+[node name="shoe5" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(-17, 212)
+monitoring = false
+itemResource = ExtResource("21_hqbda")
+
 [node name="Node2D" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -426,5 +441,8 @@ script = ExtResource("17_qxask")
 
 [node name="weapon_pickup" parent="." instance=ExtResource("22_4lw8j")]
 position = Vector2(97, 25)
+
+[node name="weapon_pickup2" parent="." instance=ExtResource("22_4lw8j")]
+position = Vector2(103, 107)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

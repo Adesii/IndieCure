@@ -50,7 +50,9 @@ func _update_property():
 
 	# Update the control with the new value.
 	updating = true
-	current_value = new_value
+	current_value = new_value.duplicate()
+
+	#print("Updating control with value: " + str(current_value))
 
 	current_value.resource_local_to_scene = true
 	get_edited_object()[get_edited_property()] = current_value

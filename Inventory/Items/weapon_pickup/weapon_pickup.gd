@@ -6,7 +6,7 @@ extends Area2D
 
 func collect(inventory: Inventory):
 	print("collect")
-	if inventory.is_full():
+	if inventory.is_full(InventoryItem.ITEM_TYPE.WEAPON):
 		print("inventory is full")
 		return
 	

@@ -1,13 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://cavkiimaw4l4w"]
+[gd_scene load_steps=37 format=3 uid="uid://cavkiimaw4l4w"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
 [ext_resource type="Shader" uid="uid://temhylg2ghpn" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuParticles.tres" id="3_fa547"]
 [ext_resource type="Script" path="res://Scripts/UI/TabController.gd" id="4_eewjv"]
+[ext_resource type="Theme" uid="uid://bww4copfldb4j" path="res://Themes/Button_Theme.tres" id="5_um0sp"]
 [ext_resource type="Script" path="res://Scripts/UI/TabTransitionButton.gd" id="5_y57mj"]
+[ext_resource type="Texture2D" uid="uid://c7q7ut82i7u6m" path="res://Scenes/Worlds/MainMenu/Textures/menu_plates.png" id="6_6d63y"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
 [ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
+[ext_resource type="FontFile" uid="uid://de8n5evbrefyx" path="res://fonts/Retro Gaming.ttf" id="8_tcod6"]
 [ext_resource type="Script" path="res://Scenes/Worlds/SettingsMenu.gd" id="9_igd67"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/ResolutionSelection.gd" id="10_oug8h"]
 [ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/WindowModeSelection.gd" id="10_ua40j"]
@@ -54,6 +57,55 @@ scale_curve = SubResource("CurveTexture_w3qfw")
 color_ramp = SubResource("Gradient_7t5iu")
 
 [sub_resource type="Theme" id="Theme_1l5py"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bkry"]
+atlas = ExtResource("6_6d63y")
+region = Rect2(0, 6, 256, 50)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ns5qn"]
+font = ExtResource("8_tcod6")
+font_size = 38
+font_color = Color(0.74902, 0.647059, 0.788235, 1)
+shadow_size = 5
+shadow_color = Color(0.612019, 0.488423, 0.658887, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1qxh"]
+atlas = ExtResource("6_6d63y")
+region = Rect2(0, 58, 256, 49)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ooaew"]
+font = ExtResource("8_tcod6")
+font_size = 32
+font_color = Color(0.74902, 0.647059, 0.788235, 1)
+shadow_size = 5
+shadow_color = Color(0.611765, 0.490196, 0.658824, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30uyv"]
+atlas = ExtResource("6_6d63y")
+region = Rect2(0, 108, 256, 49)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnmwi"]
+font = ExtResource("8_tcod6")
+font_size = 38
+font_color = Color(0.74902, 0.647059, 0.788235, 1)
+shadow_size = 5
+shadow_color = Color(0.611765, 0.490196, 0.658824, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sr7f"]
+atlas = ExtResource("6_6d63y")
+region = Rect2(0, 158, 256, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3xhe"]
+atlas = ExtResource("6_6d63y")
+region = Rect2(0, 207, 256, 50)
+
+[sub_resource type="LabelSettings" id="LabelSettings_as1r2"]
+font = ExtResource("8_tcod6")
+font_size = 38
+font_color = Color(0.952941, 0.0470588, 0.0470588, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -147,23 +199,144 @@ theme = SubResource("Theme_1l5py")
 [node name="Start" type="Button" parent="TabController/Main/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-text = "Start Game"
+theme = ExtResource("5_um0sp")
+icon = SubResource("AtlasTexture_5bkry")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("5_y57mj")
 tabController = NodePath("../../..")
 target = NodePath("../../../CharacterSelect")
 
+[node name="Label" type="Label" parent="TabController/Main/VFlowContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 2.0
+offset_right = -87.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_um0sp")
+text = "START"
+label_settings = SubResource("LabelSettings_ns5qn")
+horizontal_alignment = 1
+
 [node name="Settings" type="Button" parent="TabController/Main/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-text = "Settings"
+theme = ExtResource("5_um0sp")
+icon = SubResource("AtlasTexture_d1qxh")
+flat = true
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("5_y57mj")
 tabController = NodePath("../../..")
 target = NodePath("../../../Settings")
 
+[node name="Label" type="Label" parent="TabController/Main/VFlowContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 109.0
+offset_top = 4.0
+offset_right = -121.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_um0sp")
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_ooaew")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Home" type="Button" parent="TabController/Main/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme = ExtResource("5_um0sp")
+icon = SubResource("AtlasTexture_30uyv")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_y57mj")
+tabController = NodePath("../../..")
+target = NodePath("../../../Settings")
+
+[node name="Label" type="Label" parent="TabController/Main/VFlowContainer/Home"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 127.0
+offset_top = 3.0
+offset_right = -132.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_um0sp")
+text = "HOME"
+label_settings = SubResource("LabelSettings_vnmwi")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Shop" type="Button" parent="TabController/Main/VFlowContainer" node_paths=PackedStringArray("tabController", "target")]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme = ExtResource("5_um0sp")
+icon = SubResource("AtlasTexture_7sr7f")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_y57mj")
+tabController = NodePath("../../..")
+target = NodePath("../../../Settings")
+
+[node name="Label" type="Label" parent="TabController/Main/VFlowContainer/Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 157.0
+offset_top = 4.0
+offset_right = -157.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_um0sp")
+text = "SHOP"
+label_settings = SubResource("LabelSettings_vnmwi")
+horizontal_alignment = 1
+uppercase = true
+
 [node name="Exit" type="Button" parent="TabController/Main/VFlowContainer"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-text = "Exit"
+size_flags_vertical = 4
+theme = ExtResource("5_um0sp")
+theme_override_colors/font_color = Color(0.952941, 0.0470588, 0.0470588, 1)
+theme_override_colors/icon_hover_color = Color(0.419608, 0.0941176, 0.0941176, 1)
+icon = SubResource("AtlasTexture_u3xhe")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="TabController/Main/VFlowContainer/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_um0sp")
+text = "EXIT"
+label_settings = SubResource("LabelSettings_as1r2")
+horizontal_alignment = 1
+uppercase = true
 
 [node name="CharacterSelect" type="Control" parent="TabController" node_paths=PackedStringArray("character_previews_container")]
 visible = false
@@ -444,6 +617,8 @@ script = ExtResource("15_3uob1")
 
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Start" to="TabController/Main/VFlowContainer/Start" method="_on_pressed"]
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Settings" to="TabController/Main/VFlowContainer/Settings" method="_on_pressed"]
+[connection signal="pressed" from="TabController/Main/VFlowContainer/Home" to="TabController/Main/VFlowContainer/Home" method="_on_pressed"]
+[connection signal="pressed" from="TabController/Main/VFlowContainer/Shop" to="TabController/Main/VFlowContainer/Shop" method="_on_pressed"]
 [connection signal="pressed" from="TabController/Main/VFlowContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/Start" to="TabController/CharacterSelect" method="_on_start_pressed"]
 [connection signal="pressed" from="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" to="TabController/CharacterSelect/CenterContainer/ColorRect/VFlowContainer/back" method="_on_pressed"]

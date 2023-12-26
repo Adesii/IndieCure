@@ -29,7 +29,9 @@ func _on_pick_up_area_area_entered(area):
 func on_item_added(item:InventoryItem):
 	print("Item added: ", item.name)
 	if item.scene != null:
-		add_child(item.scene.instantiate())
+		var nod =item.scene.instantiate()
+		add_child(nod)
+		item.instance = nod
 		print("scene added for item: ", item.name)
 	
 	if item.stats != null:
