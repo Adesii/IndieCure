@@ -39,6 +39,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="IndieCure"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/custominspectors/plugin.cfg")
+
 [input]
 
 move_up={

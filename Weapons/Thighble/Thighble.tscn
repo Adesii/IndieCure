@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtma1gy8ltvqp"]
+[gd_scene load_steps=7 format=3 uid="uid://dtma1gy8ltvqp"]
 
 [ext_resource type="Script" path="res://Weapons/Thighble/Thighble.gd" id="1_y6x4j"]
 [ext_resource type="Texture2D" uid="uid://n4scakt8c1du" path="res://Weapons/Thighble/Textures/thighble-0002.png" id="2_54owb"]
+[ext_resource type="Script" path="res://Inventory/Scripts/upgradeprovider.gd" id="3_uli0x"]
+[ext_resource type="Script" path="res://Inventory/Scripts/statupgraderes.gd" id="4_lc7uw"]
+[ext_resource type="Script" path="res://Inventory/Scripts/statupgrade.gd" id="5_gptdi"]
+
+[sub_resource type="Resource" id="Resource_kcjnx"]
+resource_local_to_scene = true
+script = ExtResource("4_lc7uw")
+attribute_name = "projectile_amount"
+amount = 1.0
+modifier = 0
 
 [node name="Thighble" type="Node2D" node_paths=PackedStringArray("shared_area")]
 z_as_relative = false
@@ -9,7 +19,7 @@ y_sort_enabled = true
 script = ExtResource("1_y6x4j")
 texture = ExtResource("2_54owb")
 radius = 64.0
-amount = 3
+amount = 1
 rotation_speed = 2.0
 shared_area = NodePath("Area2D")
 
@@ -17,6 +27,13 @@ shared_area = NodePath("Area2D")
 collision_layer = 4
 collision_mask = 4
 monitorable = false
+
+[node name="UpgradeProvider" type="Node" parent="."]
+script = ExtResource("3_uli0x")
+
+[node name="StatUpgrade" type="Node" parent="UpgradeProvider"]
+script = ExtResource("5_gptdi")
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_kcjnx")])
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]

@@ -9,3 +9,5 @@ script = ExtResource("2_oxa4c")
 name = "Thighble"
 texture = ExtResource("3_xajum")
 scene = ExtResource("1_hgk2w")
+stats = {}
+type = 1

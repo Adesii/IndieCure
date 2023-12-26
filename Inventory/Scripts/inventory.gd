@@ -5,38 +5,42 @@ class_name Inventory
 signal updated
 signal item_added(item: InventoryItem)
 
-@export var items: Array[InventoryItem]
+@export var items: Dictionary
 
 func insert(item: InventoryItem):
-	# Loops throuh inventory to find empty slot to add item to.
-	# If item is added to inventory: sends updated signal and returns true.
-	# Returns false if item couldn't be added to inventory.
-
-	for i in range(items.size() + 1):
-		# Check if inventory is full
-		if i == items.size():
-			return false
-
-		# Add item to empty inventory spot
-		if !items[i]:
-			items[i] = item
-			break
-
-	updated.emit()
-	item_added.emit(item)
-	return true
-
-
-func is_full():
-	# Returns true if inventory is full, false if not.
-
-	for i in range(items.size() + 1):
-		# Check if inventory is full
-		if i == items.size():
+	# Adds item to inventory. Returns true if successful, false if not.
+	var type = item.type
+	if type == InventoryItem.ITEM_TYPE.NONE:
+		printerr("Inventory: Item type is NONE for item " + str(item))
+		return false
+	
+	if !items[type]:
+		items[type] = []
+	
+	# look through inventory to find of same type
+	for i in range(items[type].size()):
+		if items[type][i]:
+			if item.name == items[type][i].name:
+				return items[type][i].upgrade()
+					
+	# look for empty slot
+	for i in range(items[type].size()):
+		if !items[type][i]:
+			items[type][i] = item
+			updated.emit()
+			item_added.emit(item)
 			return true
 
-		# Add item to empty inventory spot
-		if !items[i]:
-			return false
+	return false
 
+
+func is_full(type: InventoryItem.ITEM_TYPE):
+	# Returns true if inventory is full, false if not.
+
+	if !items[type]:
+		return false
+	
+	for i in range(items[type].size()):
+		if !items[type][i]:
+			return false
 	return true

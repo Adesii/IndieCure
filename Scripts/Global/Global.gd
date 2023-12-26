@@ -1,6 +1,5 @@
 extends Node
 
-
 var current_character : IndieCharacter = load("res://Characters/Anny/Anny.tres")
 var ingame_ui : PackedScene = load("res://Scenes/Global/ingame_ui.tscn")
 var xp_drops : PackedScene = load("res://Scripts/Global/xp_drop.tscn")
