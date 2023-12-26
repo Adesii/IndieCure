@@ -6,6 +6,7 @@ var statholder : StatHolder = StatHolder.new(self)
 @export var starting_attributes : Array[AttributePair]
 
 func _ready():
+	name = "Stats"
 	for attribute in starting_attributes:
 		statholder._set_stat(attribute.attribute_name,attribute.default_value)
 

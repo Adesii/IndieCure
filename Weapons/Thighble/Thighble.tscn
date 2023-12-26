@@ -8,62 +8,62 @@
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/StatHolderNode.gd" id="6_6ojsy"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="7_hp8ab"]
 
-[sub_resource type="Resource" id="Resource_mcrb7"]
+[sub_resource type="Resource" id="Resource_qec58"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_3pwxc"]
+[sub_resource type="Resource" id="Resource_5t43k"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_804co"]
+[sub_resource type="Resource" id="Resource_1i6ye"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_x4oym"]
+[sub_resource type="Resource" id="Resource_e4ptn"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_speed"
 amount = 1.5
 modifier = 1
 
-[sub_resource type="Resource" id="Resource_k3g5t"]
+[sub_resource type="Resource" id="Resource_p4gen"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_speed"
 amount = 1.25
 modifier = 1
 
-[sub_resource type="Resource" id="Resource_d32gg"]
+[sub_resource type="Resource" id="Resource_qqpyt"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_speed"
 amount = 5.0
 modifier = 1
 
-[sub_resource type="Resource" id="Resource_y8h5n"]
+[sub_resource type="Resource" id="Resource_u3lfq"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "never_ending"
 amount = 1.0
 modifier = 2
 
-[sub_resource type="Resource" id="Resource_q3ywt"]
+[sub_resource type="Resource" id="Resource_3nk20"]
 resource_local_to_scene = true
 script = ExtResource("7_hp8ab")
 attribute_name = "projectile_amount"
 default_value = 1.0
 
-[sub_resource type="Resource" id="Resource_ox64p"]
+[sub_resource type="Resource" id="Resource_v8csd"]
 resource_local_to_scene = true
 script = ExtResource("7_hp8ab")
 attribute_name = "projectile_speed"
@@ -87,27 +87,27 @@ script = ExtResource("3_uli0x")
 
 [node name="StatUpgrade" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
-stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_mcrb7")])
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_qec58")])
 
 [node name="StatUpgrade2" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
-stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_3pwxc")])
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_5t43k")])
 
 [node name="StatUpgrade3" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
-stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_804co"), SubResource("Resource_x4oym")])
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_1i6ye"), SubResource("Resource_e4ptn")])
 
 [node name="StatUpgrade4" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
-stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_k3g5t")])
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_p4gen")])
 
 [node name="StatUpgrade5" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
-stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_d32gg"), SubResource("Resource_y8h5n")])
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_qqpyt"), SubResource("Resource_u3lfq")])
 
-[node name="Stats" type="Node" parent="."]
+[node name="Statsstesets" type="Node" parent="."]
 script = ExtResource("6_6ojsy")
-starting_attributes = Array[ExtResource("7_hp8ab")]([SubResource("Resource_q3ywt"), SubResource("Resource_ox64p")])
+starting_attributes = Array[ExtResource("7_hp8ab")]([SubResource("Resource_3nk20"), SubResource("Resource_v8csd")])
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
