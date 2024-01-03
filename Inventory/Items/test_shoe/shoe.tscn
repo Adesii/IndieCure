@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://birva82iuyap4"]
+[gd_scene load_steps=6 format=3 uid="uid://birva82iuyap4"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/collect.gd" id="1_qi7tw"]
 [ext_resource type="Resource" uid="uid://cign3lc4ktc7u" path="res://Inventory/Items/test_shoe/shoe.tres" id="2_lloe1"]
 [ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="3_8y137"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="4_g13fe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8cvp"]
 
@@ -20,3 +21,6 @@ debug_color = Color(0.964706, 0, 0.486275, 0.419608)
 position = Vector2(0.5, -0.749999)
 scale = Vector2(0.921875, 0.929688)
 texture = ExtResource("3_8y137")
+
+[node name="Node" parent="Sprite2D" instance=ExtResource("4_g13fe")]
+shadow_offset = Vector2(0, 32.57)
