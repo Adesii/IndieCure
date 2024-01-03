@@ -15,6 +15,8 @@ enum TARGET {
 
 
 func upgrade():
+    if level >= get_child_count():
+        return false
     if target == TARGET.PLAYER:
         target_node = Global.player
     elif target == TARGET.WEAPON:
