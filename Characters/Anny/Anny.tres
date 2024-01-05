@@ -1,29 +1,30 @@
-[gd_resource type="Resource" script_class="IndieCharacter" load_steps=11 format=3 uid="uid://dj0fmrax7hujt"]
+[gd_resource type="Resource" script_class="IndieCharacter" load_steps=12 format=3 uid="uid://dj0fmrax7hujt"]
 
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="1_5m7ot"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_puejc"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="2_52abt"]
+[ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="5_jm66g"]
 
-[sub_resource type="Resource" id="Resource_ktijj"]
+[sub_resource type="Resource" id="Resource_7tf63"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "health"
 default_value = 100.0
 
-[sub_resource type="Resource" id="Resource_67iar"]
+[sub_resource type="Resource" id="Resource_0re1v"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "movement_speed"
 default_value = 90.0
 
-[sub_resource type="Resource" id="Resource_yh7js"]
+[sub_resource type="Resource" id="Resource_ga0bp"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "attack_speed"
 default_value = 10.0
 
-[sub_resource type="Resource" id="Resource_mut16"]
+[sub_resource type="Resource" id="Resource_wc7fo"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "defense"
@@ -31,7 +32,7 @@ default_value = 10.0
 
 [sub_resource type="Resource" id="Resource_7fnjd"]
 script = ExtResource("2_52abt")
-attributes = Array[ExtResource("1_5m7ot")]([SubResource("Resource_ktijj"), SubResource("Resource_67iar"), SubResource("Resource_yh7js"), SubResource("Resource_mut16")])
+attributes = Array[ExtResource("1_5m7ot")]([SubResource("Resource_7tf63"), SubResource("Resource_0re1v"), SubResource("Resource_ga0bp"), SubResource("Resource_wc7fo")])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xmsmy"]
 load_path = "res://.godot/imported/annyicon.png-ebb0ef68d96a354fc960f95c6e953016.ctex"
@@ -41,3 +42,4 @@ script = ExtResource("1_pguks")
 character_animations = ExtResource("1_puejc")
 icon = SubResource("CompressedTexture2D_xmsmy")
 attribute_set = SubResource("Resource_7fnjd")
+starter_equipment = Array[Resource("res://Inventory/Scripts/inventoryItem.gd")]([ExtResource("5_jm66g")])

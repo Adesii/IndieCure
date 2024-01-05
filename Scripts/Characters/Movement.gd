@@ -3,8 +3,16 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 @export var inventory: Inventory
 
+var character : IndieCharacter
+
+
+var mouse_input = false
+
 func _ready():
 	inventory.item_added.connect(on_item_added)
+	if character != null:
+		for item in character.starter_equipment:
+			inventory.insert(item)
 
 func _physics_process(_delta):
 	# Handle Jump.
@@ -19,7 +27,22 @@ func _physics_process(_delta):
 	# Move the character.
 	velocity = velocity.lerp(wishvelocity, 0.6)
 
+	if Input.is_action_just_pressed("switch_attack_mode"):
+		mouse_input = not mouse_input
+
+	# handle attack direction
+	if mouse_input:
+		var mouse_pos = get_global_mouse_position()
+		var attackdirection = mouse_pos - global_position
+		attackdirection = attackdirection.normalized()
+		Global.attack_direction = attackdirection
+	else:
+		if velocity.length() > 0.1:
+			Global.attack_direction = velocity.normalized()
+
 	move_and_slide()
+
+	queue_redraw()
 
 
 func _on_pick_up_area_area_entered(area):
@@ -38,3 +61,7 @@ func on_item_added(item:InventoryItem):
 		var keys = item.stats.keys()
 		for key in keys:
 			Stat.Modify(self, key, item.stats[key], "+")
+
+
+func _draw():
+	draw_line(Vector2(), Global.attack_direction * 100, Color(1, 0, 0), 2)

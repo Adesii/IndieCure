@@ -60,3 +60,16 @@ func add_new_stat_node(obj) -> Node:
 	newnode.set_name("Stats")
 	obj.add_child(newnode)
 	return newnode
+
+
+func print(obj,subobj = null):
+	print("###################"+str(obj)+"###################")
+	# iterate over all attributes and print them in a human readable string
+	var statholdernode = obj.get_node("Stats")
+	if statholdernode == null:
+		print("no stats found on "+str(obj))
+		return
+	# iterate over all attributes and print them in a human readable string
+	for key in statholdernode.statholder.attributes:
+		print(key+" : "+str(Get(obj,key,subobj)))
+	

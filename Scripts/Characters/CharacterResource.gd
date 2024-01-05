@@ -7,3 +7,5 @@ class_name IndieCharacter
 ## Note: be sure to make the resource unique when using the template attribute set
 @export var attribute_set : AttributeSet
 
+@export var starter_equipment : Array[InventoryItem] = []
+

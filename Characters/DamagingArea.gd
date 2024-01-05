@@ -23,4 +23,4 @@ func _on_area_shape_exited(_area_rid:RID, area:Area2D, area_shape_index:int, _lo
 func _physics_process(_delta):
 	for area in overlapping_areas.keys():
 		for shape in overlapping_areas[area]:
-			Stat.Modify(area.get_parent(),"health",1,"-",{"shape_id":shape})
+			Stat.Modify(area.get_parent(),"health",Stat.Get(get_parent(),"attack_damage"),"-",{"shape_id":shape})

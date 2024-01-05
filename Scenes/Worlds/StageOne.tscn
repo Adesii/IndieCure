@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=41 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="11_rnqhi"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
+[ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="17_1c00v"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Weapons/Thighble/Tighble.tres" id="21_hqbda"]
@@ -358,6 +359,26 @@ position = Vector2(100, 169)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
+[node name="shoe6" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(-59, 133)
+monitoring = false
+itemResource = ExtResource("17_1c00v")
+
+[node name="shoe7" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(-125, 140)
+monitoring = false
+itemResource = ExtResource("17_1c00v")
+
+[node name="shoe8" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(-187, 163)
+monitoring = false
+itemResource = ExtResource("17_1c00v")
+
+[node name="shoe9" parent="." instance=ExtResource("12_q24t3")]
+position = Vector2(-250, 162)
+monitoring = false
+itemResource = ExtResource("17_1c00v")
+
 [node name="shoe4" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(92, 236)
 monitoring = false
@@ -370,6 +391,7 @@ itemResource = ExtResource("21_hqbda")
 
 [node name="Node2D" type="Node2D" parent="."]
 y_sort_enabled = true
+position = Vector2(-2, -1)
 
 [node name="tree3" parent="Node2D" instance=ExtResource("11_70nbh")]
 position = Vector2(-69, -94)

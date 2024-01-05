@@ -1,0 +1,146 @@
+[gd_scene load_steps=22 format=3 uid="uid://dl0y8qc6rbm5t"]
+
+[ext_resource type="Texture2D" uid="uid://tbnvs7rja00o" path="res://Characters/Anny/Weapons/Guitar/base_attack-0002.png" id="1_liqyt"]
+[ext_resource type="Script" path="res://Scripts/GAS/Attributes/StatHolderNode.gd" id="2_h5dfu"]
+[ext_resource type="Script" path="res://Characters/Anny/Weapons/Guitar/Guitar.gd" id="2_iw60f"]
+[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_xrgko"]
+[ext_resource type="Script" path="res://Inventory/Scripts/upgradeprovider.gd" id="5_p0i1q"]
+[ext_resource type="Script" path="res://Inventory/Scripts/statupgrade.gd" id="6_1wrmv"]
+[ext_resource type="Script" path="res://Inventory/Scripts/statupgraderes.gd" id="7_ebqy6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbyr6"]
+atlas = ExtResource("1_liqyt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xpq2"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_sbyr6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy0"]
+size = Vector2(21, 46)
+
+[sub_resource type="Resource" id="Resource_5q3db"]
+resource_local_to_scene = true
+script = ExtResource("3_xrgko")
+attribute_name = "attack_amount"
+default_value = 1.0
+
+[sub_resource type="Resource" id="Resource_w1hgk"]
+resource_local_to_scene = true
+script = ExtResource("3_xrgko")
+attribute_name = "projectile_amount"
+default_value = 0.0
+
+[sub_resource type="Resource" id="Resource_yjcay"]
+resource_local_to_scene = true
+script = ExtResource("3_xrgko")
+attribute_name = "attack_speed"
+default_value = 0.8
+
+[sub_resource type="Resource" id="Resource_e4ltr"]
+resource_local_to_scene = true
+script = ExtResource("3_xrgko")
+attribute_name = "attack_damage"
+default_value = 100.0
+
+[sub_resource type="Resource" id="Resource_mxn0f"]
+resource_local_to_scene = true
+script = ExtResource("3_xrgko")
+attribute_name = "swing_speed"
+default_value = 0.15
+
+[sub_resource type="Resource" id="Resource_18gkr"]
+resource_local_to_scene = true
+script = ExtResource("7_ebqy6")
+attribute_name = "attack_amount"
+amount = 1.0
+modifier = 0
+
+[sub_resource type="Resource" id="Resource_kuh70"]
+resource_local_to_scene = true
+script = ExtResource("7_ebqy6")
+attribute_name = "attack_amount"
+amount = 1.0
+modifier = 0
+
+[sub_resource type="Resource" id="Resource_5e14a"]
+resource_local_to_scene = true
+script = ExtResource("7_ebqy6")
+attribute_name = "attack_amount"
+amount = 1.0
+modifier = 0
+
+[sub_resource type="Resource" id="Resource_kvgwh"]
+resource_local_to_scene = true
+script = ExtResource("7_ebqy6")
+attribute_name = "projectile_amount"
+amount = 1.0
+modifier = 0
+
+[sub_resource type="Resource" id="Resource_2wfkx"]
+resource_local_to_scene = true
+script = ExtResource("7_ebqy6")
+attribute_name = "attack_speed"
+amount = 0.5
+modifier = 1
+
+[sub_resource type="Resource" id="Resource_l6sao"]
+resource_local_to_scene = true
+script = ExtResource("7_ebqy6")
+attribute_name = "projectile_amount"
+amount = 3.0
+modifier = 0
+
+[node name="Guitar" type="Node2D" node_paths=PackedStringArray("guitar_swing", "guitar_hitbox")]
+script = ExtResource("2_iw60f")
+guitar_swing = NodePath("GuitarSwing")
+guitar_hitbox = NodePath("GuitarSwing/Area2D")
+
+[node name="GuitarSwing" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8xpq2")
+frame_progress = 0.796492
+offset = Vector2(21.715, 0)
+
+[node name="Area2D" type="Area2D" parent="GuitarSwing"]
+process_mode = 4
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuitarSwing/Area2D"]
+position = Vector2(23.5, -7)
+shape = SubResource("RectangleShape2D_l7yy0")
+
+[node name="StatHolderNode" type="Node" parent="."]
+script = ExtResource("2_h5dfu")
+starting_attributes = Array[ExtResource("3_xrgko")]([SubResource("Resource_5q3db"), SubResource("Resource_w1hgk"), SubResource("Resource_yjcay"), SubResource("Resource_e4ltr"), SubResource("Resource_mxn0f")])
+
+[node name="UpgradeProvider" type="Node" parent="."]
+script = ExtResource("5_p0i1q")
+
+[node name="StatUpgrade" type="Node" parent="UpgradeProvider"]
+script = ExtResource("6_1wrmv")
+stats = Array[ExtResource("7_ebqy6")]([SubResource("Resource_18gkr")])
+
+[node name="StatUpgrade2" type="Node" parent="UpgradeProvider"]
+script = ExtResource("6_1wrmv")
+stats = Array[ExtResource("7_ebqy6")]([SubResource("Resource_kuh70")])
+
+[node name="StatUpgrade4" type="Node" parent="UpgradeProvider"]
+script = ExtResource("6_1wrmv")
+stats = Array[ExtResource("7_ebqy6")]([SubResource("Resource_5e14a"), SubResource("Resource_kvgwh"), SubResource("Resource_2wfkx")])
+
+[node name="StatUpgrade3" type="Node" parent="UpgradeProvider"]
+script = ExtResource("6_1wrmv")
+stats = Array[ExtResource("7_ebqy6")]([SubResource("Resource_l6sao")])
+
+[connection signal="area_shape_entered" from="GuitarSwing/Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="GuitarSwing/Area2D" to="." method="_on_area_2d_area_shape_exited"]

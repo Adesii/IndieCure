@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://csbrqhwx6xa12"]
+
+[ext_resource type="Texture2D" uid="uid://0sgixa4rlg1p" path="res://Characters/Anny/Weapons/Guitar/Guitar_Projectile-0001.png" id="1_2mdmq"]
+[ext_resource type="Script" path="res://Characters/Anny/Weapons/Guitar/Guitar_projectile.gd" id="1_vcvi1"]
+[ext_resource type="PackedScene" uid="uid://esnjnv27alsu" path="res://Characters/basic_damage_area.tscn" id="2_bncmg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtdgs"]
+radius = 27.0
+
+[node name="GuitarProjectile" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_vcvi1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2mdmq")
+
+[node name="Basic_damage_area" parent="." instance=ExtResource("2_bncmg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basic_damage_area"]
+shape = SubResource("CircleShape2D_vtdgs")

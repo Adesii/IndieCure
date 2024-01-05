@@ -12,6 +12,9 @@ var shadow_canvas_group : CanvasGroup
 var xp_drop_node : XPDrop
 
 var current_scene = null
+
+var attack_direction = Vector2(1,0)
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -65,6 +68,7 @@ func setup_player():
 	player.get_node("PlayerSprite").set("sprite_frames", current_character.character_animations)
 	Stat.from_set(player,current_character.attribute_set)
 	current_scene.add_child(player)
+	player.character = current_character
 
 	var ingameui = ingame_ui.instantiate()
 	current_scene.add_child(ingameui)
