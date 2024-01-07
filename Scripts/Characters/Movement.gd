@@ -42,8 +42,6 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
-	queue_redraw()
-
 
 func _on_pick_up_area_area_entered(area):
 	if area.has_method("collect"):
@@ -61,7 +59,3 @@ func on_item_added(item:InventoryItem):
 		var keys = item.stats.keys()
 		for key in keys:
 			Stat.Modify(self, key, item.stats[key], "+")
-
-
-func _draw():
-	draw_line(Vector2(), Global.attack_direction * 100, Color(1, 0, 0), 2)

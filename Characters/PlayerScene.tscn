@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cncnn0napeaex"]
+[gd_scene load_steps=12 format=3 uid="uid://cncnn0napeaex"]
 
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_0le1w"]
 [ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_o0pb6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Characters/PlayerSprite.gd" id="2_ua8hj"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="3_w8iq5"]
 [ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="4_k5x6x"]
+[ext_resource type="Texture2D" uid="uid://cyopw08v41io7" path="res://Textures/AttackArrow.png" id="7_e6seo"]
+[ext_resource type="Script" path="res://Characters/AttackArrow.gd" id="8_018wc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8jtf"]
 radius = 11.0454
@@ -59,6 +61,14 @@ collision_mask = 512
 [node name="PickUp" type="CollisionShape2D" parent="PickUpArea"]
 shape = SubResource("CircleShape2D_p0o0f")
 debug_color = Color(0, 0.647059, 0.243137, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4096
+z_as_relative = false
+scale = Vector2(2, 2)
+texture = ExtResource("7_e6seo")
+offset = Vector2(0, -30.225)
+script = ExtResource("8_018wc")
 
 [connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]

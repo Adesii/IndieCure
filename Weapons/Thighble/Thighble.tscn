@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Weapons/Thighble/Thighble.gd" id="1_y6x4j"]
 [ext_resource type="Texture2D" uid="uid://n4scakt8c1du" path="res://Weapons/Thighble/Textures/thighble-0002.png" id="2_54owb"]
-[ext_resource type="Script" path="res://Inventory/Scripts/upgradeprovider.gd" id="3_uli0x"]
-[ext_resource type="Script" path="res://Inventory/Scripts/statupgraderes.gd" id="4_lc7uw"]
-[ext_resource type="Script" path="res://Inventory/Scripts/statupgrade.gd" id="5_gptdi"]
+[ext_resource type="Script" path="res://Scripts/GAS/upgradeprovider.gd" id="3_uli0x"]
+[ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="4_lc7uw"]
+[ext_resource type="Script" path="res://Scripts/GAS/statupgrade.gd" id="5_gptdi"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/StatHolderNode.gd" id="6_6ojsy"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="7_hp8ab"]
 
