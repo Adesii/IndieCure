@@ -28,11 +28,8 @@ func _physics_process(_delta):
 	else:
 		animated_sprite.set("animation","idle")
 	#add a little delay to the flip so it doesn't flip every frame
-	if character_sprite.velocity.x > 0 and lastfliptime + fliptimelimit < Time.get_ticks_msec():
-		animated_sprite.flip_h = false
-		lastfliptime = Time.get_ticks_msec()
-	elif character_sprite.velocity.x < 0 and lastfliptime + fliptimelimit < Time.get_ticks_msec():
-		animated_sprite.flip_h = true
+	if character_sprite.velocity.x != 0 and lastfliptime + fliptimelimit < Time.get_ticks_msec():
+		animated_sprite.flip_h = character_sprite.velocity.x < 0
 		lastfliptime = Time.get_ticks_msec()
 		
 	if Stat.Get(get_parent(), "is_damaged") == 1 and damage_frames == 0:

@@ -7,6 +7,7 @@ class xp_drop extends MassObject:
 	var radius : float = 8
 
 
+var max_xp_per_drop = 1000
 
 @export var shared_area : Area2D
 
@@ -43,6 +44,34 @@ func _draw():
 	renderer.end_render() # figure out if this is a good idea
 
 func drop_xp(dropposition : Vector2,amount : int):
+
+	var _circle_shape_query = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(_circle_shape_query, 4)
+
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape_rid = _circle_shape_query
+	query.transform = Transform2D(0, dropposition)
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.collision_mask = shared_area.collision_mask
+
+	var result = space.intersect_shape(query,8)
+	if result:
+		for xpd in result:
+			if xpd.collider != shared_area:
+				continue
+			if renderer._objects.size() > xpd.shape:
+				var dropxpd = renderer._objects[xpd.shape]
+				if dropxpd.amount + amount > max_xp_per_drop:
+					continue
+				dropxpd.amount += amount
+				dropxpd.global_position =(dropxpd.global_position - dropposition) / 2 + dropposition
+				return
+			else:
+				print("Something went wrong, the shape is not in the renderer")
+	
+	PhysicsServer2D.free_rid(_circle_shape_query)
 	var drop = xp_drop.new()
 	drop.global_position = dropposition
 	drop.amount = amount
