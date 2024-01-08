@@ -26,31 +26,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy0"]
 size = Vector2(21, 46)
 
-[sub_resource type="Resource" id="Resource_5q3db"]
+[sub_resource type="Resource" id="Resource_mf8r4"]
 resource_local_to_scene = true
 script = ExtResource("3_xrgko")
 attribute_name = "attack_amount"
 default_value = 1.0
 
-[sub_resource type="Resource" id="Resource_w1hgk"]
+[sub_resource type="Resource" id="Resource_i6y7q"]
 resource_local_to_scene = true
 script = ExtResource("3_xrgko")
 attribute_name = "projectile_amount"
 default_value = 0.0
 
-[sub_resource type="Resource" id="Resource_yjcay"]
+[sub_resource type="Resource" id="Resource_nmllq"]
 resource_local_to_scene = true
 script = ExtResource("3_xrgko")
 attribute_name = "attack_speed"
 default_value = 0.8
 
-[sub_resource type="Resource" id="Resource_e4ltr"]
+[sub_resource type="Resource" id="Resource_m2kc6"]
 resource_local_to_scene = true
 script = ExtResource("3_xrgko")
 attribute_name = "attack_damage"
 default_value = 100.0
 
-[sub_resource type="Resource" id="Resource_mxn0f"]
+[sub_resource type="Resource" id="Resource_pqvsl"]
 resource_local_to_scene = true
 script = ExtResource("3_xrgko")
 attribute_name = "swing_speed"
@@ -121,7 +121,7 @@ shape = SubResource("RectangleShape2D_l7yy0")
 
 [node name="StatHolderNode" type="Node" parent="."]
 script = ExtResource("2_h5dfu")
-starting_attributes = Array[ExtResource("3_xrgko")]([SubResource("Resource_5q3db"), SubResource("Resource_w1hgk"), SubResource("Resource_yjcay"), SubResource("Resource_e4ltr"), SubResource("Resource_mxn0f")])
+starting_attributes = Array[ExtResource("3_xrgko")]([SubResource("Resource_mf8r4"), SubResource("Resource_i6y7q"), SubResource("Resource_nmllq"), SubResource("Resource_m2kc6"), SubResource("Resource_pqvsl")])
 
 [node name="UpgradeProvider" type="Node" parent="."]
 script = ExtResource("5_fmtqh")

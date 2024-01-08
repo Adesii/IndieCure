@@ -59,12 +59,7 @@ func spawn_projectile(dir:Vector2,rot):
 		projectile.position = guitar_hitbox.global_position + guitar_swing.offset.rotated(rot)
 		projectile.position += Vector2(randf_range(-10,10),randf_range(-10,10))
 		projectile.direction = dir.rotated(deg_to_rad(randf_range(-10,10)))
-		var parent = get_parent()
-		
-		# add speed to the projectile if moving in the same direction as the parent smoothly
-		var dotp = dir.dot(parent.velocity.normalized())
-		if dotp > 0:
-			projectile.speed += parent.velocity.length() * dotp
+		projectile.speed = 150
 		projectile.parent_weapon = self
 		Global.current_scene.add_child(projectile)
 		await get_tree().create_timer(0.05,false).timeout
