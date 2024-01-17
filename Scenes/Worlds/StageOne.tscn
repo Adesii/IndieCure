@@ -346,46 +346,46 @@ collision_mask = 4
 monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(2, 41)
+position = Vector2(0, -2)
 monitoring = false
 
 [node name="shoe2" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-58, 38)
+position = Vector2(-78, 2)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe3" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(100, 169)
+position = Vector2(100, 85)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe6" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-59, 133)
+position = Vector2(-78, 102)
 monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe7" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-125, 140)
+position = Vector2(-77, 88)
 monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe8" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-187, 163)
+position = Vector2(-78, 123)
 monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe9" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-250, 162)
+position = Vector2(-76, 145)
 monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe4" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(92, 236)
+position = Vector2(103, 105)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe5" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(-17, 212)
+position = Vector2(11, 148)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
@@ -462,9 +462,9 @@ bus = &"Music"
 script = ExtResource("17_qxask")
 
 [node name="weapon_pickup" parent="." instance=ExtResource("22_4lw8j")]
-position = Vector2(97, 25)
+position = Vector2(97, 40)
 
 [node name="weapon_pickup2" parent="." instance=ExtResource("22_4lw8j")]
-position = Vector2(103, 107)
+position = Vector2(100, 65)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
