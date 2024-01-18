@@ -85,6 +85,9 @@ func draw_batch(offset, count):
 func _draw_single(obj: MassObject):
 	RenderingServer.canvas_item_clear(obj.rendering_rid)
 	RenderingServer.canvas_item_set_transform(obj.rendering_rid, obj.transform)
+	if obj.texture == null:
+		printerr("MassRenderer: Object has no texture")
+		return
 	obj.texture.draw_rect(obj.rendering_rid, obj.texture_rect ,false,obj.modulate)
 
 	if !obj.has_shadow:
