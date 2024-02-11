@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://1qnbywbx4muj"]
+
+[ext_resource type="Script" path="res://addons/enemytimeline/Editor/timelineeditor.gd" id="1_eqe6a"]
+[ext_resource type="Script" path="res://addons/enemytimeline/Editor/VSplitContainerReady.gd" id="2_j22y8"]
+
+[node name="Control" type="VBoxContainer"]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eqe6a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.211765, 0.239216, 0.290196, 1)
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+script = ExtResource("2_j22y8")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VSplitContainer/HSplitContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="VSplitContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VSplitContainer/HSplitContainer/MarginContainer2"]
+layout_mode = 2
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.0705882, 0.0862745, 0.105882, 1)
