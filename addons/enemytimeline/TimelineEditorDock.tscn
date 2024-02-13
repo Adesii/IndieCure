@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://1qnbywbx4muj"]
+[gd_scene load_steps=5 format=3 uid="uid://1qnbywbx4muj"]
 
-[ext_resource type="Script" path="res://addons/enemytimeline/Editor/timelineeditor.gd" id="1_eqe6a"]
-[ext_resource type="Script" path="res://addons/enemytimeline/Editor/VSplitContainerReady.gd" id="2_j22y8"]
+[ext_resource type="Script" path="res://addons/enemytimeline/Editor/timelineeditor.gd" id="2_j22y8"]
+[ext_resource type="Script" path="res://addons/enemytimeline/Editor/ScrollSync.gd" id="2_pb15b"]
+[ext_resource type="Script" path="res://addons/enemytimeline/Editor/TestButton.gd" id="2_qmfiy"]
+[ext_resource type="PackedScene" uid="uid://caesenvc5h7g6" path="res://addons/enemytimeline/EnemyTest.tscn" id="3_ohtbi"]
 
 [node name="Control" type="VBoxContainer"]
 custom_minimum_size = Vector2(500, 500)
@@ -10,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eqe6a")
+script = ExtResource("2_j22y8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 35)
@@ -22,17 +24,38 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.211765, 0.239216, 0.290196, 1)
 
+[node name="Button" type="Button" parent="HBoxContainer/ColorRect" node_paths=PackedStringArray("scrollpanel", "timelinescrollpanel")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.011
+anchor_top = 0.029
+anchor_right = 0.043
+anchor_bottom = 0.914
+offset_left = 0.879999
+offset_top = -0.015
+offset_right = 0.439995
+offset_bottom = 0.00999832
+text = "TEST
+"
+script = ExtResource("2_qmfiy")
+scenetouse = ExtResource("3_ohtbi")
+scrollpanel = NodePath("../../../VSplitContainer/HSplitContainer/MarginContainer/ScrollContainer/VBoxContainer")
+timelinescenetouse = ExtResource("3_ohtbi")
+timelinescrollpanel = NodePath("../../../VSplitContainer/HSplitContainer/MarginContainer2/ScrollContainer/VBoxContainer")
+
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 3
 split_offset = 200
-script = ExtResource("2_j22y8")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer" node_paths=PackedStringArray("ScrollFirst", "ScrollSecond")]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_pb15b")
+ScrollFirst = NodePath("MarginContainer/ScrollContainer")
+ScrollSecond = NodePath("MarginContainer2/ScrollContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer"]
 custom_minimum_size = Vector2(250, 0)
@@ -42,12 +65,26 @@ layout_mode = 2
 layout_mode = 2
 color = Color(0.129412, 0.14902, 0.180392, 1)
 
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="MarginContainer2" type="MarginContainer" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="VSplitContainer/HSplitContainer/MarginContainer2"]
 layout_mode = 2
 color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ColorRect" type="ColorRect" parent="VSplitContainer"]
 layout_mode = 2
