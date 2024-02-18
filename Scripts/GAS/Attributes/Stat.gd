@@ -1,6 +1,6 @@
 extends Node
 
-func Get(obj,attributename : String,subobj = null):
+func Get(obj,attributename : String,subobj = null) -> float:
 	if obj.has_method("_get_stat"):
 		return obj._get_stat(attributename,subobj)
 		
@@ -12,7 +12,7 @@ func Get(obj,attributename : String,subobj = null):
 		
 	return statnode._get_stat(attributename,subobj)
 
-func Get_Attribute(obj,attributename : String,subobj = null):
+func Get_Attribute(obj,attributename : String,subobj = null) -> Attribute:
 	if obj.has_method("_get_attribute"):
 		return obj._get_attribute(attributename,subobj)
 		

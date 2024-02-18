@@ -329,6 +329,7 @@ y_sort_enabled = true
 position = Vector2(249, 240)
 
 [node name="TofSpawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
+process_physics_priority = 100
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_6wm83")
 script = ExtResource("9_kwptk")
@@ -339,6 +340,7 @@ shared_area = NodePath("Area2D")
 enemiestospawn = 1000
 
 [node name="Area2D" type="Area2D" parent="TofSpawner"]
+process_physics_priority = 99
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_pl8b1")
 collision_layer = 4

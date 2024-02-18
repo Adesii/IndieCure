@@ -20,6 +20,7 @@ func _init():
 func free():
 	RenderingServer.free_rid(_canvas_item_rid)
 	RenderingServer.free_rid(_canvas_item_shadow_rid)
+	
 
 
 func add_object(mass_object: MassObject):
@@ -36,18 +37,25 @@ func add_object(mass_object: MassObject):
 	#		_objectcount += 1
 	#		return i
 
+var _todelete_objects : Array[MassObject]
+
+func _clean_objects():
+	for i in _todelete_objects.size():
+		var mass_object = _todelete_objects[i]
+		if mass_object.rendering_rid.is_valid():
+			RenderingServer.free_rid(mass_object.rendering_rid)
+		if mass_object.has_shadow and mass_object.rendering_shadow_rid.is_valid():
+			RenderingServer.free_rid(mass_object.rendering_shadow_rid)
+		if mass_object.physics_rid.is_valid():
+			PhysicsServer2D.free_rid(mass_object.physics_rid)
+		#print_debug("MassRenderer: Object removed")
+	_todelete_objects.clear()
+
 func remove_object(index : MassObject):
 	var mass_object = index
-	
-	if mass_object.rendering_rid.is_valid():
-		RenderingServer.free_rid(mass_object.rendering_rid)
-	if mass_object.has_shadow and mass_object.rendering_shadow_rid.is_valid():
-		RenderingServer.free_rid(mass_object.rendering_shadow_rid)
-	if mass_object.physics_rid.is_valid():
-		PhysicsServer2D.free_rid(mass_object.physics_rid)
-
+	#disable shape area
+	_todelete_objects.append(mass_object)
 	_objects.erase(mass_object)
-	#print_debug("MassRenderer: Object not found")
 
 func remove_object_at(index : int):
 	if index >= _objects.size():
@@ -56,7 +64,19 @@ func remove_object_at(index : int):
 	remove_object(mass_object)
 	return mass_object
 
+func get_object(index : int):
+	if index >= _objects.size():
+		printerr("MassRenderer: Object index out of range, this should not happen!. it means we are trying to modify an object that does not exist.")
+		return null
+	return _objects[index]
+
+func get_object_by_shape_rid(shape : RID):
+	for i in _objects.size():
+		if _objects[i].physics_rid == shape:
+			return _objects[i]
+	return null
 func end_render(): # multithreading rendering
+	_clean_objects()
 	var count = ceil(float(_objects.size()) / rendering_threads)
 	if count == 0:
 		return
@@ -68,7 +88,9 @@ func end_render(): # multithreading rendering
 			t.wait_to_finish()
 		t.start(draw_batch.bind( i * count, count))
 		#print("MassRenderer: Thread " + str(i) + " started, for range: " + str(i * count) + " to " + str(i * count + count))
+	
 
+	
 	#for i in rendering_threads:
 	#	var t = rendering_threads_array[i]
 	#	t.wait_to_finish()
@@ -76,13 +98,15 @@ func end_render(): # multithreading rendering
 
 func draw_batch(offset, count):
 	for i in count:
-		if !_objects.size() > i + offset:
+		if _objects.size() <= 0 or i + offset >= _objects.size():
 			continue
 		var _obj = _objects[i + offset]
 		if _obj != null:
 			_draw_single(_obj)
 
 func _draw_single(obj: MassObject):
+	if !obj.rendering_rid.is_valid():
+		return
 	RenderingServer.canvas_item_clear(obj.rendering_rid)
 	RenderingServer.canvas_item_set_transform(obj.rendering_rid, obj.transform)
 	if obj.texture == null:

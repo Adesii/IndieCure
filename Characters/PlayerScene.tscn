@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cncnn0napeaex"]
+[gd_scene load_steps=15 format=3 uid="uid://cncnn0napeaex"]
 
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_0le1w"]
 [ext_resource type="Script" path="res://Scripts/Characters/Movement.gd" id="1_o0pb6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="3_w8iq5"]
 [ext_resource type="Script" path="res://Scripts/Characters/HitBox.gd" id="4_k5x6x"]
 [ext_resource type="Texture2D" uid="uid://cyopw08v41io7" path="res://Textures/AttackArrow.png" id="7_e6seo"]
+[ext_resource type="Script" path="res://Characters/PickUpArea.gd" id="7_hkuwm"]
 [ext_resource type="Script" path="res://Characters/AttackArrow.gd" id="8_018wc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8jtf"]
@@ -14,6 +15,10 @@ radius = 11.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mk2d4"]
 radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4gxu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdnfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0o0f"]
 
@@ -54,13 +59,27 @@ position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_mk2d4")
 debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
+[node name="XP_Pickup" type="Area2D" parent="." node_paths=PackedStringArray("collision_shape")]
+collision_layer = 262144
+collision_mask = 262144
+monitorable = false
+priority = -1
+script = ExtResource("7_hkuwm")
+collision_shape = NodePath("PickUp")
+collision_type_shape = SubResource("CircleShape2D_b4gxu")
+
+[node name="PickUp" type="CollisionShape2D" parent="XP_Pickup"]
+shape = SubResource("CircleShape2D_kdnfj")
+debug_color = Color(0, 0.647059, 0.243137, 0.419608)
+
 [node name="PickUpArea" type="Area2D" parent="."]
 collision_layer = 512
 collision_mask = 512
+monitorable = false
 
 [node name="PickUp" type="CollisionShape2D" parent="PickUpArea"]
 shape = SubResource("CircleShape2D_p0o0f")
-debug_color = Color(0, 0.647059, 0.243137, 0.419608)
+debug_color = Color(0.921569, 0.247059, 0.352941, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 4096
@@ -72,4 +91,5 @@ script = ExtResource("8_018wc")
 
 [connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]
+[connection signal="area_entered" from="XP_Pickup" to="." method="_on_pick_up_area_area_entered"]
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]

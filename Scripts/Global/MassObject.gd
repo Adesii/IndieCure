@@ -3,6 +3,7 @@ extends RefCounted
 class_name MassObject
 
 var physics_rid : RID
+
 var rendering_rid : RID
 
 var has_shadow : bool = true
