@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj31gfjnp56nw"]
+[gd_scene load_steps=3 format=3 uid="uid://cj31gfjnp56nw"]
 
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/custominspectors/stat_editor/field/Number.tscn" id="1_8k500"]
+[ext_resource type="Script" path="res://addons/custominspectors/stat_editor/popup_selector.gd" id="1_h4jcr"]
 
 [node name="VBoxContainer" type="HBoxContainer"]
 anchors_preset = 15
@@ -10,6 +11,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+action_mode = 0
+text = ">"
+script = ExtResource("1_h4jcr")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 2
@@ -34,3 +42,14 @@ step = 1.0
 enforce_step = false
 min = -1e+11
 max = 1e+12
+
+[node name="RemoveNode" type="Button" parent="."]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+action_mode = 0
+text = "X"
+script = ExtResource("1_h4jcr")
+delete = true
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="RemoveNode" to="RemoveNode" method="_on_pressed"]

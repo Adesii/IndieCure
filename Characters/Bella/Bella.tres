@@ -6,25 +6,25 @@
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="2_uwdve"]
 [ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Bella/Textures/bellaicon.png" id="3_u55lk"]
 
-[sub_resource type="Resource" id="Resource_7qg30"]
+[sub_resource type="Resource" id="Resource_1o554"]
 resource_local_to_scene = true
 script = ExtResource("1_5heas")
 attribute_name = "health"
 default_value = 100.0
 
-[sub_resource type="Resource" id="Resource_jun2k"]
+[sub_resource type="Resource" id="Resource_07bm7"]
 resource_local_to_scene = true
 script = ExtResource("1_5heas")
 attribute_name = "movement_speed"
 default_value = 90.0
 
-[sub_resource type="Resource" id="Resource_5plwp"]
+[sub_resource type="Resource" id="Resource_h7hyq"]
 resource_local_to_scene = true
 script = ExtResource("1_5heas")
 attribute_name = "attack_speed"
 default_value = 10.0
 
-[sub_resource type="Resource" id="Resource_m4l6x"]
+[sub_resource type="Resource" id="Resource_0mync"]
 resource_local_to_scene = true
 script = ExtResource("1_5heas")
 attribute_name = "defense"
@@ -32,10 +32,11 @@ default_value = 10.0
 
 [sub_resource type="Resource" id="Resource_sqj7u"]
 script = ExtResource("2_uwdve")
-attributes = Array[ExtResource("1_5heas")]([SubResource("Resource_7qg30"), SubResource("Resource_jun2k"), SubResource("Resource_5plwp"), SubResource("Resource_m4l6x")])
+attributes = Array[ExtResource("1_5heas")]([SubResource("Resource_1o554"), SubResource("Resource_07bm7"), SubResource("Resource_h7hyq"), SubResource("Resource_0mync")])
 
 [resource]
 script = ExtResource("1_pguks")
 character_animations = ExtResource("1_i5e1t")
 icon = ExtResource("3_u55lk")
 attribute_set = SubResource("Resource_sqj7u")
+starter_equipment = Array[Resource("res://Inventory/Scripts/inventoryItem.gd")]([])

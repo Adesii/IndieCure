@@ -53,6 +53,7 @@ func updateall():
 func update():
 	#print(statobject)
 	line.text = statobject.attribute_name
+	StatEditorSave.add_stat(statobject.attribute_name)
 	if statobject is StatUpgradeResource:
 		option.selected = statobject.modifier
 		number.set_value(statobject.amount)

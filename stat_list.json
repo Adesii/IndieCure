@@ -1,0 +1,11 @@
+[
+	"health",
+	"movement_speed",
+	"attack_speed",
+	"defense",
+	"pickup_radius",
+	"attack_amount",
+	"projectile_amount",
+	"projectile_speed",
+	"never_ending"
+]

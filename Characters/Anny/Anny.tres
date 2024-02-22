@@ -6,31 +6,31 @@
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="2_52abt"]
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="5_jm66g"]
 
-[sub_resource type="Resource" id="Resource_xrd3s"]
+[sub_resource type="Resource" id="Resource_angr7"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "health"
 default_value = 100.0
 
-[sub_resource type="Resource" id="Resource_p6yri"]
+[sub_resource type="Resource" id="Resource_fojun"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "movement_speed"
 default_value = 90.0
 
-[sub_resource type="Resource" id="Resource_jl3dg"]
+[sub_resource type="Resource" id="Resource_ve6xw"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "attack_speed"
 default_value = 10.0
 
-[sub_resource type="Resource" id="Resource_fkmb2"]
+[sub_resource type="Resource" id="Resource_uyo7i"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "defense"
 default_value = 10.0
 
-[sub_resource type="Resource" id="Resource_pr8a1"]
+[sub_resource type="Resource" id="Resource_ybhxe"]
 resource_local_to_scene = true
 script = ExtResource("1_5m7ot")
 attribute_name = "pickup_radius"
@@ -38,7 +38,7 @@ default_value = 100.0
 
 [sub_resource type="Resource" id="Resource_7fnjd"]
 script = ExtResource("2_52abt")
-attributes = Array[ExtResource("1_5m7ot")]([SubResource("Resource_xrd3s"), SubResource("Resource_p6yri"), SubResource("Resource_jl3dg"), SubResource("Resource_fkmb2"), SubResource("Resource_pr8a1")])
+attributes = Array[ExtResource("1_5m7ot")]([SubResource("Resource_angr7"), SubResource("Resource_fojun"), SubResource("Resource_ve6xw"), SubResource("Resource_uyo7i"), SubResource("Resource_ybhxe")])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xmsmy"]
 load_path = "res://.godot/imported/annyicon.png-ebb0ef68d96a354fc960f95c6e953016.ctex"
