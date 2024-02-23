@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Global/HealthGUI.gd" id="2_aauh5"]
 [ext_resource type="Script" path="res://Scenes/Global/XPBarGUI.gd" id="2_sfrwg"]
 [ext_resource type="Script" path="res://Scenes/Global/TimerLabel.gd" id="3_mtsjj"]
-[ext_resource type="PackedScene" uid="uid://dnha3qbkl4y7q" path="res://Inventory/Items/weapon_pickup/weapon_pickup_select_ui.tscn" id="3_pmp7x"]
+[ext_resource type="PackedScene" uid="uid://dnha3qbkl4y7q" path="res://Inventory/weapon_pickup/weapon_pickup_select_ui.tscn" id="3_pmp7x"]
 [ext_resource type="Shader" path="res://Scenes/Global/xp_backgroundfix.gdshader" id="3_ujh8m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x7pvg"]

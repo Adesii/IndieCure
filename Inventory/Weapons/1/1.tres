@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://csmwayisuayx2"]
+
+[ext_resource type="PackedScene" uid="uid://uyi1xu75tjy1" path="res://Inventory/Weapons/1/1.tscn" id="1_i02f2"]
+[ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="1_pki00"]
+[ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Bella/Textures/bellaicon.png" id="2_sacob"]
+
+[resource]
+script = ExtResource("1_pki00")
+name = "star mortar thing"
+texture = ExtResource("2_sacob")
+scene = ExtResource("1_i02f2")
+stats = {}
+type = 1

@@ -11,7 +11,7 @@ enum ITEM_TYPE {
 @export var name: String = ""
 @export var texture: Texture2D
 @export var scene: PackedScene
-@export var stats: Dictionary
+@export var stats: Array[StatUpgradeResource]
 @export var type: ITEM_TYPE = ITEM_TYPE.NONE
 
 

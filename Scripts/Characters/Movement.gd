@@ -56,6 +56,7 @@ func on_item_added(item:InventoryItem):
 		print("scene added for item: ", item.name)
 	
 	if item.stats != null:
-		var keys = item.stats.keys()
+		var keys = item.stats
 		for key in keys:
-			Stat.Modify(self, key, item.stats[key], "+")
+			key.apply(self)
+			print(Stat.Get(self,key.attribute_name))

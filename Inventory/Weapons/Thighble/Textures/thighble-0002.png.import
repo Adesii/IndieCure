@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq0380elop0ko"
-path="res://.godot/imported/thighble-0001.png-430b94f176bd2bf9a4f3a8b2f52d798a.ctex"
+uid="uid://n4scakt8c1du"
+path="res://.godot/imported/thighble-0002.png-c667c70871e990aea1043e2d33b88223.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Thighble/Textures/thighble-0001.png"
-dest_files=["res://.godot/imported/thighble-0001.png-430b94f176bd2bf9a4f3a8b2f52d798a.ctex"]
+source_file="res://Inventory/Weapons/Thighble/Textures/thighble-0002.png"
+dest_files=["res://.godot/imported/thighble-0002.png-c667c70871e990aea1043e2d33b88223.ctex"]
 
 [params]
 

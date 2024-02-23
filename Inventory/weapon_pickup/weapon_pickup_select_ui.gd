@@ -7,5 +7,5 @@ func close_panel():
 	close.emit(self)
 
 func get_tighble():
-	Global.player.inventory.insert(load("res://Weapons/Thighble/Tighble.tres"))
+	Global.player.inventory.insert(load("res://Inventory/Weapons/Thighble/Tighble.tres"))
 	close_panel()

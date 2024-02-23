@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dtma1gy8ltvqp"]
 
-[ext_resource type="Script" path="res://Weapons/Thighble/Thighble.gd" id="1_y6x4j"]
-[ext_resource type="Texture2D" uid="uid://n4scakt8c1du" path="res://Weapons/Thighble/Textures/thighble-0002.png" id="2_54owb"]
+[ext_resource type="Script" path="res://Inventory/Weapons/Thighble/Thighble.gd" id="1_y6x4j"]
+[ext_resource type="Texture2D" uid="uid://n4scakt8c1du" path="res://Inventory/Weapons/Thighble/Textures/thighble-0002.png" id="2_54owb"]
 [ext_resource type="Script" path="res://Scripts/GAS/upgradeprovider.gd" id="3_uli0x"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="4_lc7uw"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgrade.gd" id="5_gptdi"]

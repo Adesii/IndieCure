@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cign3lc4ktc7u"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://cign3lc4ktc7u"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="1_kh0kg"]
 [ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="2_5g5cn"]
+[ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="2_jt3xm"]
+
+[sub_resource type="Resource" id="Resource_f4mi6"]
+resource_local_to_scene = true
+script = ExtResource("2_jt3xm")
+attribute_name = "movement_speed"
+amount = 2.0
+modifier = 1
 
 [resource]
 script = ExtResource("1_kh0kg")
 name = "shoe"
 texture = ExtResource("2_5g5cn")
-stats = {
-"movement_speed": 100
-}
+stats = Array[ExtResource("2_jt3xm")]([SubResource("Resource_f4mi6")])
 type = 2

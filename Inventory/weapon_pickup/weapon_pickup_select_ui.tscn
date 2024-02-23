@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnha3qbkl4y7q"]
 
-[ext_resource type="Script" path="res://Inventory/Items/weapon_pickup/weapon_pickup_select_ui.gd" id="1_unbbh"]
+[ext_resource type="Script" path="res://Inventory/weapon_pickup/weapon_pickup_select_ui.gd" id="1_unbbh"]
 
 [node name="weapon_pickup_select_ui" type="Control"]
 process_mode = 3

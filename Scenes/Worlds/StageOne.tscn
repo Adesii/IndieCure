@@ -21,8 +21,8 @@
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="17_1c00v"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
-[ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Weapons/Thighble/Tighble.tres" id="21_hqbda"]
-[ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/Items/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
+[ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="21_hqbda"]
+[ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
