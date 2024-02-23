@@ -10,6 +10,11 @@ var _canvas_item_shadow_rid : RID
 var rendering_threads = 4
 var rendering_threads_array : Array[Thread]
 
+
+static var drawviewport: Viewport
+
+var rect = Rect2()
+
 func _init():
 	_canvas_item_rid = RenderingServer.canvas_item_create()
 	_canvas_item_shadow_rid = RenderingServer.canvas_item_create()
@@ -24,6 +29,8 @@ func free():
 
 
 func add_object(mass_object: MassObject):
+	if drawviewport == null:
+		drawviewport = Global.get_viewport()
 	#_capacity = _objects.size()
 	#if _objectcount + 1 >= _capacity:
 	_objects.append(mass_object)
@@ -77,6 +84,12 @@ func get_object_by_shape_rid(shape : RID):
 	return null
 func end_render(): # multithreading rendering
 	_clean_objects()
+
+	if drawviewport == null:
+		drawviewport = Global.get_viewport()
+
+	rect = drawviewport.get_visible_rect()
+	rect.position = drawviewport.get_camera_2d().global_position - rect.size / 2
 	var count = ceil(float(_objects.size()) / rendering_threads)
 	if count == 0:
 		return
@@ -109,9 +122,20 @@ func _draw_single(obj: MassObject):
 		return
 	RenderingServer.canvas_item_clear(obj.rendering_rid)
 	RenderingServer.canvas_item_set_transform(obj.rendering_rid, obj.transform)
+
+	var rectd = obj.texture_rect
+	rectd.position = obj.transform.origin
+	rectd = rectd.abs()
+	# check if object is on screen before rendering
+	
+	
 	if obj.texture == null:
 		printerr("MassRenderer: Object has no texture")
 		return
+
+	if !rect.intersects(rectd):
+		return
+		
 	obj.texture.draw_rect(obj.rendering_rid, obj.texture_rect ,false,obj.modulate)
 
 	if !obj.has_shadow:
