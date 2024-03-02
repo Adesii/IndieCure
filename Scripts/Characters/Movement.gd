@@ -3,8 +3,7 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 @export var inventory: Inventory
 
-var character : IndieCharacter
-
+var character: IndieCharacter
 
 var mouse_input = false
 
@@ -19,9 +18,9 @@ func _physics_process(_delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var updirection :float =Input.get_axis("move_up", "move_down")
-	var direction :float = Input.get_axis("move_left", "move_right")
-	var wishvelocity :Vector2 = Vector2(direction, updirection)
+	var updirection: float = Input.get_axis("move_up", "move_down")
+	var direction: float = Input.get_axis("move_left", "move_right")
+	var wishvelocity: Vector2 = Vector2(direction, updirection)
 	wishvelocity = wishvelocity.normalized() * Stat.Get(self, "movement_speed")
 
 	# Move the character.
@@ -42,21 +41,27 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
-
 func _on_pick_up_area_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
 
-func on_item_added(item:InventoryItem):
+func on_item_added(item: InventoryItem):
 	print("Item added: ", item.name)
 	if item.scene != null:
-		var nod =item.scene.instantiate()
-		add_child(nod)
+		var nod = item.scene.instantiate()
 		item.instance = nod
-		print("scene added for item: ", item.name)
 	
-	if item.stats != null:
-		var keys = item.stats
-		for key in keys:
-			key.apply(self)
-			print(Stat.Get(self,key.attribute_name))
+		if item.stats != null:
+			var keys = item.stats
+			for key in keys:
+				Stat.Set(nod, key.attribute_name, key.default_value)
+				print(Stat.Get(nod, key.attribute_name))
+				print("stat added for item: ", item.name)
+
+		add_child(nod)
+		print("scene added for item: ", item.name)
+
+	if item.stat_upgrades != null:
+		for upgrade in item.stat_upgrades:
+			upgrade.apply(self)
+			print(Stat.Get(self, upgrade.attribute_name))

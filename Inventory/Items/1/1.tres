@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="1_sotgm"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="2_u1xgc"]
 
-[sub_resource type="Resource" id="Resource_egkm0"]
+[sub_resource type="Resource" id="Resource_jeubs"]
 resource_local_to_scene = true
 script = ExtResource("2_u1xgc")
 attribute_name = "attack_speed"
@@ -13,5 +13,5 @@ modifier = 1
 [resource]
 script = ExtResource("1_sotgm")
 name = "attack speed thing"
-stats = Array[ExtResource("2_u1xgc")]([SubResource("Resource_egkm0")])
+stats = Array[ExtResource("2_u1xgc")]([SubResource("Resource_jeubs")])
 type = 0

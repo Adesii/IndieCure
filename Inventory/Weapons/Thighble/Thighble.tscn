@@ -1,12 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtma1gy8ltvqp"]
+[gd_scene load_steps=13 format=3 uid="uid://dtma1gy8ltvqp"]
 
 [ext_resource type="Script" path="res://Inventory/Weapons/Thighble/Thighble.gd" id="1_y6x4j"]
 [ext_resource type="Texture2D" uid="uid://n4scakt8c1du" path="res://Inventory/Weapons/Thighble/Textures/thighble-0002.png" id="2_54owb"]
 [ext_resource type="Script" path="res://Scripts/GAS/upgradeprovider.gd" id="3_uli0x"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="4_lc7uw"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgrade.gd" id="5_gptdi"]
-[ext_resource type="Script" path="res://Scripts/GAS/Attributes/StatHolderNode.gd" id="6_6ojsy"]
-[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="7_hp8ab"]
 
 [sub_resource type="Resource" id="Resource_aduv7"]
 resource_local_to_scene = true
@@ -57,18 +55,6 @@ attribute_name = "never_ending"
 amount = 1.0
 modifier = 2
 
-[sub_resource type="Resource" id="Resource_ee7ga"]
-resource_local_to_scene = true
-script = ExtResource("7_hp8ab")
-attribute_name = "projectile_amount"
-default_value = 1.0
-
-[sub_resource type="Resource" id="Resource_n38na"]
-resource_local_to_scene = true
-script = ExtResource("7_hp8ab")
-attribute_name = "projectile_speed"
-default_value = 2.0
-
 [node name="Thighble" type="Node2D" node_paths=PackedStringArray("shared_area")]
 z_as_relative = false
 y_sort_enabled = true
@@ -104,10 +90,6 @@ stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_t1nnb")])
 [node name="StatUpgrade5" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
 stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_vtdpg"), SubResource("Resource_c7061")])
-
-[node name="Statsstesets" type="Node" parent="."]
-script = ExtResource("6_6ojsy")
-starting_attributes = Array[ExtResource("7_hp8ab")]([SubResource("Resource_ee7ga"), SubResource("Resource_n38na")])
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]

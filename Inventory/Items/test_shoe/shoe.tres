@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="2_5g5cn"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="2_jt3xm"]
 
-[sub_resource type="Resource" id="Resource_f4mi6"]
+[sub_resource type="Resource" id="Resource_8aqe0"]
 resource_local_to_scene = true
 script = ExtResource("2_jt3xm")
 attribute_name = "movement_speed"
@@ -15,5 +15,6 @@ modifier = 1
 script = ExtResource("1_kh0kg")
 name = "shoe"
 texture = ExtResource("2_5g5cn")
-stats = Array[ExtResource("2_jt3xm")]([SubResource("Resource_f4mi6")])
+stats = Array[Resource("res://Scripts/GAS/Attributes/AttributePair.gd")]([])
+stat_upgrades = Array[ExtResource("2_jt3xm")]([SubResource("Resource_8aqe0")])
 type = 2
