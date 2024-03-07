@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7232lyqn8ama"]
+
+[ext_resource type="Script" path="res://Scripts/Global/DamagePopup/damage_numbers.gd" id="1_bdfvj"]
+
+[node name="DamageNumbers" type="Node2D"]
+z_index = 99
+script = ExtResource("1_bdfvj")

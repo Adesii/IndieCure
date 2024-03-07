@@ -1,0 +1,51 @@
+Name: soul cypher
+Attack: meelee
+pattern: each kill loads the weapon after 10 kills it deals half the hp of the combined captured enemies as a crit in a slice pattern
+
+name: star-artilerly
+pattern: shoots out a number of stars into the sky that come back down after a short delay randomly around the player
+
+attack: area-pulse
+pattern: sends out a shockwave dealing low damage but knockbacks enemies
+
+attack: star-search
+pattern shoots out homing stars targeting closest enemies
+
+attack: rotating-flamethrower
+pattern... rotating flamethrower 
+
+attack: drones
+following the player around shotting lasers on enemies 
+
+attack: spill puddle
+drops a area of effect dealing damage and slowing enemies. gives a speed boost to the player
+
+
+
+
+Ults:
+
+Taiko type minigame for anny
+its taiko, the more notes you hit the more damage you do.
+5 sec minimum everything beyond is getting increasingly difficult until 10 sec where it does max damage
+
+
+AnnyCar alternative Ult
+anny car driving from left-right on screen dealing damage in its path
+
+
+
+items:
+speed boost (basically the boots we already got)
+
+5% lifesteal
+
+10% dodge
+
+5% extra max health
+
+10% extra max health per 100 essence (or gold, idk permanent currency)
+
+10% extra damage for damage-over-time effects
+
+8% xp gain

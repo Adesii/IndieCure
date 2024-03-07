@@ -6,10 +6,13 @@ uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
 uniform bool inside = false;
 uniform bool add_margins = true; // only useful when inside is false
 
+varying flat vec4 modulate;
+
 void vertex() {
 	if (add_margins) {
 		VERTEX += (UV * 2.0 - 1.0) * width;
 	}
+	modulate = COLOR;
 }
 
 bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
@@ -41,6 +44,7 @@ bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
 void fragment() {
 	vec2 uv = UV;
 	
+	
 	if (add_margins) {
 		vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(width * 2.0));
 		
@@ -59,4 +63,5 @@ void fragment() {
 		COLOR.rgb = inside ? mix(COLOR.rgb, color.rgb, color.a) : color.rgb;
 		COLOR.a += (1.0 - COLOR.a) * color.a;
 	}
+	COLOR.rgb = COLOR.rgb * modulate.rgb;
 }

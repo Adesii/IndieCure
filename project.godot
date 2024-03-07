@@ -25,6 +25,7 @@ CollisionAvoidance="*res://Scripts/Global/CollisionAvoidance.gd"
 DebugUi="*res://Scripts/Global/DebugUI.tscn"
 Stat="*res://Scripts/GAS/Attributes/Stat.gd"
 StatEditorSave="*res://addons/custominspectors/stat_editor/stat_editor_save.gd"
+DamageNumbers="*res://Scripts/Global/DamagePopup/damage_numbers.tscn"
 
 [debug]
 

@@ -3,13 +3,11 @@ class_name MassRenderer
 
 var _objects: Array[MassObject]
 
-var _canvas_item_rid : RID
-var _canvas_item_shadow_rid : RID
-
+var _canvas_item_rid: RID
+var _canvas_item_shadow_rid: RID
 
 var rendering_threads = 4
-var rendering_threads_array : Array[Thread]
-
+var rendering_threads_array: Array[Thread]
 
 static var drawviewport: Viewport
 
@@ -25,8 +23,6 @@ func _init():
 func free():
 	RenderingServer.free_rid(_canvas_item_rid)
 	RenderingServer.free_rid(_canvas_item_shadow_rid)
-	
-
 
 func add_object(mass_object: MassObject):
 	if drawviewport == null:
@@ -36,7 +32,6 @@ func add_object(mass_object: MassObject):
 	_objects.append(mass_object)
 	#_objectcount += 1
 	return _objects.size() - 1
-		
 
 	#for i in _objects.size():
 	#	if _objects[i] == null:
@@ -44,7 +39,7 @@ func add_object(mass_object: MassObject):
 	#		_objectcount += 1
 	#		return i
 
-var _todelete_objects : Array[MassObject]
+var _todelete_objects: Array[MassObject]
 
 func _clean_objects():
 	for i in _todelete_objects.size():
@@ -58,26 +53,26 @@ func _clean_objects():
 		#print_debug("MassRenderer: Object removed")
 	_todelete_objects.clear()
 
-func remove_object(index : MassObject):
+func remove_object(index: MassObject):
 	var mass_object = index
 	#disable shape area
 	_todelete_objects.append(mass_object)
 	_objects.erase(mass_object)
 
-func remove_object_at(index : int):
+func remove_object_at(index: int):
 	if index >= _objects.size():
 		return
 	var mass_object = _objects[index]
 	remove_object(mass_object)
 	return mass_object
 
-func get_object(index : int):
+func get_object(index: int):
 	if index >= _objects.size():
 		printerr("MassRenderer: Object index out of range, this should not happen!. it means we are trying to modify an object that does not exist.")
 		return null
 	return _objects[index]
 
-func get_object_by_shape_rid(shape : RID):
+func get_object_by_shape_rid(shape: RID):
 	for i in _objects.size():
 		if _objects[i].physics_rid == shape:
 			return _objects[i]
@@ -99,15 +94,12 @@ func end_render(): # multithreading rendering
 			continue
 		if t.is_started():
 			t.wait_to_finish()
-		t.start(draw_batch.bind( i * count, count))
+		t.start(draw_batch.bind(i * count, count))
 		#print("MassRenderer: Thread " + str(i) + " started, for range: " + str(i * count) + " to " + str(i * count + count))
-	
-
 	
 	#for i in rendering_threads:
 	#	var t = rendering_threads_array[i]
 	#	t.wait_to_finish()
-
 
 func draw_batch(offset, count):
 	for i in count:
@@ -128,7 +120,6 @@ func _draw_single(obj: MassObject):
 	rectd = rectd.abs()
 	# check if object is on screen before rendering
 	
-	
 	if obj.texture == null:
 		printerr("MassRenderer: Object has no texture")
 		return
@@ -136,11 +127,10 @@ func _draw_single(obj: MassObject):
 	if !rect.intersects(rectd):
 		return
 		
-	obj.texture.draw_rect(obj.rendering_rid, obj.texture_rect ,false,obj.modulate)
+	obj.texture.draw_rect(obj.rendering_rid, obj.texture_rect, false, obj.modulate)
 
 	if !obj.has_shadow:
 		return
 	RenderingServer.canvas_item_set_transform(obj.rendering_shadow_rid, obj.transform)
 	RenderingServer.canvas_item_clear(obj.rendering_shadow_rid)
-	obj.texture.draw_rect(obj.rendering_shadow_rid, obj.shadow_texture_rect ,false)
-
+	obj.texture.draw_rect(obj.rendering_shadow_rid, obj.shadow_texture_rect, false)

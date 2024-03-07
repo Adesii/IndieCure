@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcasrngwk8lkr"]
+
+[ext_resource type="Script" path="res://Scripts/Global/DamagePopup/damage_number.gd" id="1_i2qql"]
+[ext_resource type="FontFile" uid="uid://de8n5evbrefyx" path="res://fonts/Retro Gaming.ttf" id="2_xtpmv"]
+
+[node name="DamageNumber" type="Node2D" node_paths=PackedStringArray("label_container", "label")]
+script = ExtResource("1_i2qql")
+label_container = NodePath("Node2D")
+label = NodePath("Node2D/Node2D/Number")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+scale = Vector2(0.135, 0.135)
+
+[node name="Number" type="Label" parent="Node2D/Node2D"]
+unique_name_in_owner = true
+z_index = 2420
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -41.5
+offset_right = 85.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 23
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_xtpmv")
+theme_override_font_sizes/font_size = 60
+text = "11000"
+horizontal_alignment = 1
+vertical_alignment = 1
