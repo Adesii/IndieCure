@@ -200,7 +200,7 @@ func _new_spawn_enemy(spawn_location: Vector2, speed=200) -> void:
 	RenderingServer.canvas_item_set_parent(enemy.rendering_shadow_rid, Global.shadow_canvas_group.get_canvas_item())
 	#enemies.append(enemy)
 	
-	Stat.Set(self, "health", 100, {"shape_id": renderer.add_object(enemy)})
+	Stat.Set(self, "health", 10, {"shape_id": renderer.add_object(enemy)})
 
 func _configure_collision_for_enemy(enemy: Enemy) -> void:
 	# Define the shape's position

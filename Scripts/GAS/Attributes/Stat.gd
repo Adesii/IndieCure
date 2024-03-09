@@ -32,6 +32,29 @@ func Modify(obj, attributename: String, value, modificationoperator, subobj=null
 
 	return statnode._modify_stat(attributename, value, modificationoperator, subobj)
 
+func Damage(from, to, subobj=null):
+	var basedamage = Get(from, "attack_damage")
+	var damage_modifier = Get(from, "damage_modifier")
+	#var armor = Get(to, "armor")
+	var damage = basedamage # - armor
+	if damage < 0:
+		damage = 0
+	if damage_modifier == 0:
+		damage_modifier = 1
+
+	print("Damage: " + str(damage))
+	
+	# apply a bit of randomness to the damage
+	damage = damage - randf_range(max(2, damage * 0.1), max(5, damage * 0.2))
+
+	print("Damage after randomness: " + str(damage))
+
+	damage = round(damage * damage_modifier)
+
+	print("Damage after modifier: " + str(damage))
+
+	Modify(to, "health", damage, "-", subobj)
+
 func from_set(obj, attributeset: AttributeSet, subobj=null):
 	if attributeset == null:
 		print("attributeset is null on :" + str(obj))

@@ -7,5 +7,7 @@
 	"attack_amount",
 	"projectile_amount",
 	"projectile_speed",
-	"never_ending"
+	"never_ending",
+	"attack_damage",
+	"swing_speed"
 ]
