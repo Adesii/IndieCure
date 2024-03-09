@@ -18,3 +18,5 @@ texture = ExtResource("1_2mdmq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Basic_damage_area"]
 shape = SubResource("CircleShape2D_vtdgs")
+
+[connection signal="area_shape_entered" from="Basic_damage_area" to="." method="_on_basic_damage_area_area_shape_entered"]
