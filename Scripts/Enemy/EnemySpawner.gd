@@ -168,7 +168,9 @@ func _newRender():
 
 		if enemy.damage_frames > 0:
 			if enemy.damage_frames == 10:
-				enemy.modulate = Color(1, 1, 1) * 2
+				enemy.modulate = Color(1, 1, 1) * 3
+			if enemy.damage_frames == 8:
+				enemy.modulate = Color(1, 1, 1) * 10
 			if enemy.damage_frames == 1:
 				enemy.modulate = Color(1, 1, 1)
 			enemy.damage_frames -= 1
