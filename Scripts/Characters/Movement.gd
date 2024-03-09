@@ -3,14 +3,10 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 @export var inventory: Inventory
 
-var _character: IndieCharacter
-
 var character: IndieCharacter:
 	set(val):
-		_character = val
+		character = val
 		init_character()
-	get:
-		return _character
 
 var mouse_input = false
 
