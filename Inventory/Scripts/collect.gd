@@ -1,10 +1,15 @@
+@tool
+
 extends Area2D
 
-@export var itemResource: InventoryItem
+@export var itemResource: InventoryItem:
+	set(val):
+		itemResource = val
+		if val != null:
+			call_deferred("update_texture")
 
 func _ready():
-	$Sprite2D.texture = itemResource.texture
-	
+	update_texture()
 
 func collect(inventory: Inventory):
 	var success = inventory.insert(itemResource)
@@ -12,3 +17,7 @@ func collect(inventory: Inventory):
 		return
 	else:
 		queue_free()
+
+func update_texture():
+	if itemResource != null:
+		$Sprite2D.texture = itemResource.texture
