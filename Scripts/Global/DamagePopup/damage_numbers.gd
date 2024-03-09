@@ -5,7 +5,6 @@ extends Node2D
 
 # to use this script, you need to use the following script calls:
 # $game_map.add_damage_number(x, y, value, color, duration)
-# $game_map.add_floating_text(x, y, text, color, duration)
 
 var damage_number_scene = preload ("res://Scripts/Global/DamagePopup/damage_number.tscn")
 
@@ -15,7 +14,6 @@ func add_damage_number(dmg_position, value, color, duration=1.2):
 	var damage_number: Node2D = create_damage_number()
 
 	add_child(damage_number)
-	print(damage_number)
 
 	damage_number.global_position = dmg_position
 	damage_number.set_value(value)
