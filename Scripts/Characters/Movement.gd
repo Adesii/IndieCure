@@ -3,15 +3,29 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 @export var inventory: Inventory
 
-var character: IndieCharacter
+var _character: IndieCharacter
+
+var character: IndieCharacter:
+	set(val):
+		_character = val
+		init_character()
+	get:
+		return _character
 
 var mouse_input = false
 
-func _ready():
-	inventory.item_added.connect(on_item_added)
+func _ready() -> void:
+	if !inventory.item_added.is_connected(on_item_added):
+		inventory.item_added.connect(on_item_added)
+
+func init_character():
+	if !inventory.item_added.is_connected(on_item_added):
+		inventory.item_added.connect(on_item_added)
 	if character != null:
 		for item in character.starter_equipment:
 			inventory.insert(item)
+			print("Item added: ", item.name)
+	print("Character initialized")
 
 func _physics_process(_delta):
 	# Handle Jump.
