@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cov2wpkiiv7n3"]
+
+[ext_resource type="PackedScene" uid="uid://dsx5333bkmcjj" path="res://Inventory/Weapons/2/2.tscn" id="1_1f527"]
+[ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="2_06sm1"]
+
+[resource]
+script = ExtResource("2_06sm1")
+name = "2"
+scene = ExtResource("1_1f527")
+stats = Array[Resource("res://Scripts/GAS/Attributes/AttributePair.gd")]([])
+stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
+type = 1

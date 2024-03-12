@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://cukgdoaxwsd2w" path="res://Characters/Bella/Textures/bellaicon.png" id="2_sacob"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_5vf0b"]
 
-[sub_resource type="Resource" id="Resource_c6d4l"]
+[sub_resource type="Resource" id="Resource_dwdor"]
 resource_local_to_scene = true
 script = ExtResource("3_5vf0b")
 attribute_name = "projectile_amount"
 default_value = 1.0
 
-[sub_resource type="Resource" id="Resource_d277a"]
+[sub_resource type="Resource" id="Resource_5t73v"]
 resource_local_to_scene = true
 script = ExtResource("3_5vf0b")
 attribute_name = "projectile_speed"
@@ -22,5 +22,6 @@ script = ExtResource("1_pki00")
 name = "star mortar thing"
 texture = ExtResource("2_sacob")
 scene = ExtResource("1_i02f2")
-stats = Array[ExtResource("3_5vf0b")]([SubResource("Resource_c6d4l"), SubResource("Resource_d277a")])
+stats = Array[ExtResource("3_5vf0b")]([SubResource("Resource_dwdor"), SubResource("Resource_5t73v")])
+stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
 type = 1

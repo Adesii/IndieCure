@@ -49,3 +49,5 @@ speed boost (basically the boots we already got)
 10% extra damage for damage-over-time effects
 
 8% xp gain
+
+golden Erm
