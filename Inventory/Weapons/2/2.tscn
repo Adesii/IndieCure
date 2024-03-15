@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dsx5333bkmcjj"]
+[gd_scene load_steps=2 format=3 uid="uid://dsx5333bkmcjj"]
+
+[ext_resource type="Script" path="res://Inventory/Weapons/2/2.gd" id="1_ugbkj"]
 
 [node name="2" type="Node2D"]
+script = ExtResource("1_ugbkj")

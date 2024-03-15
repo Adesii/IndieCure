@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_aayce")
-name = "3"
+name = "flamethrower"
 scene = ExtResource("1_is0xa")
 stats = Array[Resource("res://Scripts/GAS/Attributes/AttributePair.gd")]([])
 stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])

@@ -66,10 +66,10 @@ attribute_name = "projectile_amount"
 amount = 3.0
 modifier = 0
 
-[node name="Guitar" type="Node2D" node_paths=PackedStringArray("guitar_swing", "guitar_hitbox")]
+[node name="Guitar" type="Node2D" node_paths=PackedStringArray("swing_sprite", "swing_hitbox")]
 script = ExtResource("2_iw60f")
-guitar_swing = NodePath("GuitarSwing")
-guitar_hitbox = NodePath("GuitarSwing/Area2D")
+swing_sprite = NodePath("GuitarSwing")
+swing_hitbox = NodePath("GuitarSwing/Area2D")
 
 [node name="GuitarSwing" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
