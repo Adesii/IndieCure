@@ -42,6 +42,7 @@ func add_object(mass_object: MassObject):
 var _todelete_objects: Array[MassObject]
 
 func _clean_objects():
+	await Global.get_tree().physics_frame
 	for i in _todelete_objects.size():
 		var mass_object = _todelete_objects[i]
 		if mass_object.rendering_rid.is_valid():

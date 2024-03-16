@@ -38,7 +38,7 @@ func _exit_tree():
 		return
 	dummysprite2d.queue_free()
 
-func _physics_process(_delta):		
+func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
 	dummysprite2d.visible = sprite.visible
@@ -57,10 +57,9 @@ func _physics_process(_delta):
 	if sprite is Sprite2D:
 		dummysprite2d.frame = sprite.frame
 	elif sprite is AnimatedSprite2D:
-		dummysprite2d.texture = sprite.sprite_frames.get_frame_texture(sprite.animation,sprite.frame)
+		dummysprite2d.texture = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
 	else:
 		dummysprite2d.texture = null
-
 
 var editor_texture = null
 var _sprite = null
@@ -74,14 +73,15 @@ func _draw():
 		if _sprite is Sprite2D:
 			editor_texture = _sprite.texture
 		elif _sprite is AnimatedSprite2D:
-			editor_texture = _sprite.sprite_frames.get_frame_texture(_sprite.animation,_sprite.frame)
+			editor_texture = _sprite.sprite_frames.get_frame_texture(_sprite.animation, _sprite.frame)
 		else:
 			editor_texture = null
-	
-	var r = Rect2(0,0,editor_texture.get_width(),editor_texture.get_height())
+	if editor_texture == null:
+		return
+	var r = Rect2(0, 0, editor_texture.get_width(), editor_texture.get_height())
 	#center the position
 	r.position = _sprite.position + shadow_offset + _sprite.offset
-	r.position -= Vector2(0, _sprite.offset.y)*2
-	r.position -= r.size/2
+	r.position -= Vector2(0, _sprite.offset.y) * 2
+	r.position -= r.size / 2
 	r.size = Vector2(r.size.x, -r.size.y)
-	draw_texture_rect(editor_texture,r,false,Color(0,0,0,0.5),false)
+	draw_texture_rect(editor_texture, r, false, Color(0, 0, 0, 0.5), false)

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_puejc"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="2_52abt"]
-[ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="5_jm66g"]
+[ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="5_chqnm"]
 
 [sub_resource type="Resource" id="Resource_owkvk"]
 resource_local_to_scene = true
@@ -48,4 +48,4 @@ script = ExtResource("1_pguks")
 character_animations = ExtResource("1_puejc")
 icon = SubResource("CompressedTexture2D_xmsmy")
 attribute_set = SubResource("Resource_7fnjd")
-starter_equipment = Array[Resource("res://Inventory/Scripts/inventoryItem.gd")]([ExtResource("5_jm66g")])
+starter_equipment = Array[Resource("res://Inventory/Scripts/inventoryItem.gd")]([ExtResource("5_chqnm")])

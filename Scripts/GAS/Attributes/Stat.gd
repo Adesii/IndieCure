@@ -42,16 +42,16 @@ func Damage(from, to, subobj=null):
 	if damage_modifier == 0:
 		damage_modifier = 1
 
-	print("Damage: " + str(damage))
+	#print("Damage: " + str(damage))
 	
 	# apply a bit of randomness to the damage
 	damage = damage - randf_range(max(2, damage * 0.1), max(5, damage * 0.2))
 
-	print("Damage after randomness: " + str(damage))
+	#print("Damage after randomness: " + str(damage))
 
 	damage = round(damage * damage_modifier)
 
-	print("Damage after modifier: " + str(damage))
+	#print("Damage after modifier: " + str(damage))
 
 	Modify(to, "health", damage, "-", subobj)
 
