@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="4_lc7uw"]
 [ext_resource type="Script" path="res://Scripts/GAS/statupgrade.gd" id="5_gptdi"]
 
-[sub_resource type="Resource" id="Resource_aduv7"]
+[sub_resource type="Resource" id="Resource_ic3u6"]
 resource_local_to_scene = true
 script = ExtResource("4_lc7uw")
 attribute_name = "projectile_amount"
@@ -73,7 +73,7 @@ script = ExtResource("3_uli0x")
 
 [node name="StatUpgrade" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")
-stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_aduv7")])
+stats = Array[ExtResource("4_lc7uw")]([SubResource("Resource_ic3u6")])
 
 [node name="StatUpgrade2" type="Node" parent="UpgradeProvider"]
 script = ExtResource("5_gptdi")

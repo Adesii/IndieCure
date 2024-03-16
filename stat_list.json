@@ -10,5 +10,6 @@
 	"never_ending",
 	"attack_damage",
 	"swing_speed",
-	"attack_duration"
+	"attack_duration",
+	"attack_size"
 ]

@@ -21,6 +21,7 @@ func _init():
 		rendering_threads_array.append(Thread.new())
 
 func free():
+	_clear_objects_immediately()
 	RenderingServer.free_rid(_canvas_item_rid)
 	RenderingServer.free_rid(_canvas_item_shadow_rid)
 
@@ -43,6 +44,9 @@ var _todelete_objects: Array[MassObject]
 
 func _clean_objects():
 	await Global.get_tree().physics_frame
+	_clear_objects_immediately()
+	
+func _clear_objects_immediately():
 	for i in _todelete_objects.size():
 		var mass_object = _todelete_objects[i]
 		if mass_object.rendering_rid.is_valid():
@@ -53,7 +57,6 @@ func _clean_objects():
 			PhysicsServer2D.free_rid(mass_object.physics_rid)
 		#print_debug("MassRenderer: Object removed")
 	_todelete_objects.clear()
-
 func remove_object(index: MassObject):
 	var mass_object = index
 	#disable shape area

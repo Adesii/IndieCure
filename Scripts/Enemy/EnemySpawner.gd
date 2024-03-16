@@ -186,6 +186,9 @@ func _new_spawn_enemy(spawn_location: Vector2, speed=200) -> void:
 	var enemy = Enemy.new()
 	enemy.global_position = spawn_location
 	enemy.speed = speed
+	enemy.health.base_value = 5
+	enemy.health.current_value = 5
+	enemy.health.max_value = 5
 
 	enemy.image_offset_animation = randi() % max_images
 	enemy.animation_lifetime = randf_range(0, 1)
@@ -199,8 +202,7 @@ func _new_spawn_enemy(spawn_location: Vector2, speed=200) -> void:
 
 	RenderingServer.canvas_item_set_parent(enemy.rendering_shadow_rid, Global.shadow_canvas_group.get_canvas_item())
 	#enemies.append(enemy)
-	
-	Stat.Set(self, "health", 10, {"shape_id": renderer.add_object(enemy)})
+	renderer.add_object(enemy)
 
 func _configure_collision_for_enemy(enemy: Enemy) -> void:
 	# Define the shape's position
@@ -256,7 +258,6 @@ func _modify_stat(attributename: String, value, modificationoperator, subobj=nul
 			if enemy.invulnerability > 0:
 				return 0
 			enemy.invulnerability = 0.02
-			enemy.damage_frames = 10
 			return enemy.health.modify_value(value, modificationoperator)
 		if subobj.has("enemy_type"):
 			return enemyTypeStats[subobj["enemy_type"]]._modify_stat(attributename, value, modificationoperator)

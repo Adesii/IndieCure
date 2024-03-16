@@ -52,6 +52,7 @@ func Damage(from, to, subobj=null):
 	damage = round(damage * damage_modifier)
 
 	#print("Damage after modifier: " + str(damage))
+	damage = abs(damage)
 
 	Modify(to, "health", damage, "-", subobj)
 
