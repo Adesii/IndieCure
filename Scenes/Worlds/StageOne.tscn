@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="11_rnqhi"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
-[ext_resource type="Resource" uid="uid://cvg33vrbcxuj6" path="res://Inventory/Weapons/3/3.tres" id="16_mtekb"]
+[ext_resource type="Resource" uid="uid://che604nsso76u" path="res://Inventory/Weapons/4/4.tres" id="16_wgcua"]
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="17_1c00v"]
 [ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
@@ -351,7 +351,7 @@ monitoring = false
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(0, -2)
 monitoring = false
-itemResource = ExtResource("16_mtekb")
+itemResource = ExtResource("16_wgcua")
 
 [node name="shoe2" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-78, 2)

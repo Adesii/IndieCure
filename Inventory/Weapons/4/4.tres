@@ -1,12 +1,43 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://che604nsso76u"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://che604nsso76u"]
 
 [ext_resource type="PackedScene" uid="uid://orwo705hx202" path="res://Inventory/Weapons/4/4.tscn" id="1_lyy0u"]
 [ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="2_qpeg8"]
+[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_telsj"]
+
+[sub_resource type="Resource" id="Resource_x0gau"]
+resource_local_to_scene = true
+script = ExtResource("3_telsj")
+attribute_name = "attack_duration"
+default_value = 5.0
+
+[sub_resource type="Resource" id="Resource_nexip"]
+resource_local_to_scene = true
+script = ExtResource("3_telsj")
+attribute_name = "projectile_amount"
+default_value = 3.0
+
+[sub_resource type="Resource" id="Resource_q7h5d"]
+resource_local_to_scene = true
+script = ExtResource("3_telsj")
+attribute_name = "attack_speed"
+default_value = 4.0
+
+[sub_resource type="Resource" id="Resource_8uswl"]
+resource_local_to_scene = true
+script = ExtResource("3_telsj")
+attribute_name = "attack_damage"
+default_value = 3.0
+
+[sub_resource type="Resource" id="Resource_cvwkp"]
+resource_local_to_scene = true
+script = ExtResource("3_telsj")
+attribute_name = "attack_size"
+default_value = 50.0
 
 [resource]
 script = ExtResource("2_qpeg8")
 name = "Spill"
 scene = ExtResource("1_lyy0u")
-stats = Array[Resource("res://Scripts/GAS/Attributes/AttributePair.gd")]([])
+stats = Array[ExtResource("3_telsj")]([SubResource("Resource_x0gau"), SubResource("Resource_nexip"), SubResource("Resource_q7h5d"), SubResource("Resource_8uswl"), SubResource("Resource_cvwkp")])
 stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
 type = 1

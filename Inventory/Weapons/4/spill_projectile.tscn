@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d164n48gswwvh"]
+
+[ext_resource type="Script" path="res://Inventory/Weapons/4/spill_projectile.gd" id="1_3got6"]
+[ext_resource type="PackedScene" uid="uid://esnjnv27alsu" path="res://Characters/basic_damage_area.tscn" id="2_a0pnl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10b1y"]
+radius = 50.0
+
+[node name="SpillProjectile" type="Node2D" node_paths=PackedStringArray("shape", "sprite")]
+script = ExtResource("1_3got6")
+shape = NodePath("Basic_damage_area/CollisionShape2D")
+sprite = NodePath("Basic_damage_area/CollisionShape2D/ColorRect")
+
+[node name="Basic_damage_area" parent="." instance=ExtResource("2_a0pnl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basic_damage_area"]
+shape = SubResource("CircleShape2D_10b1y")
+
+[node name="ColorRect" type="ColorRect" parent="Basic_damage_area/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.988235, 0.286275, 0.286275, 0.243137)
