@@ -10,7 +10,7 @@ func attack() -> void:
 		spill_List = spill_List.filter(func x(n): return n != null)
 		attack()
 		return
-	await get_tree().create_timer(Stat.Get(self, "attack_speed")).timeout
+	await Global.create_timer(Stat.Get(self, "attack_speed")).timeout
 	for i in range(Stat.Get(self, "projectile_amount")):
 		var projectile = spill_projectile.instantiate()
 		projectile.parent_weapon = self

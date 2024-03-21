@@ -55,6 +55,7 @@ func _physics_process(_delta):
 	dummysprite2d.flip_h = sprite.flip_h
 	
 	if sprite is Sprite2D:
+		dummysprite2d.texture = sprite.texture
 		dummysprite2d.frame = sprite.frame
 	elif sprite is AnimatedSprite2D:
 		dummysprite2d.texture = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)

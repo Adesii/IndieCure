@@ -15,4 +15,4 @@ func OnAttack():
 		projectile.speed = 150
 		projectile.parent_weapon = self
 		Global.current_scene.add_child(projectile)
-		await get_tree().create_timer(0.05, false).timeout
+		await Global.create_timer(0.05).timeout

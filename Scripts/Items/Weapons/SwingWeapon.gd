@@ -36,13 +36,13 @@ func _on_attack():
 		swing_sprite.visible = false
 		swing_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
 
-		await get_tree().create_timer(Stat.Get(self, "attack_speed") / 2, false).timeout
+		await Global.create_timer(Stat.Get(self, "attack_speed") / 2).timeout
 
 	swing_sprite.visible = false
 	swing_sprite.rotation = deg_to_rad( - 50)
 	swing_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
 	attacking = false
-	await get_tree().create_timer(Stat.Get(self, "attack_speed") * 2, false).timeout
+	await Global.create_timer(Stat.Get(self, "attack_speed") * 2).timeout
 	_on_attack()
 
 func OnAttack():

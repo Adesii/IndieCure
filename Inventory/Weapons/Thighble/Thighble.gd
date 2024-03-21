@@ -73,7 +73,7 @@ func _on_attack():
 	if Stat.Get(self, "never_ending"):
 		return
 	await attacks[0].tweener.finished
-	await get_tree().create_timer(attack_time).timeout
+	await Global.create_timer(attack_time).timeout
 
 	finished_attack.emit()
 	is_attacking = false
