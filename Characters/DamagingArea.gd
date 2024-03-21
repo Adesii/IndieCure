@@ -17,7 +17,13 @@ func _on_area_shape_exited(_area_rid: RID, area: Area2D, area_shape_index: int, 
 	if overlapping_areas[area].size() == 0:
 		overlapping_areas.erase(area)
 
+var tick_count: int = 0
 func _physics_process(_delta):
+	if tick_count != int(Stat.Get(get_parent(), "tick_speed")):
+		tick_count += 1
+		return
+	tick_count = 0
+
 	for area in overlapping_areas.keys():
 		for shape in overlapping_areas[area]:
 			Stat.Damage(get_parent(), area.get_parent(), {"shape_id": shape})

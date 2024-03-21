@@ -11,5 +11,6 @@
 	"attack_damage",
 	"swing_speed",
 	"attack_duration",
-	"attack_size"
+	"attack_size",
+	"tick_speed"
 ]

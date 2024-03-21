@@ -5,19 +5,19 @@
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_u7ibf"]
 [ext_resource type="Texture2D" uid="uid://cq0380elop0ko" path="res://Inventory/Weapons/Thighble/Textures/thighble-0001.png" id="3_xajum"]
 
-[sub_resource type="Resource" id="Resource_byi58"]
+[sub_resource type="Resource" id="Resource_s5048"]
 resource_local_to_scene = true
 script = ExtResource("3_u7ibf")
 attribute_name = "projectile_amount"
 default_value = 1.0
 
-[sub_resource type="Resource" id="Resource_mygkt"]
+[sub_resource type="Resource" id="Resource_f372a"]
 resource_local_to_scene = true
 script = ExtResource("3_u7ibf")
 attribute_name = "projectile_speed"
 default_value = 2.0
 
-[sub_resource type="Resource" id="Resource_f57vi"]
+[sub_resource type="Resource" id="Resource_0s6cp"]
 resource_local_to_scene = true
 script = ExtResource("3_u7ibf")
 attribute_name = "attack_damage"
@@ -28,6 +28,6 @@ script = ExtResource("2_oxa4c")
 name = "Thighble"
 texture = ExtResource("3_xajum")
 scene = ExtResource("1_hgk2w")
-stats = Array[ExtResource("3_u7ibf")]([SubResource("Resource_byi58"), SubResource("Resource_mygkt"), SubResource("Resource_f57vi")])
+stats = Array[ExtResource("3_u7ibf")]([SubResource("Resource_s5048"), SubResource("Resource_f372a"), SubResource("Resource_0s6cp")])
 stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
 type = 1
