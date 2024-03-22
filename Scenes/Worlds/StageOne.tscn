@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=47 format=3 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -24,6 +24,8 @@
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="21_hqbda"]
 [ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
+[ext_resource type="Shader" path="res://Scripts/Global/ShadowGroup_cloud.gdshader" id="25_vx1nm"]
+[ext_resource type="Script" path="res://Scripts/Global/shadowgroup_cloud.gd" id="26_f3bdg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -306,6 +308,33 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = false
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p7g0q"]
+seed = 3290
+frequency = 0.0029
+fractal_octaves = 4
+fractal_lacunarity = 2.625
+fractal_gain = 0.395
+domain_warp_type = 1
+domain_warp_amplitude = 33.68
+domain_warp_frequency = 0.08
+domain_warp_fractal_octaves = 10
+domain_warp_fractal_gain = 0.665
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iuwa1"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_p7g0q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_towo2"]
+shader = ExtResource("25_vx1nm")
+shader_parameter/OCTAVE = 12
+shader_parameter/pixelSize = 1024
+shader_parameter/tiling = 0.1
+shader_parameter/Time_Offset = 320.702
+shader_parameter/minimum_offset = -0.35
+shader_parameter/texts = SubResource("NoiseTexture2D_iuwa1")
+
 [node name="StageOne" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_hrxjt")
@@ -470,5 +499,20 @@ position = Vector2(97, 40)
 
 [node name="weapon_pickup2" parent="." instance=ExtResource("22_4lw8j")]
 position = Vector2(100, 65)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+self_modulate = Color(0, 0, 0, 0.235294)
+z_index = 4096
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasGroup"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_towo2")
+custom_minimum_size = Vector2(10000, 10000)
+offset_left = -1718.0
+offset_top = -1506.0
+offset_right = 8282.0
+offset_bottom = 8494.0
+script = ExtResource("26_f3bdg")
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

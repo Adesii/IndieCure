@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ylmopm0idxg5"]
+
+[ext_resource type="Shader" path="res://Scripts/Global/ShadowGroup_cloud.gdshader" id="1_1hb4c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v7ewo"]
+noise_type = 2
+seed = -545
+frequency = 0.0021
+fractal_lacunarity = 2.4
+domain_warp_type = 1
+domain_warp_amplitude = 33.68
+domain_warp_frequency = 0.08
+domain_warp_fractal_octaves = 10
+domain_warp_fractal_gain = 0.665
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iykxb"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_v7ewo")
+
+[resource]
+shader = ExtResource("1_1hb4c")
+shader_parameter/OCTAVE = 12
+shader_parameter/pixelSize = 1024
+shader_parameter/tiling = 0.1
+shader_parameter/Time_Offset = 2032.24
+shader_parameter/minimum_offset = -0.495
+shader_parameter/texts = SubResource("NoiseTexture2D_iykxb")

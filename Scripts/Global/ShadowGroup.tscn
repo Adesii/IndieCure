@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://bj44qa5pdck76"]
 
 [node name="ShadowGroup" type="CanvasGroup"]
-self_modulate = Color(0, 0, 0, 0.439216)
-top_level = true
+self_modulate = Color(0, 0, 0, 0.235294)
 z_index = -4096
-z_as_relative = false
