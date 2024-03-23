@@ -8,7 +8,7 @@ func _get_stat(attribute_name, subobj=null):
 	return Stat.Get(parent_weapon, attribute_name, subobj)
 
 func _ready():
-	await get_tree().create_timer(4).timeout
+	await Global.create_timer(4).timeout
 	queue_free()
 
 func _physics_process(delta):
