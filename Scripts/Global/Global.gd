@@ -46,9 +46,7 @@ func load_stage(stage_scene: PackedScene):
 	current_scene.add_child(shadow_canvas_group)
 	
 	get_tree().root.add_child(stage)
-	
-	#get_tree().current_scene = stage
-	
+
 	#add character scene
 	setup_player()
 	setup_rest()

@@ -331,7 +331,7 @@ shader = ExtResource("25_vx1nm")
 shader_parameter/OCTAVE = 12
 shader_parameter/pixelSize = 1024
 shader_parameter/tiling = 0.1
-shader_parameter/Time_Offset = 320.702
+shader_parameter/Time_Offset = 1430.72
 shader_parameter/minimum_offset = -0.35
 shader_parameter/texts = SubResource("NoiseTexture2D_iuwa1")
 

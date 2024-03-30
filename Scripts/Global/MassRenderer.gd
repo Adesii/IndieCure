@@ -98,6 +98,7 @@ func end_render(): # multithreading rendering
 			continue
 		if t.is_started():
 			t.wait_to_finish()
+			continue
 		t.start(draw_batch.bind(i * count, count))
 		#print("MassRenderer: Thread " + str(i) + " started, for range: " + str(i * count) + " to " + str(i * count + count))
 	
