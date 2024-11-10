@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://b14hdt4forppw"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=11 format=3 uid="uid://b14hdt4forppw"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="1_attjf"]
 [ext_resource type="PackedScene" uid="uid://dl0y8qc6rbm5t" path="res://Characters/Anny/Weapons/Guitar/Guitar.tscn" id="1_qde8q"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_4ulrg"]
+[ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="3_8agfe"]
 [ext_resource type="Texture2D" uid="uid://0sgixa4rlg1p" path="res://Characters/Anny/Weapons/Guitar/Guitar_Projectile-0001.png" id="3_ocbf6"]
 
 [sub_resource type="Resource" id="Resource_yivkd"]
@@ -41,5 +42,5 @@ name = "Guitar"
 texture = ExtResource("3_ocbf6")
 scene = ExtResource("1_qde8q")
 stats = Array[ExtResource("3_4ulrg")]([SubResource("Resource_yivkd"), SubResource("Resource_oa23j"), SubResource("Resource_515mq"), SubResource("Resource_noxri"), SubResource("Resource_hl5dc")])
-stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
+stat_upgrades = Array[ExtResource("3_8agfe")]([])
 type = 1

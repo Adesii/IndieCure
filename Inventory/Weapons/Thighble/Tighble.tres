@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=8 format=3 uid="uid://d0j2y528e240y"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://d0j2y528e240y"]
 
 [ext_resource type="PackedScene" uid="uid://dtma1gy8ltvqp" path="res://Inventory/Weapons/Thighble/Thighble.tscn" id="1_hgk2w"]
 [ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="2_oxa4c"]
+[ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="3_o0hjx"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_u7ibf"]
 [ext_resource type="Texture2D" uid="uid://cq0380elop0ko" path="res://Inventory/Weapons/Thighble/Textures/thighble-0001.png" id="3_xajum"]
 
@@ -29,5 +30,5 @@ name = "Thighble"
 texture = ExtResource("3_xajum")
 scene = ExtResource("1_hgk2w")
 stats = Array[ExtResource("3_u7ibf")]([SubResource("Resource_s5048"), SubResource("Resource_f372a"), SubResource("Resource_0s6cp")])
-stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
+stat_upgrades = Array[ExtResource("3_o0hjx")]([])
 type = 1

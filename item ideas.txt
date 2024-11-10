@@ -51,3 +51,19 @@ speed boost (basically the boots we already got)
 8% xp gain
 
 golden Erm
+
+
+
+anny main weapon idea:
+- Spear
+- yandere knife
+- spill
+
+
+
+
+add ann as enemies. different types for the different types of ann's
+- ann == normal type enemy
+- pannty == armored variant with more hp
+- annwizard == ranged attack ann
+- shoop variants are faster and mostly used for patterns
