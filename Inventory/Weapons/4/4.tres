@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=11 format=3 uid="uid://che604nsso76u"]
 
 [ext_resource type="PackedScene" uid="uid://orwo705hx202" path="res://Inventory/Weapons/4/4.tscn" id="1_lyy0u"]
-[ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="2_qpeg8"]
-[ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="3_i6ock"]
-[ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_telsj"]
+[ext_resource type="Script" uid="uid://dpbos4yne4kny" path="res://Inventory/Scripts/inventoryItem.gd" id="2_qpeg8"]
+[ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="3_i6ock"]
+[ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_telsj"]
 
 [sub_resource type="Resource" id="Resource_c54nh"]
 resource_local_to_scene = true

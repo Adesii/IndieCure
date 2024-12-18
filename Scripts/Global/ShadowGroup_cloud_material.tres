@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ylmopm0idxg5"]
 
-[ext_resource type="Shader" path="res://Scripts/Global/ShadowGroup_cloud.gdshader" id="1_1hb4c"]
+[ext_resource type="Shader" uid="uid://c7aajc64gddqa" path="res://Scripts/Global/ShadowGroup_cloud.gdshader" id="1_1hb4c"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_v7ewo"]
 noise_type = 2
@@ -24,6 +24,6 @@ shader = ExtResource("1_1hb4c")
 shader_parameter/OCTAVE = 12
 shader_parameter/pixelSize = 1024
 shader_parameter/tiling = 0.1
+shader_parameter/texts = SubResource("NoiseTexture2D_iykxb")
 shader_parameter/Time_Offset = 2032.24
 shader_parameter/minimum_offset = -0.495
-shader_parameter/texts = SubResource("NoiseTexture2D_iykxb")

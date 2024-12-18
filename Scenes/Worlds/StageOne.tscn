@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://c1gk4v3ulvpue"]
 
-[ext_resource type="Script" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
+[ext_resource type="Script" uid="uid://bd74xre018gnk" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
 [ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="2_igm8l"]
 [ext_resource type="Texture2D" uid="uid://2ugw1nawdxja" path="res://Scenes/Worlds/StageOne/Textures/Structures/stone-0001.png" id="3_g3xn5"]
@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b4rgd6mu58o5e" path="res://Scenes/Worlds/StageOne/Textures/Ground/water-0001_G38vvP.png" id="7_srpi3"]
 [ext_resource type="Texture2D" uid="uid://7ebnk3ftrcg2" path="res://Scenes/Worlds/StageOne/Textures/Structures/Stone-0006_G38vvP.png" id="8_cl3ux"]
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Scenes/Worlds/StageOne/Textures/Structures/Grave.tscn" id="9_a8154"]
-[ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
+[ext_resource type="Script" uid="uid://cajisfa8k1qwv" path="res://Scripts/Enemy/EnemySpawner.gd" id="9_kwptk"]
 [ext_resource type="PackedScene" uid="uid://bg4cmgdd2sdw8" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_4.tscn" id="10_fldpj"]
-[ext_resource type="Shader" path="res://Scenes/Worlds/enemyoutline.gdshader" id="10_v1m63"]
+[ext_resource type="Shader" uid="uid://boy3tjeuckiu2" path="res://Scenes/Worlds/enemyoutline.gdshader" id="10_v1m63"]
 [ext_resource type="Texture2D" uid="uid://dck7qnkrm014b" path="res://Scenes/Worlds/StageOne/Textures/Structures/road-0002.png" id="10_y60uj"]
 [ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree_0.tscn" id="11_70nbh"]
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="11_rnqhi"]
@@ -20,12 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
 [ext_resource type="Resource" uid="uid://che604nsso76u" path="res://Inventory/Weapons/4/4.tres" id="16_wgcua"]
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="17_1c00v"]
-[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
+[ext_resource type="Script" uid="uid://bemf06430moe5" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="21_hqbda"]
 [ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
-[ext_resource type="Shader" path="res://Scripts/Global/ShadowGroup_cloud.gdshader" id="25_vx1nm"]
-[ext_resource type="Script" path="res://Scripts/Global/shadowgroup_cloud.gd" id="26_f3bdg"]
+[ext_resource type="Shader" uid="uid://c7aajc64gddqa" path="res://Scripts/Global/ShadowGroup_cloud.gdshader" id="25_vx1nm"]
+[ext_resource type="Script" uid="uid://dkuukit0eupfw" path="res://Scripts/Global/shadowgroup_cloud.gd" id="26_f3bdg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -331,9 +331,9 @@ shader = ExtResource("25_vx1nm")
 shader_parameter/OCTAVE = 12
 shader_parameter/pixelSize = 1024
 shader_parameter/tiling = 0.1
-shader_parameter/Time_Offset = 409.633
-shader_parameter/minimum_offset = -0.35
 shader_parameter/texts = SubResource("NoiseTexture2D_iuwa1")
+shader_parameter/Time_Offset = 1170.6
+shader_parameter/minimum_offset = -0.35
 
 [node name="StageOne" type="Node2D"]
 y_sort_enabled = true
@@ -367,7 +367,7 @@ frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("Atlas
 image_offset = Vector2i(0, 16)
 image_change_offset = 0.1
 shared_area = NodePath("Area2D")
-enemiestospawn = 1000
+enemiestospawn = 100000
 
 [node name="Area2D" type="Area2D" parent="TofSpawner"]
 process_physics_priority = 99
@@ -378,7 +378,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(0, -2)
+position = Vector2(-148, 73)
 monitoring = false
 itemResource = ExtResource("16_wgcua")
 

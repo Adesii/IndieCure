@@ -22,8 +22,8 @@ func _ready():
 
 @export var enemiestospawn = 800
 
-var amounttospawn = 10
-var spawndelay = 0.2
+var amounttospawn = 100
+var spawndelay = 0.1
 var spawntimer = 0
 
 func _physics_process(delta):
@@ -36,7 +36,7 @@ func _physics_process(delta):
 			amounttospawn -= 1
 			spawntimer = 0
 		
-		amounttospawn = 10
+		amounttospawn = 1000
 
 	gothrough(delta)
 	queue_redraw()
@@ -53,7 +53,7 @@ func check_duplicates(a):
 		if is_dupe == true:
 			break
 		for j in range(a.size()):
-			if a[j] == a[i]&&i != j:
+			if a[j] == a[i] && i != j:
 				is_dupe = true
 				print("duplicate")
 				break
@@ -163,7 +163,7 @@ func _newRender():
 		var drawrect = atlastexture.get_region()
 		drawrect.position = -offset - Vector2(0, image_offset.y)
 		if !enemy.flip_h:
-			drawrect.size.x *= - 1
+			drawrect.size.x *= -1
 		enemy.texture_rect = drawrect
 
 		if enemy.damage_frames > 0:
@@ -175,14 +175,14 @@ func _newRender():
 				enemy.modulate = Color(1, 1, 1)
 			enemy.damage_frames -= 1
 
-		drawrect.size.y *= - 1
+		drawrect.size.y *= -1
 		drawrect.position.y -= drawrect.size.y + 2
 		enemy.shadow_texture_rect = drawrect
 
 		#renderer._draw_single(enemy)
 	renderer.end_render() # figure out if this is a good idea
 
-func _new_spawn_enemy(spawn_location: Vector2, speed=200) -> void:
+func _new_spawn_enemy(spawn_location: Vector2, speed = 200) -> void:
 	var enemy = Enemy.new()
 	enemy.global_position = spawn_location
 	enemy.speed = speed
@@ -247,7 +247,7 @@ func _get_stat(attribute, subobj):
 		return enemyTypeStats[subobj]._get_stat(attribute)
 	return 0
 
-func _modify_stat(attributename: String, value, modificationoperator, subobj=null):
+func _modify_stat(attributename: String, value, modificationoperator, subobj = null):
 	if typeof(subobj) == TYPE_DICTIONARY:
 		if subobj.has("shape_id") and attributename.to_lower() == "health":
 			if renderer._objects.size() <= subobj["shape_id"]:

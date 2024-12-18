@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="IndieCharacter" load_steps=14 format=3 uid="uid://dj0fmrax7hujt"]
+[gd_resource type="Resource" script_class="IndieCharacter" load_steps=13 format=3 uid="uid://dj0fmrax7hujt"]
 
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="1_5m7ot"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterResource.gd" id="1_pguks"]
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_puejc"]
 [ext_resource type="Script" path="res://Scripts/GAS/Attributes/AttributeSet.gd" id="2_52abt"]
-[ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="5_chqnm"]
 [ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="5_wc7e7"]
 
 [sub_resource type="Resource" id="Resource_1gl3g"]
@@ -49,4 +48,4 @@ script = ExtResource("1_pguks")
 character_animations = ExtResource("1_puejc")
 icon = SubResource("CompressedTexture2D_xmsmy")
 attribute_set = SubResource("Resource_7fnjd")
-starter_equipment = Array[ExtResource("5_wc7e7")]([ExtResource("5_chqnm")])
+starter_equipment = Array[ExtResource("5_wc7e7")]([])
