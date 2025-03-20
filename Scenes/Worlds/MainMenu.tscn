@@ -1,23 +1,23 @@
 [gd_scene load_steps=37 format=3 uid="uid://cavkiimaw4l4w"]
 
-[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
+[ext_resource type="Script" uid="uid://c3icylc8b4kn0" path="res://Scenes/Worlds/MainMenu/Scripts/MainMenu.gd" id="1_w761w"]
 [ext_resource type="Shader" uid="uid://nt5qoe5snast" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuBackground.tres" id="2_8k7pa"]
 [ext_resource type="Shader" uid="uid://temhylg2ghpn" path="res://Scenes/Worlds/MainMenu/Shader/MainMenuParticles.tres" id="3_fa547"]
-[ext_resource type="Script" path="res://Scripts/UI/TabController.gd" id="4_eewjv"]
+[ext_resource type="Script" uid="uid://bwt8lq65aiwce" path="res://Scripts/UI/TabController.gd" id="4_eewjv"]
 [ext_resource type="Theme" uid="uid://bww4copfldb4j" path="res://Themes/Button_Theme.tres" id="5_um0sp"]
-[ext_resource type="Script" path="res://Scripts/UI/TabTransitionButton.gd" id="5_y57mj"]
+[ext_resource type="Script" uid="uid://blgkr4uqrltcf" path="res://Scripts/UI/TabTransitionButton.gd" id="5_y57mj"]
 [ext_resource type="Texture2D" uid="uid://c7q7ut82i7u6m" path="res://Scenes/Worlds/MainMenu/Textures/menu_plates.png" id="6_6d63y"]
-[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
+[ext_resource type="Script" uid="uid://b6hj7vo2wo826" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
 [ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
 [ext_resource type="FontFile" uid="uid://de8n5evbrefyx" path="res://fonts/Retro Gaming.ttf" id="8_tcod6"]
-[ext_resource type="Script" path="res://Scenes/Worlds/SettingsMenu.gd" id="9_igd67"]
-[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/ResolutionSelection.gd" id="10_oug8h"]
-[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/WindowModeSelection.gd" id="10_ua40j"]
-[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/MaxFpsSelection.gd" id="11_jbk7n"]
-[ext_resource type="Script" path="res://Scripts/UI/Settings/Scripts/VsyncCheckButton.gd" id="12_mjqvr"]
+[ext_resource type="Script" uid="uid://d1a6pxl0cms2c" path="res://Scenes/Worlds/SettingsMenu.gd" id="9_igd67"]
+[ext_resource type="Script" uid="uid://bv6ufkbmcfusj" path="res://Scripts/UI/Settings/Scripts/ResolutionSelection.gd" id="10_oug8h"]
+[ext_resource type="Script" uid="uid://cib01jlgfc40q" path="res://Scripts/UI/Settings/Scripts/WindowModeSelection.gd" id="10_ua40j"]
+[ext_resource type="Script" uid="uid://d2r1fr7aw0yof" path="res://Scripts/UI/Settings/Scripts/MaxFpsSelection.gd" id="11_jbk7n"]
+[ext_resource type="Script" uid="uid://crjomxqjdhm45" path="res://Scripts/UI/Settings/Scripts/VsyncCheckButton.gd" id="12_mjqvr"]
 [ext_resource type="AudioStream" uid="uid://c48uop41dh0f3" path="res://Music/MainMenu/background.wav" id="14_bt1ht"]
-[ext_resource type="Script" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="15_3uob1"]
+[ext_resource type="Script" uid="uid://bemf06430moe5" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="15_3uob1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bexrh"]
 shader = ExtResource("2_8k7pa")
@@ -27,8 +27,13 @@ shader = ExtResource("2_8k7pa")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_urrtj"]
 shader = ExtResource("3_fa547")
 
+[sub_resource type="Gradient" id="Gradient_7t5iu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hb0jw"]
+color_ramp = SubResource("Gradient_7t5iu")
+
 [sub_resource type="Curve" id="Curve_itrqn"]
-max_value = 0.1
+_limits = [0.0, 0.1, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.286471, 0, 1, Vector2(0.349076, 0.1), 0.0, 0.0, 0, 0, Vector2(0.778234, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.00105263), -0.446179, 0.0, 1, 0]
 point_count = 4
 
@@ -50,11 +55,6 @@ damping_max = 1.0
 scale_min = 0.3
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_w3qfw")
-
-[sub_resource type="Gradient" id="Gradient_7t5iu"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hb0jw"]
-color_ramp = SubResource("Gradient_7t5iu")
 
 [sub_resource type="Theme" id="Theme_1l5py"]
 
@@ -134,10 +134,10 @@ texture = SubResource("CanvasTexture_kikhu")
 material = SubResource("ShaderMaterial_urrtj")
 position = Vector2(494, 369)
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_tp3gc")
 texture = SubResource("NoiseTexture2D_hb0jw")
 lifetime = 4.0
 preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_tp3gc")
 
 [node name="TabController" type="Control" parent="." node_paths=PackedStringArray("current_panel")]
 custom_minimum_size = Vector2(1920, 1080)
@@ -316,8 +316,8 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("5_um0sp")
-theme_override_colors/font_color = Color(0.952941, 0.0470588, 0.0470588, 1)
 theme_override_colors/icon_hover_color = Color(0.419608, 0.0941176, 0.0941176, 1)
+theme_override_colors/font_color = Color(0.952941, 0.0470588, 0.0470588, 1)
 icon = SubResource("AtlasTexture_u3xhe")
 flat = true
 icon_alignment = 1
@@ -512,8 +512,8 @@ fit_content = true
 [node name="WindowModeSelection" type="OptionButton" parent="TabController/Settings/SettingsContainer/WindowModeContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-item_count = 3
 fit_to_longest_item = false
+item_count = 3
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
 popup/item_1/text = "Borderless fullscreen"
