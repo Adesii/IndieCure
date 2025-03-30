@@ -3,24 +3,24 @@ extends Node
 
 # allows enemies to avoid eachother without having to check every enemy by splitting the map into a grid
 
-var map_cell_size = 32;
-var map_size_per_cell = 32;
+var map_cell_size = 16;
+var map_size_per_cell = 16;
 
-var map_enemy_dict :Dictionary = {}
+var map_enemy_dict: Dictionary = {}
 
 func get_unique_key_for_position(position: Vector2) -> int:
 	#create unique index for position
 	return int(position.x / map_cell_size) + int(position.y / map_cell_size) * map_size_per_cell
 
-func get_collision_handle_request(character,positionkey):
+func get_collision_handle_request(character, positionkey):
 	return {
 		"character": character,
 		"last_position_key": positionkey
 	}
 
 
-func avoid_others(character,lastpositionkey,radius):
-	var result = Vector2(0,0)
+func avoid_others(character, lastpositionkey, radius):
+	var result = Vector2(0, 0)
 	#var old = radius
 	radius = radius * radius
 
@@ -35,14 +35,13 @@ func avoid_others(character,lastpositionkey,radius):
 					result += direction * (radius - distance) * falloff
 	return result.normalized()
 
-func handle_collisiongroup(character,lastpositionkey,radius):
-
-	var new_position_key = get_unique_key_for_position(character.global_position+character.velocity*radius)
+func handle_collisiongroup(character, lastpositionkey, radius):
+	var new_position_key = get_unique_key_for_position(character.global_position + character.velocity * radius)
 
 	if new_position_key == lastpositionkey:
 		return {
 			"last_position_key": new_position_key,
-			"cellfull" : false
+			"cellfull": false
 		}
 	
 	if map_enemy_dict.has(lastpositionkey):
@@ -52,7 +51,7 @@ func handle_collisiongroup(character,lastpositionkey,radius):
 		if map_enemy_dict[new_position_key].size() > map_size_per_cell:
 			return {
 				"last_position_key": lastpositionkey,
-				"cellfull" : true
+				"cellfull": true
 			}
 		map_enemy_dict[new_position_key].append(character)
 	else:
@@ -60,16 +59,10 @@ func handle_collisiongroup(character,lastpositionkey,radius):
 	
 	return {
 		"last_position_key": new_position_key,
-		"cellfull" : false
+		"cellfull": false
 	}
 		
 
-
-func free_unit(character,lastpositionkey):
+func free_unit(character, lastpositionkey):
 	if map_enemy_dict.has(lastpositionkey):
 		map_enemy_dict[lastpositionkey].erase(character)
-
-
-
-
-

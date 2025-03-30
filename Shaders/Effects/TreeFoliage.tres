@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c7pjxm1l1xc2r"]
+
+[ext_resource type="Shader" uid="uid://hxwhoc1e4aiu" path="res://Shaders/Effects/foliage.gdshader" id="1_4723m"]
+
+[sub_resource type="Gradient" id="Gradient_q1e1y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pc5cj"]
+noise_type = 2
+frequency = 0.0343
+fractal_lacunarity = 1.835
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l33ow"]
+seamless = true
+color_ramp = SubResource("Gradient_q1e1y")
+noise = SubResource("FastNoiseLite_pc5cj")
+
+[resource]
+shader = ExtResource("1_4723m")
+shader_parameter/pixel_mode = true
+shader_parameter/pixel_amount = 96.0
+shader_parameter/distortion = 0.025
+shader_parameter/texture_noise_system = true
+shader_parameter/noise_speed = 0.005
+shader_parameter/noise_direction = 1
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l33ow")
+shader_parameter/worley_noise_system = true
+shader_parameter/worley_cell_density = 0.495
+shader_parameter/worley_speed = 0.01
+shader_parameter/edge_and_mask = false
+shader_parameter/alpha_value = 1.0
+shader_parameter/VerticalPow = 0.353

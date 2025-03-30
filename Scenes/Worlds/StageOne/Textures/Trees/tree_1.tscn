@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu30pw7l51eth"]
+[gd_scene load_steps=5 format=3 uid="uid://bu30pw7l51eth"]
 
+[ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="1_4vgnp"]
 [ext_resource type="Texture2D" uid="uid://d0olv5qnqkal0" path="res://Scenes/Worlds/StageOne/Textures/Trees/tree-0004.png" id="1_mm5nd"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="2_lyor5"]
 
@@ -9,6 +10,7 @@ height = 36.0
 [node name="tree_1" type="StaticBody2D"]
 
 [node name="Tree-0004" type="Sprite2D" parent="."]
+material = ExtResource("1_4vgnp")
 texture = ExtResource("1_mm5nd")
 offset = Vector2(8, -120)
 
