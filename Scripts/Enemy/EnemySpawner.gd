@@ -30,9 +30,7 @@ func _physics_process(delta):
 	spawntimer += delta
 	if renderer._objects.size() < enemiestospawn:
 		while renderer._objects.size() < enemiestospawn and amounttospawn > 0 and spawntimer > spawndelay:
-			var spawndirection = Vector2.from_angle(randf() * 2 * PI).normalized() * 400
-			spawndirection += Global.player.position
-			_new_spawn_enemy(spawndirection, 32)
+			spawn_single_enemy()
 			amounttospawn -= 1
 			spawntimer = 0
 		
@@ -45,6 +43,11 @@ var threads: Array[Thread]
 var avoidthread: Thread
 var threadcount = 2
 var queue_for_deletion: Array = []
+
+func spawn_single_enemy():
+	var spawndirection = Vector2.from_angle(randf() * 2 * PI).normalized() * 400
+	spawndirection += Global.player.position
+	_new_spawn_enemy(spawndirection, 32)
 
 func check_duplicates(a):
 	var is_dupe = false
