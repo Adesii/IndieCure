@@ -94,5 +94,5 @@ renderer/rendering_method="mobile"
 
 player_pos={
 "type": "vec2",
-"value": Vector2(0, 0)
+"value": Vector2(-29.4, -15)
 }

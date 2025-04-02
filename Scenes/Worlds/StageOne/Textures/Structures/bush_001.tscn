@@ -1,8 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://p3l5ia1cx8p3"]
+[gd_scene load_steps=13 format=3 uid="uid://p3l5ia1cx8p3"]
 
 [ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="1_fk0s0"]
 [ext_resource type="Texture2D" uid="uid://dqy4sqkbykn5i" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush-0001_G38vvP.png" id="1_phehi"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="2_uf0cc"]
+[ext_resource type="Texture2D" uid="uid://dpxdgmg54ssov" path="res://Textures/Foliage/leaf.png" id="4_udj5r"]
+
+[sub_resource type="Curve" id="Curve_0kos8"]
+_data = [Vector2(0, 0), 0.0, 2.25736, 0, 0, Vector2(0.421687, 1), 0.0, 0.0, 0, 0, Vector2(0.783132, 1), -0.0587643, -0.0587643, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_pe545"]
+curve = SubResource("Curve_0kos8")
+
+[sub_resource type="Curve" id="Curve_v8x0v"]
+_data = [Vector2(0, 0), 0.0, 3.30943, 0, 0, Vector2(0.180723, 1), 0.0, 0.0, 0, 0, Vector2(0.823293, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_baxrf"]
+curve = SubResource("Curve_v8x0v")
+
+[sub_resource type="Curve" id="Curve_os23s"]
+_limits = [0.0, 20.0, 0.0, 1.0]
+_data = [Vector2(0, 20), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_rivr6"]
+curve = SubResource("Curve_os23s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_udj5r"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 24.46
+angle_min = -217.4
+angle_max = 85.3
+angular_velocity_min = -70.25
+angular_velocity_max = 40.14
+velocity_limit_curve = SubResource("CurveTexture_rivr6")
+gravity = Vector3(12.755, 10.89, 0)
+scale_min = 0.3
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_baxrf")
+alpha_curve = SubResource("CurveTexture_pe545")
+anim_speed_max = 6.47
+turbulence_noise_strength = 19.69
+turbulence_noise_scale = 0.97
+turbulence_noise_speed = Vector3(0, 5.18, 0)
+turbulence_noise_speed_random = 0.85
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgjjl"]
 radius = 12.0
@@ -16,6 +61,17 @@ texture = ExtResource("1_phehi")
 offset = Vector2(0, -8)
 
 [node name="Node" parent="Tree-0004" instance=ExtResource("2_uf0cc")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Tree-0004"]
+y_sort_enabled = true
+material = ExtResource("1_fk0s0")
+position = Vector2(0, -6)
+amount = 3
+texture = ExtResource("4_udj5r")
+lifetime = 4.0
+preprocess = 2.0
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_udj5r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

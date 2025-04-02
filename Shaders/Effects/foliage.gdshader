@@ -27,11 +27,13 @@ uniform float VerticalPow : hint_range(0.0,10.0) = 0.2;
 
 varying vec2 world_pos;
 varying vec2 world_pos_fragment;
+varying float alpha_vertex_color;
 global uniform vec2 player_pos;
 
 void vertex(){
 	world_pos = (MODEL_MATRIX[3]).xy;
 	world_pos_fragment = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+	alpha_vertex_color = COLOR.a;
 }
 
 /// Worley Methods
@@ -102,12 +104,12 @@ void fragment() {
 		vec4 final_color = mix(base, blend, blend.a);
 
 		COLOR = final_color;
-		COLOR.a = (texture(TEXTURE, noise_uv).a) * alpha_value;
+		COLOR.a *= (texture(TEXTURE, noise_uv).a) * alpha_value *alpha_vertex_color ;
 	}
 	else
 	{
 		COLOR = texture(TEXTURE, noise_uv);
-		COLOR.a = (texture(TEXTURE, noise_uv).a) * alpha_value;
+		COLOR.a *= (texture(TEXTURE, noise_uv).a) * alpha_value*alpha_vertex_color;
 	}
 
 	//vec2 fade_pos = world_pos.xy;
