@@ -43,7 +43,7 @@ project/assembly_name="IndieCure"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/itemcreator/plugin.cfg")
+enabled=PackedStringArray("res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/post_processing/plugin.cfg")
 
 [input]
 
@@ -83,6 +83,7 @@ switch_attack_mode={
 [physics]
 
 2d/run_on_separate_thread=true
+2d/solver/solver_iterations=6
 common/enable_object_picking=false
 
 [rendering]

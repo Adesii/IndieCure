@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7w4skfyt8qlj"]
+[gd_scene load_steps=3 format=3 uid="uid://b7w4skfyt8qlj"]
 
-[ext_resource type="Script" path="res://Scripts/UI/fpsdisplay.gd" id="1_fa04g"]
+[ext_resource type="Script" uid="uid://b3qa1ywfvwscs" path="res://Scripts/UI/fpsdisplay.gd" id="1_fa04g"]
+[ext_resource type="Script" uid="uid://vufnov0ncv32" path="res://Scripts/Debug/DSpawnEnemyButton.gd" id="2_gm4bm"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 128
@@ -15,3 +16,25 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 text = "FPS: 100"
 script = ExtResource("1_fa04g")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 12.0
+offset_top = 86.0
+offset_right = 52.0
+offset_bottom = 126.0
+
+[node name="HFlowContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/HFlowContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Spawn 100 Enemies"
+script = ExtResource("2_gm4bm")
+
+[node name="Button2" type="Button" parent="PanelContainer/HFlowContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Spawn 1000 Enemies"
+script = ExtResource("2_gm4bm")
+amounttospawn = 1000

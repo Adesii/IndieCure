@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://birva82iuyap4"]
 
-[ext_resource type="Script" path="res://Inventory/Scripts/collect.gd" id="1_qi7tw"]
+[ext_resource type="Script" uid="uid://c2wm7tpogxy1p" path="res://Inventory/Scripts/collect.gd" id="1_qi7tw"]
 [ext_resource type="Resource" uid="uid://cign3lc4ktc7u" path="res://Inventory/Items/test_shoe/shoe.tres" id="2_lloe1"]
 [ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="3_8y137"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="4_g13fe"]

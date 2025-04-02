@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://dl0y8qc6rbm5t"]
 
 [ext_resource type="Texture2D" uid="uid://tbnvs7rja00o" path="res://Characters/Anny/Weapons/Guitar/base_attack-0002.png" id="1_liqyt"]
-[ext_resource type="Script" path="res://Characters/Anny/Weapons/Guitar/Guitar.gd" id="2_iw60f"]
-[ext_resource type="Script" path="res://Scripts/GAS/upgradeprovider.gd" id="5_fmtqh"]
-[ext_resource type="Script" path="res://Scripts/GAS/statupgrade.gd" id="6_4du0f"]
-[ext_resource type="Script" path="res://Scripts/GAS/statupgraderes.gd" id="7_oxxsv"]
+[ext_resource type="Script" uid="uid://cg7n77xqtymxy" path="res://Characters/Anny/Weapons/Guitar/Guitar.gd" id="2_iw60f"]
+[ext_resource type="Script" uid="uid://ddrxfjxny76lk" path="res://Scripts/GAS/upgradeprovider.gd" id="5_fmtqh"]
+[ext_resource type="Script" uid="uid://ckiwsh6rwxr4i" path="res://Scripts/GAS/statupgrade.gd" id="6_4du0f"]
+[ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="7_oxxsv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbyr6"]
 atlas = ExtResource("1_liqyt")
@@ -24,42 +24,42 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy0"]
 size = Vector2(21, 46)
 
-[sub_resource type="Resource" id="Resource_2u6gs"]
+[sub_resource type="Resource" id="Resource_swc5f"]
 resource_local_to_scene = true
 script = ExtResource("7_oxxsv")
 attribute_name = "attack_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_01s22"]
+[sub_resource type="Resource" id="Resource_37tf5"]
 resource_local_to_scene = true
 script = ExtResource("7_oxxsv")
 attribute_name = "attack_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_5e14a"]
+[sub_resource type="Resource" id="Resource_fu6m5"]
 resource_local_to_scene = true
 script = ExtResource("7_oxxsv")
 attribute_name = "attack_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_kvgwh"]
+[sub_resource type="Resource" id="Resource_24ehd"]
 resource_local_to_scene = true
 script = ExtResource("7_oxxsv")
 attribute_name = "projectile_amount"
 amount = 1.0
 modifier = 0
 
-[sub_resource type="Resource" id="Resource_2wfkx"]
+[sub_resource type="Resource" id="Resource_84klj"]
 resource_local_to_scene = true
 script = ExtResource("7_oxxsv")
 attribute_name = "attack_speed"
 amount = 0.5
 modifier = 1
 
-[sub_resource type="Resource" id="Resource_l6sao"]
+[sub_resource type="Resource" id="Resource_hc0st"]
 resource_local_to_scene = true
 script = ExtResource("7_oxxsv")
 attribute_name = "projectile_amount"
@@ -92,19 +92,19 @@ script = ExtResource("5_fmtqh")
 
 [node name="StatUpgrade" type="Node" parent="UpgradeProvider"]
 script = ExtResource("6_4du0f")
-stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_2u6gs")])
+stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_swc5f")])
 
 [node name="StatUpgrade2" type="Node" parent="UpgradeProvider"]
 script = ExtResource("6_4du0f")
-stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_01s22")])
+stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_37tf5")])
 
 [node name="StatUpgrade4" type="Node" parent="UpgradeProvider"]
 script = ExtResource("6_4du0f")
-stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_5e14a"), SubResource("Resource_kvgwh"), SubResource("Resource_2wfkx")])
+stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_fu6m5"), SubResource("Resource_24ehd"), SubResource("Resource_84klj")])
 
 [node name="StatUpgrade3" type="Node" parent="UpgradeProvider"]
 script = ExtResource("6_4du0f")
-stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_l6sao")])
+stats = Array[ExtResource("7_oxxsv")]([SubResource("Resource_hc0st")])
 
 [connection signal="area_shape_entered" from="GuitarSwing/Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="GuitarSwing/Area2D" to="." method="_on_area_2d_area_shape_exited"]
