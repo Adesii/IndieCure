@@ -25,7 +25,6 @@ func init_character():
 
 func _physics_process(_delta):
 	# Handle Jump.
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var updirection: float = Input.get_axis("move_up", "move_down")
@@ -49,6 +48,7 @@ func _physics_process(_delta):
 		if velocity.length() > 0.1:
 			Global.attack_direction = velocity.normalized()
 
+	RenderingServer.global_shader_parameter_set("player_pos", global_position)
 	move_and_slide()
 
 func _on_pick_up_area_area_entered(area):

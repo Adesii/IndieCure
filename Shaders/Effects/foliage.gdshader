@@ -4,6 +4,8 @@ render_mode blend_mix;
 uniform bool pixel_mode = true;
 uniform float pixel_amount = 32.0;
 uniform float distortion : hint_range(0.0, 0.1) = 0.01;
+uniform vec2 distortion_offset = vec2(0.0, 0.0);
+uniform float distortion_scale = 1.0;
 
 /// Noise Texture System
 uniform bool texture_noise_system = true;
@@ -24,9 +26,12 @@ uniform float alpha_value : hint_range(0.0, 1.0) = 1.0;
 uniform float VerticalPow : hint_range(0.0,10.0) = 0.2;
 
 varying vec2 world_pos;
+varying vec2 world_pos_fragment;
+global uniform vec2 player_pos;
 
 void vertex(){
-	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0, 1.0)).xy;
+	world_pos = (MODEL_MATRIX[3]).xy;
+	world_pos_fragment = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
 }
 
 /// Worley Methods
@@ -71,14 +76,14 @@ void fragment() {
 
 	/// Noise Texture System
 	if (texture_noise_system){
-		vec4 noise_uv = texture(noise_texture, uv + TIME * noise_speed * float(noise_direction));
+		vec4 noise_uv = texture(noise_texture, uv+world_pos + TIME * noise_speed * float(noise_direction));
 		noise_uv *= 1.0-pow(uv.y,VerticalPow);
 		uv_result += noise_uv;
 	}
 
 	/// Worley Noise System
 	if (worley_noise_system){
-		float worley = worley(uv, worley_cell_density, worley_cell_density, TIME);
+		float worley = worley(uv+world_pos, worley_cell_density, worley_cell_density, TIME);
 		vec4 result = texture(TEXTURE, vec2(worley));
 		result *= 1.0-pow(uv.y,VerticalPow);
 		uv_result += result;
@@ -86,6 +91,8 @@ void fragment() {
 
 	/// Blend
 	vec2 noise_uv = mix(uv, uv_result.rg, distortion);
+	noise_uv += distortion_offset;
+	noise_uv *= distortion_scale;
 
 
 	if (edge_and_mask){
@@ -102,4 +109,30 @@ void fragment() {
 		COLOR = texture(TEXTURE, noise_uv);
 		COLOR.a = (texture(TEXTURE, noise_uv).a) * alpha_value;
 	}
+
+	//vec2 fade_pos = world_pos.xy;
+	vec2 fade_pos = world_pos.xy;
+
+	// Fade the shader based on if the player is above below this object.
+	float fade = length(player_pos.xy - fade_pos.xy)/100.0;
+	float yfade = length(player_pos.y - fade_pos.y)/100.0;
+	float xfade = length(player_pos.x - fade_pos.x)/100.0;
+	if(player_pos.y < fade_pos.y || fade < 0.2)
+		COLOR.a *= clamp(fade,0.4,1.0);
+	else{
+		COLOR.a *= clamp(xfade+yfade*2.0,0.4,1.0);
+	}
+
+	fade_pos = world_pos_fragment.xy;
+
+	// Fade the shader based on if the player is above below this object.
+	fade = length(player_pos.xy - fade_pos.xy)/100.0;
+	yfade = length(player_pos.y - fade_pos.y)/100.0;
+	xfade = length(player_pos.x - fade_pos.x)/100.0;
+	if(player_pos.y < fade_pos.y || fade < 0.2)
+		COLOR.a *= clamp(fade,0.8,1.0);
+	else{
+		COLOR.a *= clamp(xfade+yfade*2.0,0.8,1.0);
+	}
+	
 }

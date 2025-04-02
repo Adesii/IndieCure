@@ -451,7 +451,7 @@ position = Vector2(240, 349)
 position = Vector2(32, 87)
 
 [node name="tree17" parent="Node2D" instance=ExtResource("10_fldpj")]
-position = Vector2(-132, 16)
+position = Vector2(-134, 36)
 
 [node name="tree18" parent="Node2D" instance=ExtResource("10_fldpj")]
 position = Vector2(-243, 448)

@@ -89,3 +89,10 @@ common/enable_object_picking=false
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+
+[shader_globals]
+
+player_pos={
+"type": "vec2",
+"value": Vector2(0, 0)
+}
