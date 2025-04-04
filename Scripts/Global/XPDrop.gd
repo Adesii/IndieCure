@@ -30,7 +30,6 @@ func _physics_process(_delta):
 
 func picked_xp(obj):
 	# TODO: add xp to global player... needs a way to get the player later on when multiplayer is a thing
-
 	Stat.Modify(Global.player, "xp", obj.amount, "+")
 
 	return obj
@@ -38,7 +37,6 @@ func picked_xp(obj):
 var dead_xp = []
 
 func _draw():
-
 	for xp in dead_xp:
 		renderer.remove_object(xp)
 	dead_xp = []
@@ -76,18 +74,17 @@ func _draw():
 
 		drop.texture = xp_texture
 		var drawrect = Rect2(0, 0, xp_texture.get_width(), xp_texture.get_height())
-		drawrect.position = -offset
+		drawrect.position = - offset
 
 		drop.texture_rect = drawrect
 
-		drawrect.size.y *= - 1
+		drawrect.size.y *= -1
 		drawrect.position.y -= drawrect.size.y + 2
 		drop.shadow_texture_rect = drawrect
 		drop.shadow_texture_rect.position.y += offset.y * 2
 	renderer.end_render() # figure out if this is a good idea
 
 func drop_xp(dropposition: Vector2, amount: int):
-
 	var _circle_shape_query = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(_circle_shape_query, 4)
 

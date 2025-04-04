@@ -46,7 +46,7 @@ func _clean_objects():
 	await Global.get_tree().physics_frame
 	_clear_objects_immediately()
 	
-func _clear_objects_immediately():
+func _clear_objects_immediately(): # TODO: this crashes... find a way to fix it.
 	for i in _todelete_objects.size():
 		var mass_object = _todelete_objects[i]
 		if mass_object.rendering_rid.is_valid():
@@ -72,7 +72,7 @@ func remove_object_at(index: int):
 
 func get_object(index: int):
 	if index >= _objects.size():
-		printerr("MassRenderer: Object index out of range, this should not happen!. it means we are trying to modify an object that does not exist.")
+		#printerr("MassRenderer: Object index out of range, this should not happen!. it means we are trying to modify an object that does not exist.")
 		return null
 	return _objects[index]
 

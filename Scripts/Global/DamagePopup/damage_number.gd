@@ -26,19 +26,18 @@ func set_color(color: Color):
 	label.modulate.g = color.g
 	label.modulate.b = color.b
 
-func set_duration(duration: float=1.0):
+func set_duration(duration: float = 1.0):
 	dmg_duration = duration
 
 func start():
 	if tween == null:
 		tween = create_tween()
-	
 	if movement_tween == null:
 		movement_tween = create_tween()
 
 	label_container.position = Vector2(0, 0)
 
-	arc_direction = 1 if randf() > 0.5 else - 1
+	arc_direction = 1 if randf() > 0.5 else -1
 	arc_amount = randf() * 0.5 + 0.5
 
 	movement_tween.tween_method(arc_up, 0.0, 1.0, dmg_duration)
@@ -71,9 +70,8 @@ var arc_amount = 0.0
 func arc_up(delta: float):
 	#delta is the delta from 0-1
 	# use it to arc a Vector2 up
-	
 	var arc_value = Vector2()
-	arc_value.y = -delta * 0.1
+	arc_value.y = - delta * 0.1
 	arc_value.x = (delta * delta) * 0.1 * arc_direction
 
 	label_container.position += arc_value

@@ -463,7 +463,7 @@ monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe3" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(100, 85)
+position = Vector2(11, 196)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
@@ -488,7 +488,7 @@ monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe4" parent="." instance=ExtResource("12_q24t3")]
-position = Vector2(103, 105)
+position = Vector2(11, 173)
 monitoring = false
 itemResource = ExtResource("21_hqbda")
 
