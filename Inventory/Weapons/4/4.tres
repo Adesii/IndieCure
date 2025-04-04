@@ -42,11 +42,16 @@ attribute_name = "tick_speed"
 default_value = 30.0
 
 [sub_resource type="Gradient" id="Gradient_jluij"]
+colors = PackedColorArray(0, 0, 0, 1, 0.266667, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ivrbf"]
-frequency = 0.0813
+noise_type = 4
+frequency = 0.0649
+fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7jsau"]
+width = 64
+height = 64
 color_ramp = SubResource("Gradient_jluij")
 noise = SubResource("FastNoiseLite_ivrbf")
 
