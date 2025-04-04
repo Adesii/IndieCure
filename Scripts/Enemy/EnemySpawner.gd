@@ -17,7 +17,11 @@ var renderer: MassRenderer;
 var enemyTypeStats: Array[StatHolder] = []
 var enemyCanvas: PackedInt64Array = []
 
+var circle_shape
+
 func _ready():
+	circle_shape = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(circle_shape, 8)
 	renderer = MassRenderer.new()
 	for i in threadcount:
 		threads.append(Thread.new())
@@ -97,18 +101,6 @@ func gothrough(delta):
 		avoidthread.start(avoidance_calc)
 		#print("started avoidance thread")
 
-	for i in range(0, renderer._objects.size()):
-		var enemy = renderer.get_object(i)
-		if enemy == null:
-			#remove
-			renderer._objects.remove_at(i)
-			i -= 1
-			continue
-		#print("enemy ",i," pos ",enemy.global_position)
-		PhysicsServer2D.area_set_shape_transform(
-			shared_area.get_rid(), i, enemy.transform
-		)
-
 func avoidance_calc():
 	for i in renderer._objects.size():
 		var enemy = renderer.get_object(i)
@@ -186,6 +178,11 @@ func _newRender():
 		drawrect.position.y -= drawrect.size.y + 2
 		enemy.shadow_texture_rect = drawrect
 
+		#print("enemy ",i," pos ",enemy.global_position)
+		PhysicsServer2D.area_set_shape_transform(
+			shared_area.get_rid(), i, enemy.transform
+		)
+
 		#renderer._draw_single(enemy)
 	renderer.end_render() # figure out if this is a good idea
 
@@ -216,18 +213,17 @@ func _configure_collision_for_enemy(enemy: Enemy) -> void:
 	var used_transform := Transform2D(0, position)
 	used_transform.origin = enemy.global_position
 	# Create the shape
-	var _circle_shape = PhysicsServer2D.circle_shape_create()
-	PhysicsServer2D.shape_set_data(_circle_shape, 8)
-
+	
+	
 	# Add the shape to the shared area
 	PhysicsServer2D.area_add_shape(
-		shared_area.get_rid(), _circle_shape, used_transform
+		shared_area.get_rid(), circle_shape, used_transform
 	)
 
 	enemy.area_rid = shared_area.get_rid()
 	
 	# Register the generated id to the bullet
-	enemy.physics_rid = _circle_shape
+	#enemy.physics_rid = _circle_shape
 
 func _set_stat(attribute, value, subobj):
 	if typeof(subobj) == TYPE_DICTIONARY:

@@ -22,7 +22,11 @@ var enemy_drop_amount = 10;
 
 @onready var renderer: MassRenderer = MassRenderer.new()
 
+var circle_shape
+
 func _ready():
+	circle_shape = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(circle_shape, 4)
 	pass # Replace with function body.
 
 func _physics_process(_delta):
@@ -85,18 +89,15 @@ func _draw():
 	renderer.end_render() # figure out if this is a good idea
 
 func drop_xp(dropposition: Vector2, amount: int):
-	var _circle_shape_query = PhysicsServer2D.circle_shape_create()
-	PhysicsServer2D.shape_set_data(_circle_shape_query, 4)
-
 	var space = get_world_2d().direct_space_state
 	var query = PhysicsShapeQueryParameters2D.new()
-	query.shape_rid = _circle_shape_query
+	query.shape_rid = circle_shape
 	query.transform = Transform2D(0, dropposition)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	query.collision_mask = shared_area.collision_mask
 
-	var result = space.intersect_shape(query, 8)
+	var result = space.intersect_shape(query, 2)
 	if result:
 		for xpd in result:
 			if xpd.collider != shared_area:
@@ -111,9 +112,6 @@ func drop_xp(dropposition: Vector2, amount: int):
 			else:
 				print("Something went wrong, the shape is not in the renderer")
 
-	# do a query to see if its already inside of the XP Pickup area
-	
-	PhysicsServer2D.free_rid(_circle_shape_query)
 	var drop = xp_drop.new()
 	drop.global_position = dropposition
 	drop.amount = amount
@@ -128,16 +126,13 @@ func drop_xp(dropposition: Vector2, amount: int):
 
 	renderer.add_object(drop)
 
-	var _circle_shape = PhysicsServer2D.circle_shape_create()
-	PhysicsServer2D.shape_set_data(_circle_shape, drop.radius)
-
 	# Add the shape to the shared area
 	PhysicsServer2D.area_add_shape(
-		shared_area.get_rid(), _circle_shape, drop.transform
+		shared_area.get_rid(), circle_shape, drop.transform
 	)
 	
 	# Register the generated id to the bullet
-	drop.physics_rid = _circle_shape
+	#drop.physics_rid = _circle_shape
 
 	queue_redraw()
 	
