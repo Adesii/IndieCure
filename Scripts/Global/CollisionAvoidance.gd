@@ -25,9 +25,9 @@ func avoid_others(character, lastpositionkey, radius):
 	radius = radius * radius
 
 	if map_enemy_dict.has(lastpositionkey):
-		var enemies = map_enemy_dict[lastpositionkey]
+		var enemies = map_enemy_dict[lastpositionkey].duplicate()
 		for enemy in enemies:
-			if enemy != character:
+			if enemy and enemy != character:
 				var distance = character.global_position.distance_squared_to(enemy.global_position)
 				if distance < radius:
 					var direction = (character.global_position - enemy.global_position).normalized()

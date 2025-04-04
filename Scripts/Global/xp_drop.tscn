@@ -13,7 +13,7 @@ xp_texture = ExtResource("2_ngx00")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 262144
-collision_mask = 0
-monitoring = false
+collision_mask = 262144
+monitorable = false
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

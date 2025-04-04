@@ -43,7 +43,7 @@ func add_object(mass_object: MassObject):
 var _todelete_objects: Array[MassObject]
 
 func _clean_objects():
-	await Global.get_tree().physics_frame
+	#await Global.get_tree().physics_frame
 	_clear_objects_immediately()
 	
 func _clear_objects_immediately(): # TODO: this crashes... find a way to fix it.

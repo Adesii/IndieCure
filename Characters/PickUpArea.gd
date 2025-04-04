@@ -1,18 +1,18 @@
 extends Area2D
 
 
-@export var collision_shape : CollisionShape2D
-@export var collision_type_shape : CircleShape2D
+@export var collision_shape: CollisionShape2D
+@export var collision_type_shape: CircleShape2D
 
-var attr : Attribute
+var attr: Attribute
 
-var query 
+var query
 var physicsspace
 var _circle_shape_query
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	attr = Stat.Get_Attribute(get_parent(),"pickup_radius")
+	attr = Stat.Get_Attribute(get_parent(), "pickup_radius")
 	attr.value_changed.connect(on_size_changed)
 	collision_type_shape.radius = attr.current_value
 	collision_shape.shape = collision_type_shape
@@ -23,10 +23,8 @@ func _ready() -> void:
 	query.shape_rid = _circle_shape_query
 
 	
-
-
-
 func _physics_process(delta: float) -> void:
+	pass
 	# do a area query to pick up xp
 	
 	query.transform = Transform2D(0, global_position)

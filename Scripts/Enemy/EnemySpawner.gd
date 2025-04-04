@@ -70,10 +70,11 @@ func check_duplicates(a):
 var mutex = Mutex.new()
 func gothrough(delta):
 	var playerpos = Global.player.global_position
+	var space = get_world_2d().direct_space_state
 	@warning_ignore("integer_division")
 	var count = renderer._objects.size() / threadcount
-	if count == 0:
-		return
+	if count < 1:
+		count = 1
 	mutex.lock()
 	for del in queue_for_deletion:
 		renderer.remove_object(del)
@@ -83,15 +84,8 @@ func gothrough(delta):
 
 	queue_for_deletion.clear()
 	mutex.unlock()
-	
-	for i in threadcount:
-		var t = threads[i]
-		if t.is_alive():
-			continue
-		if t.is_started():
-			t.wait_to_finish()
-		t.start(calc.bind(delta, count, i * count, playerpos))
-		#print("started thread ",i," with ",count," enemies ",i*count," to ",i*count+count)
+	#print("started thread ",i," with ",count," enemies ",i*count," to ",i*count+count)
+	calc(delta, renderer._objects.size(), 0, playerpos, space)
 	if avoidthread == null:
 		avoidthread = Thread.new()
 	
@@ -114,7 +108,7 @@ func avoidance_calc():
 		var collisionresult = CollisionAvoidance.avoid_others(enemy, enemy.positionkey, 32)
 		enemy.avoidancevelocity = collisionresult
 
-func calc(delta, count, startoffset, playerpos):
+func calc(delta, count, startoffset, playerpos, space):
 	for i in count:
 		if i + startoffset >= renderer._objects.size():
 			break
@@ -136,9 +130,33 @@ func calc(delta, count, startoffset, playerpos):
 		if enemy.health.current_value <= 0:
 			queue_for_deletion.append(enemy)
 			continue
-
 		enemy.global_position += enemy.velocity + enemy.avoidancevelocity
+		
+		var query = PhysicsShapeQueryParameters2D.new()
+		query.shape_rid = circle_shape
+		query.transform = enemy.transform
+		query.collide_with_areas = true
+		query.collide_with_bodies = false
+		query.collision_mask = shared_area.collision_mask
+		var result = space.intersect_shape(query, 4)
+		if result:
+			for r in result:
+				if r.collider is Area2D:
+					#if r.collider == enemy.last_collision:
+					#	continue
+					#if enemy.last_collision:
+					#	enemy.last_collision.area_shape_exited.emit(shared_area.get_rid(), shared_area, i, i)
+					#	enemy.last_collision = null
+					r.collider.area_shape_entered.emit(shared_area.get_rid(), shared_area, i, i)
+					#enemy.last_collision = r.collider
+					#enemy.last_id = i
+		#else:
+		#	if enemy.last_collision:
+		#		enemy.last_collision.area_shape_exited.emit(shared_area.get_rid(), shared_area, i, i)
+		#		enemy.last_id = i
+		#		enemy.last_collision = null
 
+		
 func _draw():
 	_newRender()
 
@@ -178,10 +196,12 @@ func _newRender():
 		drawrect.position.y -= drawrect.size.y + 2
 		enemy.shadow_texture_rect = drawrect
 
+		
 		#print("enemy ",i," pos ",enemy.global_position)
-		PhysicsServer2D.area_set_shape_transform(
-			shared_area.get_rid(), i, enemy.transform
-		)
+		#PhysicsServer2D.area_set_shape_transform(
+		#	shared_area.get_rid(), i, enemy.transform
+		#)
+			
 
 		#renderer._draw_single(enemy)
 	renderer.end_render() # figure out if this is a good idea
@@ -197,7 +217,7 @@ func _new_spawn_enemy(spawn_location: Vector2, speed = 200) -> void:
 	enemy.image_offset_animation = randi() % max_images
 	enemy.animation_lifetime = randf_range(0, 1)
 
-	_configure_collision_for_enemy(enemy)
+	#_configure_collision_for_enemy(enemy)
 
 	enemy.rendering_rid = RenderingServer.canvas_item_create()
 	enemy.rendering_shadow_rid = RenderingServer.canvas_item_create()

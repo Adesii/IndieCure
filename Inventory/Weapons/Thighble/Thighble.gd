@@ -14,18 +14,18 @@ var overlapping_areas: Dictionary = {}
 
 func _on_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, area_shape_index: int, _local_shape_index: int):
 	#print("Area entered shape ", area_shape_index, " local shape ", _local_shape_index)
-
 	if not overlapping_areas.has(area):
 		overlapping_areas[area] = []
-	overlapping_areas[area].append(area_shape_index)
+	if not overlapping_areas[area].has(area_shape_index):
+		overlapping_areas[area].append(area_shape_index)
 
 func _on_area_2d_area_shape_exited(_area_rid: RID, area: Area2D, area_shape_index: int, _local_shape_index: int):
+	pass
 	#print("Area exited shape ", area_shape_index, " local shape ", _local_shape_index)
-
-	if overlapping_areas[area] != null:
-		overlapping_areas[area].erase(area_shape_index)
-	if overlapping_areas[area].size() == 0:
-		overlapping_areas.erase(area)
+	#if overlapping_areas[area] != null:
+	#	overlapping_areas[area].erase(area_shape_index)
+	#if overlapping_areas[area].size() == 0:
+	#	overlapping_areas.erase(area)
 
 class attackpoint:
 	var offset: Vector2
@@ -56,8 +56,8 @@ func _on_attack():
 	for point in attacks:
 		point.tweener = get_tree().create_tween()
 		point.tweener.tween_method(func(x: float):
-			point.offset=Vector2(radius * x, 0)
-			alpha=x
+			point.offset = Vector2(radius * x, 0)
+			alpha = x
 			, 0.0, 1.0, 0.3
 		)
 		if Stat.Get(self, "never_ending"):
@@ -65,8 +65,8 @@ func _on_attack():
 			continue
 		point.tweener.tween_interval(attack_stay_time)
 		point.tweener.tween_method(func(x: float):
-			point.offset=Vector2(radius * x, 0)
-			alpha=x
+			point.offset = Vector2(radius * x, 0)
+			alpha = x
 			, 1.0, 0.0, 0.3
 		)
 		point.tweener.play()
@@ -96,15 +96,13 @@ func _physics_process(delta):
 		var point = attacks[i]
 		var point_rotation_offset = (i * (360.0 / attacks.size()))
 		var poinoffset = point.offset.rotated(deg_to_rad(point_rotation_offset))
-		var used_transform := Transform2D( - rotation, poinoffset)
-		PhysicsServer2D.area_set_shape_transform(
-			shared_area.get_rid(), i, used_transform
-		)
+		var used_transform := Transform2D(-rotation, poinoffset)
 		point.used_transform = used_transform
 
 	for area in overlapping_areas.keys():
 		for shape in overlapping_areas[area]:
 			Stat.Damage(self, area.get_parent(), {"shape_id": shape})
+	overlapping_areas.clear()
 	queue_redraw()
 
 func _draw():
@@ -112,6 +110,9 @@ func _draw():
 	var texturesize = texture.get_size()
 	for i in range(attacks.size()):
 		var point = attacks[i]
+		PhysicsServer2D.area_set_shape_transform(
+			shared_area.get_rid(), i, point.used_transform
+		)
 		RenderingServer.canvas_item_clear(point.sprite_id)
 		RenderingServer.canvas_item_set_transform(point.sprite_id, point.used_transform)
 		#RenderingServer.canvas_item_add_circle(point.sprite_id,Vector2(), point.radius, Color(1,1,1,1))

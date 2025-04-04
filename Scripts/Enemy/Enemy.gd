@@ -20,6 +20,9 @@ var invulnerability: float = 0.0
 
 var damage_frames: float = 0.0
 
+var last_collision: Area2D
+var last_id: int
+
 func on_damaged(attr: Attribute, info, change_value):
 	if change_value == attr.current_value or change_value < 0:
 		return

@@ -1,50 +1,60 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=11 format=3 uid="uid://che604nsso76u"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=14 format=3 uid="uid://che604nsso76u"]
 
 [ext_resource type="PackedScene" uid="uid://orwo705hx202" path="res://Inventory/Weapons/4/4.tscn" id="1_lyy0u"]
 [ext_resource type="Script" uid="uid://dpbos4yne4kny" path="res://Inventory/Scripts/inventoryItem.gd" id="2_qpeg8"]
 [ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="3_i6ock"]
 [ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_telsj"]
 
-[sub_resource type="Resource" id="Resource_c54nh"]
+[sub_resource type="Resource" id="Resource_s6mek"]
 resource_local_to_scene = true
 script = ExtResource("3_telsj")
 attribute_name = "attack_duration"
 default_value = 5.0
 
-[sub_resource type="Resource" id="Resource_j87qj"]
+[sub_resource type="Resource" id="Resource_1xu4v"]
 resource_local_to_scene = true
 script = ExtResource("3_telsj")
 attribute_name = "projectile_amount"
 default_value = 3.0
 
-[sub_resource type="Resource" id="Resource_h7d5a"]
+[sub_resource type="Resource" id="Resource_3lmvp"]
 resource_local_to_scene = true
 script = ExtResource("3_telsj")
 attribute_name = "attack_speed"
 default_value = 4.0
 
-[sub_resource type="Resource" id="Resource_jy2kl"]
+[sub_resource type="Resource" id="Resource_u0jwl"]
 resource_local_to_scene = true
 script = ExtResource("3_telsj")
 attribute_name = "attack_damage"
 default_value = 3.0
 
-[sub_resource type="Resource" id="Resource_wg5g0"]
+[sub_resource type="Resource" id="Resource_72ta0"]
 resource_local_to_scene = true
 script = ExtResource("3_telsj")
 attribute_name = "attack_size"
 default_value = 50.0
 
-[sub_resource type="Resource" id="Resource_vy6yk"]
+[sub_resource type="Resource" id="Resource_udl8j"]
 resource_local_to_scene = true
 script = ExtResource("3_telsj")
 attribute_name = "tick_speed"
 default_value = 30.0
 
+[sub_resource type="Gradient" id="Gradient_jluij"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ivrbf"]
+frequency = 0.0813
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7jsau"]
+color_ramp = SubResource("Gradient_jluij")
+noise = SubResource("FastNoiseLite_ivrbf")
+
 [resource]
 script = ExtResource("2_qpeg8")
 name = "Spill"
+texture = SubResource("NoiseTexture2D_7jsau")
 scene = ExtResource("1_lyy0u")
-stats = Array[ExtResource("3_telsj")]([SubResource("Resource_c54nh"), SubResource("Resource_j87qj"), SubResource("Resource_h7d5a"), SubResource("Resource_jy2kl"), SubResource("Resource_wg5g0"), SubResource("Resource_vy6yk")])
+stats = Array[ExtResource("3_telsj")]([SubResource("Resource_s6mek"), SubResource("Resource_1xu4v"), SubResource("Resource_3lmvp"), SubResource("Resource_u0jwl"), SubResource("Resource_72ta0"), SubResource("Resource_udl8j")])
 stat_upgrades = Array[ExtResource("3_i6ock")]([])
 type = 1

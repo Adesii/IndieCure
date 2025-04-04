@@ -27,6 +27,13 @@ offset_bottom = 309.0
 [node name="HFlowContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
+[node name="Button4" type="Button" parent="PanelContainer/HFlowContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Spawn 2 Enemies"
+script = ExtResource("2_gm4bm")
+amounttospawn = 2
+
 [node name="Button" type="Button" parent="PanelContainer/HFlowContainer"]
 layout_mode = 2
 action_mode = 0

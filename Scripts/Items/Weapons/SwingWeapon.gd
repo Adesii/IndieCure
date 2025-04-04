@@ -22,9 +22,9 @@ func _on_attack():
 
 		OnAttack()
 		
-		var dir = 1 if i % 2 == 0 else - 1
+		var dir = 1 if i % 2 == 0 else -1
 		swing_sprite.flip_v = dir != 1
-		swing_sprite.rotation = deg_to_rad( - 50 * dir)
+		swing_sprite.rotation = deg_to_rad(-50 * dir)
 
 		attack_tween = create_tween()
 		attack_tween.tween_property(swing_sprite, "rotation", deg_to_rad(50 * dir), Stat.Get(self, "swing_speed"))
@@ -39,7 +39,7 @@ func _on_attack():
 		await Global.create_timer(Stat.Get(self, "attack_speed") / 2).timeout
 
 	swing_sprite.visible = false
-	swing_sprite.rotation = deg_to_rad( - 50)
+	swing_sprite.rotation = deg_to_rad(-50)
 	swing_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
 	attacking = false
 	await Global.create_timer(Stat.Get(self, "attack_speed") * 2).timeout
@@ -58,14 +58,16 @@ func _physics_process(_delta):
 		for shape in overlapping_areas[area]:
 			Stat.Damage(self, area.get_parent(), {"shape_id": shape})
 			overlapping_areas[area].erase(shape)
+	overlapping_areas.clear()
 
 func _on_area_2d_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int):
-	if !overlapping_areas.has(area):
-		return
-	if overlapping_areas[area] != null:
-		overlapping_areas[area].erase(area_shape_index)
-	if overlapping_areas[area].size() == 0:
-		overlapping_areas.erase(area)
+	pass
+	#if !overlapping_areas.has(area):
+	#	return
+	#if overlapping_areas[area] != null:
+	#	overlapping_areas[area].erase(area_shape_index)
+	#if overlapping_areas[area].size() == 0:
+	#	overlapping_areas.erase(area)
 
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int):
 	if not overlapping_areas.has(area):

@@ -61,8 +61,8 @@ debug_color = Color(0.835294, 0.333333, 0.529412, 0.419608)
 
 [node name="XP_Pickup" type="Area2D" parent="." node_paths=PackedStringArray("collision_shape")]
 collision_layer = 262144
-collision_mask = 262144
-monitorable = false
+collision_mask = 0
+monitoring = false
 priority = -1
 script = ExtResource("7_hkuwm")
 collision_shape = NodePath("PickUp")

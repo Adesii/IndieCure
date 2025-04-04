@@ -436,7 +436,8 @@ position = Vector2(249, 240)
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
 unique_name_in_owner = true
-process_physics_priority = 100
+process_priority = -100
+process_physics_priority = -100
 material = SubResource("ShaderMaterial_6wm83")
 script = ExtResource("9_kwptk")
 frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_ykt5y"), SubResource("AtlasTexture_supgr"), SubResource("AtlasTexture_3jio5"), SubResource("AtlasTexture_fluff")])

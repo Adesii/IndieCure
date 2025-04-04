@@ -30,45 +30,33 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(_delta):
-	queue_redraw()
-
-func picked_xp(obj):
-	# TODO: add xp to global player... needs a way to get the player later on when multiplayer is a thing
-	Stat.Modify(Global.player, "xp", obj.amount, "+")
-
-	return obj
-
-var dead_xp = []
-
-func _draw():
-	for xp in dead_xp:
-		renderer.remove_object(xp)
-	dead_xp = []
-
 	var offset = xp_texture.get_size() / 2
-	
-	for i in range(0, renderer._objects.size()):
-		var drop = renderer._objects[i]
+	var space = get_world_2d().direct_space_state
+	for drop in renderer._objects:
 		if drop == null:
 			continue
 		
 		# move the drop up and down 
-		drop.cycle_time += get_process_delta_time()
+		drop.cycle_time += _delta
 		offset.y = sin(drop.cycle_time * 30) * 2
 
 		# move the drop to the player if picked up and then remove it
 		if drop.picked_up:
-			drop.pickup_time += get_process_delta_time()
+			drop.pickup_time += _delta
 			# add a bit of upwards arc before droping back down
 			var drop_movement = Vector2(0, 0)
 			# direction movement:
-			drop_movement += (Global.player.global_position - drop.global_position).normalized() * easeInCirc(drop.pickup_time * 10) * 100
+			drop_movement += (Global.player.global_position - drop.global_position).normalized() * clamp(easeInCirc(drop.pickup_time * 10), 0, 1) * 100
 			
 			var signs = 1
 			if drop.pickup_time > 0.5:
 				signs = -1
 			# add a bit of upwards movement based on direction
 			drop_movement.y -= clamp(easeOutBack(signs * drop.pickup_time * 10), 0, 1) * 3
+
+			if drop.pickup_time > 3.0:
+				dead_xp.append(picked_xp(drop))
+				continue
 
 			# lerp the position using the pickup time and easeInCirc function
 			drop.global_position = drop_movement + drop.global_position
@@ -86,32 +74,62 @@ func _draw():
 		drawrect.position.y -= drawrect.size.y + 2
 		drop.shadow_texture_rect = drawrect
 		drop.shadow_texture_rect.position.y += offset.y * 2
+		if drop.picked_up:
+			continue
+
+		var query = PhysicsShapeQueryParameters2D.new()
+		query.shape_rid = circle_shape
+		query.transform = Transform2D(0, drop.global_position)
+		query.collide_with_areas = true
+		query.collide_with_bodies = false
+		query.collision_mask = shared_area.collision_mask
+		var result = space.intersect_shape(query, 1)
+		if result:
+			for r in result:
+				if r.collider and r.collider is Area2D:
+					drop.picked_up = true
+					drop.pickup_time = randf_range(0, 0.01)
+
+	for xp in dead_xp:
+		renderer.remove_object(xp)
+	dead_xp.clear()
+	
+	queue_redraw()
+
+func picked_xp(obj):
+	# TODO: add xp to global player... needs a way to get the player later on when multiplayer is a thing
+	Stat.Modify(Global.player, "xp", obj.amount, "+")
+
+	return obj
+
+var dead_xp = []
+
+func _draw():
 	renderer.end_render() # figure out if this is a good idea
 
 func drop_xp(dropposition: Vector2, amount: int):
-	var space = get_world_2d().direct_space_state
-	var query = PhysicsShapeQueryParameters2D.new()
-	query.shape_rid = circle_shape
-	query.transform = Transform2D(0, dropposition)
-	query.collide_with_areas = true
-	query.collide_with_bodies = false
-	query.collision_mask = shared_area.collision_mask
-
-	var result = space.intersect_shape(query, 2)
-	if result:
-		for xpd in result:
-			if xpd.collider != shared_area:
-				continue
-			if renderer._objects.size() > xpd.shape:
-				var dropxpd = renderer._objects[xpd.shape]
-				if dropxpd.amount + amount > max_xp_per_drop:
-					continue
-				dropxpd.amount += amount
-				dropxpd.global_position = (dropxpd.global_position - dropposition) / 2 + dropposition
-				return
-			else:
-				print("Something went wrong, the shape is not in the renderer")
-
+	#return
+	#var space = get_world_2d().direct_space_state
+	#var query = PhysicsShapeQueryParameters2D.new()
+	#query.shape_rid = circle_shape
+	#query.transform = Transform2D(0, dropposition)
+	#query.collide_with_areas = true
+	#query.collide_with_bodies = false
+	#query.collision_mask = shared_area.collision_mask
+	#var result = space.intersect_shape(query, 2)
+	#if result:
+	#	for xpd in result:
+	#		if xpd.collider != shared_area:
+	#			continue
+	#		if renderer._objects.size() > xpd.shape:
+	#			var dropxpd = renderer._objects[xpd.shape]
+	#			if dropxpd.amount + amount > max_xp_per_drop:
+	#				continue
+	#			dropxpd.amount += amount
+	#			dropxpd.global_position = (dropxpd.global_position - dropposition) / 2 + dropposition
+	#			return
+	#		else:
+	#			print("Something went wrong, the shape is not in the renderer")
 	var drop = xp_drop.new()
 	drop.global_position = dropposition
 	drop.amount = amount
@@ -127,9 +145,9 @@ func drop_xp(dropposition: Vector2, amount: int):
 	renderer.add_object(drop)
 
 	# Add the shape to the shared area
-	PhysicsServer2D.area_add_shape(
-		shared_area.get_rid(), circle_shape, drop.transform
-	)
+	#PhysicsServer2D.area_add_shape(
+	#	shared_area.get_rid(), circle_shape, drop.transform
+	#)
 	
 	# Register the generated id to the bullet
 	#drop.physics_rid = _circle_shape
