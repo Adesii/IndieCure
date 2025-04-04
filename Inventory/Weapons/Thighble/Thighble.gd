@@ -86,10 +86,14 @@ func cancel_attack():
 		alpha = 1.0
 	is_attacking = false
 
+
+var timer = 0
+
 func _physics_process(delta):
 	if !is_attacking:
 		_on_attack()
 		return
+	timer += delta
 	rotation += Stat.Get(self, "projectile_speed") * delta
 
 	for i in range(attacks.size()):
@@ -99,9 +103,11 @@ func _physics_process(delta):
 		var used_transform := Transform2D(-rotation, poinoffset)
 		point.used_transform = used_transform
 
-	for area in overlapping_areas.keys():
-		for shape in overlapping_areas[area]:
-			Stat.Damage(self, area.get_parent(), {"shape_id": shape})
+	if timer >= delta + 0.1 or Stat.Get(self, "never_ending"):
+		for area in overlapping_areas.keys():
+			for shape in overlapping_areas[area]:
+				Stat.Damage(self, area.get_parent(), {"shape_id": shape})
+		timer = 0
 	overlapping_areas.clear()
 	queue_redraw()
 

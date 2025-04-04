@@ -46,13 +46,13 @@ func _physics_process(_delta):
 			# add a bit of upwards arc before droping back down
 			var drop_movement = Vector2(0, 0)
 			# direction movement:
-			drop_movement += (Global.player.global_position - drop.global_position).normalized() * clamp(easeInCirc(drop.pickup_time * 25 * _delta), 0, 1) * 100
+			drop_movement += (Global.player.global_position - drop.global_position).normalized() * clamp(easeInCirc(drop.pickup_time * 30 * _delta), 0, 1) * 100
 			
 			var signs = 1
 			if drop.pickup_time > 0.5:
 				signs = -1
 			# add a bit of upwards movement based on direction
-			drop_movement.y -= clamp(easeOutBack(signs * drop.pickup_time * 25 * _delta), 0, 1) * 3
+			drop_movement.y -= clamp(easeOutBack(signs * drop.pickup_time * 30 * _delta), 0, 1) * 3
 
 			if drop.pickup_time > 3.0:
 				dead_xp.append(picked_xp(drop))

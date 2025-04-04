@@ -444,6 +444,7 @@ frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("Atlas
 image_offset = Vector2i(0, 16)
 image_change_offset = 0.1
 shared_area = NodePath("Area2D")
+active_spawner = true
 enemiestospawn = 100000
 
 [node name="Area2D" type="Area2D" parent="Spawner"]
@@ -566,8 +567,11 @@ position = Vector2(850, 597)
 position = Vector2(442, 841)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("20_fgqjj")
+autoplay = true
 bus = &"Music"
+parameters/looping = true
 script = ExtResource("17_qxask")
 
 [node name="weapon_pickup" parent="." instance=ExtResource("22_4lw8j")]
