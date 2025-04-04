@@ -9,6 +9,8 @@ class_name EnemySpawner
 
 @onready var max_images = frames.size()
 
+@export var active_spawner := false
+
 var renderer: MassRenderer;
 
 #var enemies = []
@@ -27,14 +29,14 @@ var spawndelay = 0.1
 var spawntimer = 0
 
 func _physics_process(delta):
-	spawntimer += delta
-	if renderer._objects.size() < enemiestospawn:
+	if renderer._objects.size() < enemiestospawn and active_spawner:
+		spawntimer += delta
 		while renderer._objects.size() < enemiestospawn and amounttospawn > 0 and spawntimer > spawndelay:
 			spawn_single_enemy()
 			amounttospawn -= 1
 			spawntimer = 0
 		
-		amounttospawn = 1000
+		amounttospawn = 100
 
 	gothrough(delta)
 	queue_redraw()
@@ -96,7 +98,7 @@ func gothrough(delta):
 		#print("started avoidance thread")
 
 	for i in range(0, renderer._objects.size()):
-		var enemy = renderer._objects[i]
+		var enemy = renderer.get_object(i)
 		if enemy == null:
 			#remove
 			renderer._objects.remove_at(i)
@@ -109,10 +111,12 @@ func gothrough(delta):
 
 func avoidance_calc():
 	for i in renderer._objects.size():
-		var enemy = renderer._objects[i]
+		var enemy = renderer.get_object(i)
+		if enemy == null:
+			continue
 		var collisiongroupresult = CollisionAvoidance.handle_collisiongroup(enemy, enemy.positionkey, 8)
 		if collisiongroupresult.cellfull:
-			enemy.avoidancevelocity = -enemy.velocity * 0.9
+			enemy.avoidancevelocity = - enemy.velocity * 0.9
 			continue
 		enemy.positionkey = collisiongroupresult.last_position_key
 		var collisionresult = CollisionAvoidance.avoid_others(enemy, enemy.positionkey, 32)
@@ -164,7 +168,7 @@ func _newRender():
 		var atlastexture = frames[enemy.image_offset_animation] as AtlasTexture
 		enemy.texture = atlastexture
 		var drawrect = atlastexture.get_region()
-		drawrect.position = -offset - Vector2(0, image_offset.y)
+		drawrect.position = - offset - Vector2(0, image_offset.y)
 		if !enemy.flip_h:
 			drawrect.size.x *= -1
 		enemy.texture_rect = drawrect
@@ -219,6 +223,8 @@ func _configure_collision_for_enemy(enemy: Enemy) -> void:
 	PhysicsServer2D.area_add_shape(
 		shared_area.get_rid(), _circle_shape, used_transform
 	)
+
+	enemy.area_rid = shared_area.get_rid()
 	
 	# Register the generated id to the bullet
 	enemy.physics_rid = _circle_shape
