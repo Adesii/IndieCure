@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Worlds/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[aseprite]
+
+import/import_plugin/default_automatic_importer="SpriteFrames"
+
 [autoload]
 
 ProjectSettingsIc="res://Scripts/Tools/ProjectSettingsIC.gd"
@@ -43,7 +47,7 @@ project/assembly_name="IndieCure"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg")
 
 [input]
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cvq7xmke1gifx"
+path="res://.godot/imported/Projectiles.ase-88dcc41ed2e9eeddd37d1fd2d7e55c7c.res"
+
+[deps]
+
+source_file="res://Scenes/Worlds/TestStage/Textures/Sprites/Abilities/Projectiles.ase"
+dest_files=["res://.godot/imported/Projectiles.ase-88dcc41ed2e9eeddd37d1fd2d7e55c7c.res"]
+
+[params]
+

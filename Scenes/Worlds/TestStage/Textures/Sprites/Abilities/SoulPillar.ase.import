@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://pl6j1qbwrhmp"
+path="res://.godot/imported/SoulPillar.ase-f7577614ed5d90f9ac04d467b5713215.res"
+
+[deps]
+
+source_file="res://Scenes/Worlds/TestStage/Textures/Sprites/Abilities/SoulPillar.ase"
+dest_files=["res://.godot/imported/SoulPillar.ase-f7577614ed5d90f9ac04d467b5713215.res"]
+
+[params]
+

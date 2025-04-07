@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=57 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://bd74xre018gnk" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -27,6 +27,10 @@
 [ext_resource type="Script" uid="uid://d3bncrduni548" path="res://addons/post_processing/node/post_process.gd" id="25_2l5wb"]
 [ext_resource type="Shader" uid="uid://biv0h3mtr7fim" path="res://Shaders/Effects/godrays.gdshader" id="25_ty405"]
 [ext_resource type="Script" uid="uid://ca8sja2117d71" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="26_r86vm"]
+[ext_resource type="SpriteFrames" uid="uid://bwyg4nt3odr0w" path="res://Enemies/Bosses/DarkBall/Art/DarkBall-0003.aseprite" id="28_r86vm"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="29_c4jt6"]
+[ext_resource type="Script" uid="uid://dx438ocx6dkg" path="res://Scripts/AutoPlayAnimation2D.gd" id="30_1cejj"]
+[ext_resource type="Texture2D" uid="uid://dluvdieeegi0m" path="res://Scenes/Worlds/Layer.png" id="30_bbmju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -400,6 +404,49 @@ shader_parameter/color = Color(0.784314, 0.87451, 0.490196, 0.623529)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqnmg"]
+atlas = ExtResource("30_bbmju")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x2vb"]
+atlas = ExtResource("30_bbmju")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o73b"]
+atlas = ExtResource("30_bbmju")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnbmw"]
+atlas = ExtResource("30_bbmju")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6twy0"]
+atlas = ExtResource("30_bbmju")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dtj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqnmg")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_6x2vb")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_5o73b")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_vnbmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6twy0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="StageOne" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_hrxjt")
@@ -601,5 +648,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Boss" type="Node2D" parent="."]
+position = Vector2(81, -56)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boss"]
+sprite_frames = ExtResource("28_r86vm")
+frame = 1
+frame_progress = 0.823639
+offset = Vector2(0, -28.075)
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": ""
+}
+
+[node name="Node" parent="Boss/AnimatedSprite2D" instance=ExtResource("29_c4jt6")]
+shadow_offset = Vector2(0, -24)
+
+[node name="Boss2" type="Node2D" parent="."]
+position = Vector2(70, -172)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boss2"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1dtj5")
+frame_progress = 0.294769
+offset = Vector2(0, -28.075)
+script = ExtResource("30_1cejj")
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"op_exp": false,
+"source": "res://Enemies/Bosses/DarkBall/Art/DarkBall-0003.aseprite"
+}
+
+[node name="Node" parent="Boss2/AnimatedSprite2D" instance=ExtResource("29_c4jt6")]
+shadow_offset = Vector2(0, -24)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

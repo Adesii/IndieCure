@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b2mrhbinhb67g"
+path="res://.godot/imported/Enemies.ase-29dfe735a64dae812ce22a5125dfd471.res"
+
+[deps]
+
+source_file="res://Scenes/Worlds/TestStage/Textures/Sprites/Enemies/Enemies.ase"
+dest_files=["res://.godot/imported/Enemies.ase-29dfe735a64dae812ce22a5125dfd471.res"]
+
+[params]
+
