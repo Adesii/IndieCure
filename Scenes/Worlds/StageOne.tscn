@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=79 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://bd74xre018gnk" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -30,6 +30,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bwyg4nt3odr0w" path="res://Enemies/Bosses/DarkBall/Art/DarkBall-0003.aseprite" id="28_r86vm"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="29_c4jt6"]
 [ext_resource type="Texture2D" uid="uid://dluvdieeegi0m" path="res://Scenes/Worlds/Layer.png" id="30_bbmju"]
+[ext_resource type="Texture2D" uid="uid://2qvmf267sad5" path="res://Textures/Rocks/Bolder-0001.png" id="32_6x2vb"]
 [ext_resource type="Texture2D" uid="uid://bocmbwwjwjecj" path="res://Textures/Effects/Portal/portal_anim.png" id="32_lqnmg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
@@ -845,10 +846,15 @@ position = Vector2(-23, 56)
 sprite_frames = SubResource("SpriteFrames_oxjwn")
 animation = &"portal_idle"
 autoplay = "portal_idle"
-frame_progress = 0.281121
+frame_progress = 0.935241
 offset = Vector2(0, -29.24)
 
 [node name="Node" parent="Node2D2/AnimatedSprite2D" instance=ExtResource("29_c4jt6")]
 shadow_offset = Vector2(0, 3.84)
+
+[node name="Bolder-0001" type="Sprite2D" parent="."]
+position = Vector2(120, 188)
+texture = ExtResource("32_6x2vb")
+offset = Vector2(0, -53.185)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
