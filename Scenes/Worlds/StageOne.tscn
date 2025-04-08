@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=85 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://bd74xre018gnk" path="res://Scenes/Worlds/StageOne/Scripts/StageOne.gd" id="1_hrxjt"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -32,6 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://dluvdieeegi0m" path="res://Scenes/Worlds/Layer.png" id="30_bbmju"]
 [ext_resource type="Texture2D" uid="uid://2qvmf267sad5" path="res://Textures/Rocks/Bolder-0001.png" id="32_6x2vb"]
 [ext_resource type="Texture2D" uid="uid://bocmbwwjwjecj" path="res://Textures/Effects/Portal/portal_anim.png" id="32_lqnmg"]
+[ext_resource type="Shader" uid="uid://cndma2ujxeqi7" path="res://Shaders/Effects/Teleport.gdshader" id="33_5o73b"]
+[ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="34_vnbmw"]
+[ext_resource type="Texture2D" uid="uid://dsnt4d5ecychh" path="res://Enemies/Bosses/CRB/CrazyFuckingRobot-0001.png" id="36_6twy0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
 texture = ExtResource("1_juxyd")
@@ -596,6 +599,22 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1dtj5"]
+noise_type = 5
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ci3dm"]
+noise = SubResource("FastNoiseLite_1dtj5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgjrf"]
+shader = ExtResource("33_5o73b")
+shader_parameter/disintegration_amount = 0.0
+shader_parameter/time = 2.01
+shader_parameter/speed = 10.0
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_map = SubResource("NoiseTexture2D_ci3dm")
+shader_parameter/smear_amount = 0.02
+
 [node name="StageOne" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_hrxjt")
@@ -856,5 +875,75 @@ shadow_offset = Vector2(0, 3.84)
 position = Vector2(120, 188)
 texture = ExtResource("32_6x2vb")
 offset = Vector2(0, -53.185)
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(-266, -79)
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Node2D3"]
+material = SubResource("ShaderMaterial_lgjrf")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("34_vnbmw")
+animation = &"idle"
+offset = Vector2(0, -32)
+
+[node name="Node" parent="Node2D3/PlayerSprite" instance=ExtResource("29_c4jt6")]
+
+[node name="CRB" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-271, -217)
+
+[node name="Head" type="Sprite2D" parent="CRB"]
+y_sort_enabled = true
+position = Vector2(0, 51)
+texture = ExtResource("36_6twy0")
+offset = Vector2(0, -52.195)
+region_enabled = true
+region_rect = Rect2(75, 88, 82, 105)
+
+[node name="EyeTransform" type="Node2D" parent="CRB/Head"]
+y_sort_enabled = true
+position = Vector2(0, -51)
+
+[node name="REye" type="Sprite2D" parent="CRB/Head/EyeTransform"]
+z_index = 1
+position = Vector2(-18, -3)
+texture = ExtResource("36_6twy0")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(93, 63, 21, 21)
+
+[node name="LEye" type="Sprite2D" parent="CRB/Head/EyeTransform"]
+z_index = 1
+position = Vector2(17, -3)
+texture = ExtResource("36_6twy0")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(93, 63, 21, 21)
+
+[node name="Node" parent="CRB/Head" instance=ExtResource("29_c4jt6")]
+shadow_offset = Vector2(0, -75.095)
+
+[node name="LHand" type="Sprite2D" parent="CRB"]
+y_sort_enabled = true
+position = Vector2(79, 97)
+texture = ExtResource("36_6twy0")
+offset = Vector2(0, -30)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(6, 158, 66, 82)
+
+[node name="Node" parent="CRB/LHand" instance=ExtResource("29_c4jt6")]
+shadow_offset = Vector2(0, -37.34)
+
+[node name="RHand" type="Sprite2D" parent="CRB"]
+y_sort_enabled = true
+position = Vector2(-75, 97)
+texture = ExtResource("36_6twy0")
+offset = Vector2(0, -30)
+region_enabled = true
+region_rect = Rect2(6, 158, 66, 82)
+
+[node name="Node" parent="CRB/RHand" instance=ExtResource("29_c4jt6")]
+shadow_offset = Vector2(0, -37.34)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

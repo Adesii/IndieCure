@@ -21,10 +21,24 @@ func _ready():
 		dummysprite2d.hframes = sprite.hframes
 		dummysprite2d.vframes = sprite.vframes
 		dummysprite2d.frame_coords = sprite.frame_coords
+		dummysprite2d.region_enabled = sprite.region_enabled
+		dummysprite2d.region_rect = sprite.region_rect
+		dummysprite2d.region_filter_clip_enabled = sprite.region_filter_clip_enabled
+
 	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
 	dummysprite2d.position = sprite.position + shadow_offset
 	dummysprite2d.scale = sprite.scale * shadow_scale_offset
 	dummysprite2d.show_behind_parent = true
+
+	if dummysprite2d.region_enabled:
+		var rr = sprite.region_rect
+		var r = Rect2(0, 0, dummysprite2d.region_rect.size.x, -dummysprite2d.region_rect.size.y)
+		dummysprite2d.global_position = shadow_offset + sprite.offset
+		dummysprite2d.global_position -= Vector2(0, sprite.offset.y) * 2
+		#dummysprite2d.position -= rr.size / 2
+		#if sprite.flip_h:
+		#	r.size.x *= -1
+
 	
 	Global.shadow_canvas_group.add_child.call_deferred(dummysprite2d)
 	
@@ -50,7 +64,7 @@ func _physics_process(_delta):
 		sprite.add_child(copy_transform)
 	
 	if copy_transform != null:
-		copy_transform.position = sprite.position + shadow_offset
+		copy_transform.position = shadow_offset
 	
 	dummysprite2d.flip_h = sprite.flip_h
 	
@@ -62,7 +76,7 @@ func _physics_process(_delta):
 	else:
 		dummysprite2d.texture = null
 
-var editor_texture = null
+var editor_texture: Texture2D = null
 var _sprite = null
 func _draw():
 	if !Engine.is_editor_hint():
@@ -73,6 +87,7 @@ func _draw():
 		_sprite = get_parent()
 		if _sprite is Sprite2D:
 			editor_texture = _sprite.texture
+			
 		elif _sprite is AnimatedSprite2D:
 			editor_texture = _sprite.sprite_frames.get_frame_texture(_sprite.animation, _sprite.frame)
 		else:
@@ -80,9 +95,23 @@ func _draw():
 	if editor_texture == null:
 		return
 	var r = Rect2(0, 0, editor_texture.get_width(), editor_texture.get_height())
+	
 	#center the position
 	r.position = _sprite.position + shadow_offset + _sprite.offset
 	r.position -= Vector2(0, _sprite.offset.y) * 2
 	r.position -= r.size / 2
+
 	r.size = Vector2(r.size.x, -r.size.y)
-	draw_texture_rect(editor_texture, r, false, Color(0, 0, 0, 0.5), false)
+	
+	
+	if sprite is Sprite2D and sprite.region_enabled:
+		var rr = sprite.region_rect
+		r = Rect2(0, 0, sprite.region_rect.size.x, -sprite.region_rect.size.y)
+		r.position = shadow_offset + _sprite.offset
+		r.position -= Vector2(0, _sprite.offset.y) * 2
+		r.position -= rr.size / 2
+		if sprite.flip_h:
+			r.size.x *= -1
+		draw_texture_rect_region(editor_texture, r, rr, Color(0, 0, 0, 0.5))
+	else:
+		draw_texture_rect(editor_texture, r, false, Color(0, 0, 0, 0.5), false)
