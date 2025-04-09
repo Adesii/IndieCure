@@ -15,10 +15,6 @@ run/main_scene="res://Scenes/Worlds/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
-[aseprite]
-
-import/import_plugin/default_automatic_importer="SpriteFrames"
-
 [autoload]
 
 ProjectSettingsIc="res://Scripts/Tools/ProjectSettingsIC.gd"

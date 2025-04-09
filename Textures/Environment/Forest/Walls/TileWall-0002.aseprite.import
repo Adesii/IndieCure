@@ -1,0 +1,15 @@
+[remap]
+
+importer="aseprite_wizard.plugin.tileset-texture"
+type="AtlasTexture"
+uid="uid://c8atwgtadk6vs"
+valid=false
+
+[deps]
+
+source_file="res://Textures/Environment/Forest/Walls/TileWall-0002.aseprite"
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false
