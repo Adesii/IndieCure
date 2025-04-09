@@ -82,6 +82,7 @@ func _on_attack():
 func cancel_attack():
 	for point in attacks:
 		point.tweener.stop()
+		point.tweener.kill()
 		point.offset = Vector2(0, 0)
 		alpha = 1.0
 	is_attacking = false

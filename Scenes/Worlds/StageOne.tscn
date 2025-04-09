@@ -720,7 +720,7 @@ noise = SubResource("FastNoiseLite_1dtj5")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgjrf"]
 shader = ExtResource("33_5o73b")
 shader_parameter/disintegration_amount = 0.0
-shader_parameter/time = 2.01
+shader_parameter/time = 5.0
 shader_parameter/speed = 10.0
 shader_parameter/noise_scale = 1.0
 shader_parameter/noise_map = SubResource("NoiseTexture2D_ci3dm")
@@ -958,7 +958,8 @@ position = Vector2(70, -172)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1dtj5")
 autoplay = "default"
-frame_progress = 0.294769
+frame = 1
+frame_progress = 0.674857
 offset = Vector2(0, -28.075)
 metadata/_aseprite_wizard_config_ = {
 "layer": "Layer",
@@ -980,7 +981,7 @@ position = Vector2(-23, 56)
 sprite_frames = SubResource("SpriteFrames_oxjwn")
 animation = &"portal_idle"
 autoplay = "portal_idle"
-frame_progress = 0.923491
+frame_progress = 0.549239
 offset = Vector2(0, -29.24)
 
 [node name="Node" parent="Node2D2/AnimatedSprite2D" instance=ExtResource("29_c4jt6")]
