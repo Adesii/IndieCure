@@ -1,6 +1,8 @@
 extends Node2D
 class_name EnemySpawner
 
+static var instance: EnemySpawner
+
 @export var frames: Array[Texture2D]
 @export var image_offset: Vector2i
 @export var image_change_offset = 0.2
@@ -20,6 +22,7 @@ var enemyCanvas: PackedInt64Array = []
 var circle_shape
 
 func _ready():
+	instance = self
 	circle_shape = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(circle_shape, 8)
 	renderer = MassRenderer.new()
@@ -54,6 +57,11 @@ func spawn_single_enemy():
 	var spawndirection = Vector2.from_angle(randf() * 2 * PI).normalized() * 400
 	spawndirection += Global.player.position
 	_new_spawn_enemy(spawndirection, 32)
+
+func spawn_enemy(enemy_type: EnemyArchetype, stat_holder: StatHolder):
+	var spawndirection = Vector2.from_angle(randf() * 2 * PI).normalized() * 400
+	spawndirection += Global.player.position
+	return _new_spawn_enemy_with_type(spawndirection, enemy_type, stat_holder)
 
 func check_duplicates(a):
 	var is_dupe = false
@@ -114,7 +122,7 @@ func calc(delta, count, startoffset, playerpos, space):
 			break
 		var enemy = renderer._objects[i + startoffset]
 		var movement_vector = playerpos - enemy.global_position
-		var offset: Vector2 = (movement_vector.normalized() * enemy.speed * delta)
+		var offset: Vector2 = (movement_vector.normalized() * enemy.speed.get_value() * delta)
 
 		enemy.animation_lifetime += delta
 		
@@ -209,7 +217,7 @@ func _newRender():
 func _new_spawn_enemy(spawn_location: Vector2, speed = 200) -> void:
 	var enemy = Enemy.new()
 	enemy.global_position = spawn_location
-	enemy.speed = speed
+	enemy.speed.set_new_value(speed)
 	enemy.health.base_value = 5
 	enemy.health.current_value = 5
 	enemy.health.max_value = 5
@@ -227,6 +235,40 @@ func _new_spawn_enemy(spawn_location: Vector2, speed = 200) -> void:
 	RenderingServer.canvas_item_set_parent(enemy.rendering_shadow_rid, Global.shadow_canvas_group.get_canvas_item())
 	#enemies.append(enemy)
 	renderer.add_object(enemy)
+
+func _new_spawn_enemy_with_type(spawn_location: Vector2, enemy_type: EnemyArchetype, stat_holder: StatHolder) -> MassObject:
+	var enemy = Enemy.new()
+	enemy.global_position = spawn_location
+
+	var get_speed_template = stat_holder._get_attribute("movement_speed")
+	enemy.speed.base_value = get_speed_template.base_value
+	enemy.speed.current_value = get_speed_template.current_value
+	enemy.speed.max_value = get_speed_template.max_value
+
+	var get_health_template = stat_holder._get_attribute("health")
+	enemy.health.base_value = get_health_template.base_value
+	enemy.health.current_value = get_health_template.current_value
+	enemy.health.max_value = get_health_template.max_value
+
+	print("Spawning enemy of type %s with speed %d and health %d" % [enemy_type, enemy.speed.current_value, enemy.health.current_value])
+
+	enemy.sprite_frames = enemy_type.frames
+
+	enemy.image_offset_animation = randi() % enemy_type.frames.get_frame_count("default")
+	enemy.animation_lifetime = randf_range(0, 1)
+
+	#_configure_collision_for_enemy(enemy)
+
+	enemy.rendering_rid = RenderingServer.canvas_item_create()
+	enemy.rendering_shadow_rid = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(enemy.rendering_rid, get_parent().get_canvas_item())
+	RenderingServer.canvas_item_set_material(enemy.rendering_rid, material)
+
+	RenderingServer.canvas_item_set_parent(enemy.rendering_shadow_rid, Global.shadow_canvas_group.get_canvas_item())
+	#enemies.append(enemy)
+	renderer.add_object(enemy)
+	return enemy
+
 
 func _configure_collision_for_enemy(enemy: Enemy) -> void:
 	# Define the shape's position

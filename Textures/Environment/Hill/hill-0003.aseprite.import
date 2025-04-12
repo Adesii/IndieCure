@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://cpg0jafff41c3"
+path="res://.godot/imported/hill-0003.aseprite-21340f79dc5076c2bfd5f277515a455b.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Hill/hill-0003.aseprite"
+dest_files=["res://.godot/imported/hill-0003.aseprite-21340f79dc5076c2bfd5f277515a455b.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

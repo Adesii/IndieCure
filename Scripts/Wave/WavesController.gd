@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 class_name WavesController
@@ -13,25 +14,25 @@ var current_wave_id: int = -1
 
 func _ready():
 	_setup_timer()
+	for i in range(get_child_count()):
+		var child = get_child(i)
+		if child is Wave:
+			waves.append(child)
+			child.set_process(false)
+			child.set_process_input(false)
+			child.set_physics_process(false)
 
+	waves[0].start(self)
 
 func _process(_delta):
-	_process_next_wave()
 	_update_timer_label()
 
 
-func _process_next_wave():
+func next_wave():
 	var next_wave_id = current_wave_id + 1
-	if(next_wave_id < waves.size()):
-		if(elapsed_time >= waves[next_wave_id].get_start_time()):
-			_spawn_wave(next_wave_id)
+	if (next_wave_id < waves.size()):
 			current_wave_id = current_wave_id + 1
-
-
-func _spawn_wave(wave_id):
-	var spawner = waves[wave_id].get_spawner()
-	if(spawner != null):
-		add_child(spawner)
+			waves[current_wave_id].start(self)
 
 
 func _update_timer_label():
@@ -52,9 +53,3 @@ func _setup_timer():
 	timer.timeout.connect(self._on_timer_timeout)
 	timer.wait_time = 1.0
 	timer.start()
-
-
-func _add_wave(start_time, spawner_name):
-	var spawner = get_node(spawner_name)
-	remove_child(spawner)
-	waves.append(Wave.new(start_time, spawner))

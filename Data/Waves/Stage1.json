@@ -1,0 +1,27 @@
+{
+	"name": "Stage 1",
+	"timeline": [
+		{
+			"events":[
+				{"time": 0, "rate": 0.2, "spawner": 0},
+				{"time": 60, "rate": 0.5, "spawner": 0},
+				{"time": 90, "rate": 0.0, "spawner": 0}
+			]
+		},
+		{
+			"events":[
+				{"time": 50, "rate": 0.2, "spawner": 1},
+				{"time": 60, "rate": 0.5, "spawner": 1},
+				{"time": 90, "rate": 0.9, "spawner": 1}
+			]
+		},
+		{
+			"events":[
+				{"time": 30,"singletime":true, "spawner": 2},
+				{"time": 90,"singletime":true, "spawner": 2}
+			]
+		}
+
+
+	]
+}

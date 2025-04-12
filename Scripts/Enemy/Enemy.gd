@@ -1,27 +1,19 @@
 class_name Enemy
-extends MassObject
+extends AnimatedMassObject
 
 var velocity: Vector2
 var avoidancevelocity: Vector2
 var positionkey: int
 
-var flip_h: bool
-var lastfliptime: float
-
-var animation_lifetime: float = 0.0
-var animation_offset: float = 0.0
-var image_offset_animation: int = 0
 var layer: String = "front"
-var speed: float = 0.0
 
-var health: Attribute = Attribute.new(5, physics_rid, "health")
+var speed: Attribute = Attribute.new(200, self.get_instance_id(), "speed")
+var health: Attribute = Attribute.new(5, self.get_instance_id(), "health")
 
 var invulnerability: float = 0.0
 
 var damage_frames: float = 0.0
 
-var last_collision: Area2D
-var last_id: int
 
 func on_damaged(attr: Attribute, info, change_value):
 	if change_value == attr.current_value or change_value < 0:
