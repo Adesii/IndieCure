@@ -26,6 +26,7 @@ DebugUi="*res://Scripts/Global/DebugUI.tscn"
 Stat="*res://Scripts/GAS/Attributes/Stat.gd"
 StatEditorSave="*res://addons/custominspectors/stat_editor/stat_editor_save.gd"
 DamageNumbers="*res://Scripts/Global/DamagePopup/damage_numbers.tscn"
+GUIDE="*res://addons/guide/guide.gd"
 
 [debug]
 
@@ -43,7 +44,7 @@ project/assembly_name="IndieCure"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg")
 
 [input]
 
