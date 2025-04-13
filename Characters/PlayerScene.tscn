@@ -28,6 +28,16 @@ y_sort_enabled = true
 script = ExtResource("1_o0pb6")
 inventory = ExtResource("2_jrxo8")
 
+[node name="PlayerSprite2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("character_sprite")]
+z_index = -3515
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("1_0le1w")
+animation = &"idle"
+offset = Vector2(0, -32)
+script = ExtResource("2_ua8hj")
+character_sprite = NodePath("..")
+fliptimelimit = 0
+
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("character_sprite")]
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("1_0le1w")

@@ -9,6 +9,8 @@ var copy_transform: RemoteTransform2D
 @export var shadow_offset: Vector2 = Vector2(0, 0)
 @export var shadow_scale_offset: Vector2 = Vector2(1, 1)
 
+@export var shadow_offset_strength: float = 1.0
+
 func _ready():
 	if Engine.is_editor_hint():
 		return
@@ -67,6 +69,8 @@ func _physics_process(_delta):
 		copy_transform.position = shadow_offset
 	
 	dummysprite2d.flip_h = sprite.flip_h
+
+	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
 	
 	if sprite is Sprite2D:
 		dummysprite2d.texture = sprite.texture

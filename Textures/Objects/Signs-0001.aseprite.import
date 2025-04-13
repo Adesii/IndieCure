@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://c0gnggygedhq5"
+path="res://.godot/imported/Signs-0001.aseprite-61639f6f3cbabf0ee0c9750d0ab50c0e.res"
+
+[deps]
+
+source_file="res://Textures/Objects/Signs-0001.aseprite"
+dest_files=["res://.godot/imported/Signs-0001.aseprite-61639f6f3cbabf0ee0c9750d0ab50c0e.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=114 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="1_1dtj5"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dvu38rlvkro1b" path="res://Textures/Environment/Water/Water-0001.png" id="19_8t7lk"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
 [ext_resource type="Texture2D" uid="uid://co2ptu8ud0bkv" path="res://Textures/Objects/SignTile-0001.png" id="20_se7s5"]
+[ext_resource type="Texture2D" uid="uid://br72xohltplfs" path="res://Textures/Objects/Bridge-0001.png" id="21_8t7lk"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="21_hqbda"]
 [ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
 [ext_resource type="Script" uid="uid://d3bncrduni548" path="res://addons/post_processing/node/post_process.gd" id="25_2l5wb"]
@@ -99,7 +100,7 @@ script = ExtResource("5_fpb0x")
 attribute_name = "movement_speed"
 default_value = 32.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyx1y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8t7lk"]
 texture = ExtResource("1_juxyd")
 0:0/0 = 0
 1:0/0 = 0
@@ -111,7 +112,7 @@ texture = ExtResource("1_juxyd")
 7:0/0 = 0
 8:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f05g6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_se7s5"]
 texture = ExtResource("2_igm8l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -123,7 +124,7 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 1:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kh6c7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xesem"]
 texture = ExtResource("3_opok5")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -135,7 +136,7 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gda7r"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfofe"]
 texture = ExtResource("3_g3xn5")
 margins = Vector2i(8, 15)
 separation = Vector2i(1, 0)
@@ -151,7 +152,7 @@ separation = Vector2i(1, 0)
 5:2/0 = 0
 6:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6slms"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7tu6"]
 texture = ExtResource("4_ck4ih")
 2:1/0 = 0
 3:1/0 = 0
@@ -160,7 +161,7 @@ texture = ExtResource("4_ck4ih")
 3:2/0 = 0
 2:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nbj3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo10s"]
 texture = ExtResource("6_77q36")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -172,7 +173,7 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbsie"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7i68"]
 texture = ExtResource("7_srpi3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -180,7 +181,7 @@ texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhfsq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2wk3n"]
 texture = ExtResource("8_cl3ux")
 separation = Vector2i(0, 16)
 texture_region_size = Vector2i(32, 32)
@@ -253,7 +254,7 @@ texture_region_size = Vector2i(32, 32)
 3:0/0/terrains_peering_bit/top_side = 0
 3:0/0/terrains_peering_bit/top_right_corner = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53pdo"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35l2t"]
 texture = ExtResource("10_y60uj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -327,7 +328,7 @@ texture_region_size = Vector2i(32, 32)
 0:2/0/terrains_peering_bit/top_left_corner = 1
 0:2/0/terrains_peering_bit/top_right_corner = 1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xesem"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m140f"]
 texture = ExtResource("15_36w2d")
 separation = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
@@ -458,21 +459,21 @@ terrain_set_0/terrain_1/name = "OtherPaths"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "Grasspaths"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_wyx1y")
-sources/1 = SubResource("TileSetAtlasSource_f05g6")
-sources/3 = SubResource("TileSetAtlasSource_gda7r")
-sources/4 = SubResource("TileSetAtlasSource_6slms")
-sources/2 = SubResource("TileSetAtlasSource_kh6c7")
-sources/5 = SubResource("TileSetAtlasSource_3nbj3")
-sources/6 = SubResource("TileSetAtlasSource_cbsie")
-sources/7 = SubResource("TileSetAtlasSource_hhfsq")
-sources/8 = SubResource("TileSetAtlasSource_53pdo")
-sources/9 = SubResource("TileSetAtlasSource_xesem")
+sources/0 = SubResource("TileSetAtlasSource_8t7lk")
+sources/1 = SubResource("TileSetAtlasSource_se7s5")
+sources/3 = SubResource("TileSetAtlasSource_dfofe")
+sources/4 = SubResource("TileSetAtlasSource_w7tu6")
+sources/2 = SubResource("TileSetAtlasSource_xesem")
+sources/5 = SubResource("TileSetAtlasSource_bo10s")
+sources/6 = SubResource("TileSetAtlasSource_w7i68")
+sources/7 = SubResource("TileSetAtlasSource_2wk3n")
+sources/8 = SubResource("TileSetAtlasSource_35l2t")
+sources/9 = SubResource("TileSetAtlasSource_m140f")
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cm21p"]
 tile_data = PackedInt32Array(0, 3, 0, 1, 65539, 0, 2, 131075, 0, 3, 196611, 0)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lgjrf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0cdg"]
 texture = ExtResource("11_1dtj5")
 separation = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
@@ -527,7 +528,7 @@ texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpb0x"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v35rg"]
 texture = ExtResource("12_ci3dm")
 separation = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
@@ -582,7 +583,7 @@ texture_region_size = Vector2i(32, 32)
 4:4/0 = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e72qd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oxjwn"]
 texture = ExtResource("17_cm21p")
 separation = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
@@ -1071,12 +1072,12 @@ terrain_set_0/terrain_0/name = "hill"
 terrain_set_0/terrain_0/color = Color(0.920026, 0.743494, 0.943351, 1)
 terrain_set_0/terrain_1/name = "hole"
 terrain_set_0/terrain_1/color = Color(0.11281, 0.47712, 0.649308, 1)
-sources/0 = SubResource("TileSetAtlasSource_lgjrf")
-sources/1 = SubResource("TileSetAtlasSource_fpb0x")
-sources/3 = SubResource("TileSetAtlasSource_e72qd")
+sources/0 = SubResource("TileSetAtlasSource_j0cdg")
+sources/1 = SubResource("TileSetAtlasSource_v35rg")
+sources/3 = SubResource("TileSetAtlasSource_oxjwn")
 pattern_0 = SubResource("TileMapPattern_cm21p")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfofe"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58jb6"]
 texture = ExtResource("19_8t7lk")
 separation = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
@@ -1100,12 +1101,13 @@ texture_region_size = Vector2i(32, 32)
 4:2/0 = 0
 4:1/0 = 0
 4:0/0 = 0
+0:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_w7tu6"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_dfofe")
+sources/0 = SubResource("TileSetAtlasSource_58jb6")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo10s"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_majuq"]
 texture = ExtResource("20_se7s5")
 margins = Vector2i(16, 16)
 separation = Vector2i(16, 16)
@@ -1123,7 +1125,102 @@ texture_region_size = Vector2i(32, 32)
 4:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_w7i68"]
-sources/0 = SubResource("TileSetAtlasSource_bo10s")
+sources/0 = SubResource("TileSetAtlasSource_majuq")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_06ag2"]
+texture = ExtResource("21_8t7lk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 8)
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 8)
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 8)
+0:1/0/terrain_set = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 8)
+1:1/0/terrain_set = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 8)
+2:1/0/terrain_set = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, 8)
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/right_side = 0
+0:3/0/terrains_peering_bit/bottom_right_corner = 0
+0:3/0/terrains_peering_bit/bottom_side = 0
+0:3/0/terrains_peering_bit/top_side = 0
+0:3/0/terrains_peering_bit/top_right_corner = 0
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, 8)
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/right_side = 0
+1:3/0/terrains_peering_bit/bottom_right_corner = 0
+1:3/0/terrains_peering_bit/bottom_side = 0
+1:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0/terrains_peering_bit/left_side = 0
+1:3/0/terrains_peering_bit/top_left_corner = 0
+1:3/0/terrains_peering_bit/top_side = 0
+1:3/0/terrains_peering_bit/top_right_corner = 0
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, 8)
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/terrains_peering_bit/bottom_side = 0
+2:3/0/terrains_peering_bit/bottom_left_corner = 0
+2:3/0/terrains_peering_bit/left_side = 0
+2:3/0/terrains_peering_bit/top_left_corner = 0
+2:3/0/terrains_peering_bit/top_side = 0
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, 8)
+0:5/0/terrain_set = 0
+0:5/0/terrains_peering_bit/top_side = 0
+0:5/0/terrains_peering_bit/top_right_corner = 0
+1:5/0 = 0
+1:5/0/texture_origin = Vector2i(0, 8)
+1:5/0/terrain_set = 0
+1:5/0/terrains_peering_bit/top_left_corner = 0
+1:5/0/terrains_peering_bit/top_side = 0
+1:5/0/terrains_peering_bit/top_right_corner = 0
+2:5/0 = 0
+2:5/0/texture_origin = Vector2i(0, 8)
+2:5/0/terrain_set = 0
+2:5/0/terrains_peering_bit/top_left_corner = 0
+2:5/0/terrains_peering_bit/top_side = 0
+0:6/0 = 0
+0:6/0/texture_origin = Vector2i(0, 8)
+2:6/0 = 0
+2:6/0/texture_origin = Vector2i(0, 8)
+1:6/0 = 0
+1:6/0/texture_origin = Vector2i(0, 8)
+
+[sub_resource type="TileSet" id="TileSet_xesem"]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Bridge"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_06ag2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6wm83"]
 shader = ExtResource("10_v1m63")
@@ -1510,13 +1607,18 @@ tile_map_data = PackedByteArray("AADp//L/AAAAAAAAAADq//L/AAAAAAAAAADr//L/AAAAAAA
 tile_set = SubResource("TileSet_cm21p")
 
 [node name="Water" type="TileMapLayer" parent="TileMap"]
-tile_map_data = PackedByteArray("AAADAPH/AAAAAAIAAAAFAPH/AAACAAIAAAAEAPH/AAACAAIAAAADAPL/AAACAAMAAAAFAPL/AAACAAMAAAAEAPL/AAACAAMAAAAFAPP/AAACAAEAAAADAPP/AAAAAAEAAAAEAPP/AAAAAAMAAAAEAPT/AAAAAAMAAAAEAPX/AAAAAAMAAAAFAPX/AAAAAAMAAAAGAPX/AAACAAEAAGAHAPX/AAACAAEAAGAIAPX/AAACAAEAAGAJAPX/AAACAAEAAGAKAPX/AAACAAEAAGAFAPD/AAACAAEAAAAFAO//AAACAAEAAAAFAO7/AAACAAEAAAADAPD/AAAAAAEAAAADAO//AAAAAAEAAAADAO7/AAAAAAEAAAAEAPD/AAAAAAMAAAAEAO//AAAAAAMAAAAEAO7/AAAAAAMAAAADAPT/AAAAAAEAAAAFAPT/AAACAAEAAAADAPX/AAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAADAPH/AAAAAAIAAAAFAPH/AAACAAIAAAAEAPH/AAAAAAQAAAADAPL/AAACAAMAAAAFAPL/AAACAAMAAAAEAPL/AAACAAMAAAAFAPP/AAACAAEAAAADAPP/AAAAAAEAAAAEAPP/AAAAAAMAAAAEAPT/AAAAAAMAAAAEAPX/AAAAAAMAAAAFAPD/AAACAAEAAAAFAO//AAACAAEAAAAFAO7/AAACAAEAAAADAPD/AAAAAAEAAAADAO//AAAAAAEAAAADAO7/AAAAAAEAAAAEAPD/AAAAAAMAAAAEAO//AAAAAAMAAAAEAO7/AAAAAAMAAAADAPT/AAAAAAEAAAAFAPT/AAACAAEAAAADAPX/AAAAAAEAAAAFAPX/AAACAAEAAAADAPb/AAAAAAEAAAADAPf/AAADAAEAAAAFAPb/AAACAAEAAAAGAPf/AAABAAIAAFAHAPf/AAABAAIAAFAIAPf/AAABAAIAAFAJAPf/AAABAAIAAFAKAPf/AAABAAIAAFALAPf/AAABAAIAAFAMAPf/AAABAAIAAFANAPf/AAABAAIAAFAOAPf/AAABAAIAAFAFAPf/AAACAAEAAFAEAPf/AAACAAEAAFAEAPb/AAAAAAMAAAAPAPf/AAAEAAAAAAAPAPj/AAABAAIAAAAPAPn/AAABAAIAAAAPAPr/AAABAAIAAAAPAPv/AAABAAIAAAAPAPz/AAABAAIAAAAPAP3/AAABAAIAAAAPAP7/AAABAAIAAAAPAP//AAABAAIAAAAPAAAAAAABAAIAAAAPAAEAAAABAAIAAAAPAAIAAAABAAIAAAAPAAMAAAABAAIAAAAPAAQAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_w7tu6")
 
 [node name="Objects" type="TileMapLayer" parent="TileMap"]
 z_index = 60
 tile_map_data = PackedByteArray("AAAdAPH/AAAAAAEAAAAdAO//AAAAAAAAAAAbAPD/AAADAAEAAAAfAPD/AAAEAAEAAAAcAO//AAAEAAAAAAAeAO//AAACAAEAAAAdAO7/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_w7i68")
+
+[node name="Bridges" type="TileMapLayer" parent="TileMap"]
+z_index = 60
+tile_map_data = PackedByteArray("AAAQAAAAAAACAAAAAAAPAAAAAAABAAAAAAAOAAAAAAAAAAAAAAAQAAMAAAACAAMAAAAQAAIAAAACAAMAAAAPAAMAAAABAAMAAAAPAAIAAAABAAMAAAAOAAMAAAAAAAMAAAAOAAIAAAAAAAMAAAAOAAEAAAAAAAEAAAAPAAEAAAABAAEAAAAPAAQAAAABAAUAAAAOAAQAAAAAAAUAAAAQAAEAAAACAAEAAAAQAAQAAAACAAUAAAAQAPz/AAACAAMAAAAPAPz/AAABAAMAAAAOAPz/AAAAAAMAAAAPAP3/AAABAAUAAAAOAP3/AAAAAAUAAAAQAP3/AAACAAUAAAAPAPv/AAABAAEAAAAQAPv/AAACAAEAAAAOAPv/AAAAAAEAAAA=")
+tile_set = SubResource("TileSet_xesem")
 
 [node name="Grave" parent="." instance=ExtResource("9_a8154")]
 y_sort_enabled = true

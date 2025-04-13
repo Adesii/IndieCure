@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://cwro60xr2i4yk"
+path="res://.godot/imported/Bridge-0001.aseprite-903a0b8111768dfb0572c1d8e3047f5d.res"
+
+[deps]
+
+source_file="res://Textures/Objects/Bridge-0001.aseprite"
+dest_files=["res://.godot/imported/Bridge-0001.aseprite-903a0b8111768dfb0572c1d8e3047f5d.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

@@ -1,13 +1,14 @@
 [remap]
 
-importer="aseprite_wizard.plugin.tileset-texture"
+importer="aseprite_wizard.plugin.static-texture"
 type="AtlasTexture"
 uid="uid://c8atwgtadk6vs"
-valid=false
+path="res://.godot/imported/TileWall-0002.aseprite-8c8ae025e086d23930cc5cde9e1b571e.res"
 
 [deps]
 
 source_file="res://Textures/Environment/Forest/Walls/TileWall-0002.aseprite"
+dest_files=["res://.godot/imported/TileWall-0002.aseprite-8c8ae025e086d23930cc5cde9e1b571e.res"]
 
 [params]
 
