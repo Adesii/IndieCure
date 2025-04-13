@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://dmysp2sagv0hp"
+path="res://.godot/imported/SignTile-0001.aseprite-cbf7e6292d8194f52c8685343f45f676.res"
+
+[deps]
+
+source_file="res://Textures/Objects/SignTile-0001.aseprite"
+dest_files=["res://.godot/imported/SignTile-0001.aseprite-cbf7e6292d8194f52c8685343f45f676.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

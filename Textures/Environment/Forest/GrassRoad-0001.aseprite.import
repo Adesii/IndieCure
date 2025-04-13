@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://d4lrb3d67dpkt"
+path="res://.godot/imported/GrassRoad-0001.aseprite-7d80c812abe41790eb4c3da42e15ed14.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Forest/GrassRoad-0001.aseprite"
+dest_files=["res://.godot/imported/GrassRoad-0001.aseprite-7d80c812abe41790eb4c3da42e15ed14.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

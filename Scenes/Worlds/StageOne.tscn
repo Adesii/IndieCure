@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=111 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="1_1dtj5"]
 [ext_resource type="Texture2D" uid="uid://da710wtssplwh" path="res://Scenes/Worlds/StageOne/Textures/Ground/dirt_tileset.png" id="1_juxyd"]
@@ -23,11 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://bga48tp1u46s5" path="res://Textures/Environment/Forest/Walls/TileWall-0002.png" id="12_ci3dm"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="12_q24t3"]
 [ext_resource type="PackedScene" uid="uid://p3l5ia1cx8p3" path="res://Scenes/Worlds/StageOne/Textures/Structures/bush_001.tscn" id="15_8pe3g"]
+[ext_resource type="Texture2D" uid="uid://dx6stx02svbcx" path="res://Textures/Environment/Forest/GrassRoad-0001.png" id="15_36w2d"]
 [ext_resource type="Resource" uid="uid://che604nsso76u" path="res://Inventory/Weapons/4/4.tres" id="16_wgcua"]
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="17_1c00v"]
 [ext_resource type="Texture2D" uid="uid://b5skv3xhm2yk" path="res://Textures/Environment/Hill/hill-0003.png" id="17_cm21p"]
 [ext_resource type="Script" uid="uid://bemf06430moe5" path="res://Scenes/Worlds/MainMenu/Scripts/MenuLoop.gd" id="17_qxask"]
+[ext_resource type="Texture2D" uid="uid://dvu38rlvkro1b" path="res://Textures/Environment/Water/Water-0001.png" id="19_8t7lk"]
 [ext_resource type="AudioStream" uid="uid://di6v1hlt5mq3s" path="res://Music/StageOne/sakura_fields.mp3" id="20_fgqjj"]
+[ext_resource type="Texture2D" uid="uid://co2ptu8ud0bkv" path="res://Textures/Objects/SignTile-0001.png" id="20_se7s5"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="21_hqbda"]
 [ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/weapon_pickup/weapon_pickup.tscn" id="22_4lw8j"]
 [ext_resource type="Script" uid="uid://d3bncrduni548" path="res://addons/post_processing/node/post_process.gd" id="25_2l5wb"]
@@ -324,6 +327,22 @@ texture_region_size = Vector2i(32, 32)
 0:2/0/terrains_peering_bit/top_left_corner = 1
 0:2/0/terrains_peering_bit/top_right_corner = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xesem"]
+texture = ExtResource("15_36w2d")
+margins = Vector2i(0, 16)
+separation = Vector2i(16, 16)
+texture_region_size = Vector2i(32, 32)
+3:0/0 = 0
+4:0/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_62rto"]
 tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
@@ -340,6 +359,7 @@ sources/5 = SubResource("TileSetAtlasSource_3nbj3")
 sources/6 = SubResource("TileSetAtlasSource_cbsie")
 sources/7 = SubResource("TileSetAtlasSource_hhfsq")
 sources/8 = SubResource("TileSetAtlasSource_53pdo")
+sources/9 = SubResource("TileSetAtlasSource_xesem")
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cm21p"]
 tile_data = PackedInt32Array(0, 3, 0, 1, 65539, 0, 2, 131075, 0, 3, 196611, 0)
@@ -948,6 +968,47 @@ sources/1 = SubResource("TileSetAtlasSource_fpb0x")
 sources/3 = SubResource("TileSetAtlasSource_e72qd")
 pattern_0 = SubResource("TileMapPattern_cm21p")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfofe"]
+texture = ExtResource("19_8t7lk")
+separation = Vector2i(16, 16)
+texture_region_size = Vector2i(32, 32)
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w7tu6"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_dfofe")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo10s"]
+texture = ExtResource("20_se7s5")
+margins = Vector2i(16, 16)
+separation = Vector2i(16, 16)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -16)
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w7i68"]
+sources/0 = SubResource("TileSetAtlasSource_bo10s")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6wm83"]
 shader = ExtResource("10_v1m63")
 shader_parameter/color = Color(0.462745, 0.270588, 0.137255, 1)
@@ -1331,6 +1392,15 @@ color = Color(0.282353, 1, 1, 1)
 [node name="Walls" type="TileMapLayer" parent="TileMap"]
 tile_map_data = PackedByteArray("AADp//L/AAAAAAAAAADq//L/AAAAAAAAAADr//L/AAAAAAAAAADp//H/AAAAAAAAAADq//H/AAAAAAAAAADr//H/AAAAAAAAAADs//L/AAABAAAAAADs//H/AAABAAAAAADt//H/AAABAAAAAADt//L/AAABAAAAAADu//L/AAACAAAAAADu//H/AAACAAAAAADv//H/AAACAAAAAADv//L/AAACAAAAAADo//L/AAADAAAAAADo//H/AAADAAAAAADn//H/AAADAAAAAADn//L/AAADAAAAAADm//L/AAADAAAAAADm//H/AAAEAAIAAADl//H/AAAEAAIAAADl//L/AAAEAAIAAADk//H/AQAAAAAAAADk//L/AQAAAAAAAADj//L/AQAAAAAAAADi//L/AQAAAAAAAADi//H/AQAAAAAAAADj//H/AQAAAAAAAADh//L/AQABAAAAAADg//L/AQABAAAAAADg//H/AQABAAAAAADf//H/AQAEAAIAAADe//H/AQADAAIAAADe//L/AQADAAMAAADf//L/AQAEAAMAAADh//H/AQABAAAAAADd//L/AQACAAMAAADd//H/AQACAAIAAADb//L/AQAAAAMAAADc//L/AQABAAMAAADb//H/AQAAAAIAAADc//H/AQABAAIAAADq/wIAAwABAAQAAADq/wEAAwABAAQAAADq/wAAAwABAAQAAADq////AwABAAQAAADq//7/AwABAAQAAADq//3/AwABAAQAAADq//z/AwABAAQAAADs/wIAAwAAAAQAAADs/wEAAwAAAAQAAADs/wAAAwAAAAQAAADs////AwAAAAQAAADs//7/AwAAAAQAAADs//3/AwAAAAQAAADs//z/AwAAAAQAAADs//v/AwAAAAQAAADq//v/AwABAAQAAADq//r/AwABAAQAAADs//r/AwAAAAQAAADs//n/AwAAAAQAAADs//j/AwAAAAYAAADs//f/AwAAAAUAAADt//f/AwABAAAAAADu//f/AwABAAAAAADv//f/AwABAAAAAADw//f/AwABAAAAAADq//b/AwAAAAoAAADq//n/AwABAAQAAADq//j/AwABAAQAAADq//f/AwABAAQAAADr//b/AwAAAAEAAQDs//b/AwAAAAEAAQDt//b/AwAAAAEAAQDu//b/AwAAAAEAAQDv//b/AwAAAAEAAQDw//b/AwAAAAEAAQDx//b/AwAAAAEAAQD4/+n/AwAAAAUAAAD4/+r/AwAAAAYAAAD4/+v/AwAAAAQAAAD4/+z/AwAAAAQAAAD4/+3/AwAAAAQAAAD4/+7/AwAAAAMAAAD4/+//AwAAAAcAAAD5/+n/AwABAAAAAAD5/+r/AwAEAAAAAAD5/+v/AwAEAAAAAAD5/+z/AwAEAAAAAAD5/+3/AwAEAAAAAAD5/+7/AwABAAEAAAD5/+//AwAEAAEAAAD6/+n/AwABAAAAAAD6/+r/AwAEAAAAAAD6/+v/AwAEAAAAAAD6/+z/AwAEAAAAAAD6/+3/AwAEAAAAAAD6/+7/AwAAAAEAAAD6/+//AwAFAAEAAAD7/+n/AwABAAAAAAD7/+r/AwAEAAAAAAD7/+v/AwAEAAAAAAD7/+z/AwAEAAAAAAD7/+3/AwAEAAAAAAD7/+7/AwAAAAIAAAD7/+//AwACAAEAAAD8/+n/AwACAAAAAAD8/+r/AwAEAAAAAAD8/+v/AwAEAAAAAAD8/+z/AwAEAAAAAAD8/+3/AwAEAAAAAAD8/+7/AwABAAIAAAD8/+//AwAEAAEAAAD9/+n/AwABAAUAAAD9/+r/AwABAAYAAAD9/+v/AwABAAQAAAD9/+z/AwABAAQAAAD9/+3/AwABAAQAAAD9/+7/AwABAAMAAAD9/+//AwABAAcAAAABAOr/AwAAAAUAAAABAOv/AwAAAAYAAAABAOz/AwAAAAQAAAABAO3/AwAAAAQAAAABAO7/AwAAAAQAAAABAO//AwAAAAQAAAABAPD/AwAAAAQAAAABAPH/AwAAAAMAAAABAPL/AwAAAAcAAAACAOr/AwABAAAAAAACAOv/AwAEAAAAAAACAOz/AwAEAAAAAAACAO3/AwAEAAAAAAACAO7/AwAEAAAAAAACAO//AwAEAAAAAAACAPD/AwAEAAAAAAACAPH/AwAAAAEAAAACAPL/AwAFAAEAAAADAOr/AwADAAAAAAADAOv/AwAEAAAAAAADAOz/AwAEAAAAAAADAO3/AwAEAAAAAAADAO7/AwAEAAAAAAADAO//AwAEAAAAAAADAPD/AwAEAAAAAAADAPH/AwABAAEAAAADAPL/AwAFAAEAAAAEAOr/AwAAAAAAAAAEAOv/AwAEAAAAAAAEAOz/AwAEAAAAAAAEAO3/AwAEAAAAAAAEAO7/AwAEAAAAAAAEAO//AwAEAAAAAAAEAPD/AwAEAAAAAAAEAPH/AwABAAIAAAAEAPL/AwADAAEAAAAFAOr/AwABAAUAAAAFAOv/AwABAAYAAAAFAOz/AwAAAAgAAAAFAO3/AwAEAAAAAAAFAO7/AwAEAAAAAAAFAO//AwAEAAAAAAAFAPD/AwAEAAAAAAAFAPH/AwABAAIAAAAFAPL/AwACAAEAAAAGAO3/AwAEAAAAAAAGAO7/AwAEAAAAAAAGAO//AwAEAAAAAAAGAPD/AwAEAAAAAAAGAPH/AwABAAEAAAAGAPL/AwAEAAEAAAAHAOv/AwAEAAAAAAAHAOz/AwAEAAAAAAAHAO3/AwAEAAAAAAAHAO7/AwAEAAAAAAAHAO//AwAEAAAAAAAHAPD/AwAEAAAAAAAHAPH/AwABAAEAAAAHAPL/AwACAAEAAAAIAOr/AwABAAUAAAAIAOv/AwABAAYAAAAIAOz/AwABAAQAAAAIAO3/AwABAAQAAAAIAO7/AwABAAQAAAAIAO//AwABAAQAAAAIAPD/AwABAAQAAAAIAPH/AwABAAMAAAAIAPL/AwABAAcAAAAQAOv/AwAAAAUAAAAQAOz/AwAAAAYAAAAQAO3/AwAAAAQAAAAQAO7/AwAAAAQAAAAQAO//AwAAAAMAAAAQAPD/AwAAAAcAAAARAOv/AwACAAAAAAARAOz/AwAEAAAAAAARAO3/AwAEAAAAAAARAO7/AwAEAAAAAAARAO//AwAAAAEAAAARAPD/AwACAAEAAAASAOv/AwADAAAAAAASAOz/AwAEAAAAAAASAO3/AwAEAAAAAAASAO7/AwAEAAAAAAASAO//AwABAAEAAAASAPD/AwACAAEAAAATAOv/AwAAAAAAAAATAOz/AwAEAAAAAAATAO3/AwAEAAAAAAATAO7/AwAEAAAAAAATAO//AwABAAEAAAATAPD/AwACAAEAAAAUAOv/AwAAAAAAAAAUAOz/AwAEAAAAAAAUAO3/AwAEAAAAAAAUAO7/AwAEAAAAAAAUAO//AwABAAIAAAAUAPD/AwADAAEAAAAVAOv/AwABAAUAAAAVAOz/AwABAAYAAAAVAO3/AwABAAQAAAAVAO7/AwABAAQAAAAVAO//AwABAAMAAAAVAPD/AwABAAcAAADx/93/AwABAAMAAADx/9z/AwABAAQAAADx/9v/AwABAAYAAADx/9r/AwABAAUAAADw/93/AwABAAIAAADw/9z/AwAEAAAAAADw/9v/AwAEAAAAAADw/9r/AwAAAAAAAADv/93/AwAAAAIAAADv/9z/AwAEAAAAAADv/9v/AwAEAAAAAADv/9r/AwAAAAAAAADu/93/AwAAAAEAAADu/9z/AwAEAAAAAADu/9v/AwAEAAAAAADu/9r/AwAAAAAAAADt/93/AwAAAAMAAADt/9z/AwAAAAQAAADt/9v/AwAAAAYAAADt/9r/AwAAAAUAAADw/97/AwADAAEAAADv/97/AwAEAAEAAADu/97/AwAFAAEAAADt/97/AwAAAAcAAADx/97/AwABAAcAAAD5/97/AwABAAMAAAD5/93/AwABAAQAAAD5/9z/AwABAAQAAAD5/9v/AwABAAYAAAD5/9r/AwABAAUAAAD4/97/AwAAAAIAAAD4/93/AwAEAAAAAAD4/9z/AwAEAAAAAAD4/9v/AwAEAAAAAAD3/97/AwAAAAEAAAD3/93/AwAEAAAAAAD3/9z/AwAEAAAAAAD3/9v/AwAEAAAAAAD2/97/AwAAAAIAAAD2/93/AwAEAAAAAAD2/9z/AwAEAAAAAAD2/9v/AwAEAAAAAAD1/97/AwAAAAMAAAD1/93/AwAAAAQAAAD1/9z/AwAAAAQAAAD1/9v/AwAAAAYAAAD1/9r/AwAAAAUAAAD4/9//AwAFAAEAAAD3/9//AwAEAAEAAAD2/9//AwAEAAEAAAD1/9//AwAAAAcAAAD5/9//AwABAAcAAAD2/9r/AwAAAAAAAAD4/9r/AwACAAAAAADn/+v/AwAFAAAAAADn/+r/AwAFAAAAAADn/+n/AwAFAAAAAADn/+j/AwAFAAAAAADm/+v/AwAFAAAAAADm/+r/AwAFAAAAAADm/+n/AwAFAAAAAADm/+j/AwAFAAAAAADl/+v/AwAFAAAAAADl/+r/AwAFAAAAAADl/+n/AwAFAAAAAADl/+j/AwAFAAAAAADk/+n/AwABAAQAAQDk/+j/AwABAAQAAQDk/+r/AwABAAQAAQDk/+v/AwABAAQAAQDm/+z/AwABAAAAAQDl/+z/AwAAAAAAAQDk/+z/AwAAAAgAAADn/+z/AwACAAAAAQDo/+j/AwAAAAQAAgDo/+n/AwAAAAQAAgDo/+r/AwAAAAQAAgDo/+v/AwAAAAQAAgDo/+z/AwABAAgAAADk/+f/AwAAAAoAAADl/+b/AwAAAAEAAQDm/+b/AwAAAAIAAQDn/+b/AwABAAEAAQDo/+f/AwABAAoAAADk/+b/AwAAAAkAAADo/+b/AwABAAkAAADl/+f/AwADAAEAAwDm/+f/AwACAAEAAwDn/+f/AwACAAEAAQA=")
 tile_set = SubResource("TileSet_cm21p")
+
+[node name="Water" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAADAPH/AAAAAAIAAAAFAPH/AAACAAIAAAAEAPH/AAABAAIAAAADAPL/AAACAAMAAAAFAPL/AAACAAMAAAAEAPL/AAACAAMAAAAFAPP/AAACAAEAAAADAPP/AAAAAAEAAAAEAPP/AAAAAAMAAAAEAPT/AAAAAAMAAAAEAPX/AAAAAAMAAAAFAPX/AAAAAAMAAAAGAPX/AAAAAAMAAAAHAPX/AAAAAAMAAAAIAPX/AAAAAAMAAAAJAPX/AAAAAAMAAAAKAPX/AAAAAAMAAAAFAPD/AAACAAEAAAAFAO//AAACAAEAAAAFAO7/AAACAAEAAAADAPD/AAAAAAEAAAADAO//AAAAAAEAAAADAO7/AAAAAAEAAAAEAPD/AAAAAAMAAAAEAO//AAAAAAMAAAAEAO7/AAAAAAMAAAADAPT/AAAAAAEAAAA=")
+tile_set = SubResource("TileSet_w7tu6")
+
+[node name="Objects" type="TileMapLayer" parent="TileMap"]
+z_index = 60
+tile_map_data = PackedByteArray("AAAdAPH/AAAAAAEAAAAdAO//AAAAAAAAAAAbAPD/AAADAAEAAAAfAPD/AAAEAAEAAAAcAO//AAAEAAAAAAAeAO//AAACAAEAAAAdAO7/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_w7i68")
 
 [node name="Grave" parent="." instance=ExtResource("9_a8154")]
 y_sort_enabled = true
