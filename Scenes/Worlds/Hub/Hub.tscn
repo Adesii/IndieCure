@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://djfkyiptvtuth"]
+[gd_scene load_steps=7 format=4 uid="uid://djfkyiptvtuth"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_kwrud"]
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="2_c5ykj"]
 [ext_resource type="Texture2D" uid="uid://cdi6i8x6lcihl" path="res://Textures/Environment/Hub/Hub-0002.aseprite" id="2_cj2i1"]
+[ext_resource type="Texture2D" uid="uid://dow3cix17c85b" path="res://Textures/Environment/Hub/Rubble-0001.aseprite" id="2_pf4sa"]
+[ext_resource type="Texture2D" uid="uid://hl8cvuaer5e3" path="res://Textures/Environment/Hub/Rubble-0001.png" id="3_1fujc"]
 [ext_resource type="Texture2D" uid="uid://d1j5wx3kbdnil" path="res://Textures/Environment/Hub/Hub-0001.aseprite" id="3_cj2i1"]
 
 [node name="Hub" type="Node2D"]
@@ -15,8 +17,880 @@ tile_map_data = PackedByteArray("AADN/83/AQACAAIAAADN/87/AQAAAAAAAADN/8//AQADAAE
 tile_set = ExtResource("1_kwrud")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="Map"]
-tile_map_data = PackedByteArray("AAD+//7/CAADAAAAAAD+////CAAAAAIAAAD+/wAACAADAAEAAAD+/wEACAABAAAAAAD///7/CAABAAEAAAAAAP7/CAABAAEAAAAAAAEACAACAAEAAAABAP7/CAAAAAAAAAD//wEACAABAAEAAAABAAEACAAAAAAAAQABAAAACAAAAAIAAAABAP//CAAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/CAADAAAAAAD///7/CAABAAEAAAAAAP7/CAABAAEAAAABAP7/CAAAAAAAAAABAP//CAAAAAIAAAABAAAACAAAAAIAAAABAAEACAAAAAAAAQAAAAEACAACAAEAAAD//wEACAABAAEAAAD+/wEACAABAAAAAAD+/wAACAADAAEAAAD+////CAAAAAIAAAARAPz/CgAAAAMAAAARAPv/CgABAAEAAAARAPr/CgABAAEAAAARAPn/CgABAAEAAAARAPj/CgABAAEAAAARAPf/CgABAAEAAAARAPb/CgABAAEAAAARAPX/CgAAAAIAAAAQAPz/CgABAAMAAAAQAPv/CgABAAQAAAAQAPr/CgABAAQAAAAQAPn/CgABAAQAAAAQAPj/CgABAAQAAAAQAPf/CgABAAQAAAAQAPb/CgABAAQAAAAQAPX/CgABAAIAAAAPAPz/CgABAAMAAAAPAPv/CgABAAQAAAAPAPr/CgABAAQAAAAPAPn/CgABAAQAAAAPAPj/CgABAAQAAAAPAPf/CgABAAQAAAAPAPb/CgABAAQAAAAPAPX/CgABAAIAAAAOAPz/CgABAAMAAAAOAPv/CgABAAQAAAAOAPr/CgABAAQAAAAOAPn/CgABAAQAAAAOAPj/CgABAAQAAAAOAPf/CgABAAQAAAAOAPb/CgABAAQAAAAOAPX/CgABAAIAAAANAPz/CgABAAMAAAANAPv/CgABAAQAAAANAPr/CgABAAQAAAANAPn/CgABAAQAAAANAPj/CgABAAQAAAANAPf/CgABAAQAAAANAPb/CgABAAQAAAANAPX/CgABAAIAAAAMAPz/CgABAAMAAAAMAPv/CgABAAQAAAAMAPr/CgABAAQAAAAMAPn/CgABAAQAAAAMAPj/CgABAAQAAAAMAPf/CgABAAQAAAAMAPb/CgABAAQAAAAMAPX/CgABAAIAAAALAPz/CgABAAMAAAALAPv/CgABAAQAAAALAPr/CgABAAQAAAALAPn/CgABAAQAAAALAPj/CgABAAQAAAALAPf/CgABAAQAAAALAPb/CgABAAQAAAALAPX/CgABAAIAAAAKAPz/CgABAAMAAAAKAPv/CgABAAQAAAAKAPr/CgABAAQAAAAKAPn/CgABAAQAAAAKAPj/CgABAAQAAAAKAPf/CgABAAQAAAAKAPb/CgABAAQAAAAKAPX/CgABAAIAAAAJAPz/CgABAAMAAAAJAPv/CgABAAQAAAAJAPr/CgABAAQAAAAJAPn/CgABAAQAAAAJAPj/CgABAAQAAAAJAPf/CgABAAQAAAAJAPb/CgABAAQAAAAJAPX/CgABAAIAAAAIAPz/CgABAAMAAAAIAPv/CgABAAQAAAAIAPr/CgABAAQAAAAIAPn/CgABAAQAAAAIAPj/CgABAAQAAAAIAPf/CgABAAQAAAAIAPb/CgABAAQAAAAIAPX/CgABAAIAAAAHAPz/CgABAAMAAAAHAPv/CgABAAQAAAAHAPr/CgABAAQAAAAHAPn/CgABAAQAAAAHAPj/CgABAAQAAAAHAPf/CgABAAQAAAAHAPb/CgABAAQAAAAHAPX/CgABAAIAAAAGAPz/CgABAAMAAAAGAPv/CgABAAQAAAAGAPr/CgABAAQAAAAGAPn/CgABAAQAAAAGAPj/CgABAAQAAAAGAPf/CgABAAQAAAAGAPb/CgABAAQAAAAGAPX/CgABAAIAAAAFAPz/CgAAAAEAAAAFAPv/CgABAAAAAAAFAPr/CgABAAAAAAAFAPn/CgABAAAAAAAFAPj/CgABAAAAAAAFAPf/CgABAAAAAAAFAPb/CgABAAAAAAAFAPX/CgAAAAAAAAA=")
 tile_set = ExtResource("1_kwrud")
+
+[node name="Node2D11" type="Node2D" parent="Map/TileMapLayer2"]
+
+[node name="Node2D" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(240, -158)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D2" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(261, -218)
+rotation = -0.695672
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D2"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D3" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(297, -181)
+rotation = -1.10144
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D3"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D4" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(318, -241)
+rotation = -1.79711
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D4"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D5" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(345, -162)
+rotation = -0.059087
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D5"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D6" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(366, -222)
+rotation = -0.754759
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D6"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D7" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(374, -185)
+rotation = 2.60669
+scale = Vector2(1.16996, 1.16996)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D7"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D8" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(395, -245)
+rotation = 1.91102
+scale = Vector2(1.16996, 1.16996)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(25.4793, -17.6134)
+rotation = -1.00279
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.527416
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.578526
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(13.4793, 20.3866)
+rotation = 0.662895
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(-22.5207, -7.6134)
+rotation = -0.378463
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.476339
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D8"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.62473
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D9" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(464, -186)
+rotation = 0.75782
+scale = Vector2(0.853438, 0.853438)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(25.4793, -17.6134)
+rotation = -0.573122
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.957084
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.148858
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(13.4793, 20.3866)
+rotation = 1.09256
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(-22.5207, -7.6134)
+rotation = 0.0512047
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.906007
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D9"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.195062
+texture = ExtResource("2_pf4sa")
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Node2D10" type="Node2D" parent="Map/TileMapLayer2/Node2D11"]
+position = Vector2(485, -246)
+rotation = 0.0621484
+scale = Vector2(0.853438, 0.853438)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(25.4793, -17.6134)
+rotation = -0.573122
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 40, 40, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(-16.5207, -28.6134)
+rotation = 0.957084
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 55, 40, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(-24.5207, 7.3866)
+rotation = -0.148858
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 70, 40, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(13.4793, 20.3866)
+rotation = 1.09256
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 85, 40, 15)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(-22.5207, -7.6134)
+rotation = 0.0512047
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 100, 40, 10)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(-6.52069, 19.3866)
+rotation = 0.906007
+scale = Vector2(1, 1)
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 115, 40, 10)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2/Node2D11/Node2D10"]
+position = Vector2(-12.5207, 4.3866)
+rotation = -0.195062
+texture = ExtResource("2_pf4sa")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(140, 130, 40, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(199, -128)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D20" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(267, -288)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D21" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(325, -298)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D22" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(390, -150)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D23" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(438, -229)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D24" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(461, -312)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D25" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(511, -313)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 10, 25, 25)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(225.5, -282)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 35, 25, 20)
+
+[node name="Sprite2D26" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(277, -312)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 35, 25, 20)
+
+[node name="Sprite2D27" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(384, -311)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 35, 25, 20)
+
+[node name="Sprite2D28" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(491, -151)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(15, 35, 25, 20)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(197, -219)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(50, 32, 30, 24)
+
+[node name="Sprite2D29" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(190, -261)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(50, 32, 30, 24)
+
+[node name="Sprite2D30" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(219, -246)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(50, 32, 30, 24)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(203, -320)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(50, 12, 30, 20)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(540, -343)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(20, 60, 25, 44)
+
+[node name="Sprite2D32" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(190, -189)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(20, 60, 25, 44)
+
+[node name="Sprite2D33" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(193, -295)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(20, 60, 25, 44)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(539, -206)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(22, 111, 21, 33)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(238, -326)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(63, 116, 41, 37)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(540, -139)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(70, 65, 21, 37)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(296, -281)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(104, 86, 16, 10)
+
+[node name="Sprite2D31" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(288, -247)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(104, 86, 16, 10)
+
+[node name="Sprite2D34" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(290, -193)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(104, 86, 16, 10)
+
+[node name="Sprite2D35" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(235, -191)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(104, 86, 16, 10)
+
+[node name="Sprite2D36" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(362, -222)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(104, 86, 16, 10)
+
+[node name="Sprite2D37" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(387, -262)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(104, 86, 16, 10)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(400, -243)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(112, 64, 13, 16)
+
+[node name="Sprite2D38" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(355, -274)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(112, 64, 13, 16)
+
+[node name="Sprite2D11" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(342, -176)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(101, 43, 22, 16)
+
+[node name="Sprite2D39" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(275, -152)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(101, 43, 22, 16)
+
+[node name="Sprite2D40" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(456, -256)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(101, 43, 22, 16)
+
+[node name="Sprite2D41" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(456, -256)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(101, 43, 22, 16)
+
+[node name="Sprite2D12" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(340, -189)
+rotation = 2.99679
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(98, 64, 12, 12)
+
+[node name="Sprite2D42" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(270, -168)
+rotation = 5.88739
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(98, 64, 12, 12)
+
+[node name="Sprite2D13" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(437, -234)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(86, 9, 22, 19)
+
+[node name="Sprite2D43" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(420, -217)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(86, 9, 22, 19)
+
+[node name="Sprite2D14" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(300, -309)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(118, 10, 16, 18)
+
+[node name="Sprite2D15" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(441, -281)
+rotation = -0.751331
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(194, 17, 11, 15)
+
+[node name="Sprite2D44" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(352, -254)
+rotation = 1.83471
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(194, 17, 11, 15)
+
+[node name="Sprite2D16" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(259, -230)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(208, 16, 16, 16)
+
+[node name="Sprite2D45" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(253, -152)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(208, 16, 16, 16)
+
+[node name="Sprite2D46" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(409, -232)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(208, 16, 16, 16)
+
+[node name="Sprite2D17" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(256, -249)
+rotation = -0.187728
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(226, 16, 11, 16)
+
+[node name="Sprite2D18" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(311, -250)
+rotation = -0.0792979
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(143, 12, 33, 23)
+
+[node name="Sprite2D19" type="Sprite2D" parent="Map/TileMapLayer2"]
+position = Vector2(426, -294)
+texture = ExtResource("3_1fujc")
+region_enabled = true
+region_rect = Rect2(175, 13, 18, 21)
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="Map"]
 tile_set = ExtResource("2_c5ykj")
@@ -24,10 +898,10 @@ tile_set = ExtResource("2_c5ykj")
 [node name="Trees" type="Node2D" parent="."]
 
 [node name="Hub-0002" type="Sprite2D" parent="."]
-position = Vector2(2, 2)
+position = Vector2(-2, 2)
 texture = ExtResource("2_cj2i1")
 region_enabled = true
-region_rect = Rect2(24, 80, 64, 64)
+region_rect = Rect2(16, 80, 72, 64)
 
 [node name="Hub-0003" type="Sprite2D" parent="."]
 position = Vector2(2, -96)

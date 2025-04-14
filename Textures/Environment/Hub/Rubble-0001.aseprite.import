@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://dow3cix17c85b"
+path="res://.godot/imported/Rubble-0001.aseprite-487d2a36c53b8fbf80aac1d5ac739bb5.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Hub/Rubble-0001.aseprite"
+dest_files=["res://.godot/imported/Rubble-0001.aseprite-487d2a36c53b8fbf80aac1d5ac739bb5.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

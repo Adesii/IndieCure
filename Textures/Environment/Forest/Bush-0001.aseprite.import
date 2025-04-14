@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://drs3twgf0pv6t"
+path="res://.godot/imported/Bush-0001.aseprite-34e037a0a279ebf714241eeb0b56a78d.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Forest/Bush-0001.aseprite"
+dest_files=["res://.godot/imported/Bush-0001.aseprite-34e037a0a279ebf714241eeb0b56a78d.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

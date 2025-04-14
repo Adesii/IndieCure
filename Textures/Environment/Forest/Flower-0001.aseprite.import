@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://cuq5ptinr08fe"
+path="res://.godot/imported/Flower-0001.aseprite-ea2b4f6040b12250630c8b6e61fc34da.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Forest/Flower-0001.aseprite"
+dest_files=["res://.godot/imported/Flower-0001.aseprite-ea2b4f6040b12250630c8b6e61fc34da.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

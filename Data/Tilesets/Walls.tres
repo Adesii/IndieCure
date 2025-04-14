@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://cm3b4y2e35pjg"]
+[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://cm3b4y2e35pjg"]
 
 [ext_resource type="Texture2D" uid="uid://ejohcfwu4qnf" path="res://Textures/Environment/Forest/Walls/TileWall-0001.png" id="1_c6ars"]
 [ext_resource type="Texture2D" uid="uid://bga48tp1u46s5" path="res://Textures/Environment/Forest/Walls/TileWall-0002.png" id="2_igjg5"]
-[ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Scenes/Worlds/StageOne/Textures/Ground/grass-0001.png" id="3_8ve1r"]
+[ext_resource type="Texture2D" uid="uid://cxs7fu4p1k8kp" path="res://Textures/Environment/Forest/Ground/grass-0001.png" id="3_igjg5"]
 [ext_resource type="Texture2D" uid="uid://b5skv3xhm2yk" path="res://Textures/Environment/Hill/hill-0003.png" id="4_irjwp"]
+[ext_resource type="Texture2D" uid="uid://bqq5bu1mov82i" path="res://Textures/Environment/Forest/Ground/ground-0001_G38vvP.png" id="5_8ve1r"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cm21p"]
 tile_data = PackedInt32Array(0, 3, 0, 1, 65539, 0, 2, 131075, 0, 3, 196611, 0)
@@ -119,7 +120,7 @@ texture_region_size = Vector2i(32, 32)
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtdwq"]
-texture = ExtResource("3_8ve1r")
+texture = ExtResource("3_igjg5")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 2:0/0/z_index = 3
@@ -684,6 +685,11 @@ texture_region_size = Vector2i(32, 32)
 9:0/0/terrains_peering_bit/top_right_corner = 0
 9:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_irjwp"]
+texture = ExtResource("5_8ve1r")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -702,4 +708,5 @@ sources/0 = SubResource("TileSetAtlasSource_wthyf")
 sources/1 = SubResource("TileSetAtlasSource_idkc0")
 sources/3 = SubResource("TileSetAtlasSource_exx4f")
 sources/2 = SubResource("TileSetAtlasSource_gtdwq")
+sources/4 = SubResource("TileSetAtlasSource_irjwp")
 pattern_0 = SubResource("TileMapPattern_cm21p")

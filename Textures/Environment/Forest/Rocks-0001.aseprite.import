@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://ct8cmlqjdxudc"
+path="res://.godot/imported/Rocks-0001.aseprite-fb6a064b0492f01d16cea8698df92f63.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Forest/Rocks-0001.aseprite"
+dest_files=["res://.godot/imported/Rocks-0001.aseprite-fb6a064b0492f01d16cea8698df92f63.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false
