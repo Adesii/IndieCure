@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://d1j5wx3kbdnil"
+path="res://.godot/imported/Hub-0001.aseprite-1186dbccc94ef9b1decb936e560abdf5.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Hub/Hub-0001.aseprite"
+dest_files=["res://.godot/imported/Hub-0001.aseprite-1186dbccc94ef9b1decb936e560abdf5.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

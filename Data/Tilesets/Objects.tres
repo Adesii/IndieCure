@@ -1,0 +1,42 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cfdft8illjhgc"]
+
+[ext_resource type="Texture2D" uid="uid://co2ptu8ud0bkv" path="res://Textures/Objects/SignTile-0001.png" id="1_j7ghu"]
+[ext_resource type="Texture2D" uid="uid://d0pv3ucll5e6v" path="res://Textures/Objects/Signs-0001.png" id="2_4632n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wpjym"]
+texture = ExtResource("1_j7ghu")
+margins = Vector2i(16, 16)
+separation = Vector2i(16, 16)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -16)
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6hr7k"]
+texture = ExtResource("2_4632n")
+separation = Vector2i(16, 16)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 16)
+2:2/0 = 0
+3:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_wpjym")
+sources/1 = SubResource("TileSetAtlasSource_6hr7k")
