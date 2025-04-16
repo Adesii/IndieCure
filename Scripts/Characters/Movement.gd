@@ -3,6 +3,9 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 @export var inventory: Inventory
 
+@onready var move_action: GUIDEAction = preload("uid://i341h3c18r7d")
+@onready var aim_mode_action = preload("uid://b84mupd5fpg4l")
+
 var character: IndieCharacter:
 	set(val):
 		character = val
@@ -13,6 +16,10 @@ var mouse_input = false
 func _ready() -> void:
 	if !inventory.item_added.is_connected(on_item_added):
 		inventory.item_added.connect(on_item_added)
+	
+	aim_mode_action.triggered.connect(func() -> void:
+		mouse_input = not mouse_input
+	)
 
 func init_character():
 	if !inventory.item_added.is_connected(on_item_added):
@@ -24,19 +31,19 @@ func init_character():
 	print("Character initialized")
 
 func _physics_process(_delta):
-	# Handle Jump.
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var updirection: float = Input.get_axis("move_up", "move_down")
-	var direction: float = Input.get_axis("move_left", "move_right")
+	var updirection: float = move_action.value_axis_2d.y
+	var direction: float = move_action.value_axis_2d.x
 	var wishvelocity: Vector2 = Vector2(direction, updirection)
-	wishvelocity = wishvelocity.normalized() * Stat.Get(self, "movement_speed")
+	wishvelocity = wishvelocity.limit_length() * Stat.Get(self, "movement_speed")
+
+	# scale the velocity based on strenghth of input
+
 
 	# Move the character.
 	velocity = velocity.lerp(wishvelocity, 0.6)
 
-	if Input.is_action_just_pressed("switch_attack_mode"):
-		mouse_input = not mouse_input
+	#if aim_mode_action.is_triggered():
+	#	mouse_input = not mouse_input
 
 	# handle attack direction
 	if mouse_input:

@@ -361,5 +361,3 @@ func _update_caches():
 		
 	# and notify interested parties that the input mappings have changed
 	input_mappings_changed.emit()
-
-

@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 ProjectSettingsIc="res://Scripts/Tools/ProjectSettingsIC.gd"
+GUIDE="*res://addons/guide/guide.gd"
+InputHandler="*res://Scripts/Global/InputHandler.gd"
 Settings="*res://Scripts/UI/Settings/Settings.gd"
 Global="*res://Scripts/Global/Global.gd"
 MessageBus="*res://Scripts/Global/MessageBus.gd"
@@ -26,7 +28,6 @@ DebugUi="*res://Scripts/Global/DebugUI.tscn"
 Stat="*res://Scripts/GAS/Attributes/Stat.gd"
 StatEditorSave="*res://addons/custominspectors/stat_editor/stat_editor_save.gd"
 DamageNumbers="*res://Scripts/Global/DamagePopup/damage_numbers.tscn"
-GUIDE="*res://addons/guide/guide.gd"
 
 [debug]
 

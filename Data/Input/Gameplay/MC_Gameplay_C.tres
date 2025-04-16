@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=25 format=3 uid="uid://cmc4c1fkaphya"]
+
+[ext_resource type="Script" uid="uid://b2ld8aj7p2fde" path="res://addons/guide/guide_action_mapping.gd" id="1_7u43p"]
+[ext_resource type="Script" uid="uid://ub34q1ap6yqr" path="res://addons/guide/guide_mapping_context.gd" id="2_0asnl"]
+[ext_resource type="Resource" uid="uid://i341h3c18r7d" path="res://Data/Input/Gameplay/move.tres" id="2_tbksy"]
+[ext_resource type="Script" uid="uid://c7ao2tnnjm66i" path="res://addons/guide/guide_input_mapping.gd" id="3_4c7te"]
+[ext_resource type="Script" uid="uid://iv4ao2nh3pyh" path="res://addons/guide/inputs/guide_input_joy_axis_1d.gd" id="4_47e11"]
+[ext_resource type="Script" uid="uid://dlibrs6aksjfd" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_6lmaw"]
+[ext_resource type="Script" uid="uid://c25l48osjjas1" path="res://addons/guide/modifiers/guide_modifier_input_swizzle.gd" id="6_ybjmr"]
+[ext_resource type="Script" uid="uid://c28qg760hiwei" path="res://addons/guide/modifiers/guide_modifier_deadzone.gd" id="7_4c7te"]
+[ext_resource type="Script" uid="uid://4qvl47r8ajb4" path="res://addons/guide/triggers/guide_trigger.gd" id="7_7miia"]
+[ext_resource type="Resource" uid="uid://b84mupd5fpg4l" path="res://Data/Input/Gameplay/switch_aim.tres" id="8_0nuev"]
+[ext_resource type="Script" uid="uid://bireun7e4nof7" path="res://addons/guide/inputs/guide_input_joy_button.gd" id="9_ddpgs"]
+[ext_resource type="Script" uid="uid://dj8s63r3mij8o" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="10_06p7k"]
+
+[sub_resource type="Resource" id="Resource_tbksy"]
+script = ExtResource("4_47e11")
+axis = 1
+joy_index = -1
+
+[sub_resource type="Resource" id="Resource_vedpc"]
+script = ExtResource("6_ybjmr")
+order = 0
+
+[sub_resource type="Resource" id="Resource_47e11"]
+script = ExtResource("7_4c7te")
+lower_threshold = 0.1
+upper_threshold = 1.0
+
+[sub_resource type="Resource" id="Resource_8kv1v"]
+script = ExtResource("3_4c7te")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_tbksy")
+modifiers = Array[ExtResource("5_6lmaw")]([SubResource("Resource_vedpc"), SubResource("Resource_47e11")])
+triggers = Array[ExtResource("7_7miia")]([])
+
+[sub_resource type="Resource" id="Resource_4c7te"]
+script = ExtResource("4_47e11")
+axis = 0
+joy_index = -1
+
+[sub_resource type="Resource" id="Resource_6lmaw"]
+script = ExtResource("7_4c7te")
+lower_threshold = 0.1
+upper_threshold = 1.0
+
+[sub_resource type="Resource" id="Resource_t48xi"]
+script = ExtResource("3_4c7te")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_4c7te")
+modifiers = Array[ExtResource("5_6lmaw")]([SubResource("Resource_6lmaw")])
+triggers = Array[ExtResource("7_7miia")]([])
+
+[sub_resource type="Resource" id="Resource_uudck"]
+script = ExtResource("1_7u43p")
+action = ExtResource("2_tbksy")
+input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_8kv1v"), SubResource("Resource_t48xi")])
+
+[sub_resource type="Resource" id="Resource_77kgw"]
+script = ExtResource("9_ddpgs")
+button = 0
+joy_index = -1
+
+[sub_resource type="Resource" id="Resource_0ebfv"]
+script = ExtResource("10_06p7k")
+actuation_threshold = 0.5
+
+[sub_resource type="Resource" id="Resource_rifx2"]
+script = ExtResource("3_4c7te")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_77kgw")
+modifiers = Array[ExtResource("5_6lmaw")]([])
+triggers = Array[ExtResource("7_7miia")]([SubResource("Resource_0ebfv")])
+
+[sub_resource type="Resource" id="Resource_45vkt"]
+script = ExtResource("1_7u43p")
+action = ExtResource("8_0nuev")
+input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_rifx2")])
+
+[resource]
+script = ExtResource("2_0asnl")
+display_name = ""
+mappings = Array[ExtResource("1_7u43p")]([SubResource("Resource_uudck"), SubResource("Resource_45vkt")])
+metadata/_custom_type_script = "uid://ub34q1ap6yqr"

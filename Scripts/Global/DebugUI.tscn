@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7w4skfyt8qlj"]
+[gd_scene load_steps=5 format=3 uid="uid://b7w4skfyt8qlj"]
 
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="1_7fqfy"]
 [ext_resource type="Script" uid="uid://b3qa1ywfvwscs" path="res://Scripts/UI/fpsdisplay.gd" id="1_fa04g"]
 [ext_resource type="Script" uid="uid://vufnov0ncv32" path="res://Scripts/Debug/DSpawnEnemyButton.gd" id="2_gm4bm"]
 [ext_resource type="Script" uid="uid://s40ed2qw6ojo" path="res://Scripts/Debug/DSpawnEnabler.gd" id="3_raao7"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 128
+
+[node name="GuideDebugger" parent="." instance=ExtResource("1_7fqfy")]
+offset_top = 55.0
+offset_right = -98.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchors_preset = 15

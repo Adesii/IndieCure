@@ -15,6 +15,7 @@ var current_scene = null
 
 var attack_direction = Vector2(1, 0)
 
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -64,6 +65,8 @@ func setup_player():
 	var ingameui = ingame_ui.instantiate()
 	current_scene.add_child(ingameui)
 	ui = ingameui
+
+	InputHandler._set_game_state(InputHandler.GameState.IN_GAME)
 
 func setup_rest():
 	if xp_drop_node != null:

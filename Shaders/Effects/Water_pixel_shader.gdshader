@@ -73,7 +73,7 @@ void fragment() {
 	vec4 noiseColor = texture(waterNoise, waterUV);
 	float intensity = smoothstep(WDFreq, WDSize, noiseColor.r);
 	color.rgb += intensity * vec3(WDBrightness);
-	
+
 	vec2 backGroundUV = SCREEN_UV;
 	backGroundUV.x += noiseValue * backGroundDirX;
 	backGroundUV.y += noiseValue * backGroundDirY;
