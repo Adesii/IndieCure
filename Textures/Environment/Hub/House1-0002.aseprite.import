@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://ckn6ybsc18jjv"
+path="res://.godot/imported/House1-0002.aseprite-4c91913f4e521780aa0ea397394ef92f.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Hub/House1-0002.aseprite"
+dest_files=["res://.godot/imported/House1-0002.aseprite-4c91913f4e521780aa0ea397394ef92f.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

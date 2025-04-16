@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://b000gip8mbxfj"
+path="res://.godot/imported/bush-0001_G38vvP.aseprite-9e114bc056d44df358f2a3528361f27f.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Forest/Structures/bush-0001_G38vvP.aseprite"
+dest_files=["res://.godot/imported/bush-0001_G38vvP.aseprite-9e114bc056d44df358f2a3528361f27f.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

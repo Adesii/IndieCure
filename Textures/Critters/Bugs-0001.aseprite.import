@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d0lqxehc0go1b"
+path="res://.godot/imported/Bugs-0001.aseprite-91ffbd0d042e54bec9dc369ca208c5c3.res"
+
+[deps]
+
+source_file="res://Textures/Critters/Bugs-0001.aseprite"
+dest_files=["res://.godot/imported/Bugs-0001.aseprite-91ffbd0d042e54bec9dc369ca208c5c3.res"]
+
+[params]
+

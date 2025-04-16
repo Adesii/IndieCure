@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 
 @onready var move_action: GUIDEAction = preload("uid://i341h3c18r7d")
 @onready var aim_mode_action = preload("uid://b84mupd5fpg4l")
+@onready var aim_position = preload("uid://cdsy5vknkfpg4")
 
 var character: IndieCharacter:
 	set(val):
@@ -46,11 +47,19 @@ func _physics_process(_delta):
 	#	mouse_input = not mouse_input
 
 	# handle attack direction
-	if mouse_input:
-		var mouse_pos = get_global_mouse_position()
+	var dmouse = aim_position.value_axis_3d
+	var is_controller = dmouse.z > 0
+	if mouse_input or is_controller:
+		var mouse_pos = aim_position.value_axis_2d
+		if is_controller:
+			mouse_pos.y += 5 # FIXME: try to figure out how to get the camera offset to offset the aim direction but only for controller
 		var attackdirection = mouse_pos - global_position
-		attackdirection = attackdirection.normalized()
-		Global.attack_direction = attackdirection
+		if attackdirection.length() >= 0.1:
+			attackdirection = attackdirection.normalized()
+			Global.attack_direction = attackdirection
+		elif is_controller and velocity.length() > 0.1:
+			Global.attack_direction = velocity.normalized()
+
 	else:
 		if velocity.length() > 0.1:
 			Global.attack_direction = velocity.normalized()

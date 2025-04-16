@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=31 format=3 uid="uid://lhaeaucdyjic"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=38 format=3 uid="uid://lhaeaucdyjic"]
 
 [ext_resource type="Script" uid="uid://b2ld8aj7p2fde" path="res://addons/guide/guide_action_mapping.gd" id="1_bi8v2"]
 [ext_resource type="Resource" uid="uid://i341h3c18r7d" path="res://Data/Input/Gameplay/move.tres" id="2_onitu"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://ub34q1ap6yqr" path="res://addons/guide/guide_mapping_context.gd" id="9_spiy5"]
 [ext_resource type="Script" uid="uid://bujbqqjh1ylm1" path="res://addons/guide/inputs/guide_input_mouse_button.gd" id="10_ckm4d"]
 [ext_resource type="Script" uid="uid://dj8s63r3mij8o" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="11_dlfm2"]
+[ext_resource type="Resource" uid="uid://cdsy5vknkfpg4" path="res://Data/Input/Gameplay/aim.tres" id="12_msnh4"]
+[ext_resource type="Script" uid="uid://tfo783m4g3v8" path="res://addons/guide/inputs/guide_input_mouse_position.gd" id="13_msnh4"]
+[ext_resource type="Script" uid="uid://bw6wwxq1mor31" path="res://addons/guide/modifiers/guide_modifier_canvas_coordinates.gd" id="14_oi2n3"]
 
 [sub_resource type="Resource" id="Resource_tcc3f"]
 script = ExtResource("4_cqei3")
@@ -149,8 +152,31 @@ action = ExtResource("9_cqei3")
 input_mappings = Array[ExtResource("3_h0qbs")]([SubResource("Resource_spiy5")])
 metadata/_guide_input_mappings_collapsed = false
 
+[sub_resource type="Resource" id="Resource_oi2n3"]
+script = ExtResource("13_msnh4")
+
+[sub_resource type="Resource" id="Resource_w0jli"]
+script = ExtResource("14_oi2n3")
+relative_input = false
+
+[sub_resource type="Resource" id="Resource_00c3b"]
+script = ExtResource("3_h0qbs")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_oi2n3")
+modifiers = Array[ExtResource("5_ckm4d")]([SubResource("Resource_w0jli")])
+triggers = Array[ExtResource("8_imunc")]([])
+metadata/_guide_modifiers_collapsed = false
+
+[sub_resource type="Resource" id="Resource_33spc"]
+script = ExtResource("1_bi8v2")
+action = ExtResource("12_msnh4")
+input_mappings = Array[ExtResource("3_h0qbs")]([SubResource("Resource_00c3b")])
+
 [resource]
 script = ExtResource("9_spiy5")
 display_name = ""
-mappings = Array[ExtResource("1_bi8v2")]([SubResource("Resource_2d73l"), SubResource("Resource_onitu")])
+mappings = Array[ExtResource("1_bi8v2")]([SubResource("Resource_2d73l"), SubResource("Resource_onitu"), SubResource("Resource_33spc")])
 metadata/_custom_type_script = "uid://ub34q1ap6yqr"
