@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://deyodasblkcls" path="res://addons/guide/modifiers/guide_modifier_map_range.gd" id="14_7miia"]
 [ext_resource type="Script" uid="uid://bw6wwxq1mor31" path="res://addons/guide/modifiers/guide_modifier_canvas_coordinates.gd" id="14_ybjmr"]
 [ext_resource type="Script" uid="uid://d257mre5wx4uo" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_window_to_world.gd" id="15_0nuev"]
-[ext_resource type="Script" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_add_to.gd" id="17_ddpgs"]
+[ext_resource type="Script" uid="uid://bqbofc6hy6lty" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_add_to.gd" id="17_ddpgs"]
 [ext_resource type="Script" uid="uid://dofa6sfivby06" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_correct_aspect_ratio.gd" id="18_06p7k"]
 
 [sub_resource type="Resource" id="Resource_tbksy"]
