@@ -59,7 +59,6 @@ func _physics_process(_delta):
 			Global.attack_direction = attackdirection
 		elif is_controller and velocity.length() > 0.1:
 			Global.attack_direction = velocity.normalized()
-
 	else:
 		if velocity.length() > 0.1:
 			Global.attack_direction = velocity.normalized()
