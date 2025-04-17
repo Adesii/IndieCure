@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ProjectSettingsIc="res://Scripts/Tools/ProjectSettingsIC.gd"
+Questify="*res://addons/questify/quest_manager.gd"
 GUIDE="*res://addons/guide/guide.gd"
 InputHandler="*res://Scripts/Global/InputHandler.gd"
 Settings="*res://Scripts/UI/Settings/Settings.gd"
@@ -45,7 +46,7 @@ project/assembly_name="IndieCure"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg", "res://addons/quest_resource_translation_parser/plugin.cfg", "res://addons/questify/plugin.cfg")
 
 [input]
 
@@ -87,6 +88,12 @@ switch_attack_mode={
 2d/run_on_separate_thread=true
 2d/solver/solver_iterations=6
 common/enable_object_picking=false
+
+[questify]
+
+general/update_polling=true
+general/update_interval=0.5
+general/add_quests_to_pot_generation=false
 
 [rendering]
 
