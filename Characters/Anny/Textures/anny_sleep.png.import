@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1resqfx0l63k"
-path="res://.godot/imported/anny_idle.png-94d6998784d5445fecc50883ee50f78e.ctex"
+uid="uid://bmwdbodffu4g5"
+path="res://.godot/imported/anny_sleep.png-963fd09d80cf3e92772bc036aa62bbea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Anny/Textures/anny_idle.png"
-dest_files=["res://.godot/imported/anny_idle.png-94d6998784d5445fecc50883ee50f78e.ctex"]
+source_file="res://Characters/Anny/Textures/anny_sleep.png"
+dest_files=["res://.godot/imported/anny_sleep.png-963fd09d80cf3e92772bc036aa62bbea.ctex"]
 
 [params]
 

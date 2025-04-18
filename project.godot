@@ -35,6 +35,10 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 gdscript/warnings/unused_parameter=0
 
+[dialogue_manager]
+
+runtime/balloon_path="res://Scenes/Dialogue/Basic/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1920
@@ -78,6 +82,10 @@ switch_attack_mode={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(166, 1),"global_position":Vector2(170, 42),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Data/Dialogues/00_tutorial_01.dialogue")
 
 [layer_names]
 

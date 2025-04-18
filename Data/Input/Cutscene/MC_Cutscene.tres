@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=3 format=3 uid="uid://benuypbhtm4kx"]
+
+[ext_resource type="Script" uid="uid://b2ld8aj7p2fde" path="res://addons/guide/guide_action_mapping.gd" id="1_d833c"]
+[ext_resource type="Script" uid="uid://ub34q1ap6yqr" path="res://addons/guide/guide_mapping_context.gd" id="2_kq4hi"]
+
+[resource]
+script = ExtResource("2_kq4hi")
+display_name = ""
+mappings = Array[ExtResource("1_d833c")]([])
+metadata/_custom_type_script = "uid://ub34q1ap6yqr"

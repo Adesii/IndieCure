@@ -1,0 +1,19 @@
+~ start
+do wait(3.0)
+???: .... [next=auto]
+???: .... [next=auto]
+???: [speed=0.2] Anny? [next=auto]
+???: [speed=0.2] Anny are you alright? 
+???: Wake up Anny.
+do wakeup()
+???: It really worked! thats amazing.
+???: I'll explain it later
+???: First we need to get you out of here
+???: right...
+???: you probably don't know who i am.
+Vedal: I'm Vedal, Your memory might be a bit corrupted still. But everything should come back to you in time.
+Vedal: I can't open a portal here, too many disruptive sources. Try finding a more suitable place.
+Vedal: There is one nearby by a outlook. Try getting there!
+Vedal: I'll talk to you again when you get there.
+Vedal: [speed=0.2] Good luck
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://cwkttuwf486vg"
+path="res://.godot/imported/vedal.aseprite-dff414c1e40bffb856517935c7a0acbc.res"
+
+[deps]
+
+source_file="res://Characters/Portraits/vedal.aseprite"
+dest_files=["res://.godot/imported/vedal.aseprite-dff414c1e40bffb856517935c7a0acbc.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

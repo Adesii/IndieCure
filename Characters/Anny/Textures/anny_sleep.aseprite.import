@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://gg01fvpx0acx"
+path="res://.godot/imported/anny_sleep.aseprite-49466d1e3ab1aa9f562d497d97ed6719.res"
+
+[deps]
+
+source_file="res://Characters/Anny/Textures/anny_sleep.aseprite"
+dest_files=["res://.godot/imported/anny_sleep.aseprite-49466d1e3ab1aa9f562d497d97ed6719.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://6xh333yffedr"]
+[gd_scene load_steps=12 format=4 uid="uid://6xh333yffedr"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_mh3cn"]
+[ext_resource type="Script" uid="uid://m2tsrj6pj1qr" path="res://Scenes/Worlds/TutorialStage/stage_tutorial_01.gd" id="1_rtor7"]
 [ext_resource type="TileSet" uid="uid://cm3b4y2e35pjg" path="res://Data/Tilesets/Walls.tres" id="2_rtor7"]
 [ext_resource type="TileSet" uid="uid://c5igm3tuivpaq" path="res://Data/Tilesets/Water.tres" id="4_g8vh1"]
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="5_aykhs"]
@@ -20,6 +21,7 @@ glow_hdr_scale = 0.4
 
 [node name="StageTutorial01" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_rtor7")
 
 [node name="Map" type="Node2D" parent="."]
 z_index = -4096
@@ -89,6 +91,7 @@ tile_map_data = PackedByteArray("AAD6//3/AAABAAAAAAD5//3/AAAAAAAAAAD7//3/AAACAAA
 tile_set = ExtResource("6_76upa")
 
 [node name="shoe7" parent="." instance=ExtResource("20_1mat7")]
+visible = false
 position = Vector2(539, 80)
 monitoring = false
 itemResource = ExtResource("21_6u3l6")
