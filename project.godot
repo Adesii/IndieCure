@@ -29,6 +29,7 @@ DebugUi="*res://Scripts/Global/DebugUI.tscn"
 Stat="*res://Scripts/GAS/Attributes/Stat.gd"
 StatEditorSave="*res://addons/custominspectors/stat_editor/stat_editor_save.gd"
 DamageNumbers="*res://Scripts/Global/DamagePopup/damage_numbers.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [debug]
 
@@ -38,6 +39,7 @@ gdscript/warnings/unused_parameter=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/borderless=true
 window/stretch/mode="viewport"
 
 [dotnet]
@@ -46,7 +48,7 @@ project/assembly_name="IndieCure"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg", "res://addons/quest_resource_translation_parser/plugin.cfg", "res://addons/questify/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg", "res://addons/quest_resource_translation_parser/plugin.cfg", "res://addons/questify/plugin.cfg")
 
 [input]
 
@@ -98,7 +100,7 @@ general/add_quests_to_pot_generation=false
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+viewport/hdr_2d=true
 
 [shader_globals]
 

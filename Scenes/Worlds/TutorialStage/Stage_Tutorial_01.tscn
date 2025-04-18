@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://6xh333yffedr"]
+[gd_scene load_steps=11 format=4 uid="uid://6xh333yffedr"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_mh3cn"]
 [ext_resource type="TileSet" uid="uid://cm3b4y2e35pjg" path="res://Data/Tilesets/Walls.tres" id="2_rtor7"]
@@ -9,6 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://yu5wjlkg637o" path="res://Textures/Environment/Forest/Trees/tree_0.tscn" id="18_8v7l3"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="20_1mat7"]
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="21_6u3l6"]
+
+[sub_resource type="Environment" id="Environment_mh3cn"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.17
+glow_strength = 1.06
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 0.4
 
 [node name="StageTutorial01" type="Node2D"]
 y_sort_enabled = true
@@ -156,3 +164,6 @@ position = Vector2(-74, -162)
 
 [node name="tree5" parent="Trees" instance=ExtResource("18_8v7l3")]
 position = Vector2(145, -60)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mh3cn")
