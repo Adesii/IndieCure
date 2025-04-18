@@ -4,7 +4,7 @@ do wait(3.0)
 ???: .... [next=auto]
 ???: [speed=0.2] Anny? [next=auto]
 ???: [speed=0.2] Anny are you alright? 
-???: Wake up Anny.
+???: Wake up Anny!
 do wakeup()
 ???: It really worked! thats amazing.
 ???: I'll explain it later
