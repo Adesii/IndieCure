@@ -54,7 +54,11 @@ var mutation_cooldown: Timer = Timer.new()
 @onready var character_portrait: TextureRect = %CharacterPortrait
 
 
+func _exit_tree() -> void:
+	InputHandler.start_gameplay()
+
 func _ready() -> void:
+	InputHandler.start_cutscene()
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
@@ -142,7 +146,7 @@ func load_character_portrait(character: String) -> Texture2D:
 	if FileAccess.file_exists(char_path):
 		return load(char_path)
 	else:
-		print("Character portrait not found for " + character)
+		printerr("Character portrait not found for " + character)
 		return preload("uid://cv5rwhfuodu13")
 
 #region Signals

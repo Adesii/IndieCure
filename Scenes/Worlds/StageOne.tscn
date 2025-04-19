@@ -523,47 +523,38 @@ monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-148, 73)
-monitoring = false
 itemResource = ExtResource("16_wgcua")
 
 [node name="shoe2" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-78, 2)
-monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe3" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(11, 196)
-monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe6" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-78, 102)
-monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe7" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-77, 88)
-monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe8" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-78, 123)
-monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe9" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(-76, 145)
-monitoring = false
 itemResource = ExtResource("17_1c00v")
 
 [node name="shoe4" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(11, 173)
-monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="shoe5" parent="." instance=ExtResource("12_q24t3")]
 position = Vector2(11, 148)
-monitoring = false
 itemResource = ExtResource("21_hqbda")
 
 [node name="Node2D" type="Node2D" parent="."]

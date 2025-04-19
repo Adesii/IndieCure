@@ -1,6 +1,6 @@
 extends Node
 
-func Get(obj, attributename: String, subobj=null) -> float:
+func Get(obj, attributename: String, subobj = null) -> float:
 	if obj.has_method("_get_stat"):
 		return obj._get_stat(attributename, subobj)
 		
@@ -8,7 +8,7 @@ func Get(obj, attributename: String, subobj=null) -> float:
 		
 	return statnode._get_stat(attributename, subobj)
 
-func Get_Attribute(obj, attributename: String, subobj=null) -> Attribute:
+func Get_Attribute(obj, attributename: String, subobj = null) -> Attribute:
 	if obj.has_method("_get_attribute"):
 		return obj._get_attribute(attributename, subobj)
 		
@@ -16,7 +16,7 @@ func Get_Attribute(obj, attributename: String, subobj=null) -> Attribute:
 		
 	return statnode._get_attribute(attributename, subobj)
 
-func Set(obj, attributename: String, value, subobj=null):
+func Set(obj, attributename: String, value, subobj = null):
 	if obj.has_method("_set_stat"):
 		return obj._set_stat(attributename, value, subobj)
 
@@ -24,7 +24,7 @@ func Set(obj, attributename: String, value, subobj=null):
 
 	return statnode._set_stat(attributename, value, subobj)
 
-func Modify(obj, attributename: String, value, modificationoperator, subobj=null):
+func Modify(obj, attributename: String, value, modificationoperator, subobj = null):
 	if obj.has_method("_modify_stat"):
 		return obj._modify_stat(attributename, value, modificationoperator, subobj)
 
@@ -32,7 +32,7 @@ func Modify(obj, attributename: String, value, modificationoperator, subobj=null
 
 	return statnode._modify_stat(attributename, value, modificationoperator, subobj)
 
-func Damage(from, to, subobj=null):
+func Damage(from, to, subobj = null):
 	var basedamage = Get(from, "attack_damage")
 	var damage_modifier = Get(from, "damage_modifier")
 	#var armor = Get(to, "armor")
@@ -56,7 +56,7 @@ func Damage(from, to, subobj=null):
 
 	Modify(to, "health", damage, "-", subobj)
 
-func from_set(obj, attributeset: AttributeSet, subobj=null):
+func from_set(obj, attributeset: AttributeSet, subobj = null):
 	if attributeset == null:
 		print("attributeset is null on :" + str(obj))
 		return
@@ -75,7 +75,7 @@ func add_new_stat_node(obj) -> Node:
 	obj.add_child(newnode)
 	return newnode
 
-func print(obj, subobj=null):
+func print(obj, subobj = null):
 	print("###################" + str(obj) + "###################")
 	# iterate over all attributes and print them in a human readable string
 	var statholdernode = obj.get_node("Stats")

@@ -71,7 +71,7 @@ func _physics_process(_delta):
 	dummysprite2d.flip_h = sprite.flip_h
 
 	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
-	dummysprite2d.visible = sprite.visible
+	dummysprite2d.visible = sprite.is_visible_in_tree()
 	
 	if sprite is Sprite2D:
 		dummysprite2d.texture = sprite.texture

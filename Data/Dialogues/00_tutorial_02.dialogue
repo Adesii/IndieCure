@@ -1,0 +1,6 @@
+~ start
+Vedal: hmm.. the outlook is beyond this rock
+Vedal: I think i might be able to help you get rid of it
+Vedal: I'll spawn in a weapon for you. Go get it and destroy the rock
+do spawn_item()
+=> END

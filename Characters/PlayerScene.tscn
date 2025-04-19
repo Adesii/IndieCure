@@ -25,6 +25,8 @@ radius = 28.2
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_o0pb6")
 inventory = ExtResource("2_jrxo8")
 
