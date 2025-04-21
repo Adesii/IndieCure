@@ -23,6 +23,12 @@ func init_wave():
 	set_process(true)
 	set_process_input(true)
 	set_physics_process(true)
+
+func end_wave():
+	set_process(false)
+	set_process_input(false)
+	set_physics_process(false)
+	wave_controller.next_wave()
 	
 func _ready():
 	set_process(false)
@@ -38,11 +44,12 @@ func start(controller: WavesController):
 	init_wave()
 	_start_wave()
 
-func _start_wave():
-	# Logic to start the wave
-	pass
 
-func process_wave(delta):
+func _process(delta):
+	_process_wave(delta)
+	
+
+func handle_default_spawn(delta):
 	spawn_time += delta
 	#print("Spawn time: %f" % spawn_time, "Spawn rate: %f" % spawn_rate_converted)
 	if spawn_time >= spawn_rate_converted:
@@ -59,3 +66,14 @@ func spawn_enemy():
 func _on_enemy_health_changed(attr, owner_info, new_value):
 	if new_value <= 0:
 		enemy_count -= 1
+
+
+#region overridable functions
+
+func _start_wave():
+	# Logic to start the wave
+	pass
+
+func _process_wave(delta):
+	# logic to process the wave
+	pass

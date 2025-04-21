@@ -13,6 +13,8 @@ var current_wave_id: int = -1
 
 
 func _ready():
+	if Engine.is_editor_hint():
+		return
 	_setup_timer()
 	for i in range(get_child_count()):
 		var child = get_child(i)

@@ -14,10 +14,8 @@ func _start_wave():
 	
 func _on_wave_timeout():
 	# This function will be called when the wave duration is reached
-	wave_controller.next_wave()
-	super._ready()
+	end_wave()
 
-func _process(delta):
-	process_wave(delta)
+func _process_wave(delta):
 	if timer:
 		print("Wave is active for %f seconds" % timer.time_left)

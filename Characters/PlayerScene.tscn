@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cncnn0napeaex"]
+[gd_scene load_steps=18 format=3 uid="uid://cncnn0napeaex"]
 
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="1_0le1w"]
 [ext_resource type="Script" uid="uid://dj65wcedd71fx" path="res://Scripts/Characters/Movement.gd" id="1_o0pb6"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cyopw08v41io7" path="res://Textures/AttackArrow.png" id="7_e6seo"]
 [ext_resource type="Script" uid="uid://dxuuqq1y3vmhi" path="res://Characters/PickUpArea.gd" id="7_hkuwm"]
 [ext_resource type="Script" uid="uid://d1wucu3c4v2df" path="res://Characters/AttackArrow.gd" id="8_018wc"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_psqml"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_o1l1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8jtf"]
 radius = 11.0454
@@ -22,6 +24,13 @@ radius = 5.09902
 radius = 28.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0o0f"]
+
+[sub_resource type="Resource" id="Resource_psqml"]
+script = ExtResource("11_o1l1n")
+duration = 1.0
+transition = 0
+ease = 2
+metadata/_custom_type_script = "uid://8umksf8e80fw"
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -52,10 +61,6 @@ character_sprite = NodePath("..")
 fliptimelimit = 0
 
 [node name="Node" parent="PlayerSprite" instance=ExtResource("3_w8iq5")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -5)
-zoom = Vector2(3, 3)
 
 [node name="Collisionbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
@@ -103,6 +108,17 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_e6seo")
 offset = Vector2(0, -30.225)
 script = ExtResource("8_018wc")
+
+[node name="Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("10_psqml")
+priority = 10
+follow_mode = 1
+follow_target = NodePath("..")
+zoom = Vector2(3, 3)
+tween_resource = SubResource("Resource_psqml")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [connection signal="area_shape_entered" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBoxArea" to="HitBoxArea" method="_on_area_shape_exited"]

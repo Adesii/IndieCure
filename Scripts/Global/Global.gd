@@ -55,11 +55,16 @@ func load_stage(stage_scene: PackedScene):
 	oldscene.queue_free()
 
 func setup_player():
-	var player_scene = load("res://Characters/PlayerScene.tscn").instantiate();
-	player = player_scene
+	var player_scene = load("uid://byco3pvydnl2q").instantiate() as Node;
+	player = player_scene.get_node("Player")
 	player.get_node("PlayerSprite").set("sprite_frames", current_character.character_animations)
 	Stat.from_set(player, current_character.attribute_set)
-	current_scene.add_child(player)
+	var childs = player_scene.get_children()
+	for add_ins in childs:
+		player_scene.remove_child(add_ins)
+		current_scene.add_child(add_ins)
+		print("adding " + str(add_ins))
+	
 	player.character = current_character
 
 	var ingameui = ingame_ui.instantiate()

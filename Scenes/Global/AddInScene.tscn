@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://byco3pvydnl2q"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_5y4rx"]
+[ext_resource type="PackedScene" uid="uid://cncnn0napeaex" path="res://Characters/PlayerScene.tscn" id="1_7pf5o"]
+[ext_resource type="Script" uid="uid://d3bncrduni548" path="res://addons/post_processing/node/post_process.gd" id="2_5y4rx"]
+[ext_resource type="Script" uid="uid://ca8sja2117d71" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="3_tobv1"]
+
+[sub_resource type="Environment" id="Environment_2fq65"]
+background_mode = 3
+background_canvas_max_layer = 90
+glow_enabled = true
+glow_strength = 0.46
+glow_bloom = 0.1
+glow_hdr_threshold = 0.9
+
+[sub_resource type="Resource" id="Resource_wg3gy"]
+script = ExtResource("3_tobv1")
+reload = false
+ASCII = false
+ASCIISize = Vector2(4, 9)
+ChromaticAberration = true
+StrenghtCA = 0.5
+Blur = false
+L_O_D = 2.465
+FishEye = false
+FishEyeAspect = 1.0
+FishEyeDistortion = 1.0
+FishEyeRadius = 1.0
+FishEyeAlpha = 1.0
+FishEyeCrop = 1.0
+FishEyeCropColor = Color(0, 0, 0, 1)
+Vignette = true
+VignetteIntensity = 0.05
+VignetteOpacity = 0.425
+VignetteR_G_B = Color(0, 0, 0, 1)
+Glitch = false
+GlitchRange = 0.05
+GlitchNoiseQuality = 250.0
+GlitchIntenity = 0.0088
+GlitchOffset = 0.03
+GlitchColorOffset = 1.3
+Outline = false
+OutlineColor = Color(0, 0, 0, 1)
+OutlineThreshold = 0.0
+OutlineBlend = 0.01
+Grain = false
+GrainPower = 20
+CircularWaves = false
+CircularWavesAmplitude = 2.0
+CircularWavesFrequency = 12.69
+CircularWavesRippleRate = 9.2
+SpeedLines = false
+SpeedLinesColor = Color(1, 1, 1, 1)
+SpeedLinesCount = 2
+SpeedLineDensity = 0.072
+SpeedLineSpeed = 20
+ColorCorrection = false
+ColorCorrectionTint = Color(0.971959, 0.960041, 0.930035, 1)
+ColorCorrectionBrightness = 0.0
+ColorCorrectionSaturation = 0.0
+Palette = false
+Pixelate = false
+PixelatePixelSize = 2
+CRT = false
+overlay = false
+scanlines_opacity = 0.4
+scanlines_width = 0.25
+grille_opacity = 0.3
+pixelate = true
+roll_speed = 8.0
+roll_size = 15.0
+roll_variation = 1.8
+distort_intensity = 0.05
+noise_opacity = 0.4
+noise_speed = 5.0
+static_noise_intensity = 0.06
+aberration = 0.03
+brightness = 1.4
+discolor = true
+warp_amount = 1.0
+clip_warp = false
+vignette_intensity = 0.4
+vignette_opacity = 0.5
+AnalogMonitor = false
+AnalogMonitorResolution = Vector2(256, 256)
+ScreenShake = false
+ScreenShakePower = 0.1
+metadata/_custom_type_script = "uid://ca8sja2117d71"
+
+[node name="AddInScene" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+zoom = Vector2(3, 3)
+process_callback = 0
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_5y4rx")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Player" parent="." instance=ExtResource("1_7pf5o")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2fq65")
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 0
+script = ExtResource("2_5y4rx")
+configuration = SubResource("Resource_wg3gy")
+metadata/_custom_type_script = "uid://d3bncrduni548"

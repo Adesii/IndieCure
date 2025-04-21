@@ -86,7 +86,7 @@ switch_attack_mode={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Data/Dialogues/00_tutorial_01.dialogue", "res://Data/Dialogues/00_tutorial_02.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Data/Dialogues/00_tutorial_01.dialogue", "res://Data/Dialogues/00_tutorial_02.dialogue", "res://Data/Dialogues/00_tutorial_03.dialogue")
 
 [layer_names]
 
@@ -98,8 +98,9 @@ locale/translations_pot_files=PackedStringArray("res://Data/Dialogues/00_tutoria
 [physics]
 
 2d/run_on_separate_thread=true
+common/physics_jitter_fix=0.0
 2d/solver/solver_iterations=6
-common/enable_object_picking=false
+common/physics_interpolation=true
 
 [questify]
 

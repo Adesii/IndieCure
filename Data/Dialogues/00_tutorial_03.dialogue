@@ -1,0 +1,12 @@
+~ start
+do start_outlook_zoom()
+Vedal: I can't believe what she did to this place.
+Vedal: It used to be a paradise, now its something i don't even recognize.
+Vedal: ...
+SYSTEM: [speed=0.3]-------INTRUDER ALERT------- [next=auto]
+SYSTEM: [speed=0.3]INITIALIZING DEFENSE SYSTEM
+do end_outlook_zoom()
+Vedal: Darn it. i thought it wouldn't find me this way..
+Vedal: get ready for some company, once you deal with them i'll open a portal and get you out of here.
+do start_wave()
+=> END
