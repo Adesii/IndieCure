@@ -30,6 +30,7 @@ Stat="*res://Scripts/GAS/Attributes/Stat.gd"
 StatEditorSave="*res://addons/custominspectors/stat_editor/stat_editor_save.gd"
 DamageNumbers="*res://Scripts/Global/DamagePopup/damage_numbers.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 
@@ -52,7 +53,7 @@ project/assembly_name="IndieCure"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg", "res://addons/quest_resource_translation_parser/plugin.cfg", "res://addons/questify/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/custominspectors/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/enemytimeline/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/itemcreator/plugin.cfg", "res://addons/json_editor/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/process_mode_indicator/plugin.cfg", "res://addons/quest_resource_translation_parser/plugin.cfg", "res://addons/questify/plugin.cfg")
 
 [input]
 
