@@ -110,7 +110,7 @@ func apply_dialogue_line() -> void:
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
 
-	character_portrait.texture = await load_character_portrait(dialogue_line.character)
+	character_portrait.texture = load_character_portrait(dialogue_line.character)
 
 	# Show our balloon
 	balloon.show()

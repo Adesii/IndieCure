@@ -12,6 +12,9 @@ extends Node2D
 @export var camera_transition: PhantomCameraTween
 @export var outlook_camera: PhantomCamera2D
 
+@export_category("Quest")
+@export var quest_resource: QuestResource
+
 var original_tween: PhantomCameraTween
 var player_camera_host: PhantomCamera2D
 
@@ -32,6 +35,8 @@ func _ready():
 	player_camera_host.tween_resource = camera_transition
 	await get_tree().process_frame
 	phantom_camera.set_priority(0)
+
+	Questify.start_quest(quest_resource.instantiate())
 
 func wakeup():
 	Global.player.get_node("PlayerSprite").animation_override = false
@@ -69,4 +74,4 @@ func end_outlook_zoom():
 	await player_camera_host.tween_completed
 
 func start_wave():
-	pass
+	State.sendmessage("wave_begin")

@@ -1,14 +1,24 @@
-[gd_scene load_steps=24 format=4 uid="uid://6xh333yffedr"]
+[gd_scene load_steps=41 format=4 uid="uid://6xh333yffedr"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_mh3cn"]
 [ext_resource type="Script" uid="uid://m2tsrj6pj1qr" path="res://Scenes/Worlds/TutorialStage/stage_tutorial_01.gd" id="1_rtor7"]
 [ext_resource type="TileSet" uid="uid://cm3b4y2e35pjg" path="res://Data/Tilesets/Walls.tres" id="2_rtor7"]
+[ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="3_34mc1"]
+[ext_resource type="Shader" uid="uid://boy3tjeuckiu2" path="res://Scenes/Worlds/enemyoutline.gdshader" id="3_ftc4e"]
+[ext_resource type="Resource" uid="uid://bcgwqpo1l0j2u" path="res://Data/Quests/Tutorial/q_tutorial_00.tres" id="3_nm4sg"]
 [ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="3_xquvr"]
 [ext_resource type="TileSet" uid="uid://c5igm3tuivpaq" path="res://Data/Tilesets/Water.tres" id="4_g8vh1"]
+[ext_resource type="Script" uid="uid://dl3k1xbol04wg" path="res://Scripts/Wave/SignalWaitWave.gd" id="4_gtdwq"]
+[ext_resource type="Script" uid="uid://cajisfa8k1qwv" path="res://Scripts/Enemy/EnemySpawner.gd" id="4_nm4sg"]
+[ext_resource type="Script" uid="uid://cc1wyxa1c1k1b" path="res://Scripts/Wave/EnemyCountWave.gd" id="5_6u3l6"]
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="5_aykhs"]
 [ext_resource type="Script" uid="uid://cdsyndnmwtyev" path="res://Scripts/Enemy/basic_damageable.gd" id="5_jhv27"]
+[ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="5_n5glu"]
+[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="6_1mat7"]
 [ext_resource type="TileSet" uid="uid://c3kjp06qcwel" path="res://Data/Tilesets/Bridges.tres" id="6_76upa"]
 [ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="6_jhv27"]
+[ext_resource type="Resource" uid="uid://t4p4j40s4wss" path="res://Data/Enemies/EA_Toffee.tres" id="7_6u3l6"]
+[ext_resource type="Script" uid="uid://18n15pbvnb56" path="res://Scripts/Wave/SignalCompletedWave.gd" id="8_6u3l6"]
 [ext_resource type="Script" uid="uid://ba48qiq8pj10p" path="res://Scripts/Items/item_spawner.gd" id="9_g8vh1"]
 [ext_resource type="Texture2D" uid="uid://2qvmf267sad5" path="res://Textures/Rocks/Bolder-0001.png" id="11_qt82l"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="15_xquvr"]
@@ -23,6 +33,42 @@ duration = 10.0
 transition = 1
 ease = 2
 metadata/_custom_type_script = "uid://8umksf8e80fw"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qt82l"]
+shader = ExtResource("3_ftc4e")
+shader_parameter/color = Color(0.462745, 0.270588, 0.137255, 1)
+shader_parameter/width = 0.8
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1rqn"]
+atlas = ExtResource("5_n5glu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykt5y"]
+atlas = ExtResource("5_n5glu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_supgr"]
+atlas = ExtResource("5_n5glu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jio5"]
+atlas = ExtResource("5_n5glu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fluff"]
+atlas = ExtResource("5_n5glu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jpkkl"]
+shader = ExtResource("3_ftc4e")
+shader_parameter/color = Color(1, 0.254902, 0.643137, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = false
 
 [sub_resource type="Resource" id="Resource_bq1lq"]
 resource_local_to_scene = true
@@ -58,6 +104,45 @@ item_spawner = NodePath("ItemSpawner")
 phantom_camera = NodePath("Cutscenes/IntroZoom")
 camera_transition = SubResource("Resource_xquvr")
 outlook_camera = NodePath("Cutscenes/Outlook")
+quest_resource = ExtResource("3_nm4sg")
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
+unique_name_in_owner = true
+process_priority = -100
+process_physics_priority = -100
+z_index = 100
+material = SubResource("ShaderMaterial_qt82l")
+script = ExtResource("4_nm4sg")
+frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_ykt5y"), SubResource("AtlasTexture_supgr"), SubResource("AtlasTexture_3jio5"), SubResource("AtlasTexture_fluff")])
+image_offset = Vector2i(0, 16)
+image_change_offset = 0.1
+shared_area = NodePath("Area2D")
+enemiestospawn = 100000
+
+[node name="Area2D" type="Area2D" parent="Spawner"]
+process_physics_priority = 99
+material = SubResource("ShaderMaterial_jpkkl")
+collision_layer = 4
+collision_mask = 4
+monitoring = false
+
+[node name="WavesController" type="Node" parent="."]
+script = ExtResource("3_34mc1")
+
+[node name="SignalWaitWave" type="Node" parent="WavesController"]
+script = ExtResource("4_gtdwq")
+await_signal = &"wave_begin"
+metadata/_custom_type_script = "uid://dl3k1xbol04wg"
+
+[node name="EnemyCountWave" type="Node" parent="WavesController"]
+script = ExtResource("5_6u3l6")
+target_enemies = 10
+enemy_types = Array[ExtResource("6_1mat7")]([ExtResource("7_6u3l6")])
+
+[node name="SignalCompletedWave" type="Node" parent="WavesController"]
+script = ExtResource("8_6u3l6")
+send_signal = &"set:wave_completed:true"
+metadata/_custom_type_script = "uid://18n15pbvnb56"
 
 [node name="Map" type="Node2D" parent="."]
 z_index = -4096

@@ -1,5 +1,5 @@
 class_name TimedWave
-extends Wave
+extends EnemyWave
 
 @export var wave_duration: float = 60.0
 

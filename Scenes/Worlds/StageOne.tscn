@@ -1,8 +1,7 @@
-[gd_scene load_steps=84 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=77 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="1_1dtj5"]
 [ext_resource type="Script" uid="uid://r80uhwxhwut2" path="res://Scripts/Wave/TimedWave.gd" id="2_ci3dm"]
-[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="3_lgjrf"]
 [ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="5_fpb0x"]
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="6_5o73b"]
 [ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="7_6twy0"]
@@ -37,55 +36,13 @@
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="34_vnbmw"]
 [ext_resource type="Texture2D" uid="uid://dsnt4d5ecychh" path="res://Enemies/Bosses/CRB/CrazyFuckingRobot-0001.png" id="36_6twy0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v35rg"]
-atlas = ExtResource("11_rnqhi")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oxjwn"]
-atlas = ExtResource("11_rnqhi")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58jb6"]
-atlas = ExtResource("11_rnqhi")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_majuq"]
-atlas = ExtResource("11_rnqhi")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_06ag2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v35rg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oxjwn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_58jb6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_majuq")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_71w31"]
-script = ExtResource("3_lgjrf")
-frames = SubResource("SpriteFrames_06ag2")
-image_offset = Vector2i(0, 16)
-metadata/_custom_type_script = "uid://bbcm8d4x3de2j"
-
-[sub_resource type="Resource" id="Resource_e72qd"]
+[sub_resource type="Resource" id="Resource_vnbmw"]
 resource_local_to_scene = true
 script = ExtResource("5_fpb0x")
 attribute_name = "health"
 default_value = 5.0
 
-[sub_resource type="Resource" id="Resource_bve6b"]
+[sub_resource type="Resource" id="Resource_6twy0"]
 resource_local_to_scene = true
 script = ExtResource("5_fpb0x")
 attribute_name = "movement_speed"
@@ -435,8 +392,7 @@ script = ExtResource("1_1dtj5")
 
 [node name="TimedWave" type="Node" parent="WaveManager"]
 script = ExtResource("2_ci3dm")
-enemy_types = Array[ExtResource("3_lgjrf")]([SubResource("Resource_71w31")])
-starting_attributes = Array[ExtResource("5_fpb0x")]([SubResource("Resource_e72qd"), SubResource("Resource_bve6b")])
+starting_attributes = Array[ExtResource("5_fpb0x")]([SubResource("Resource_vnbmw"), SubResource("Resource_6twy0")])
 metadata/_custom_type_script = "uid://r80uhwxhwut2"
 
 [node name="TileMap" type="Node2D" parent="."]
