@@ -111,16 +111,21 @@ func apply_dialogue_line() -> void:
 	responses_menu.responses = dialogue_line.responses
 
 	character_portrait.texture = load_character_portrait(dialogue_line.character)
-
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
-		dialogue_label.type_out()
-		await dialogue_label.finished_typing
-
+		if auto_skip_enabled:
+			dialogue_label.skip_typing()
+			await get_tree().process_frame
+			next(dialogue_line.next_id)
+			return
+		else:
+			dialogue_label.type_out()
+			await dialogue_label.finished_typing
+	
 	# Wait for input
 	if dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
@@ -191,3 +196,10 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+var auto_skip_enabled: bool = false
+
+## Toggle auto-skip state
+func toggle_auto_skip():
+	auto_skip_enabled = not auto_skip_enabled
+	next(dialogue_line.next_id)

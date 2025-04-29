@@ -149,5 +149,17 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
+[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+layout_mode = 0
+offset_left = 1422.0
+offset_top = 1001.0
+offset_right = 1595.0
+offset_bottom = 1059.0
+
+[node name="CheckButton" type="Button" parent="Balloon/MarginContainer"]
+layout_mode = 2
+text = "SKIP"
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="pressed" from="Balloon/MarginContainer/CheckButton" to="." method="toggle_auto_skip"]

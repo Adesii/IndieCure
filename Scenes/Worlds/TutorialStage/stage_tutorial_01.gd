@@ -17,6 +17,7 @@ extends Node2D
 
 var original_tween: PhantomCameraTween
 var player_camera_host: PhantomCamera2D
+var host: PhantomCameraHost
 
 func _ready():
 	#InputHandler.start_cutscene()
@@ -31,6 +32,7 @@ func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	player_camera_host = Global.player.get_node("Camera")
+	host = Global.main_camera.get_node("PhantomCameraHost")
 	original_tween = player_camera_host.tween_resource
 	player_camera_host.tween_resource = camera_transition
 	await get_tree().process_frame
@@ -40,7 +42,8 @@ func _ready():
 
 func wakeup():
 	Global.player.get_node("PlayerSprite").animation_override = false
-	player_camera_host.tween_resource = original_tween
+	host._tween_elapsed_time = 10000
+	player_camera_host.set_tween_resource(original_tween)
 	#InputHandler.start_gameplay()
 
 

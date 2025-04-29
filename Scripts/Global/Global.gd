@@ -12,6 +12,7 @@ var shadow_canvas_group: CanvasGroup
 var xp_drop_node: XPDrop
 
 var current_scene = null
+var main_camera: Camera2D
 
 var attack_direction = Vector2(1, 0)
 
@@ -63,6 +64,8 @@ func setup_player():
 	for add_ins in childs:
 		player_scene.remove_child(add_ins)
 		current_scene.add_child(add_ins)
+		if add_ins is Camera2D:
+			main_camera = add_ins as Camera2D
 		print("adding " + str(add_ins))
 	
 	player.character = current_character
