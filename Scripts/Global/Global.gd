@@ -4,6 +4,8 @@ var current_character: IndieCharacter = load("res://Characters/Anny/Anny.tres")
 var ingame_ui: PackedScene = load("res://Scenes/Global/ingame_ui.tscn")
 var xp_drops: PackedScene = load("res://Scripts/Global/xp_drop.tscn")
 
+var scene_directory: SceneDirectory = preload("uid://bsg3mk3myx3hi")
+
 var player: CharacterBody2D
 var ui: CanvasLayer
 
@@ -99,3 +101,18 @@ func is_in_game():
 
 func create_timer(time) -> SceneTreeTimer:
 	return get_tree().create_timer(time, false, true)
+
+func create_portal_to(scenename: StringName) -> Node:
+	var portal = preload("uid://mrl3ss7x67t1").instantiate()
+	portal.portal_destination = scenename
+	current_scene.add_child(portal)
+
+	#spawn it around the player within a certain radius
+	var random_angle = randf() * 2 * PI
+	var random_radius = randf() * 50 + 50
+	var position = Vector2(random_radius * cos(random_angle), random_radius * sin(random_angle))
+	portal.global_transform.origin = player.global_transform.origin + position
+	return portal
+
+func change_scene(scenename: StringName) -> void:
+	load_stage(scene_directory.directoryMap[scenename])

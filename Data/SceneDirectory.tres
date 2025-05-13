@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SceneDirectory" load_steps=3 format=3 uid="uid://bsg3mk3myx3hi"]
+
+[ext_resource type="PackedScene" uid="uid://djfkyiptvtuth" path="res://Scenes/Worlds/Hub/Hub.tscn" id="1_20q6s"]
+[ext_resource type="Script" uid="uid://2uf76kg1t3hg" path="res://Scripts/DataManagement/scenedirectory.gd" id="1_yajqq"]
+
+[resource]
+script = ExtResource("1_yajqq")
+directoryMap = Dictionary[String, PackedScene]({
+"hub": ExtResource("1_20q6s")
+})

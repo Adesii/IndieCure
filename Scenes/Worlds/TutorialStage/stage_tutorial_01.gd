@@ -39,6 +39,7 @@ func _ready():
 	phantom_camera.set_priority(0)
 
 	Questify.start_quest(quest_resource.instantiate())
+	State.registernode(self, "l_wave_completed", func(x): Global.create_portal_to("hub"))
 
 func wakeup():
 	Global.player.get_node("PlayerSprite").animation_override = false

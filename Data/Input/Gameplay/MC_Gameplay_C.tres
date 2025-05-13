@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=41 format=3 uid="uid://cmc4c1fkaphya"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=45 format=3 uid="uid://cmc4c1fkaphya"]
 
 [ext_resource type="Script" uid="uid://b2ld8aj7p2fde" path="res://addons/guide/guide_action_mapping.gd" id="1_7u43p"]
 [ext_resource type="Script" uid="uid://ub34q1ap6yqr" path="res://addons/guide/guide_mapping_context.gd" id="2_0asnl"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://d257mre5wx4uo" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_window_to_world.gd" id="15_0nuev"]
 [ext_resource type="Script" uid="uid://bqbofc6hy6lty" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_add_to.gd" id="17_ddpgs"]
 [ext_resource type="Script" uid="uid://dofa6sfivby06" path="res://Scripts/AddonExtensions/Guide/Modifiers/guide_modifier_correct_aspect_ratio.gd" id="18_06p7k"]
+[ext_resource type="Resource" uid="uid://bdwwhf6ggr0ak" path="res://Data/Input/Gameplay/accept.tres" id="19_4greo"]
 
 [sub_resource type="Resource" id="Resource_tbksy"]
 script = ExtResource("4_47e11")
@@ -145,8 +146,28 @@ script = ExtResource("1_7u43p")
 action = ExtResource("12_6lmaw")
 input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_ddpgs")])
 
+[sub_resource type="Resource" id="Resource_3rc5a"]
+script = ExtResource("9_ddpgs")
+button = 1
+joy_index = -1
+
+[sub_resource type="Resource" id="Resource_hm74y"]
+script = ExtResource("3_4c7te")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_3rc5a")
+modifiers = Array[ExtResource("5_6lmaw")]([])
+triggers = Array[ExtResource("7_7miia")]([])
+
+[sub_resource type="Resource" id="Resource_4guba"]
+script = ExtResource("1_7u43p")
+action = ExtResource("19_4greo")
+input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_hm74y")])
+
 [resource]
 script = ExtResource("2_0asnl")
 display_name = ""
-mappings = Array[ExtResource("1_7u43p")]([SubResource("Resource_uudck"), SubResource("Resource_45vkt"), SubResource("Resource_06p7k")])
+mappings = Array[ExtResource("1_7u43p")]([SubResource("Resource_uudck"), SubResource("Resource_45vkt"), SubResource("Resource_06p7k"), SubResource("Resource_4guba")])
 metadata/_custom_type_script = "uid://ub34q1ap6yqr"

@@ -24,8 +24,8 @@ func set_value(key: String, value: Variant) -> void:
 		current_state["value_store"] = {}
 		current_state["value_store"][key] = value
 	
-	if messagedictionary.has("listen_var_" + key):
-		State.sendmessage("listen_var_" + key, value)
+	if messagedictionary.has("l_" + key):
+		State.sendmessage("l_" + key, [value])
 
 func get_value(key: String) -> Variant:
 	if current_state.has("value_store"):
@@ -110,6 +110,13 @@ func sendmessage(message: String, args: Array = []):
 
 	if messagedictionary.has(message):
 		for node in messagedictionary[message]:
-			node[1].call(args)
+			var c = node[1] as Callable
+			if c.is_valid():
+				if c.get_argument_count() == 0:
+					c.call()
+				else:
+					c.call(args)
+			else:
+				printerr("This should not happen. callable parameter isn't a callable")
 			
 #endregion

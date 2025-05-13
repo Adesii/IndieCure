@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=57 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="1_1dtj5"]
 [ext_resource type="Script" uid="uid://r80uhwxhwut2" path="res://Scripts/Wave/TimedWave.gd" id="2_ci3dm"]
@@ -30,8 +30,8 @@
 [ext_resource type="SpriteFrames" uid="uid://bwyg4nt3odr0w" path="res://Enemies/Bosses/DarkBall/Art/DarkBall-0003.aseprite" id="28_r86vm"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="29_c4jt6"]
 [ext_resource type="Texture2D" uid="uid://dluvdieeegi0m" path="res://Scenes/Worlds/Layer.png" id="30_bbmju"]
+[ext_resource type="PackedScene" uid="uid://mrl3ss7x67t1" path="res://Scenes/Global/portal.tscn" id="31_vnbmw"]
 [ext_resource type="Texture2D" uid="uid://2qvmf267sad5" path="res://Textures/Rocks/Bolder-0001.png" id="32_6x2vb"]
-[ext_resource type="Texture2D" uid="uid://bocmbwwjwjecj" path="res://Textures/Effects/Portal/portal_anim.png" id="32_lqnmg"]
 [ext_resource type="Shader" uid="uid://cndma2ujxeqi7" path="res://Shaders/Effects/Teleport.gdshader" id="33_5o73b"]
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="34_vnbmw"]
 [ext_resource type="Texture2D" uid="uid://dsnt4d5ecychh" path="res://Enemies/Bosses/CRB/CrazyFuckingRobot-0001.png" id="36_6twy0"]
@@ -215,147 +215,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ci3dm"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(52, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgjrf"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(104, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpb0x"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(156, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cm21p"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(208, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e72qd"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(260, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bve6b"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(312, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_36w2d"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(364, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8t7lk"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(416, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_se7s5"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(468, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xesem"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(520, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfofe"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(572, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w7tu6"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(624, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo10s"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(676, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w7i68"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(728, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2wk3n"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(780, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_35l2t"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(832, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m140f"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(884, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0cdg"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(936, 0, 52, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dtj5"]
-atlas = ExtResource("32_lqnmg")
-region = Rect2(988, 0, 52, 84)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oxjwn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ci3dm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lgjrf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fpb0x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cm21p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e72qd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bve6b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_36w2d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8t7lk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_se7s5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xesem")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dfofe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w7tu6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bo10s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w7i68")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2wk3n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_35l2t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m140f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0cdg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1dtj5")
-}],
-"loop": true,
-"name": &"portal_idle",
 "speed": 10.0
 }]
 
@@ -660,18 +519,8 @@ metadata/_aseprite_wizard_config_ = {
 [node name="Node" parent="Boss2/AnimatedSprite2D" instance=ExtResource("29_c4jt6")]
 shadow_offset = Vector2(0, -24)
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Node2D2" parent="." instance=ExtResource("31_vnbmw")]
 position = Vector2(-23, 56)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D2"]
-sprite_frames = SubResource("SpriteFrames_oxjwn")
-animation = &"portal_idle"
-autoplay = "portal_idle"
-frame_progress = 0.549239
-offset = Vector2(0, -29.24)
-
-[node name="Node" parent="Node2D2/AnimatedSprite2D" instance=ExtResource("29_c4jt6")]
-shadow_offset = Vector2(0, 3.84)
 
 [node name="Bolder-0001" type="Sprite2D" parent="."]
 position = Vector2(120, 188)
