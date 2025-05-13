@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cye0mxa62e7lh"]
 
-[ext_resource type="Script" path="res://guide_examples/quick_start/game.gd" id="1_eetgd"]
+[ext_resource type="Script" uid="uid://5ksfi521vakm" path="res://guide_examples/quick_start/game.gd" id="1_eetgd"]
 [ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_twtcc"]
-[ext_resource type="Script" path="res://guide_examples/quick_start/player.gd" id="2_75sqh"]
+[ext_resource type="Script" uid="uid://d4g231fghxo80" path="res://guide_examples/quick_start/player.gd" id="2_75sqh"]
 [ext_resource type="Resource" uid="uid://b2becclfhsxec" path="res://guide_examples/quick_start/mapping_contexts/quickstart.tres" id="2_enypg"]
 [ext_resource type="Resource" uid="uid://uscuhd84vv0i" path="res://guide_examples/quick_start/mapping_contexts/actions/move.tres" id="3_nwedj"]
 [ext_resource type="Resource" uid="uid://d0dmecppsgpo6" path="res://guide_examples/quick_start/mapping_contexts/actions/say_hi.tres" id="6_xqef5"]

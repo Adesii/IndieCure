@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://esnjnv27alsu"]
 
-[ext_resource type="Script" path="res://Characters/DamagingArea.gd" id="1_4hblb"]
+[ext_resource type="Script" uid="uid://bjx806djoqfy4" path="res://Characters/DamagingArea.gd" id="1_4hblb"]
 
 [node name="Basic_damage_area" type="Area2D"]
 collision_layer = 4

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d2mpxkuqekjfk"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://d2mpxkuqekjfk"]
 
 [ext_resource type="PackedScene" uid="uid://dgk6mo0psmynm" path="res://Inventory/Weapons/5/5.tscn" id="1_n37mv"]
-[ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="2_6xaor"]
+[ext_resource type="Script" uid="uid://dpbos4yne4kny" path="res://Inventory/Scripts/inventoryItem.gd" id="2_6xaor"]
+[ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="3_xmcls"]
+[ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="4_c0sm7"]
 
 [resource]
 script = ExtResource("2_6xaor")
 name = "Hammer"
 scene = ExtResource("1_n37mv")
-stats = Array[Resource("res://Scripts/GAS/Attributes/AttributePair.gd")]([])
-stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
+stats = Array[ExtResource("4_c0sm7")]([])
+stat_upgrades = Array[ExtResource("3_xmcls")]([])
 type = 1

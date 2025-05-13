@@ -1,20 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://hxx7y33rfrnh"]
+[gd_scene load_steps=19 format=3 uid="uid://hxx7y33rfrnh"]
 
-[ext_resource type="Script" path="res://guide_examples/touch/touch.gd" id="1_gq4pr"]
+[ext_resource type="Script" uid="uid://blxow77eok5v7" path="res://guide_examples/touch/touch.gd" id="1_gq4pr"]
 [ext_resource type="Resource" uid="uid://bcepjnqawyxeb" path="res://guide_examples/touch/mapping_contexts/touch.tres" id="2_btyg8"]
 [ext_resource type="Resource" uid="uid://iilpc2tjr5mx" path="res://guide_examples/touch/mapping_contexts/actions/spawn.tres" id="3_nwdqb"]
-[ext_resource type="Script" path="res://guide_examples/touch/camera_2d.gd" id="5_k0qyy"]
+[ext_resource type="Script" uid="uid://eohcyf7ibqwm" path="res://guide_examples/touch/camera_2d.gd" id="5_k0qyy"]
 [ext_resource type="PackedScene" uid="uid://c3kfkmt7p66c2" path="res://guide_examples/touch/godot_head.tscn" id="5_mimge"]
 [ext_resource type="Resource" uid="uid://brsk1axa7e3h" path="res://guide_examples/touch/mapping_contexts/actions/camera_movement.tres" id="7_hbc7d"]
 [ext_resource type="Resource" uid="uid://b2xbr2rqob6gw" path="res://guide_examples/touch/mapping_contexts/actions/camera_zoom.tres" id="8_t7xto"]
 [ext_resource type="Texture2D" uid="uid://slnmn5k0drdb" path="res://guide_examples/mouse_position_2d/background.svg" id="9_0mhj2"]
-[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/background.gd" id="10_7apxo"]
+[ext_resource type="Script" uid="uid://wo23l27uk0gm" path="res://guide_examples/mouse_position_2d/background.gd" id="10_7apxo"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="11_bclaf"]
 [ext_resource type="PackedScene" uid="uid://c1ht6xduduxri" path="res://guide_examples/touch/placement_indicator/placement_indicator.tscn" id="12_e3xb3"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="12_fwxrg"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="12_fwxrg"]
 [ext_resource type="Resource" uid="uid://dpu1f4xeigqdr" path="res://guide_examples/touch/mapping_contexts/actions/camera_rotation.tres" id="13_lmkyb"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="13_n0vwi"]
 [ext_resource type="Resource" uid="uid://dhtj0p55ylhcu" path="res://guide_examples/touch/mapping_contexts/actions/camera_reset.tres" id="14_bfrfr"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="15_ypx8g"]
 
 [sub_resource type="Shader" id="Shader_v4pj1"]
 code = "shader_type canvas_item;
@@ -80,7 +81,7 @@ instructions_text = "%s to move the camera.
 %s to reset the camera zoom and rotation.
 %s to place a Godot head.
 "
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("7_hbc7d"), ExtResource("8_t7xto"), ExtResource("13_lmkyb"), ExtResource("14_bfrfr"), ExtResource("3_nwdqb")])
+actions = Array[ExtResource("15_ypx8g")]([ExtResource("7_hbc7d"), ExtResource("8_t7xto"), ExtResource("13_lmkyb"), ExtResource("14_bfrfr"), ExtResource("3_nwdqb")])
 
 [node name="DebuggerLayer" type="CanvasLayer" parent="."]
 

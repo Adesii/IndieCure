@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vej7yqkbtd5f"]
 
-[ext_resource type="Script" path="res://addons/AsepriteWizard/interface/docks/animated_sprite/animated_sprite_inspector_dock.gd" id="1"]
+[ext_resource type="Script" uid="uid://dlnjyhfdsxc73" path="res://addons/AsepriteWizard/interface/docks/animated_sprite/animated_sprite_inspector_dock.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dj1uo3blocr8e" path="res://addons/AsepriteWizard/interface/shared/source_drop_button.tscn" id="2_qlnhy"]
 [ext_resource type="PackedScene" uid="uid://cwvgnm3o7eed2" path="res://addons/AsepriteWizard/interface/shared/dir_drop_button.tscn" id="3_qxvub"]
 

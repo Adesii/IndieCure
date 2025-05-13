@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbnbqax27wmwc"]
 
 [ext_resource type="Script" uid="uid://d2wvg2l7vpgem" path="res://Scenes/Worlds/MainMenu/Scripts/character_preview.gd" id="1_1v148"]
-[ext_resource type="Texture2D" uid="uid://c4jqxvvststve" path="res://icon.svg" id="2_2ln4y"]
+[ext_resource type="Texture2D" uid="uid://b84o4ne0joant" path="res://icon.svg" id="2_2ln4y"]
 
 [node name="CharacterPreview" type="Button" node_paths=PackedStringArray("textNode", "iconNode")]
 custom_minimum_size = Vector2(150, 160)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bme1y0ikthda7"]
 
-[ext_resource type="Script" path="res://guide_examples/remapping/ui/binding_row.gd" id="1_mc50g"]
+[ext_resource type="Script" uid="uid://dmtulie7tcqyt" path="res://guide_examples/remapping/ui/binding_row.gd" id="1_mc50g"]
 
 [node name="BindingRow" type="HBoxContainer"]
 anchors_preset = 15

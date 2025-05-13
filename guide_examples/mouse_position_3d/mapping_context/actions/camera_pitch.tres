@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GUIDEAction" load_steps=2 format=3 uid="uid://bago2pmgvpepb"]
 
-[ext_resource type="Script" path="res://addons/guide/guide_action.gd" id="1_uluq2"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="1_uluq2"]
 
 [resource]
 script = ExtResource("1_uluq2")

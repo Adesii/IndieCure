@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2uycqcjf0hth"]
 
-[ext_resource type="Script" path="res://guide_examples/two_joysticks/two_joysticks.gd" id="1_1dy65"]
+[ext_resource type="Script" uid="uid://dbpecs2m88gn5" path="res://guide_examples/two_joysticks/two_joysticks.gd" id="1_1dy65"]
 [ext_resource type="Resource" uid="uid://chr8ugns0fh70" path="res://guide_examples/two_joysticks/two_joysticks.tres" id="2_3p2l3"]
 [ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="2_c65ah"]
-[ext_resource type="Script" path="res://guide_examples/two_joysticks/player.gd" id="3_3ycuu"]
+[ext_resource type="Script" uid="uid://db22jtimj4kpy" path="res://guide_examples/two_joysticks/player.gd" id="3_3ycuu"]
 [ext_resource type="Resource" uid="uid://d31d5dpoavou1" path="res://guide_examples/two_joysticks/actions/player_one_move.tres" id="4_f356y"]
 [ext_resource type="Resource" uid="uid://7g78pa31v44m" path="res://guide_examples/two_joysticks/actions/player_two_move.tres" id="5_700m5"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="7_ojfv8"]

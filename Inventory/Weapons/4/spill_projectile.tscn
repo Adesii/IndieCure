@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d164n48gswwvh"]
 
-[ext_resource type="Script" path="res://Inventory/Weapons/4/spill_projectile.gd" id="1_3got6"]
+[ext_resource type="Script" uid="uid://pppo8qhtojqf" path="res://Inventory/Weapons/4/spill_projectile.gd" id="1_3got6"]
 [ext_resource type="PackedScene" uid="uid://esnjnv27alsu" path="res://Characters/basic_damage_area.tscn" id="2_a0pnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10b1y"]

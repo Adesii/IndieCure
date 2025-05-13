@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm3hott3tfvwe"]
 
-[ext_resource type="Script" path="res://addons/guide/editor/mapping_context_editor/mapping_context_editor.gd" id="1_vytdu"]
+[ext_resource type="Script" uid="uid://dn6l3jmgdq40" path="res://addons/guide/editor/mapping_context_editor/mapping_context_editor.gd" id="1_vytdu"]
 [ext_resource type="PackedScene" uid="uid://361aipcef24h" path="res://addons/guide/editor/action_mapping_editor/action_mapping_editor.tscn" id="2_qb3p8"]
 [ext_resource type="PackedScene" uid="uid://cly0ff32fvpb2" path="res://addons/guide/editor/array_edit/array_edit.tscn" id="3_x7h5x"]
 

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d040aduo2drdg"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://d040aduo2drdg"]
 
 [ext_resource type="PackedScene" uid="uid://vyekebg4tr8j" path="res://Inventory/Items/1/1.tscn" id="1_lf5li"]
-[ext_resource type="Script" path="res://Inventory/Scripts/inventoryItem.gd" id="1_sotgm"]
+[ext_resource type="Script" uid="uid://dpbos4yne4kny" path="res://Inventory/Scripts/inventoryItem.gd" id="1_sotgm"]
+[ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="3_fmmrw"]
+[ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="4_onwxs"]
 
 [resource]
 script = ExtResource("1_sotgm")
 name = "1"
 scene = ExtResource("1_lf5li")
-stats = Array[Resource("res://Scripts/GAS/Attributes/AttributePair.gd")]([])
-stat_upgrades = Array[Resource("res://Scripts/GAS/statupgraderes.gd")]([])
+stats = Array[ExtResource("4_onwxs")]([])
+stat_upgrades = Array[ExtResource("3_fmmrw")]([])
 type = 2

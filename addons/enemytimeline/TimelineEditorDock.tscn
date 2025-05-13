@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://1qnbywbx4muj"]
 
-[ext_resource type="Script" path="res://addons/enemytimeline/Editor/timelineeditor.gd" id="2_j22y8"]
-[ext_resource type="Script" path="res://addons/enemytimeline/Editor/ScrollSync.gd" id="2_pb15b"]
-[ext_resource type="Script" path="res://addons/enemytimeline/Editor/TestButton.gd" id="2_qmfiy"]
+[ext_resource type="Script" uid="uid://dekd46ees4f1m" path="res://addons/enemytimeline/Editor/timelineeditor.gd" id="2_j22y8"]
+[ext_resource type="Script" uid="uid://cbc1jgn8nr80h" path="res://addons/enemytimeline/Editor/ScrollSync.gd" id="2_pb15b"]
+[ext_resource type="Script" uid="uid://5jryiwthntmi" path="res://addons/enemytimeline/Editor/TestButton.gd" id="2_qmfiy"]
 [ext_resource type="PackedScene" uid="uid://caesenvc5h7g6" path="res://addons/enemytimeline/EnemyTest.tscn" id="3_ohtbi"]
 
 [node name="Control" type="VBoxContainer"]

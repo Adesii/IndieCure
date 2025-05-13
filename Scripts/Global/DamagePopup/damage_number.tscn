@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcasrngwk8lkr"]
 
-[ext_resource type="Script" path="res://Scripts/Global/DamagePopup/damage_number.gd" id="1_i2qql"]
+[ext_resource type="Script" uid="uid://pa6bv2wbouao" path="res://Scripts/Global/DamagePopup/damage_number.gd" id="1_i2qql"]
 [ext_resource type="FontFile" uid="uid://de8n5evbrefyx" path="res://fonts/Retro Gaming.ttf" id="2_xtpmv"]
 
 [node name="DamageNumber" type="Node2D" node_paths=PackedStringArray("label_container", "label")]

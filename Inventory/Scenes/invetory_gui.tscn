@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0w2iww6g3w44"]
 
-[ext_resource type="Script" path="res://Inventory/Scripts/invetory_gui.gd" id="1_tq0to"]
+[ext_resource type="Script" uid="uid://dkv5cvli6h2j7" path="res://Inventory/Scripts/invetory_gui.gd" id="1_tq0to"]
 
 [node name="InvetoryGUI" type="Control" node_paths=PackedStringArray("item_slots", "ability_slots")]
 layout_mode = 3

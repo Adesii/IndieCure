@@ -1,19 +1,20 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmpv0dh2nk5j"]
+[gd_scene load_steps=23 format=3 uid="uid://dmpv0dh2nk5j"]
 
-[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/mouse_position_3d.gd" id="1_8oqik"]
+[ext_resource type="Script" uid="uid://0suhk0h1cy72" path="res://guide_examples/mouse_position_3d/mouse_position_3d.gd" id="1_8oqik"]
 [ext_resource type="Resource" uid="uid://bpatu7vi2kj4l" path="res://guide_examples/mouse_position_3d/mapping_context/mouse_position_3d.tres" id="2_bb21n"]
-[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/camera_control.gd" id="3_4etic"]
+[ext_resource type="Script" uid="uid://frlhv3i7601v" path="res://guide_examples/mouse_position_3d/camera_control.gd" id="3_4etic"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="3_m2gj2"]
-[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/mouse_indicator.gd" id="3_tunsg"]
+[ext_resource type="Script" uid="uid://cjifcvfpn8m2p" path="res://guide_examples/mouse_position_3d/mouse_indicator.gd" id="3_tunsg"]
 [ext_resource type="Resource" uid="uid://2b0ncq7ogvv0" path="res://guide_examples/mouse_position_3d/mapping_context/actions/cursor_3d.tres" id="4_dla1l"]
 [ext_resource type="Resource" uid="uid://bago2pmgvpepb" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_pitch.tres" id="4_xr1vq"]
-[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/player.gd" id="5_8nflt"]
+[ext_resource type="Script" uid="uid://cxaahxyk2pnkk" path="res://guide_examples/mouse_position_3d/player.gd" id="5_8nflt"]
 [ext_resource type="Resource" uid="uid://bltmi1lr7umq0" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_yaw.tres" id="5_mnyiu"]
 [ext_resource type="Resource" uid="uid://cpljlaavuq515" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_toggle.tres" id="6_51csy"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="6_lyxvk"]
 [ext_resource type="Resource" uid="uid://b2jb27062t2mh" path="res://guide_examples/mouse_position_3d/mapping_context/actions/select.tres" id="6_uviri"]
 [ext_resource type="Resource" uid="uid://ceti1avx1l1qw" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_move.tres" id="7_1vbs8"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="12_c4bk3"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="12_c4bk3"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="14_cmg28"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sfop5"]
 vertices = PackedVector3Array(2.25, 2.656, -7, 2.25, 2.656, -3.5, 4.25, 1.156, -3.5, 4.25, 1.156, -7, 4.25, 1.156, -7, 4.25, 1.156, -3.5, 4.75, 0.905995, -2.5, 9, 0.905995, -2.5, 9, 0.905995, -9, 4.75, 0.905995, -8.5, 9, 0.905995, -9, 4.25, 0.905995, -9, 4.75, 0.905995, -8.5, -3.5, 3.656, -3.5, 2.25, 2.656, -3.5, 2.25, 2.656, -7, -7.5, 3.656, -7, 0.8125, 3.656, -3.5, 0.857143, 3.656, -7, -7.5, 3.656, 5.25, -4.25, 3.656, 5.25, -4.25, 3.656, -2.75, -7.5, 3.656, -7, -4.25, 3.656, -2.75, -3.5, 3.656, -3.5, -7.5, 3.656, -7, 9, 0.905995, -2.5, 4.75, 0.905995, -2.5, 4.25, 0.905995, -1.5, -3, 0.905995, 7.25, -9, 0.905995, 7, -9, 0.905995, 9, 9, 0.905995, 9, 4.25, 0.905995, -1.5, -2.25, 0.905995, -1.5, -2.25, 0.905995, 6.5, 9, 0.905995, 9, 9, 0.905995, -2.5, 4.25, 0.905995, -1.5, -2.25, 0.905995, 6.5, -2.25, 0.905995, 6.5, -3, 0.905995, 7.25, 9, 0.905995, 9)
@@ -140,7 +141,7 @@ instructions_text = "%s to send the agent somewhere.
 %s to move the camera.
 %s to rotate the camera.
 %s to tilt the camera."
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("6_uviri"), ExtResource("7_1vbs8"), ExtResource("5_mnyiu"), ExtResource("4_xr1vq")])
+actions = Array[ExtResource("14_cmg28")]([ExtResource("6_uviri"), ExtResource("7_1vbs8"), ExtResource("5_mnyiu"), ExtResource("4_xr1vq")])
 
 [node name="DebuggerLayer" type="CanvasLayer" parent="."]
 

@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4de28wapdqtp"]
+[gd_scene load_steps=17 format=3 uid="uid://c4de28wapdqtp"]
 
-[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/mouse_position.gd" id="1_rkyn8"]
+[ext_resource type="Script" uid="uid://qxpd5fkeu1jc" path="res://guide_examples/mouse_position_2d/mouse_position.gd" id="1_rkyn8"]
 [ext_resource type="Resource" uid="uid://cfbk5croqnocs" path="res://guide_examples/mouse_position_2d/mapping_contexts/mouse_position.tres" id="2_f4xly"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="2_yylue"]
 [ext_resource type="Resource" uid="uid://y7q516rtjlt8" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/cursor.tres" id="3_e2cui"]
 [ext_resource type="Resource" uid="uid://cap7r63x8tait" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/spawn.tres" id="3_e16oi"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="3_xcjwc"]
-[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/camera_2d.gd" id="3_xpjlw"]
+[ext_resource type="Script" uid="uid://bsyylx5cv44us" path="res://guide_examples/mouse_position_2d/camera_2d.gd" id="3_xpjlw"]
 [ext_resource type="PackedScene" uid="uid://cj8m2n32yjxka" path="res://guide_examples/mouse_position_2d/godot_head.tscn" id="5_6xobh"]
 [ext_resource type="Resource" uid="uid://ehdejslyo58y" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/camera_movement.tres" id="5_snwnm"]
 [ext_resource type="Texture2D" uid="uid://slnmn5k0drdb" path="res://guide_examples/mouse_position_2d/background.svg" id="6_1tobk"]
-[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/background.gd" id="7_4oihe"]
+[ext_resource type="Script" uid="uid://wo23l27uk0gm" path="res://guide_examples/mouse_position_2d/background.gd" id="7_4oihe"]
 [ext_resource type="Resource" uid="uid://6dm5j1sdhdp2" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/camera_zoom.tres" id="8_6tg1h"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="9_y8piq"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="9_y8piq"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="13_qukao"]
 
 [sub_resource type="Shader" id="Shader_v4pj1"]
 code = "shader_type canvas_item;
@@ -71,7 +72,7 @@ script = ExtResource("9_y8piq")
 instructions_text = "%s to move the camera.
 %s to zoom the camera.
 %s to place a Godot head."
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_snwnm"), ExtResource("8_6tg1h"), ExtResource("3_e16oi")])
+actions = Array[ExtResource("13_qukao")]([ExtResource("5_snwnm"), ExtResource("8_6tg1h"), ExtResource("3_e16oi")])
 
 [node name="DebuggerLayer" type="CanvasLayer" parent="."]
 

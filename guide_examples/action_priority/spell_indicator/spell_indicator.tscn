@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cx8f0hljh5dhs"]
 
 [ext_resource type="Texture2D" uid="uid://dbwgq8udtj2hp" path="res://guide_examples/action_priority/icons/enchant-acid-3.png" id="1_7l2hh"]
-[ext_resource type="Script" path="res://guide_examples/action_priority/spell_indicator/spell_indicator.gd" id="1_hpegm"]
+[ext_resource type="Script" uid="uid://og8vlsslw4p6" path="res://guide_examples/action_priority/spell_indicator/spell_indicator.gd" id="1_hpegm"]
 
 [sub_resource type="Animation" id="Animation_j3vtt"]
 length = 0.001
@@ -59,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h1go0"]
 _data = {
-"RESET": SubResource("Animation_j3vtt"),
-"run": SubResource("Animation_4iqo1")
+&"RESET": SubResource("Animation_j3vtt"),
+&"run": SubResource("Animation_4iqo1")
 }
 
 [node name="SpellIndicator" type="Node2D"]

@@ -1,17 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvpfe511myfg5"]
 
-[ext_resource type="Shader" path="res://addons/post_processing/shaders/bloom.gdshader" id="1_qyxdw"]
+[ext_resource type="Shader" uid="uid://c87rs3wlyq8cw" path="res://addons/post_processing/shaders/bloom.gdshader" id="1_qyxdw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qv2yl"]
 shader = ExtResource("1_qyxdw")
-shader_parameter/BlurAmount = null
-shader_parameter/FlareThreshold = null
-shader_parameter/Flares = null
-shader_parameter/FlareSpacing = null
-shader_parameter/Intensity = null
-shader_parameter/Saturation_ = null
-shader_parameter/FalloffStart = null
-shader_parameter/FalloffEnd = null
 
 [node name="Bloom" type="CanvasLayer"]
 

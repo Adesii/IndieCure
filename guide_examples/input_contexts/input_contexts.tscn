@@ -1,12 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6h4wnjfjs70m"]
+[gd_scene load_steps=26 format=3 uid="uid://b6h4wnjfjs70m"]
 
-[ext_resource type="Script" path="res://guide_examples/input_contexts/boat.gd" id="1_61cdj"]
-[ext_resource type="Script" path="res://guide_examples/input_contexts/input_contexts.gd" id="1_386pq"]
+[ext_resource type="Script" uid="uid://ddiaj1qnq5thh" path="res://guide_examples/input_contexts/boat.gd" id="1_61cdj"]
+[ext_resource type="Script" uid="uid://csqm816ym4fsg" path="res://guide_examples/input_contexts/input_contexts.gd" id="1_386pq"]
 [ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_x61i0"]
 [ext_resource type="Texture2D" uid="uid://cyqlk5nkvswx7" path="res://guide_examples/input_contexts/boat.svg" id="1_yfaid"]
 [ext_resource type="Resource" uid="uid://bv3t73wg3atf7" path="res://guide_examples/input_contexts/mapping_contexts/boat_context.tres" id="2_ha2ml"]
 [ext_resource type="Resource" uid="uid://5jercxe6t3go" path="res://guide_examples/input_contexts/mapping_contexts/boat_actions/accelerate.tres" id="3_8s4br"]
-[ext_resource type="Script" path="res://guide_examples/input_contexts/player.gd" id="3_kn2qk"]
+[ext_resource type="Script" uid="uid://c30uqd7gmy2cy" path="res://guide_examples/input_contexts/player.gd" id="3_kn2qk"]
 [ext_resource type="Resource" uid="uid://cplpvxhus6bwb" path="res://guide_examples/input_contexts/mapping_contexts/player_context.tres" id="4_3xwjv"]
 [ext_resource type="Resource" uid="uid://qsysw0ljlj0l" path="res://guide_examples/input_contexts/mapping_contexts/boat_actions/turn.tres" id="4_w1gps"]
 [ext_resource type="Resource" uid="uid://cnaj42xnfcibo" path="res://guide_examples/input_contexts/mapping_contexts/player_actions/move.tres" id="5_70jqj"]
@@ -14,7 +14,8 @@
 [ext_resource type="Resource" uid="uid://crjkk2edn8g8k" path="res://guide_examples/input_contexts/mapping_contexts/player_actions/use.tres" id="6_aiqns"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="12_jcoq7"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="12_u0g3a"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="14_ui0u7"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="14_ui0u7"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="15_5e81o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w57h4"]
 size = Vector2(1972, 59)
@@ -172,7 +173,7 @@ script = ExtResource("14_ui0u7")
 instructions_text = "%s to accelerate/break.
 %s to turn the boat.
 %s to leave the boat."
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("3_8s4br"), ExtResource("4_w1gps"), ExtResource("5_typxl")])
+actions = Array[ExtResource("15_5e81o")]([ExtResource("3_8s4br"), ExtResource("4_w1gps"), ExtResource("5_typxl")])
 limit_to_context = ExtResource("2_ha2ml")
 
 [node name="PlayerInstructions" type="RichTextLabel" parent="UILayer"]
@@ -185,7 +186,7 @@ script = ExtResource("14_ui0u7")
 instructions_text = "%s to move.
 %s to enter the boat.
 "
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_70jqj"), ExtResource("6_aiqns")])
+actions = Array[ExtResource("15_5e81o")]([ExtResource("5_70jqj"), ExtResource("6_aiqns")])
 limit_to_context = ExtResource("4_3xwjv")
 
 [node name="DebugLayer" type="CanvasLayer" parent="."]

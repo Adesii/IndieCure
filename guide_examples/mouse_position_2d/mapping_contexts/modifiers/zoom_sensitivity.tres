@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GUIDEModifierScale" load_steps=2 format=3 uid="uid://d0brjke26hsk8"]
 
-[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier_scale.gd" id="1_vqbea"]
+[ext_resource type="Script" uid="uid://cfwmt5j83usmu" path="res://addons/guide/modifiers/guide_modifier_scale.gd" id="1_vqbea"]
 
 [resource]
 script = ExtResource("1_vqbea")

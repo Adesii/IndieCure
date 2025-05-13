@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cchyatnt0wl5x"]
+[gd_scene load_steps=13 format=3 uid="uid://cchyatnt0wl5x"]
 
-[ext_resource type="Script" path="res://guide_examples/simple_input/simple_input.gd" id="1_cgpw0"]
+[ext_resource type="Script" uid="uid://2krqla8c1ddq" path="res://guide_examples/simple_input/simple_input.gd" id="1_cgpw0"]
 [ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_t8vwd"]
-[ext_resource type="Script" path="res://guide_examples/simple_input/player.gd" id="2_o6vg3"]
+[ext_resource type="Script" uid="uid://54tfh4wixlmr" path="res://guide_examples/simple_input/player.gd" id="2_o6vg3"]
 [ext_resource type="Resource" uid="uid://c161ru5ubsvm5" path="res://guide_examples/simple_input/mapping_contexts/simple_input.tres" id="3_2b24x"]
 [ext_resource type="Resource" uid="uid://b7rcj2usvx7iu" path="res://guide_examples/simple_input/mapping_contexts/move_left.tres" id="4_50on6"]
 [ext_resource type="Resource" uid="uid://cn4nypfrnusrn" path="res://guide_examples/simple_input/mapping_contexts/move_right.tres" id="5_47yin"]
 [ext_resource type="Resource" uid="uid://cjohgt5cdoxvd" path="res://guide_examples/simple_input/mapping_contexts/move_up.tres" id="6_b7h5t"]
 [ext_resource type="Resource" uid="uid://cjfdsja54wtus" path="res://guide_examples/simple_input/mapping_contexts/move_down.tres" id="7_4pdc5"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="8_tko8y"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="9_hqrkx"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="9_hqrkx"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="10_3ap6u"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="11_5ljcy"]
 
 [node name="SimpleInput" type="Node"]
 script = ExtResource("1_cgpw0")
@@ -43,7 +44,7 @@ instructions_text = "%s to move left.
 %s to move right.
 %s to move up.
 %s to move down."
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("4_50on6"), ExtResource("5_47yin"), ExtResource("6_b7h5t"), ExtResource("7_4pdc5")])
+actions = Array[ExtResource("11_5ljcy")]([ExtResource("4_50on6"), ExtResource("5_47yin"), ExtResource("6_b7h5t"), ExtResource("7_4pdc5")])
 metadata/_edit_use_anchors_ = true
 
 [node name="Debug Layer" type="CanvasLayer" parent="."]

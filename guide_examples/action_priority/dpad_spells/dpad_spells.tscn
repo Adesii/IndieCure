@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsv0uwfyqbbbw"]
 
-[ext_resource type="Script" path="res://guide_examples/action_priority/dpad_spells/dpad_spells.gd" id="1_pl5jh"]
+[ext_resource type="Script" uid="uid://kyu1gf1eemvq" path="res://guide_examples/action_priority/dpad_spells/dpad_spells.gd" id="1_pl5jh"]
 
 [node name="DpadSpells" type="GridContainer"]
 offset_right = 323.0

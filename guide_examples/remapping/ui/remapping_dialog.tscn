@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq0w7uaotgfct"]
+[gd_scene load_steps=23 format=3 uid="uid://bq0w7uaotgfct"]
 
-[ext_resource type="Script" path="res://guide_examples/remapping/ui/remapping_dialog.gd" id="1_6hgqj"]
+[ext_resource type="Script" uid="uid://brit005jwsnkc" path="res://guide_examples/remapping/ui/remapping_dialog.gd" id="1_6hgqj"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="1_uhsj0"]
 [ext_resource type="Resource" uid="uid://cu0dhstc00cj5" path="res://guide_examples/remapping/mapping_contexts/keyboard.tres" id="2_cgour"]
-[ext_resource type="Script" path="res://addons/guide/remapping/guide_input_detector.gd" id="3_o0nvn"]
+[ext_resource type="Script" uid="uid://de24xjca8421t" path="res://addons/guide/remapping/guide_input_detector.gd" id="3_o0nvn"]
 [ext_resource type="Resource" uid="uid://bexjevffjsh3i" path="res://guide_examples/remapping/mapping_contexts/controller.tres" id="3_tgkdx"]
 [ext_resource type="PackedScene" uid="uid://bme1y0ikthda7" path="res://guide_examples/remapping/ui/binding_row.tscn" id="4_iojgu"]
 [ext_resource type="PackedScene" uid="uid://cj1h0wxamje4s" path="res://guide_examples/remapping/ui/binding_section.tscn" id="5_8v80s"]
@@ -12,11 +12,13 @@
 [ext_resource type="Resource" uid="uid://bcum2m26we6ct" path="res://guide_examples/remapping/mapping_contexts/shared_actions/close_menu.tres" id="7_djty7"]
 [ext_resource type="Resource" uid="uid://3vqfs786vcsa" path="res://guide_examples/remapping/mapping_contexts/keyboard_actions/switch_to_controller.tres" id="8_lj8gw"]
 [ext_resource type="Resource" uid="uid://ce3ytxn2tcxxe" path="res://guide_examples/remapping/mapping_contexts/controller_actions/switch_to_keyboard.tres" id="9_brmt1"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="10_xsw70"]
-[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_key.gd" id="11_e078a"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="10_xsw70"]
+[ext_resource type="Script" uid="uid://bhfshrvfpavlc" path="res://addons/guide/inputs/guide_input_key.gd" id="11_e078a"]
 [ext_resource type="Resource" uid="uid://cfrx54l1vmjey" path="res://guide_examples/remapping/mapping_contexts/controller_actions/previous_tab.tres" id="11_uxwof"]
 [ext_resource type="Resource" uid="uid://dg1or0do0s1ad" path="res://guide_examples/remapping/mapping_contexts/controller_actions/next_tab.tres" id="12_byojv"]
-[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_joy_button.gd" id="12_hftpv"]
+[ext_resource type="Script" uid="uid://bireun7e4nof7" path="res://addons/guide/inputs/guide_input_joy_button.gd" id="12_hftpv"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="15_j31kb"]
+[ext_resource type="Script" uid="uid://c1kbffqnhckcy" path="res://addons/guide/inputs/guide_input.gd" id="17_gc2an"]
 
 [sub_resource type="Resource" id="Resource_f3bao"]
 script = ExtResource("11_e078a")
@@ -162,7 +164,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("10_xsw70")
 instructions_text = "%s"
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("11_uxwof")])
+actions = Array[ExtResource("15_j31kb")]([ExtResource("11_uxwof")])
 
 [node name="Control" type="Control" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -177,7 +179,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("10_xsw70")
 instructions_text = "%s"
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("12_byojv")])
+actions = Array[ExtResource("15_j31kb")]([ExtResource("12_byojv")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -193,7 +195,7 @@ unique_name_in_owner = true
 editor_description = "This node has two inputs specified which count as abort for detection (Escape and Controller back button)."
 script = ExtResource("3_o0nvn")
 detection_countdown_seconds = 0.1
-abort_detection_on = Array[Resource("res://addons/guide/inputs/guide_input.gd")]([SubResource("Resource_f3bao"), SubResource("Resource_twrga")])
+abort_detection_on = Array[ExtResource("17_gc2an")]([SubResource("Resource_f3bao"), SubResource("Resource_twrga")])
 
 [node name="PressPrompt" type="MarginContainer" parent="."]
 unique_name_in_owner = true

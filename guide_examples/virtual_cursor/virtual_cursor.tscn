@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1f0bnaomla7u"]
+[gd_scene load_steps=13 format=3 uid="uid://b1f0bnaomla7u"]
 
-[ext_resource type="Script" path="res://guide_examples/virtual_cursor/virtual_cursor.gd" id="1_g0bre"]
+[ext_resource type="Script" uid="uid://1trau01u5e5v" path="res://guide_examples/virtual_cursor/virtual_cursor.gd" id="1_g0bre"]
 [ext_resource type="Resource" uid="uid://b4tn11iq7uvr7" path="res://guide_examples/virtual_cursor/mapping_contexts/virtual_cursor.tres" id="2_4xju7"]
 [ext_resource type="Texture2D" uid="uid://ntkhw87eedc0" path="res://guide_examples/virtual_cursor/pointer.svg" id="2_mxnae"]
-[ext_resource type="Script" path="res://guide_examples/virtual_cursor/pointer.gd" id="3_dw1p5"]
+[ext_resource type="Script" uid="uid://denfaviuxqxt5" path="res://guide_examples/virtual_cursor/pointer.gd" id="3_dw1p5"]
 [ext_resource type="PackedScene" uid="uid://ca51sup6v0qr1" path="res://guide_examples/virtual_cursor/pointable/pointable.tscn" id="3_uy61q"]
 [ext_resource type="Resource" uid="uid://bcumfh8j6k1ln" path="res://guide_examples/virtual_cursor/mapping_contexts/actions/cursor_2d.tres" id="5_tj3fv"]
 [ext_resource type="Resource" uid="uid://cwtdxy3gy7kud" path="res://guide_examples/virtual_cursor/mapping_contexts/actions/click.tres" id="6_1ffq2"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="6_hfxka"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="7_bh7yl"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="7_udsq5"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="7_udsq5"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="11_vecjl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ltt1b"]
 radius = 32.95
@@ -77,4 +78,4 @@ instructions_text = "This shows how to use a controller stick to control a virtu
 
 %s to move the the cursor
 %s to \"click\""
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_tj3fv"), ExtResource("6_1ffq2")])
+actions = Array[ExtResource("11_vecjl")]([ExtResource("5_tj3fv"), ExtResource("6_1ffq2")])

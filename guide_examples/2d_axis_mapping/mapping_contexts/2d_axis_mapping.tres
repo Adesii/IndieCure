@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=21 format=3 uid="uid://2hl7iqpondhj"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=23 format=3 uid="uid://2hl7iqpondhj"]
 
 [ext_resource type="Resource" uid="uid://cxn2ibe1mn3sb" path="res://guide_examples/input_scheme_switching/mapping_contexts/actions/move.tres" id="1_5vw7l"]
-[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_key.gd" id="2_0yrlp"]
-[ext_resource type="Script" path="res://addons/guide/guide_input_mapping.gd" id="3_ad6sj"]
-[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier_negate.gd" id="3_nlxx1"]
-[ext_resource type="Script" path="res://addons/guide/guide_action_mapping.gd" id="4_16vkk"]
-[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier_input_swizzle.gd" id="5_qr6a5"]
-[ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="8_r1avn"]
+[ext_resource type="Script" uid="uid://bhfshrvfpavlc" path="res://addons/guide/inputs/guide_input_key.gd" id="2_0yrlp"]
+[ext_resource type="Script" uid="uid://c7ao2tnnjm66i" path="res://addons/guide/guide_input_mapping.gd" id="3_ad6sj"]
+[ext_resource type="Script" uid="uid://dnn0o3fa2lmdb" path="res://addons/guide/modifiers/guide_modifier_negate.gd" id="3_nlxx1"]
+[ext_resource type="Script" uid="uid://b2ld8aj7p2fde" path="res://addons/guide/guide_action_mapping.gd" id="4_16vkk"]
+[ext_resource type="Script" uid="uid://dlibrs6aksjfd" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_b0q5j"]
+[ext_resource type="Script" uid="uid://c25l48osjjas1" path="res://addons/guide/modifiers/guide_modifier_input_swizzle.gd" id="5_qr6a5"]
+[ext_resource type="Script" uid="uid://4qvl47r8ajb4" path="res://addons/guide/triggers/guide_trigger.gd" id="8_celba"]
+[ext_resource type="Script" uid="uid://ub34q1ap6yqr" path="res://addons/guide/guide_mapping_context.gd" id="8_r1avn"]
 
 [sub_resource type="Resource" id="Resource_t51n6"]
 script = ExtResource("2_0yrlp")
@@ -34,8 +36,8 @@ is_remappable = false
 display_name = ""
 display_category = ""
 input = SubResource("Resource_t51n6")
-modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([SubResource("Resource_ct0te"), SubResource("Resource_qm6gq")])
-triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([])
+modifiers = Array[ExtResource("5_b0q5j")]([SubResource("Resource_ct0te"), SubResource("Resource_qm6gq")])
+triggers = Array[ExtResource("8_celba")]([])
 
 [sub_resource type="Resource" id="Resource_c40re"]
 script = ExtResource("2_0yrlp")
@@ -59,8 +61,8 @@ is_remappable = false
 display_name = ""
 display_category = ""
 input = SubResource("Resource_c40re")
-modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([SubResource("Resource_rkxfa")])
-triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([])
+modifiers = Array[ExtResource("5_b0q5j")]([SubResource("Resource_rkxfa")])
+triggers = Array[ExtResource("8_celba")]([])
 
 [sub_resource type="Resource" id="Resource_2t3ts"]
 script = ExtResource("2_0yrlp")
@@ -82,8 +84,8 @@ is_remappable = false
 display_name = ""
 display_category = ""
 input = SubResource("Resource_2t3ts")
-modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([SubResource("Resource_eoiu5")])
-triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([])
+modifiers = Array[ExtResource("5_b0q5j")]([SubResource("Resource_eoiu5")])
+triggers = Array[ExtResource("8_celba")]([])
 
 [sub_resource type="Resource" id="Resource_lften"]
 script = ExtResource("2_0yrlp")
@@ -101,8 +103,8 @@ is_remappable = false
 display_name = ""
 display_category = ""
 input = SubResource("Resource_lften")
-modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([])
-triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([])
+modifiers = Array[ExtResource("5_b0q5j")]([])
+triggers = Array[ExtResource("8_celba")]([])
 
 [sub_resource type="Resource" id="Resource_u0xy6"]
 script = ExtResource("4_16vkk")

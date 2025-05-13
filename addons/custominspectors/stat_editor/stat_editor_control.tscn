@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj31gfjnp56nw"]
 
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/custominspectors/stat_editor/field/Number.tscn" id="1_8k500"]
-[ext_resource type="Script" path="res://addons/custominspectors/stat_editor/popup_selector.gd" id="1_h4jcr"]
+[ext_resource type="Script" uid="uid://mffbv5i7lt04" path="res://addons/custominspectors/stat_editor/popup_selector.gd" id="1_h4jcr"]
 
 [node name="VBoxContainer" type="HBoxContainer"]
 anchors_preset = 15

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GUIDEModifierDeadzone" load_steps=2 format=3 uid="uid://cxd3gqa1bof30"]
 
-[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier_deadzone.gd" id="1_ax1vk"]
+[ext_resource type="Script" uid="uid://c28qg760hiwei" path="res://addons/guide/modifiers/guide_modifier_deadzone.gd" id="1_ax1vk"]
 
 [resource]
 script = ExtResource("1_ax1vk")

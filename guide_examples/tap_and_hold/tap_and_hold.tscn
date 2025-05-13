@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq1y86drsbsgc"]
+[gd_scene load_steps=15 format=3 uid="uid://bq1y86drsbsgc"]
 
-[ext_resource type="Script" path="res://guide_examples/tap_and_hold/tap_and_hold.gd" id="1_ek3h7"]
+[ext_resource type="Script" uid="uid://c5ujrvdn32l4t" path="res://guide_examples/tap_and_hold/tap_and_hold.gd" id="1_ek3h7"]
 [ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_segxn"]
-[ext_resource type="Script" path="res://guide_examples/tap_and_hold/player.gd" id="2_gpfh8"]
+[ext_resource type="Script" uid="uid://utypei8wb0ts" path="res://guide_examples/tap_and_hold/player.gd" id="2_gpfh8"]
 [ext_resource type="Resource" uid="uid://dkorp45s6fjqk" path="res://guide_examples/tap_and_hold/mapping_contexts/tap_and_hold.tres" id="3_u8e88"]
 [ext_resource type="Resource" uid="uid://djow080f02fos" path="res://guide_examples/tap_and_hold/mapping_contexts/jump.tres" id="4_8qeav"]
 [ext_resource type="Resource" uid="uid://dcdlaiw50k4t3" path="res://guide_examples/tap_and_hold/mapping_contexts/somersault.tres" id="5_wp1cr"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="6_r6oud"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="6_vjlt4"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="7_304xo"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="7_304xo"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="9_0l4v7"]
 
 [sub_resource type="Animation" id="Animation_j3lvc"]
 length = 0.001
@@ -82,9 +83,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8sm1c"]
 _data = {
-"RESET": SubResource("Animation_j3lvc"),
-"jump": SubResource("Animation_a86xu"),
-"somersault": SubResource("Animation_fir1a")
+&"RESET": SubResource("Animation_j3lvc"),
+&"jump": SubResource("Animation_a86xu"),
+&"somersault": SubResource("Animation_fir1a")
 }
 
 [node name="TapAndHold" type="Node"]
@@ -129,7 +130,7 @@ theme = ExtResource("6_r6oud")
 script = ExtResource("7_304xo")
 instructions_text = "Tap %s to jump.
 Hold %s to somersault."
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("4_8qeav"), ExtResource("5_wp1cr")])
+actions = Array[ExtResource("9_0l4v7")]([ExtResource("4_8qeav"), ExtResource("5_wp1cr")])
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UI Layer"]

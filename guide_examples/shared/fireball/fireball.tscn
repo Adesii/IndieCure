@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c36cnvgv2ur60"]
 
-[ext_resource type="Script" path="res://guide_examples/shared/fireball/fireball.gd" id="1_jxcno"]
+[ext_resource type="Script" uid="uid://0pv6knyi4rgm" path="res://guide_examples/shared/fireball/fireball.gd" id="1_jxcno"]
 [ext_resource type="Texture2D" uid="uid://buu21kg4kkhiw" path="res://guide_examples/shared/fireball/fireball.svg" id="2_5ckxn"]
 
 [node name="Fireball" type="Node2D"]

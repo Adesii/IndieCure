@@ -1,12 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://c03o20jchp7kb"]
+[gd_scene load_steps=26 format=3 uid="uid://c03o20jchp7kb"]
 
-[ext_resource type="Script" path="res://guide_examples/action_priority/action_priority.gd" id="1_segid"]
+[ext_resource type="Script" uid="uid://nv17wmctpany" path="res://guide_examples/action_priority/action_priority.gd" id="1_segid"]
 [ext_resource type="Resource" uid="uid://ragqbe7yjfwe" path="res://guide_examples/action_priority/mapping_contexts/action_priority.tres" id="2_spx2e"]
 [ext_resource type="Resource" uid="uid://c5eq1avod0lu8" path="res://guide_examples/action_priority/mapping_contexts/actions/spell_toggle.tres" id="3_k38f6"]
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="3_ocaq1"]
 [ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="4_ur8xb"]
-[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="4_v7mqo"]
+[ext_resource type="Script" uid="uid://c6icuvvvy5bcm" path="res://guide_examples/shared/instructions_label.gd" id="4_v7mqo"]
 [ext_resource type="Resource" uid="uid://esf4ilpf0inv" path="res://guide_examples/action_priority/mapping_contexts/actions/acid_bolt.tres" id="5_oqj0p"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="6_781qa"]
 [ext_resource type="Resource" uid="uid://bhq3gby2yiibf" path="res://guide_examples/action_priority/mapping_contexts/actions/acid_enchantment.tres" id="6_ue1ny"]
 [ext_resource type="PackedScene" uid="uid://bsv0uwfyqbbbw" path="res://guide_examples/action_priority/dpad_spells/dpad_spells.tscn" id="7_48cit"]
 [ext_resource type="Resource" uid="uid://cdhpb7yuq5pkb" path="res://guide_examples/action_priority/mapping_contexts/actions/mana_bolt.tres" id="7_ruu3d"]
@@ -51,7 +52,7 @@ instructions_text = "%s - acid bolt
 %s - mana enchantment
 %s - healing enchantment
 %s - fire enchantment"
-actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_oqj0p"), ExtResource("7_ruu3d"), ExtResource("8_tl0ch"), ExtResource("9_rbwtd"), ExtResource("6_ue1ny"), ExtResource("11_223o5"), ExtResource("12_4o7kv"), ExtResource("13_6g6j5")])
+actions = Array[ExtResource("6_781qa")]([ExtResource("5_oqj0p"), ExtResource("7_ruu3d"), ExtResource("8_tl0ch"), ExtResource("9_rbwtd"), ExtResource("6_ue1ny"), ExtResource("11_223o5"), ExtResource("12_4o7kv"), ExtResource("13_6g6j5")])
 
 [node name="SpellIndicators" type="Node2D" parent="UILayer"]
 position = Vector2(1149, 781)
