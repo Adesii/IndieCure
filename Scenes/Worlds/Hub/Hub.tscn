@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://djfkyiptvtuth"]
+[gd_scene load_steps=18 format=4 uid="uid://djfkyiptvtuth"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_kwrud"]
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="2_c5ykj"]
@@ -7,6 +7,27 @@
 [ext_resource type="Texture2D" uid="uid://hl8cvuaer5e3" path="res://Textures/Environment/Hub/Rubble-0001.png" id="3_1fujc"]
 [ext_resource type="Texture2D" uid="uid://d1j5wx3kbdnil" path="res://Textures/Environment/Hub/Hub-0001.aseprite" id="3_cj2i1"]
 [ext_resource type="Texture2D" uid="uid://ckn6ybsc18jjv" path="res://Textures/Environment/Hub/House1-0002.aseprite" id="5_yd2iy"]
+[ext_resource type="Script" uid="uid://ce37yn24mtoa1" path="res://Scripts/utility/mover.gd" id="7_25yaj"]
+[ext_resource type="Texture2D" uid="uid://bkaeqjrf6fdxm" path="res://Textures/Environment/Hub/rooms/hubmain/InsideRoom1-0005.png" id="9_871n2"]
+[ext_resource type="Script" uid="uid://eqr3mqb1828f" path="res://Scripts/utility/room_transitioner.gd" id="9_rwt86"]
+[ext_resource type="Texture2D" uid="uid://bfhmlamxdh2mp" path="res://Textures/Environment/Hub/rooms/hubmain/InsideRoom1_door_frame.png" id="10_lgsv2"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_wt4gs"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_rwt86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd2iy"]
+size = Vector2(96, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25yaj"]
+size = Vector2(53, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt4gs"]
+size = Vector2(510, 512)
+
+[sub_resource type="Resource" id="Resource_lgsv2"]
+script = ExtResource("11_rwt86")
+duration = 0.0
+transition = 0
+ease = 2
 
 [node name="Hub" type="Node2D"]
 y_sort_enabled = true
@@ -888,36 +909,208 @@ region_rect = Rect2(16, 80, 72, 64)
 
 [node name="Trees" type="Node2D" parent="."]
 
-[node name="House1-0002" type="Sprite2D" parent="."]
+[node name="MainHubHouse" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="DoorOpeningArea" type="Area2D" parent="MainHubHouse"]
+position = Vector2(90, -141)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainHubHouse/DoorOpeningArea"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_yd2iy")
+
+[node name="DoorTransitionArea" type="Area2D" parent="MainHubHouse"]
+position = Vector2(90, -141)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainHubHouse/DoorTransitionArea"]
+position = Vector2(0.5, -28)
+shape = SubResource("RectangleShape2D_25yaj")
+
+[node name="Polygon2D2" type="Polygon2D" parent="MainHubHouse"]
+z_index = -1
+position = Vector2(2.5, -76)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(71.5, -50, 103.5, -50, 103.5, -73, 71.5, -73)
+
+[node name="Door_left" type="Sprite2D" parent="MainHubHouse/Polygon2D2"]
+position = Vector2(79.5, -61.5)
+texture = ExtResource("5_yd2iy")
+region_enabled = true
+region_rect = Rect2(240, 281, 16, 23)
+script = ExtResource("7_25yaj")
+move_distance = 15.0
+
+[node name="Door_right" type="Sprite2D" parent="MainHubHouse/Polygon2D2"]
+position = Vector2(95.5, -61.5)
+texture = ExtResource("5_yd2iy")
+region_enabled = true
+region_rect = Rect2(256, 281, 16, 23)
+script = ExtResource("7_25yaj")
+move_dir = Vector2(1, 0)
+move_distance = 15.0
+
+[node name="House1-0003" type="Sprite2D" parent="MainHubHouse"]
+y_sort_enabled = true
+position = Vector2(58.5, -110)
+texture = ExtResource("5_yd2iy")
+offset = Vector2(0, -20)
+region_enabled = true
+region_rect = Rect2(209, 279, 31, 42)
+
+[node name="House1-0005" type="Sprite2D" parent="MainHubHouse"]
+y_sort_enabled = true
+position = Vector2(122, -110)
+texture = ExtResource("5_yd2iy")
+offset = Vector2(0, -20)
+region_enabled = true
+region_rect = Rect2(272, 279, 32, 42)
+
+[node name="House1-0006" type="Sprite2D" parent="MainHubHouse"]
+y_sort_enabled = true
+position = Vector2(178, -75.5)
+texture = ExtResource("5_yd2iy")
+offset = Vector2(0, -40)
+region_enabled = true
+region_rect = Rect2(304, 275, 80, 79)
+
+[node name="House1-0007" type="Sprite2D" parent="MainHubHouse"]
+y_sort_enabled = true
+position = Vector2(2.5, -76)
+texture = ExtResource("5_yd2iy")
+offset = Vector2(0, -40)
+region_enabled = true
+region_rect = Rect2(128, 275, 81, 78)
+
+[node name="Polygon2D" type="Polygon2D" parent="MainHubHouse"]
+clip_children = 1
+y_sort_enabled = true
+polygon = PackedVector2Array(74, -149, 74, -110, 34, -67, -55, -68, -49, -276, -43, -338, 228, -339, 227, -118, 218, -68, 136, -68, 106, -110, 106, -149)
+
+[node name="House1-0002" type="Sprite2D" parent="MainHubHouse/Polygon2D"]
+z_index = -1
 position = Vector2(90, -174)
 texture = ExtResource("5_yd2iy")
 
+[node name="House1-0002" type="Sprite2D" parent="MainHubHouse/Polygon2D/House1-0002"]
+z_index = 5
+position = Vector2(0, -115.5)
+texture = ExtResource("5_yd2iy")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 281)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MainHubHouse/Polygon2D/House1-0002"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainHubHouse/Polygon2D/House1-0002/StaticBody2D"]
+position = Vector2(0, 6)
+polygon = PackedVector2Array(-48, 77, -128, 77, -128, -84, 128, -84, 128, 78, 48, 78, 48, 39, 16, 39, 16, -12, -17, -12, -16, 40, -48, 40)
+
+[node name="Exit" type="Marker2D" parent="MainHubHouse"]
+position = Vector2(90, -107)
+
 [node name="Hub-0003" type="Sprite2D" parent="."]
-position = Vector2(2, -96)
+position = Vector2(2, -76)
 texture = ExtResource("2_cj2i1")
+offset = Vector2(0, -20)
 region_enabled = true
 region_rect = Rect2(8, 8, 80, 56)
 
 [node name="Hub-0001" type="Sprite2D" parent="Hub-0003"]
-position = Vector2(-16, -8)
+position = Vector2(-16, -29)
 texture = ExtResource("3_cj2i1")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 16)
 
 [node name="Hub-0002" type="Sprite2D" parent="Hub-0003"]
-position = Vector2(25, -3)
+position = Vector2(25, -24)
 texture = ExtResource("3_cj2i1")
 region_enabled = true
 region_rect = Rect2(16, 48, 16, 24)
 
 [node name="Hub-0003" type="Sprite2D" parent="Hub-0003"]
-position = Vector2(8, 1)
+position = Vector2(8, -20)
 texture = ExtResource("3_cj2i1")
 region_enabled = true
 region_rect = Rect2(0, 112, 16, 16)
 
 [node name="Hub-0004" type="Sprite2D" parent="Hub-0003"]
-position = Vector2(-22, 8)
+position = Vector2(-22, -13)
 texture = ExtResource("3_cj2i1")
 region_enabled = true
 region_rect = Rect2(16, 160, 16, 16)
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="MainHub" type="Node2D" parent="Rooms" node_paths=PackedStringArray("transition_target", "transition_camera", "exit_target")]
+z_index = -1
+position = Vector2(-1170, -2352)
+script = ExtResource("9_rwt86")
+transition_target = NodePath("Enter")
+transition_camera = NodePath("PhantomCamera2D")
+exit_target = NodePath("../../MainHubHouse/Exit")
+
+[node name="InsideRoom1DoorFrame" type="Sprite2D" parent="Rooms/MainHub"]
+z_index = 10
+texture = ExtResource("10_lgsv2")
+
+[node name="InsideRoom1-0005" type="Sprite2D" parent="Rooms/MainHub"]
+texture = ExtResource("9_871n2")
+
+[node name="Area2D" type="Area2D" parent="Rooms/MainHub/InsideRoom1-0005"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/MainHub/InsideRoom1-0005/Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_wt4gs")
+
+[node name="PhantomCamera2D" type="Node2D" parent="Rooms/MainHub"]
+top_level = true
+position = Vector2(-655, -2230)
+script = ExtResource("10_wt4gs")
+follow_mode = 2
+zoom = Vector2(4, 4)
+tween_resource = SubResource("Resource_lgsv2")
+draw_limits = true
+limit_target = NodePath("../InsideRoom1-0005/Area2D/CollisionShape2D")
+limit_margin = Vector4i(-500, 0, -500, 0)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Enter" type="Marker2D" parent="Rooms/MainHub"]
+position = Vector2(-94, 235)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/MainHub"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rooms/MainHub/StaticBody2D"]
+polygon = PackedVector2Array(-219, 220, -126, 220, -126, 325, -259, 293, -339, 127, -305, -272, 81, -255, 66, -70, 65, 69, 32, 69, 32, -132, 32, -143, -219, -142)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Rooms/MainHub/StaticBody2D"]
+polygon = PackedVector2Array(31, 129, 97, 129, 98, 223, 31, 222)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Rooms/MainHub/StaticBody2D"]
+polygon = PackedVector2Array(-62, 220, 220, 221, 220, -15, 98, -15, 98, 69, 66, 69, 66, -106, 272, -101, 273, 264, -61, 326)
+
+[node name="DoorTransitionArea2" type="Area2D" parent="Rooms/MainHub"]
+position = Vector2(-95, 304)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/MainHub/DoorTransitionArea2"]
+position = Vector2(0.5, -28)
+shape = SubResource("RectangleShape2D_25yaj")
+
+[node name="ColorRect" type="ColorRect" parent="Rooms/MainHub"]
+z_index = -4
+offset_left = -4379.0
+offset_top = -1966.0
+offset_right = 1448.0
+offset_bottom = 624.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="body_entered" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_left" method="open_mover"]
+[connection signal="body_entered" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_right" method="open_mover"]
+[connection signal="body_exited" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_left" method="close_mover"]
+[connection signal="body_exited" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_right" method="close_mover"]
+[connection signal="body_entered" from="MainHubHouse/DoorTransitionArea" to="Rooms/MainHub" method="enter_room"]
+[connection signal="body_entered" from="Rooms/MainHub/DoorTransitionArea2" to="Rooms/MainHub" method="exit_room"]

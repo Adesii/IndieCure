@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://cx0i623uvp6vq"
+path="res://.godot/imported/Room2.2Furniture-0001.aseprite-1550cbf4808a46af8564d216311d433b.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Hub/rooms/hubmain/Room2.2Furniture-0001.aseprite"
+dest_files=["res://.godot/imported/Room2.2Furniture-0001.aseprite-1550cbf4808a46af8564d216311d433b.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bgf2dqh3e3wim"
+path="res://.godot/imported/InsideRoom1-0005.aseprite-6b65085de3d67ad8fafb2cf1081554df.res"
+
+[deps]
+
+source_file="res://Textures/Environment/Hub/rooms/hubmain/InsideRoom1-0005.aseprite"
+dest_files=["res://.godot/imported/InsideRoom1-0005.aseprite-6b65085de3d67ad8fafb2cf1081554df.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false
