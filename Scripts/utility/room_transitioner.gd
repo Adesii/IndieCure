@@ -19,3 +19,8 @@ func exit_room(_v = null):
         transition_camera.set_priority(0)
         if exit_camera:
             exit_camera.set_priority(10)
+        else:
+            var old = Global.player_camera.tween_duration
+            Global.player_camera.tween_duration = 0
+            await get_tree().create_timer(old).timeout
+            Global.player_camera.tween_duration = old

@@ -7,6 +7,7 @@ var xp_drops: PackedScene = load("res://Scripts/Global/xp_drop.tscn")
 var scene_directory: SceneDirectory = preload("uid://bsg3mk3myx3hi")
 
 var player: CharacterBody2D
+var player_camera: PhantomCamera2D
 var ui: CanvasLayer
 
 var shadow_canvas_group: CanvasGroup
@@ -15,6 +16,7 @@ var xp_drop_node: XPDrop
 
 var current_scene = null
 var main_camera: Camera2D
+var phantom_host: PhantomCameraHost
 
 var attack_direction = Vector2(1, 0)
 
@@ -68,15 +70,19 @@ func setup_player():
 		current_scene.add_child(add_ins)
 		if add_ins is Camera2D:
 			main_camera = add_ins as Camera2D
+			phantom_host = main_camera.get_child(0)
 		print("adding " + str(add_ins))
 	
 	player.character = current_character
+	player_camera = player.get_node("Camera")
 
 	var ingameui = ingame_ui.instantiate()
 	current_scene.add_child(ingameui)
 	ui = ingameui
 
 	InputHandler._set_game_state(InputHandler.GameState.IN_GAME)
+
+	phantom_host.pcam_priority_updated(player_camera)
 
 func setup_rest():
 	if xp_drop_node != null:

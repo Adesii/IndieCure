@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://djfkyiptvtuth"]
+[gd_scene load_steps=24 format=4 uid="uid://djfkyiptvtuth"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_kwrud"]
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="2_c5ykj"]
@@ -8,10 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://d1j5wx3kbdnil" path="res://Textures/Environment/Hub/Hub-0001.aseprite" id="3_cj2i1"]
 [ext_resource type="Texture2D" uid="uid://ckn6ybsc18jjv" path="res://Textures/Environment/Hub/House1-0002.aseprite" id="5_yd2iy"]
 [ext_resource type="Script" uid="uid://ce37yn24mtoa1" path="res://Scripts/utility/mover.gd" id="7_25yaj"]
+[ext_resource type="Script" uid="uid://eb7nyergrlae" path="res://Scenes/Worlds/Hub/Questboard.gd" id="8_up5vs"]
+[ext_resource type="Script" uid="uid://bfbu7vmhvwj82" path="res://Scripts/utility/label_popup.gd" id="9_2ull6"]
 [ext_resource type="Texture2D" uid="uid://bkaeqjrf6fdxm" path="res://Textures/Environment/Hub/rooms/hubmain/InsideRoom1-0005.png" id="9_871n2"]
 [ext_resource type="Script" uid="uid://eqr3mqb1828f" path="res://Scripts/utility/room_transitioner.gd" id="9_rwt86"]
 [ext_resource type="Texture2D" uid="uid://bfhmlamxdh2mp" path="res://Textures/Environment/Hub/rooms/hubmain/InsideRoom1_door_frame.png" id="10_lgsv2"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="10_up5vs"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_wt4gs"]
+[ext_resource type="Resource" uid="uid://bdwwhf6ggr0ak" path="res://Data/Input/Gameplay/accept.tres" id="11_a8r5l"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_rwt86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yd2iy"]
@@ -19,6 +23,21 @@ size = Vector2(96, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25yaj"]
 size = Vector2(53, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgsv2"]
+size = Vector2(81, 67)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1y10"]
+bg_color = Color(0.416529, 0.345472, 0.200822, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.682596, 0.502525, 0.268396, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wt4gs"]
 size = Vector2(510, 512)
@@ -1011,12 +1030,15 @@ polygon = PackedVector2Array(-48, 77, -128, 77, -128, -84, 128, -84, 128, 78, 48
 [node name="Exit" type="Marker2D" parent="MainHubHouse"]
 position = Vector2(90, -107)
 
-[node name="Hub-0003" type="Sprite2D" parent="."]
+[node name="Hub-0003" type="Sprite2D" parent="." node_paths=PackedStringArray("popup_label")]
 position = Vector2(2, -76)
 texture = ExtResource("2_cj2i1")
 offset = Vector2(0, -20)
 region_enabled = true
 region_rect = Rect2(8, 8, 80, 56)
+script = ExtResource("8_up5vs")
+accept_action = ExtResource("11_a8r5l")
+popup_label = NodePath("Area2D/HBoxContainer/PopupLabel")
 
 [node name="Hub-0001" type="Sprite2D" parent="Hub-0003"]
 position = Vector2(-16, -29)
@@ -1041,6 +1063,45 @@ position = Vector2(-22, -13)
 texture = ExtResource("3_cj2i1")
 region_enabled = true
 region_rect = Rect2(16, 160, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="Hub-0003"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hub-0003/Area2D"]
+position = Vector2(-2.5, -8.5)
+shape = SubResource("RectangleShape2D_lgsv2")
+
+[node name="HBoxContainer" type="PanelContainer" parent="Hub-0003/Area2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -48.0
+offset_right = 12.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q1y10")
+
+[node name="PopupLabel" type="RichTextLabel" parent="Hub-0003/Area2D/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[E] Open Questlist"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_2ull6")
+instructions_text = "%s Open Questlist"
+actions = Array[ExtResource("10_up5vs")]([ExtResource("11_a8r5l")])
+icon_size = 18
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -1067,7 +1128,7 @@ shape = SubResource("RectangleShape2D_wt4gs")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Rooms/MainHub"]
 top_level = true
-position = Vector2(-655, -2230)
+position = Vector2(-1264, -2230)
 script = ExtResource("10_wt4gs")
 follow_mode = 2
 zoom = Vector2(4, 4)
@@ -1108,9 +1169,13 @@ offset_right = 1448.0
 offset_bottom = 624.0
 color = Color(0, 0, 0, 1)
 
+[node name="Furniture" type="Node2D" parent="Rooms/MainHub"]
+
 [connection signal="body_entered" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_left" method="open_mover"]
 [connection signal="body_entered" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_right" method="open_mover"]
 [connection signal="body_exited" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_left" method="close_mover"]
 [connection signal="body_exited" from="MainHubHouse/DoorOpeningArea" to="MainHubHouse/Polygon2D2/Door_right" method="close_mover"]
 [connection signal="body_entered" from="MainHubHouse/DoorTransitionArea" to="Rooms/MainHub" method="enter_room"]
+[connection signal="body_entered" from="Hub-0003/Area2D" to="Hub-0003" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Hub-0003/Area2D" to="Hub-0003" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Rooms/MainHub/DoorTransitionArea2" to="Rooms/MainHub" method="exit_room"]

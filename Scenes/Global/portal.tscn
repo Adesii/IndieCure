@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://mrl3ss7x67t1"]
+[gd_scene load_steps=29 format=3 uid="uid://mrl3ss7x67t1"]
 
 [ext_resource type="Script" uid="uid://dqpsxlcp2nrin" path="res://Scripts/Global/portal.gd" id="1_2187r"]
 [ext_resource type="Texture2D" uid="uid://bocmbwwjwjecj" path="res://Textures/Effects/Portal/portal_anim.png" id="1_l4gcx"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://Scripts/Characters/AccurateShadows.tscn" id="2_2187r"]
 [ext_resource type="Resource" uid="uid://bdwwhf6ggr0ak" path="res://Data/Input/Gameplay/accept.tres" id="2_yy5we"]
+[ext_resource type="Script" uid="uid://bfbu7vmhvwj82" path="res://Scripts/utility/label_popup.gd" id="5_g1tya"]
+[ext_resource type="Script" uid="uid://bfh343jl4f5wy" path="res://addons/guide/guide_action.gd" id="6_6vbr1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ci3dm"]
 atlas = ExtResource("1_l4gcx")
@@ -161,9 +163,10 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="Portal" type="Node2D"]
+[node name="Portal" type="Node2D" node_paths=PackedStringArray("popup_label")]
 script = ExtResource("1_2187r")
 accept_action = ExtResource("2_yy5we")
+popup_label = NodePath("Area2D/HBoxContainer/PopupLabel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oxjwn")
@@ -176,31 +179,36 @@ offset = Vector2(0, -29.24)
 shadow_offset = Vector2(0, 3.84)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, -22)
 shape = SubResource("RectangleShape2D_2187r")
 
 [node name="HBoxContainer" type="PanelContainer" parent="Area2D"]
-offset_left = -1.0
-offset_top = -40.0
-offset_right = 39.0
-offset_bottom = -21.0
+offset_left = -33.0
+offset_top = -47.0
+offset_right = 34.0
+offset_bottom = -28.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_l4gcx")
 
-[node name="Label" type="RichTextLabel" parent="Area2D/HBoxContainer"]
+[node name="PopupLabel" type="RichTextLabel" parent="Area2D/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "X GO"
+text = "[E] Acceptd"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_g1tya")
+instructions_text = "%s to"
+actions = Array[ExtResource("6_6vbr1")]([ExtResource("2_yy5we")])
+icon_size = 18
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

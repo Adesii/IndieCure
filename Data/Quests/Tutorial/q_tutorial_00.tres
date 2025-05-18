@@ -51,7 +51,7 @@ edge_type = 1
 script = ExtResource("5_vq1ax")
 id = "KHB4HXOdQN"
 optional = false
-graph_editor_position = Vector2(1800, 100)
+graph_editor_position = Vector2(1420, 80)
 graph_editor_size = Vector2(141, 78)
 
 [sub_resource type="Resource" id="Resource_l4v64"]
@@ -62,5 +62,5 @@ edge_type = 0
 
 [resource]
 script = ExtResource("7_l4v64")
-nodes = Array[ExtResource("6_qrr16")]([SubResource("Resource_87olq"), SubResource("Resource_um84g"), SubResource("Resource_qrr16"), SubResource("Resource_n0ba6")])
+nodes = Array[ExtResource("6_qrr16")]([SubResource("Resource_87olq"), SubResource("Resource_um84g"), SubResource("Resource_n0ba6"), SubResource("Resource_qrr16")])
 edges = Array[ExtResource("1_n0ba6")]([SubResource("Resource_2x2h1"), SubResource("Resource_vq1ax"), SubResource("Resource_l4v64")])

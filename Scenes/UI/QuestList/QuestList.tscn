@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhi7skm4s7wyt"]
+
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="1_14uw1"]
+[ext_resource type="Script" uid="uid://b6o1vgtg0jr1" path="res://Scenes/UI/QuestList/quest_list.gd" id="1_px614"]
+[ext_resource type="FontFile" uid="uid://de8n5evbrefyx" path="res://fonts/Retro Gaming.ttf" id="2_px614"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl46b"]
+bg_color = Color(0.416529, 0.345472, 0.200822, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.42072, 0.325479, 0.198857, 1)
+shadow_size = 15
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_d64tn"]
+color = Color(1, 1, 1, 1)
+grow_begin = -40.0
+grow_end = -40.0
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c1hp"]
+content_margin_top = 10.0
+bg_color = Color(0.682596, 0.502525, 0.268396, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.548511, 0.432102, 0.277591, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14uw1"]
+
+[node name="QuestList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_px614")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 270
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 270
+theme_override_constants/margin_bottom = 60
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nl46b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_14uw1")
+theme_override_fonts/font = ExtResource("2_px614")
+theme_override_font_sizes/font_size = 64
+text = "Quest List"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxLine_d64tn")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2c1hp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel2" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel3" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel4" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel5" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel6" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel7" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel8" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
+
+[node name="Panel9" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14uw1")
