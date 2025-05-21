@@ -13,6 +13,7 @@ func _ready():
 	registernode(self, "quest_available_request", handle_quest_available_request)
 	registernode(self, "quest_objective_request", handle_quest_objective_request)
 
+	LimboConsole.register_command(set_value, "set", "sets a value in the current state")
 
 
 # This class is responsible for managing the game state and saving/loading it.

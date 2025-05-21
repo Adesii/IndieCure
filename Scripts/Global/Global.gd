@@ -23,6 +23,7 @@ var attack_direction = Vector2(1, 0)
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	setup_debug_console()
 
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -124,3 +125,12 @@ func create_portal_to(scenename: StringName) -> Node:
 
 func change_scene(scenename: StringName) -> void:
 	load_stage(scene_directory.directoryMap[scenename])
+	State.set_value("stage_name", scenename.to_lower())
+
+
+#region DebugConsole
+func setup_debug_console():
+	LimboConsole.register_command(func(scname): create_portal_to(scname), "portal", "Creates a portal that can be entered to a stage")
+	LimboConsole.add_argument_autocomplete_source("portal", 0,
+		func(): return scene_directory.directoryMap.keys())
+#endregion
