@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7w4skfyt8qlj"]
+[gd_scene load_steps=6 format=3 uid="uid://b7w4skfyt8qlj"]
 
 [ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="1_7fqfy"]
 [ext_resource type="Script" uid="uid://b3qa1ywfvwscs" path="res://Scripts/UI/fpsdisplay.gd" id="1_fa04g"]
 [ext_resource type="Script" uid="uid://vufnov0ncv32" path="res://Scripts/Debug/DSpawnEnemyButton.gd" id="2_gm4bm"]
 [ext_resource type="Script" uid="uid://s40ed2qw6ojo" path="res://Scripts/Debug/DSpawnEnabler.gd" id="3_raao7"]
+[ext_resource type="Script" uid="uid://d650jwlk06yc" path="res://Scripts/Global/debug_state_display.gd" id="5_l3kjw"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 128
 
 [node name="GuideDebugger" parent="." instance=ExtResource("1_7fqfy")]
+offset_left = 1408.0
 offset_top = 55.0
-offset_right = -98.0
+offset_right = -1.0
+size_flags_horizontal = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchors_preset = 15
@@ -57,3 +60,9 @@ layout_mode = 2
 action_mode = 0
 text = "Toggle Spawner"
 script = ExtResource("3_raao7")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_top = 526.0
+offset_right = 215.0
+offset_bottom = 667.0
+script = ExtResource("5_l3kjw")

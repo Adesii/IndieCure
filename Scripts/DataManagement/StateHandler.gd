@@ -7,6 +7,14 @@ func _ready():
 	Questify.quest_objective_completed.connect(quest_objective_completed)
 	Questify.condition_query_requested.connect(condition_query_requested)
 
+	registernode(self, "dialogue_request", handle_dialogue_request)
+	registernode(self, "stage_request", handle_stage_request)
+	registernode(self, "portal_request", handle_portal_request)
+	registernode(self, "quest_available_request", handle_quest_available_request)
+	registernode(self, "quest_objective_request", handle_quest_objective_request)
+
+
+
 # This class is responsible for managing the game state and saving/loading it.
 # Useful for quests and progress tracking.
 @export var current_state: Dictionary = {}
@@ -33,15 +41,10 @@ func get_value(key: String) -> Variant:
 			var variable = current_state["value_store"][key]
 			if variable is String:
 				var new_var = str_to_var(variable)
-				if new_var == null:
-					return variable
-				else:
+				if new_var != null:
 					return new_var
 			return variable
-		else:
-			return null
-	else:
-		return null
+	return null
 
 
 #region Quest Handling:
@@ -57,6 +60,19 @@ func quest_objective_added(quest: QuestResource, objective: QuestObjective):
 func quest_objective_completed(quest: QuestResource, objective: QuestObjective):
 	sendmessage("quest_objective_completed", [quest, objective])
 	print("Quest objective completed: ", quest.name, " - ", objective.description)
+	for objective_metadata in objective.get_meta_list():
+		var prefix := objective_metadata.get_slice("_", 0)
+		match prefix:
+			"d": # dialogue
+				sendmessage("dialogue_request", [objective_metadata.replace("d_", "")])
+			"stage": # stage
+				sendmessage("stage_request", [objective_metadata.replace("stage_", "")])
+			"p": # portal to another stage
+				sendmessage("portal_request", [objective_metadata.replace("p_", "")])
+			"qa": # quest available, unlocks new quests for selection in the hub
+				sendmessage("quest_available_request", [objective_metadata.replace("qa_", "")])
+			"qo": # quest objective, enables a node this the name in the scenetree
+				sendmessage("quest_objective_request", [objective_metadata.replace("qo_", "")])
 	pass
 
 func quest_completed(quest: QuestResource):
@@ -119,4 +135,37 @@ func sendmessage(message: String, args: Array = []):
 			else:
 				printerr("This should not happen. callable parameter isn't a callable")
 			
+#endregion
+
+
+#region Request handler:
+
+func handle_dialogue_request(dialogue_name):
+	print("Dialogue requested: ", dialogue_name)
+	pass
+
+func handle_stage_request(request):
+	print("Stage Modifier Requested: ", request)
+	pass
+
+func handle_portal_request(portal_request):
+	print("Portal Requested: ", portal_request)
+	pass
+
+func handle_quest_available_request(request):
+	print("Quest Available Requested: ", request)
+	pass
+
+func handle_quest_objective_request(request):
+	var quests_node = Global.current_scene.get_node("Quests")
+	if quests_node:
+		var request_node = quests_node.get_node(request)
+		if request_node:
+			request_node.process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
+			request_node.visible = true
+		else:
+			printerr("Request node not found for: ", request)
+	else:
+		printerr("Quests node not found")
+
 #endregion

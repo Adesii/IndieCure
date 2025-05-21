@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestLine" load_steps=5 format=3 uid="uid://8bxeuojdfvxv"]
+
+[ext_resource type="Script" uid="uid://bbg36caowcaje" path="res://Scripts/DataManagement/quests/QuestItem.gd" id="1_uaral"]
+[ext_resource type="Script" uid="uid://b37kgcgh2egaf" path="res://Scripts/DataManagement/quests/QuestLine.gd" id="2_c60ra"]
+[ext_resource type="Resource" uid="uid://ykybp7u45p0" path="res://Data/Quests/StageOne/q_scan0.tres" id="2_j84oy"]
+
+[sub_resource type="Resource" id="Resource_uaral"]
+script = ExtResource("1_uaral")
+quest = ExtResource("2_j84oy")
+condition = ""
+metadata/_custom_type_script = "uid://bbg36caowcaje"
+
+[resource]
+script = ExtResource("2_c60ra")
+quests = Array[ExtResource("1_uaral")]([SubResource("Resource_uaral")])
+metadata/_custom_type_script = "uid://b37kgcgh2egaf"

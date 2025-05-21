@@ -1,0 +1,121 @@
+[gd_scene load_steps=18 format=3 uid="uid://co8sc7kh0j36g"]
+
+[ext_resource type="Script" uid="uid://ccsqve6jflh3v" path="res://Scripts/Global/stage_timer.gd" id="1_okyhd"]
+[ext_resource type="Shader" uid="uid://boy3tjeuckiu2" path="res://Scenes/Worlds/enemyoutline.gdshader" id="1_u5es8"]
+[ext_resource type="Script" uid="uid://cajisfa8k1qwv" path="res://Scripts/Enemy/EnemySpawner.gd" id="2_okyhd"]
+[ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="3_an83i"]
+[ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="4_prukn"]
+[ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="5_k6y47"]
+[ext_resource type="TileSet" uid="uid://cm3b4y2e35pjg" path="res://Data/Tilesets/Walls.tres" id="6_iffrx"]
+[ext_resource type="TileSet" uid="uid://c5igm3tuivpaq" path="res://Data/Tilesets/Water.tres" id="7_ugox3"]
+[ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="8_drk70"]
+[ext_resource type="TileSet" uid="uid://c3kjp06qcwel" path="res://Data/Tilesets/Bridges.tres" id="9_mhtfl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_664f8"]
+shader = ExtResource("1_u5es8")
+shader_parameter/color = Color(0.462745, 0.270588, 0.137255, 1)
+shader_parameter/width = 0.8
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1rqn"]
+atlas = ExtResource("3_an83i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykt5y"]
+atlas = ExtResource("3_an83i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_supgr"]
+atlas = ExtResource("3_an83i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jio5"]
+atlas = ExtResource("3_an83i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fluff"]
+atlas = ExtResource("3_an83i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfr2h"]
+shader = ExtResource("1_u5es8")
+shader_parameter/color = Color(1, 0.254902, 0.643137, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = false
+
+[node name="TemplateStage" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StageTimer" type="Node" parent="."]
+script = ExtResource("1_okyhd")
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
+unique_name_in_owner = true
+process_priority = -100
+process_physics_priority = -100
+z_index = 100
+material = SubResource("ShaderMaterial_664f8")
+script = ExtResource("2_okyhd")
+frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_ykt5y"), SubResource("AtlasTexture_supgr"), SubResource("AtlasTexture_3jio5"), SubResource("AtlasTexture_fluff")])
+image_offset = Vector2i(0, 16)
+image_change_offset = 0.1
+shared_area = NodePath("Area2D")
+enemiestospawn = 100000
+
+[node name="Area2D" type="Area2D" parent="Spawner"]
+process_physics_priority = 99
+material = SubResource("ShaderMaterial_yfr2h")
+collision_layer = 4
+collision_mask = 4
+monitoring = false
+
+[node name="Map" type="Node2D" parent="."]
+z_index = -4096
+
+[node name="BaseGround" type="TileMapLayer" parent="Map"]
+texture_filter = 1
+use_parent_material = true
+tile_set = ExtResource("4_prukn")
+
+[node name="Ground" type="TileMapLayer" parent="Map"]
+use_parent_material = true
+tile_set = ExtResource("4_prukn")
+
+[node name="Overlay" type="TileMapLayer" parent="Map"]
+material = ExtResource("5_k6y47")
+tile_set = ExtResource("4_prukn")
+
+[node name="Paths" type="TileMapLayer" parent="Map"]
+use_parent_material = true
+tile_set = ExtResource("4_prukn")
+
+[node name="underWall" type="TileMapLayer" parent="Map"]
+tile_set = ExtResource("6_iffrx")
+
+[node name="Walls" type="TileMapLayer" parent="Map"]
+y_sort_enabled = true
+tile_set = ExtResource("6_iffrx")
+
+[node name="Water" type="TileMapLayer" parent="Map"]
+tile_set = ExtResource("7_ugox3")
+
+[node name="OverWaterWall" type="TileMapLayer" parent="Map"]
+tile_set = ExtResource("6_iffrx")
+
+[node name="Objects" type="TileMapLayer" parent="Map"]
+z_index = 60
+tile_set = ExtResource("8_drk70")
+
+[node name="Bridges" type="TileMapLayer" parent="Map"]
+tile_set = ExtResource("9_mhtfl")
+
+[node name="Trees" type="Node2D" parent="Map"]
+y_sort_enabled = true
+
+[node name="Quests" type="Node2D" parent="."]
+process_mode = 4
+visible = false

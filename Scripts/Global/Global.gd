@@ -59,6 +59,7 @@ func load_stage(stage_scene: PackedScene):
 
 	oldscene.queue_free()
 
+
 func setup_player():
 	var player_scene = load("uid://byco3pvydnl2q").instantiate() as Node;
 	player = player_scene.get_node("Player")
@@ -67,6 +68,7 @@ func setup_player():
 	var childs = player_scene.get_children()
 	for add_ins in childs:
 		player_scene.remove_child(add_ins)
+		add_ins.owner = null
 		current_scene.add_child(add_ins)
 		if add_ins is Camera2D:
 			main_camera = add_ins as Camera2D

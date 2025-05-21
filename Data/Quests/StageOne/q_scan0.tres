@@ -1,0 +1,197 @@
+[gd_resource type="Resource" script_class="QuestResource" load_steps=31 format=3 uid="uid://ykybp7u45p0"]
+
+[ext_resource type="Script" uid="uid://d4gmb2nftapl5" path="res://addons/questify/scripts/model/quest_edge.gd" id="1_jl6oa"]
+[ext_resource type="Script" uid="uid://b37aev4imc074" path="res://addons/questify/scripts/model/quest_node.gd" id="2_ul76g"]
+[ext_resource type="Script" uid="uid://dtbofow3tdngk" path="res://addons/questify/scripts/model/quest_start.gd" id="2_x34s0"]
+[ext_resource type="Script" uid="uid://bhqxygnm6kw4n" path="res://addons/questify/scripts/model/quest_resource.gd" id="3_fps3q"]
+[ext_resource type="Script" uid="uid://c23wdreelkkg4" path="res://addons/questify/scripts/model/quest_objective.gd" id="3_pkux2"]
+[ext_resource type="Script" uid="uid://cyotfkardp6i" path="res://addons/questify/scripts/model/quest_condition.gd" id="4_eduan"]
+[ext_resource type="Script" uid="uid://650crvoj707i" path="res://addons/questify/scripts/model/quest_end.gd" id="5_j5802"]
+
+[sub_resource type="Resource" id="Resource_x34s0"]
+script = ExtResource("4_eduan")
+type = "var:>="
+key = "stage_timer"
+id = "FGg9FoTbHQ"
+optional = false
+graph_editor_position = Vector2(-280, 1000)
+graph_editor_size = Vector2(377, 309)
+metadata/value = 30
+
+[sub_resource type="Resource" id="Resource_pkux2"]
+script = ExtResource("3_pkux2")
+description = "Survive the Stage for 5 minutes"
+id = "1O3Q7-Vp72"
+optional = false
+graph_editor_position = Vector2(420, 360)
+graph_editor_size = Vector2(480, 660)
+metadata/d_scan_location = false
+metadata/stage_clear_and_pause = 30
+metadata/qo_scan0 = false
+
+[sub_resource type="Resource" id="Resource_eduan"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_x34s0")
+to = SubResource("Resource_pkux2")
+edge_type = 1
+
+[sub_resource type="Resource" id="Resource_j5802"]
+script = ExtResource("3_pkux2")
+description = "Investigate the Located Zone"
+id = "jVNBTqhAQX"
+optional = false
+graph_editor_position = Vector2(1220, 360)
+graph_editor_size = Vector2(480, 680)
+metadata/d_scan_portal = false
+metadata/p_hub = false
+metadata/stage_end = false
+
+[sub_resource type="Resource" id="Resource_d3whe"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_pkux2")
+to = SubResource("Resource_j5802")
+edge_type = 0
+
+[sub_resource type="Resource" id="Resource_jq0wq"]
+script = ExtResource("3_pkux2")
+description = "Talk to Vedal"
+id = "uH8o8m07P0"
+optional = false
+graph_editor_position = Vector2(1900, 360)
+graph_editor_size = Vector2(480, 740)
+metadata/d_scan_finished = false
+metadata/qa_radio_station = false
+metadata/qa_material_gather = false
+
+[sub_resource type="Resource" id="Resource_c7ej0"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_j5802")
+to = SubResource("Resource_jq0wq")
+edge_type = 0
+
+[sub_resource type="Resource" id="Resource_cqfyr"]
+script = ExtResource("4_eduan")
+type = "var:=="
+key = "dialogue_finished"
+id = "gg4aExotGF"
+optional = false
+graph_editor_position = Vector2(1320, 1140)
+graph_editor_size = Vector2(377, 309)
+metadata/value = false
+
+[sub_resource type="Resource" id="Resource_h2nwy"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_cqfyr")
+to = SubResource("Resource_jq0wq")
+edge_type = 1
+
+[sub_resource type="Resource" id="Resource_i623i"]
+script = ExtResource("5_j5802")
+id = "X9_1U2suiH"
+optional = false
+graph_editor_position = Vector2(2800, 360)
+graph_editor_size = Vector2(141, 78)
+
+[sub_resource type="Resource" id="Resource_lvnb7"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_jq0wq")
+to = SubResource("Resource_i623i")
+edge_type = 0
+
+[sub_resource type="Resource" id="Resource_nxhbq"]
+script = ExtResource("4_eduan")
+type = "var:=="
+key = "loc_scan0"
+id = "SVmNm3AqwC"
+optional = false
+graph_editor_position = Vector2(420, 1040)
+graph_editor_size = Vector2(377, 309)
+metadata/value = true
+
+[sub_resource type="Resource" id="Resource_w5vtv"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_nxhbq")
+to = SubResource("Resource_j5802")
+edge_type = 1
+
+[sub_resource type="Resource" id="Resource_6pibj"]
+script = ExtResource("4_eduan")
+type = "var:>="
+key = "loc_scan0_time"
+id = "1HSxvOL-0M"
+optional = false
+graph_editor_position = Vector2(420, 1360)
+graph_editor_size = Vector2(377, 309)
+metadata/value = 10
+
+[sub_resource type="Resource" id="Resource_rkqvm"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_6pibj")
+to = SubResource("Resource_j5802")
+edge_type = 1
+
+[sub_resource type="Resource" id="Resource_nxk8e"]
+script = ExtResource("2_x34s0")
+name = "Scan the Area"
+description = ""
+id = "M150NGd-z0"
+optional = false
+graph_editor_position = Vector2(-680, 320)
+graph_editor_size = Vector2(280, 516)
+
+[sub_resource type="Resource" id="Resource_wms03"]
+script = ExtResource("3_pkux2")
+description = ""
+id = "RuYB8yuXp3"
+optional = false
+graph_editor_position = Vector2(-260, 320)
+graph_editor_size = Vector2(468, 541)
+
+[sub_resource type="Resource" id="Resource_yk2p2"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_nxk8e")
+to = SubResource("Resource_wms03")
+edge_type = 0
+
+[sub_resource type="Resource" id="Resource_wxtk6"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_wms03")
+to = SubResource("Resource_pkux2")
+edge_type = 0
+
+[sub_resource type="Resource" id="Resource_ubg50"]
+script = ExtResource("4_eduan")
+type = "var:=="
+key = "stage_name"
+id = "gy4-HSd60a"
+optional = false
+graph_editor_position = Vector2(-680, 840)
+graph_editor_size = Vector2(377, 309)
+metadata/value = "stage_1"
+
+[sub_resource type="Resource" id="Resource_eem7t"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_ubg50")
+to = SubResource("Resource_wms03")
+edge_type = 1
+
+[sub_resource type="Resource" id="Resource_t4h3f"]
+script = ExtResource("4_eduan")
+type = "var:=="
+key = "quest_active"
+id = "49wbPkyZQx"
+optional = false
+graph_editor_position = Vector2(-680, 1160)
+graph_editor_size = Vector2(377, 309)
+metadata/value = "scan_0"
+
+[sub_resource type="Resource" id="Resource_thlre"]
+script = ExtResource("1_jl6oa")
+from = SubResource("Resource_t4h3f")
+to = SubResource("Resource_wms03")
+edge_type = 1
+
+[resource]
+script = ExtResource("3_fps3q")
+nodes = Array[ExtResource("2_ul76g")]([SubResource("Resource_x34s0"), SubResource("Resource_i623i"), SubResource("Resource_j5802"), SubResource("Resource_jq0wq"), SubResource("Resource_nxhbq"), SubResource("Resource_6pibj"), SubResource("Resource_cqfyr"), SubResource("Resource_pkux2"), SubResource("Resource_wms03"), SubResource("Resource_ubg50"), SubResource("Resource_nxk8e"), SubResource("Resource_t4h3f")])
+edges = Array[ExtResource("1_jl6oa")]([SubResource("Resource_eduan"), SubResource("Resource_d3whe"), SubResource("Resource_c7ej0"), SubResource("Resource_h2nwy"), SubResource("Resource_lvnb7"), SubResource("Resource_w5vtv"), SubResource("Resource_rkqvm"), SubResource("Resource_yk2p2"), SubResource("Resource_wxtk6"), SubResource("Resource_eem7t"), SubResource("Resource_thlre")])

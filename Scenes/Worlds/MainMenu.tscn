@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7q7ut82i7u6m" path="res://Scenes/Worlds/MainMenu/Textures/menu_plates.png" id="6_6d63y"]
 [ext_resource type="Script" uid="uid://b6hj7vo2wo826" path="res://Scenes/Worlds/MainMenu/Scripts/CharacterSelect.gd" id="6_ijl74"]
 [ext_resource type="PackedScene" uid="uid://dbnbqax27wmwc" path="res://Scenes/Worlds/MainMenu/Scenes/character_preview.tscn" id="7_rk3bc"]
-[ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/StageOne.tscn" id="8_npjm8"]
+[ext_resource type="PackedScene" uid="uid://c1gk4v3ulvpue" path="res://Scenes/Worlds/teststage.tscn" id="8_npjm8"]
 [ext_resource type="FontFile" uid="uid://de8n5evbrefyx" path="res://fonts/Retro Gaming.ttf" id="8_tcod6"]
 [ext_resource type="Script" uid="uid://d1a6pxl0cms2c" path="res://Scenes/Worlds/SettingsMenu.gd" id="9_igd67"]
 [ext_resource type="Script" uid="uid://bv6ufkbmcfusj" path="res://Scripts/UI/Settings/Scripts/ResolutionSelection.gd" id="10_oug8h"]
