@@ -14,6 +14,11 @@ func _ready():
 	registernode(self, "quest_objective_request", handle_quest_objective_request)
 
 	LimboConsole.register_command(set_value, "set", "sets a value in the current state")
+	LimboConsole.add_argument_autocomplete_source("set", 0,
+		func():
+			if current_state.has("value_store"):
+				return current_state["value_store"].keys()
+			return [])
 
 
 # This class is responsible for managing the game state and saving/loading it.
