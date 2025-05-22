@@ -15,12 +15,12 @@ var SwitchToKeyboard: GUIDEAction = preload("uid://d34kig5piooos")
 
 
 enum GameState {
-    IN_GAME,
-    CUTSCENE,
+	IN_GAME,
+	CUTSCENE,
 }
 enum InputType {
-    KEYBOARD,
-    CONTROLLER
+	KEYBOARD,
+	CONTROLLER
 }
 
 var game_state: GameState = GameState.IN_GAME
@@ -28,37 +28,37 @@ var input_type: InputType = InputType.KEYBOARD
 
 
 func _update_input():
-    match input_type:
-        InputType.KEYBOARD:
-            GUIDE.enable_mapping_context(GlobalKM_MC, true)
-            match game_state:
-                GameState.IN_GAME:
-                    GUIDE.enable_mapping_context(MC_Gameplay_KM)
-                GameState.CUTSCENE:
-                    GUIDE.enable_mapping_context(MC_Cutscene)
-        InputType.CONTROLLER:
-            GUIDE.enable_mapping_context(GlobalC_MC, true)
-            match game_state:
-                GameState.IN_GAME:
-                    GUIDE.enable_mapping_context(MC_Gameplay_CO)
-                GameState.CUTSCENE:
-                    GUIDE.enable_mapping_context(MC_Cutscene)
+	match input_type:
+		InputType.KEYBOARD:
+			GUIDE.enable_mapping_context(GlobalKM_MC, true)
+			match game_state:
+				GameState.IN_GAME:
+					GUIDE.enable_mapping_context(MC_Gameplay_KM)
+				GameState.CUTSCENE:
+					GUIDE.enable_mapping_context(MC_Cutscene)
+		InputType.CONTROLLER:
+			GUIDE.enable_mapping_context(GlobalC_MC, true)
+			match game_state:
+				GameState.IN_GAME:
+					GUIDE.enable_mapping_context(MC_Gameplay_CO)
+				GameState.CUTSCENE:
+					GUIDE.enable_mapping_context(MC_Cutscene)
 
 func _set_input_type(input: InputType):
-    input_type = input
-    _update_input()
+	input_type = input
+	_update_input()
 
 func _set_game_state(state: GameState):
-    game_state = state
-    _update_input()
+	game_state = state
+	_update_input()
 
 func _ready():
-    SwitchToController.triggered.connect(_set_input_type.bind(InputType.CONTROLLER))
-    SwitchToKeyboard.triggered.connect(_set_input_type.bind(InputType.KEYBOARD))
+	SwitchToController.triggered.connect(_set_input_type.bind(InputType.CONTROLLER))
+	SwitchToKeyboard.triggered.connect(_set_input_type.bind(InputType.KEYBOARD))
 
-    _update_input()
+	_update_input()
 
 func start_cutscene():
-    _set_game_state(GameState.CUTSCENE)
+	_set_game_state(GameState.CUTSCENE)
 func start_gameplay():
-    _set_game_state(GameState.IN_GAME)
+	_set_game_state(GameState.IN_GAME)

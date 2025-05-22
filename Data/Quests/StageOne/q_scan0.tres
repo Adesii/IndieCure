@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestResource" load_steps=31 format=3 uid="uid://ykybp7u45p0"]
+[gd_resource type="Resource" script_class="QuestResource" load_steps=31 format=3 uid="uid://b44nkmjrdmdxv"]
 
 [ext_resource type="Script" uid="uid://d4gmb2nftapl5" path="res://addons/questify/scripts/model/quest_edge.gd" id="1_jl6oa"]
 [ext_resource type="Script" uid="uid://b37aev4imc074" path="res://addons/questify/scripts/model/quest_node.gd" id="2_ul76g"]
@@ -16,7 +16,7 @@ id = "FGg9FoTbHQ"
 optional = false
 graph_editor_position = Vector2(-280, 1000)
 graph_editor_size = Vector2(377, 309)
-metadata/value = 30
+metadata/value = 3
 
 [sub_resource type="Resource" id="Resource_pkux2"]
 script = ExtResource("3_pkux2")
@@ -75,7 +75,7 @@ type = "var:=="
 key = "dialogue_finished"
 id = "gg4aExotGF"
 optional = false
-graph_editor_position = Vector2(1320, 1140)
+graph_editor_position = Vector2(1320, 1200)
 graph_editor_size = Vector2(377, 309)
 metadata/value = false
 
@@ -122,7 +122,7 @@ id = "1HSxvOL-0M"
 optional = false
 graph_editor_position = Vector2(420, 1360)
 graph_editor_size = Vector2(377, 309)
-metadata/value = 10
+metadata/value = 1
 
 [sub_resource type="Resource" id="Resource_rkqvm"]
 script = ExtResource("1_jl6oa")
@@ -183,7 +183,7 @@ id = "49wbPkyZQx"
 optional = false
 graph_editor_position = Vector2(-680, 1160)
 graph_editor_size = Vector2(377, 309)
-metadata/value = "scan_0"
+metadata/value = "scan0"
 
 [sub_resource type="Resource" id="Resource_thlre"]
 script = ExtResource("1_jl6oa")
@@ -193,5 +193,5 @@ edge_type = 1
 
 [resource]
 script = ExtResource("3_fps3q")
-nodes = Array[ExtResource("2_ul76g")]([SubResource("Resource_x34s0"), SubResource("Resource_i623i"), SubResource("Resource_j5802"), SubResource("Resource_jq0wq"), SubResource("Resource_nxhbq"), SubResource("Resource_6pibj"), SubResource("Resource_cqfyr"), SubResource("Resource_pkux2"), SubResource("Resource_wms03"), SubResource("Resource_ubg50"), SubResource("Resource_nxk8e"), SubResource("Resource_t4h3f")])
+nodes = Array[ExtResource("2_ul76g")]([SubResource("Resource_x34s0"), SubResource("Resource_i623i"), SubResource("Resource_j5802"), SubResource("Resource_jq0wq"), SubResource("Resource_nxhbq"), SubResource("Resource_6pibj"), SubResource("Resource_pkux2"), SubResource("Resource_wms03"), SubResource("Resource_ubg50"), SubResource("Resource_nxk8e"), SubResource("Resource_t4h3f"), SubResource("Resource_cqfyr")])
 edges = Array[ExtResource("1_jl6oa")]([SubResource("Resource_eduan"), SubResource("Resource_d3whe"), SubResource("Resource_c7ej0"), SubResource("Resource_h2nwy"), SubResource("Resource_lvnb7"), SubResource("Resource_w5vtv"), SubResource("Resource_rkqvm"), SubResource("Resource_yk2p2"), SubResource("Resource_wxtk6"), SubResource("Resource_eem7t"), SubResource("Resource_thlre")])

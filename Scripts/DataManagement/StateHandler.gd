@@ -7,6 +7,8 @@ func _ready():
 	Questify.quest_objective_completed.connect(quest_objective_completed)
 	Questify.condition_query_requested.connect(condition_query_requested)
 
+	init_questlines()
+
 	registernode(self, "dialogue_request", handle_dialogue_request)
 	registernode(self, "stage_request", handle_stage_request)
 	registernode(self, "portal_request", handle_portal_request)
@@ -19,6 +21,11 @@ func _ready():
 			if current_state.has("value_store"):
 				return current_state["value_store"].keys()
 			return [])
+	
+	LimboConsole.register_command(start_questline, "start_questline", "starts a quest line")
+	LimboConsole.add_argument_autocomplete_source("start_questline", 0,
+		func():
+			return quest_lines.keys())
 
 
 # This class is responsible for managing the game state and saving/loading it.
@@ -156,6 +163,7 @@ func handle_stage_request(request):
 
 func handle_portal_request(portal_request):
 	print("Portal Requested: ", portal_request)
+	Global.create_portal_to(portal_request[0])
 	pass
 
 func handle_quest_available_request(request):
@@ -165,7 +173,7 @@ func handle_quest_available_request(request):
 func handle_quest_objective_request(request):
 	var quests_node = Global.current_scene.get_node("Quests")
 	if quests_node:
-		var request_node = quests_node.get_node(request)
+		var request_node = quests_node.get_node(str(request[0]))
 		if request_node:
 			request_node.process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
 			request_node.visible = true
@@ -173,5 +181,35 @@ func handle_quest_objective_request(request):
 			printerr("Request node not found for: ", request)
 	else:
 		printerr("Quests node not found")
+
+#endregion
+
+
+#region Quest Line Handler
+
+var quest_lines: Dictionary[String, QuestLine] = {}
+var active_questlines: Dictionary[String, QuestLine] = {}
+
+func init_questlines():
+	var access = DirAccess.open("res://Data/QuestLines/")
+	var files = access.get_files()
+	current_state["available_questlines"] = []
+	for file in files:
+		if file.get_extension() == "tres":
+			var questline_item: QuestLine = ResourceLoader.load("res://Data/QuestLines/" + str(file), "QuestLine")
+			quest_lines[file.replace(".tres", "")] = questline_item
+	
+	current_state["available_questlines"] = quest_lines.keys()
+
+func start_questline(questline_name: String):
+	if questline_name in quest_lines:
+		var quest_line = quest_lines[questline_name]
+		quest_line.init_quest_line()
+		if not current_state.has("current_questlines"):
+			current_state["current_questlines"] = []
+		current_state["current_questlines"].append(questline_name)
+		active_questlines[questline_name] = quest_line
+	else:
+		printerr("Quest line not found: ", questline_name)
 
 #endregion
