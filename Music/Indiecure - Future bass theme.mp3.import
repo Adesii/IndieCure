@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c0601yevpe8tg"
+path="res://.godot/imported/Indiecure - Future bass theme.mp3-8db426e9dde25e62a55fe6fd28801240.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Future bass theme.mp3"
+dest_files=["res://.godot/imported/Indiecure - Future bass theme.mp3-8db426e9dde25e62a55fe6fd28801240.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

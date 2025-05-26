@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://v5fvb0y4jthr"
+path="res://.godot/imported/Indiecure - Future house chiptune.mp3-afb7edde6f5e62b7d56349a698e08838.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Future house chiptune.mp3"
+dest_files=["res://.godot/imported/Indiecure - Future house chiptune.mp3-afb7edde6f5e62b7d56349a698e08838.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

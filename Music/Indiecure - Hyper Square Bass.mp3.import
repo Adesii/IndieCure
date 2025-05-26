@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bet6mufnankat"
+path="res://.godot/imported/Indiecure - Hyper Square Bass.mp3-30f8f84fe1fb18b0abca84bebf13bd23.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Hyper Square Bass.mp3"
+dest_files=["res://.godot/imported/Indiecure - Hyper Square Bass.mp3-30f8f84fe1fb18b0abca84bebf13bd23.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

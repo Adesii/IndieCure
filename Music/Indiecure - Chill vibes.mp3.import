@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhhovwaqg8lct"
+path="res://.godot/imported/Indiecure - Chill vibes.mp3-d60f63818880e776266cb96b67d63f9b.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Chill vibes.mp3"
+dest_files=["res://.godot/imported/Indiecure - Chill vibes.mp3-d60f63818880e776266cb96b67d63f9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yutcmt7i2p25"
+path="res://.godot/imported/Indiecure - Drum n bass.mp3-f897410a903f2726c12a5a03656637a0.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Drum n bass.mp3"
+dest_files=["res://.godot/imported/Indiecure - Drum n bass.mp3-f897410a903f2726c12a5a03656637a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

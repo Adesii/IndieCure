@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kw281vni1vnx"
+path="res://.godot/imported/Indiecure - Sakura fields.mp3-341ba415f864d487b960dd1fa3b6b7a5.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Sakura fields.mp3"
+dest_files=["res://.godot/imported/Indiecure - Sakura fields.mp3-341ba415f864d487b960dd1fa3b6b7a5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

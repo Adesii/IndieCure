@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbxh4lmcvkvbg"
+path="res://.godot/imported/Indiecure - Funky breakdown.mp3-65b25cd4a34ce23cbcaa5ca6153b7982.mp3str"
+
+[deps]
+
+source_file="res://Music/Indiecure - Funky breakdown.mp3"
+dest_files=["res://.godot/imported/Indiecure - Funky breakdown.mp3-65b25cd4a34ce23cbcaa5ca6153b7982.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
