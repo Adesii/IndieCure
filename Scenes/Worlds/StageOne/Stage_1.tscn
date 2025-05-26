@@ -14,7 +14,9 @@ visible = true
 [node name="scan0" type="Marker2D" parent="Quests" index="0"]
 visible = false
 position = Vector2(673, 0)
+gizmo_extents = 50.0
 script = ExtResource("2_bgouk")
+distance_to_count = 50.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Quests/scan0" index="0"]
 polygon = PackedVector2Array(-96, -81, -99, 95, 126, 85, 116, -80)
