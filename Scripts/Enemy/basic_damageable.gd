@@ -34,7 +34,12 @@ func _physics_process(delta: float) -> void:
 	if result:
 		for r in result:
 			if r.collider is Area2D:
-				r.collider.area_shape_entered.emit(get_rid(), self, 0, 0)
+				var par = r.collider.get_parent()
+				if par.has_method("enemy_hit"):
+					par.enemy_hit(self, null, 0)
+				else:
+					push_warning("Warning: No method 'enemy_hit' found on collider parent. ", r.collider.get_parent(), " is not a valid weapon or has the wrong area designated to it")
+		
 	
 	if damage_frames > 0:
 		if damage_frames == 10:

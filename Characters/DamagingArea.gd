@@ -2,14 +2,14 @@ extends Area2D
 
 var overlapping_areas: Dictionary = {}
 
-func _on_area_shape_entered(_area_rid: RID, area: Area2D, area_shape_index: int, _local_shape_index: int):
+func enemy_hit(spawner, enemy, index):
 	#print("Area entered shape ", area_shape_index, " local shape ", local_shape_index)
-	if not overlapping_areas.has(area):
-		overlapping_areas[area] = []
-	overlapping_areas[area].append(area_shape_index)
+	if not overlapping_areas.has(spawner):
+		overlapping_areas[spawner] = []
+	overlapping_areas[spawner].append(enemy)
+	if get_parent().has_method("enemy_hit"):
+		get_parent().enemy_hit(spawner, enemy, index)
 
-func _on_area_shape_exited(_area_rid: RID, area: Area2D, area_shape_index: int, _local_shape_index: int):
-	pass
 	#print("Area exited shape ", area_shape_index, " local shape ", local_shape_index)
 
 	#if overlapping_areas[area] != null:
@@ -22,9 +22,10 @@ func _physics_process(_delta):
 	if tick_count == int(Stat.Get(get_parent(), "tick_speed")):
 		for area in overlapping_areas.keys():
 			for shape in overlapping_areas[area]:
-				Stat.Damage(get_parent(), area.get_parent(), {"shape_id": shape})
+				Stat.Damage(get_parent(), area, {"enemy": shape})
 		tick_count = 0
-		overlapping_areas.clear()
+		for area in overlapping_areas.keys():
+			overlapping_areas[area] = []
 		return
 	tick_count += 1
 	overlapping_areas.clear()

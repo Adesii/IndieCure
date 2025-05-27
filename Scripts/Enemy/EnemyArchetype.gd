@@ -1,5 +1,6 @@
 class_name EnemyArchetype
 extends Resource
 
-@export var frames: SpriteFrames
+@export var framesstrip: Texture2D
+@export var image_size: Vector2i
 @export var image_offset: Vector2i

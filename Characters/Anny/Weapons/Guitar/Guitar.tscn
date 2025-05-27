@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dl0y8qc6rbm5t"]
+[gd_scene load_steps=16 format=3 uid="uid://dl0y8qc6rbm5t"]
 
 [ext_resource type="Texture2D" uid="uid://tbnvs7rja00o" path="res://Characters/Anny/Weapons/Guitar/base_attack-0002.png" id="1_liqyt"]
 [ext_resource type="Script" uid="uid://cg7n77xqtymxy" path="res://Characters/Anny/Weapons/Guitar/Guitar.gd" id="2_iw60f"]
+[ext_resource type="Script" uid="uid://cogggm8hyuskv" path="res://Scripts/utility/pass_the_enemy.gd" id="3_37tf5"]
 [ext_resource type="Script" uid="uid://ddrxfjxny76lk" path="res://Scripts/GAS/upgradeprovider.gd" id="5_fmtqh"]
 [ext_resource type="Script" uid="uid://ckiwsh6rwxr4i" path="res://Scripts/GAS/statupgrade.gd" id="6_4du0f"]
 [ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="7_oxxsv"]
@@ -76,6 +77,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8xpq2")
 frame_progress = 0.796492
 offset = Vector2(21.715, 0)
+script = ExtResource("3_37tf5")
 
 [node name="Area2D" type="Area2D" parent="GuitarSwing"]
 process_mode = 4

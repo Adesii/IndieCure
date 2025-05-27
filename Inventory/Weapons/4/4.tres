@@ -41,10 +41,10 @@ script = ExtResource("3_telsj")
 attribute_name = "tick_speed"
 default_value = 30.0
 
-[sub_resource type="Gradient" id="Gradient_jluij"]
+[sub_resource type="Gradient" id="Gradient_s6mek"]
 colors = PackedColorArray(0, 0, 0, 1, 0.266667, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ivrbf"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1xu4v"]
 noise_type = 4
 frequency = 0.0649
 fractal_octaves = 1
@@ -52,8 +52,8 @@ fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7jsau"]
 width = 64
 height = 64
-color_ramp = SubResource("Gradient_jluij")
-noise = SubResource("FastNoiseLite_ivrbf")
+color_ramp = SubResource("Gradient_s6mek")
+noise = SubResource("FastNoiseLite_1xu4v")
 
 [resource]
 script = ExtResource("2_qpeg8")

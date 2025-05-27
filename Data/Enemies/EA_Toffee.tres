@@ -1,46 +1,11 @@
-[gd_resource type="Resource" script_class="EnemyArchetype" load_steps=8 format=3 uid="uid://t4p4j40s4wss"]
+[gd_resource type="Resource" script_class="EnemyArchetype" load_steps=3 format=3 uid="uid://t4p4j40s4wss"]
 
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="1_8n5rt"]
 [ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="2_b5mm8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v35rg"]
-atlas = ExtResource("1_8n5rt")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oxjwn"]
-atlas = ExtResource("1_8n5rt")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58jb6"]
-atlas = ExtResource("1_8n5rt")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_majuq"]
-atlas = ExtResource("1_8n5rt")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_06ag2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v35rg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oxjwn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_58jb6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_majuq")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [resource]
 script = ExtResource("2_b5mm8")
-frames = SubResource("SpriteFrames_06ag2")
+framesstrip = ExtResource("1_8n5rt")
+image_size = Vector2i(32, 32)
 image_offset = Vector2i(0, 16)
 metadata/_custom_type_script = "uid://bbcm8d4x3de2j"

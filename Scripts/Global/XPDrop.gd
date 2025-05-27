@@ -30,6 +30,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(_delta):
+	pass
 	var offset = xp_texture.get_size() / 2
 	var space = get_world_2d().direct_space_state
 	for drop in renderer._objects:
@@ -108,7 +109,7 @@ func _draw():
 	renderer.end_render() # figure out if this is a good idea
 
 func drop_xp(dropposition: Vector2, amount: int):
-	#return
+	return
 	#var space = get_world_2d().direct_space_state
 	#var query = PhysicsShapeQueryParameters2D.new()
 	#query.shape_rid = circle_shape

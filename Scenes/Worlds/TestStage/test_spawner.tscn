@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://dainm42iw828w"]
+
+[ext_resource type="PackedScene" uid="uid://co8sc7kh0j36g" path="res://Scenes/Worlds/template_stage.tscn" id="1_20rvb"]
+[ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="2_r4h72"]
+[ext_resource type="Script" uid="uid://r80uhwxhwut2" path="res://Scripts/Wave/TimedWave.gd" id="3_46xb2"]
+[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="4_eynhn"]
+[ext_resource type="Resource" uid="uid://t4p4j40s4wss" path="res://Data/Enemies/EA_Toffee.tres" id="5_rr0g4"]
+[ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="6_eynhn"]
+[ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="7_rr0g4"]
+[ext_resource type="Resource" uid="uid://che604nsso76u" path="res://Inventory/Weapons/4/4.tres" id="8_03rpw"]
+[ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="9_jhi1f"]
+[ext_resource type="PackedScene" uid="uid://c8sf68dfc7ury" path="res://Inventory/weapon_pickup/weapon_pickup.tscn" id="10_c3ody"]
+
+[node name="TemplateStage" instance=ExtResource("1_20rvb")]
+
+[node name="WavesController" type="Node" parent="." index="1"]
+script = ExtResource("2_r4h72")
+metadata/_custom_type_script = "uid://cntqfk0bxryf4"
+
+[node name="TimedWave" type="Node" parent="WavesController" index="0"]
+script = ExtResource("3_46xb2")
+wave_duration = 1000.0
+spawn_rate = 0.01
+max_enemies = 1000
+enemy_types = Array[ExtResource("4_eynhn")]([ExtResource("5_rr0g4")])
+health_attr = 2.0
+metadata/_custom_type_script = "uid://r80uhwxhwut2"
+
+[node name="Spawner" parent="." index="2"]
+y_sort_enabled = true
+collision_mask = 4
+
+[node name="shoe5" parent="." index="5" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe6" parent="." index="6" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe7" parent="." index="7" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe8" parent="." index="8" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe9" parent="." index="9" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe10" parent="." index="10" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe11" parent="." index="11" instance=ExtResource("6_eynhn")]
+position = Vector2(-124, -77)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe" parent="." index="12" instance=ExtResource("6_eynhn")]
+position = Vector2(-154, 159)
+itemResource = ExtResource("8_03rpw")
+
+[node name="shoe2" parent="." index="13" instance=ExtResource("6_eynhn")]
+position = Vector2(-84, 88)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe3" parent="." index="14" instance=ExtResource("6_eynhn")]
+position = Vector2(5, 282)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe12" parent="." index="15" instance=ExtResource("6_eynhn")]
+position = Vector2(-84, 188)
+itemResource = ExtResource("9_jhi1f")
+
+[node name="shoe13" parent="." index="16" instance=ExtResource("6_eynhn")]
+position = Vector2(-83, 174)
+itemResource = ExtResource("9_jhi1f")
+
+[node name="shoe14" parent="." index="17" instance=ExtResource("6_eynhn")]
+position = Vector2(-84, 209)
+itemResource = ExtResource("9_jhi1f")
+
+[node name="shoe15" parent="." index="18" instance=ExtResource("6_eynhn")]
+position = Vector2(-82, 231)
+itemResource = ExtResource("9_jhi1f")
+
+[node name="shoe4" parent="." index="19" instance=ExtResource("6_eynhn")]
+position = Vector2(5, 259)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="shoe16" parent="." index="20" instance=ExtResource("6_eynhn")]
+position = Vector2(5, 234)
+itemResource = ExtResource("7_rr0g4")
+
+[node name="weapon_pickup" parent="." index="21" instance=ExtResource("10_c3ody")]
+position = Vector2(91, 126)
+
+[node name="weapon_pickup2" parent="." index="22" instance=ExtResource("10_c3ody")]
+position = Vector2(94, 151)

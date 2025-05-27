@@ -18,4 +18,4 @@ func _on_wave_timeout():
 
 func _process_wave(delta):
 	if timer:
-		print("Wave is active for %f seconds" % timer.time_left)
+		handle_default_spawn(delta)

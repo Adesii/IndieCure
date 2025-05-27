@@ -56,22 +56,14 @@ func _physics_process(_delta):
 	#only attack each area_shape once for each attack
 	for area in overlapping_areas.keys():
 		for shape in overlapping_areas[area]:
-			Stat.Damage(self, area.get_parent(), {"shape_id": shape})
-			overlapping_areas[area].erase(shape)
-	overlapping_areas.clear()
+			Stat.Damage(self, area, {"enemy": shape})
+	for area in overlapping_areas.keys():
+		overlapping_areas[area] = []
 
-func _on_area_2d_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int):
-	pass
-	#if !overlapping_areas.has(area):
-	#	return
-	#if overlapping_areas[area] != null:
-	#	overlapping_areas[area].erase(area_shape_index)
-	#if overlapping_areas[area].size() == 0:
-	#	overlapping_areas.erase(area)
 
-func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int):
+func enemy_hit(area, enemy, area_shape_index: int):
 	if not overlapping_areas.has(area):
 		overlapping_areas[area] = []
-	overlapping_areas[area].append(area_shape_index)
+	overlapping_areas[area].append(enemy)
 
 #endregion

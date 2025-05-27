@@ -2,20 +2,13 @@ extends RefCounted
 
 class_name MassObject
 
-var physics_rid: RID
-var area_rid: RID
-
-var rendering_rid: RID
-
+var archetype: EnemyArchetype
 var has_shadow: bool = true
-var rendering_shadow_rid: RID
-
-var texture: Texture2D
 
 var texture_rect: Rect2
 var shadow_texture_rect: Rect2
 var transform: Transform2D
-var image_offset: Vector2
+var custom_data: Color
 var modulate: Color = Color.WHITE
 
 

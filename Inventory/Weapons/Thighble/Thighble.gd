@@ -12,20 +12,12 @@ signal finished_attack
 
 var overlapping_areas: Dictionary = {}
 
-func _on_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, area_shape_index: int, _local_shape_index: int):
+func enemy_hit(area, enemy, area_shape_index):
 	#print("Area entered shape ", area_shape_index, " local shape ", _local_shape_index)
 	if not overlapping_areas.has(area):
 		overlapping_areas[area] = []
-	if not overlapping_areas[area].has(area_shape_index):
-		overlapping_areas[area].append(area_shape_index)
+	overlapping_areas[area].append(enemy)
 
-func _on_area_2d_area_shape_exited(_area_rid: RID, area: Area2D, area_shape_index: int, _local_shape_index: int):
-	pass
-	#print("Area exited shape ", area_shape_index, " local shape ", _local_shape_index)
-	#if overlapping_areas[area] != null:
-	#	overlapping_areas[area].erase(area_shape_index)
-	#if overlapping_areas[area].size() == 0:
-	#	overlapping_areas.erase(area)
 
 class attackpoint:
 	var offset: Vector2
@@ -107,9 +99,10 @@ func _physics_process(delta):
 	if timer >= delta + 0.1 or Stat.Get(self, "never_ending"):
 		for area in overlapping_areas.keys():
 			for shape in overlapping_areas[area]:
-				Stat.Damage(self, area.get_parent(), {"shape_id": shape})
+				Stat.Damage(self, area, {"enemy": shape})
 		timer = 0
-	overlapping_areas.clear()
+	for area in overlapping_areas.keys():
+		overlapping_areas[area] = []
 	queue_redraw()
 
 func _draw():

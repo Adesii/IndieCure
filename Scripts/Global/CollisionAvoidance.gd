@@ -31,8 +31,9 @@ func avoid_others(character, lastpositionkey, radius):
 				var distance = character.global_position.distance_squared_to(enemy.global_position)
 				if distance < radius:
 					var direction = (character.global_position - enemy.global_position).normalized()
-					var falloff = 1 - distance / radius
-					result += direction * (radius - distance) * falloff
+					#var falloff = 1 - distance / radius
+					#result += direction * (radius - distance) * falloff
+					result += direction
 	return result.normalized()
 
 func handle_collisiongroup(character, lastpositionkey, radius):

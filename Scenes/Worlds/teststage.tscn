@@ -1,9 +1,10 @@
-[gd_scene load_steps=57 format=4 uid="uid://c1gk4v3ulvpue"]
+[gd_scene load_steps=47 format=4 uid="uid://c1gk4v3ulvpue"]
 
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="1_ekpmd"]
 [ext_resource type="Script" uid="uid://r80uhwxhwut2" path="res://Scripts/Wave/TimedWave.gd" id="2_m1wva"]
-[ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_b1y04"]
+[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="3_ekpmd"]
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="4_k10oy"]
+[ext_resource type="Resource" uid="uid://t4p4j40s4wss" path="res://Data/Enemies/EA_Toffee.tres" id="4_m1wva"]
 [ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="5_1i2cj"]
 [ext_resource type="Script" uid="uid://bqv5y4he3cntj" path="res://Scripts/TileMapShadows.gd" id="6_w23hh"]
 [ext_resource type="TileSet" uid="uid://cm3b4y2e35pjg" path="res://Data/Tilesets/Walls.tres" id="7_7k17s"]
@@ -11,9 +12,7 @@
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="9_pk2kw"]
 [ext_resource type="TileSet" uid="uid://c3kjp06qcwel" path="res://Data/Tilesets/Bridges.tres" id="10_lhwgr"]
 [ext_resource type="PackedScene" uid="uid://b4sti1olp7fa7" path="res://Textures/Environment/Forest/Structures/Grave.tscn" id="11_v0sba"]
-[ext_resource type="Shader" uid="uid://boy3tjeuckiu2" path="res://Scenes/Worlds/enemyoutline.gdshader" id="12_li6lq"]
 [ext_resource type="Script" uid="uid://cajisfa8k1qwv" path="res://Scripts/Enemy/EnemySpawner.gd" id="13_e1c8n"]
-[ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="14_1y02r"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="15_21ma6"]
 [ext_resource type="Resource" uid="uid://che604nsso76u" path="res://Inventory/Weapons/4/4.tres" id="16_fc5d2"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="17_notel"]
@@ -35,54 +34,6 @@
 [ext_resource type="Shader" uid="uid://cndma2ujxeqi7" path="res://Shaders/Effects/Teleport.gdshader" id="33_6bvd2"]
 [ext_resource type="SpriteFrames" uid="uid://5o2y1k5tq84j" path="res://Characters/Anny/AnnyAnimations.tres" id="34_l7sml"]
 [ext_resource type="Texture2D" uid="uid://dsnt4d5ecychh" path="res://Enemies/Bosses/CRB/CrazyFuckingRobot-0001.png" id="35_d0mfv"]
-
-[sub_resource type="Resource" id="Resource_vnbmw"]
-resource_local_to_scene = true
-script = ExtResource("3_b1y04")
-attribute_name = "health"
-default_value = 5.0
-
-[sub_resource type="Resource" id="Resource_6twy0"]
-resource_local_to_scene = true
-script = ExtResource("3_b1y04")
-attribute_name = "movement_speed"
-default_value = 32.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wm83"]
-shader = ExtResource("12_li6lq")
-shader_parameter/color = Color(0.462745, 0.270588, 0.137255, 1)
-shader_parameter/width = 0.8
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = false
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1rqn"]
-atlas = ExtResource("14_1y02r")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykt5y"]
-atlas = ExtResource("14_1y02r")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_supgr"]
-atlas = ExtResource("14_1y02r")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jio5"]
-atlas = ExtResource("14_1y02r")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fluff"]
-atlas = ExtResource("14_1y02r")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl8b1"]
-shader = ExtResource("12_li6lq")
-shader_parameter/color = Color(1, 0.254902, 0.643137, 1)
-shader_parameter/width = 10.0
-shader_parameter/pattern = 0
-shader_parameter/inside = true
-shader_parameter/add_margins = false
 
 [sub_resource type="Resource" id="Resource_c4jt6"]
 script = ExtResource("26_fwih3")
@@ -246,12 +197,14 @@ glow_hdr_threshold = 0.9
 y_sort_enabled = true
 
 [node name="WaveManager" type="Node2D" parent="."]
-process_mode = 4
 script = ExtResource("1_ekpmd")
 
 [node name="TimedWave" type="Node" parent="WaveManager"]
 script = ExtResource("2_m1wva")
-starting_attributes = Array[ExtResource("3_b1y04")]([SubResource("Resource_vnbmw"), SubResource("Resource_6twy0")])
+wave_duration = 1000.0
+max_enemies = 1000
+enemy_types = Array[ExtResource("3_ekpmd")]([ExtResource("4_m1wva")])
+health_attr = 2.0
 metadata/_custom_type_script = "uid://r80uhwxhwut2"
 
 [node name="TileMap" type="Node2D" parent="."]
@@ -316,25 +269,10 @@ tile_set = ExtResource("10_lhwgr")
 y_sort_enabled = true
 position = Vector2(249, 240)
 
-[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
+[node name="Spawner" type="Node2D" parent="."]
 unique_name_in_owner = true
-process_priority = -100
-process_physics_priority = -100
-z_index = 100
-material = SubResource("ShaderMaterial_6wm83")
 script = ExtResource("13_e1c8n")
-frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_ykt5y"), SubResource("AtlasTexture_supgr"), SubResource("AtlasTexture_3jio5"), SubResource("AtlasTexture_fluff")])
-image_offset = Vector2i(0, 16)
-image_change_offset = 0.1
-shared_area = NodePath("Area2D")
-enemiestospawn = 100000
-
-[node name="Area2D" type="Area2D" parent="Spawner"]
-process_physics_priority = 99
-material = SubResource("ShaderMaterial_pl8b1")
-collision_layer = 4
 collision_mask = 4
-monitoring = false
 
 [node name="shoe" parent="." instance=ExtResource("15_21ma6")]
 position = Vector2(-148, 73)
