@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://6xh333yffedr"]
+[gd_scene load_steps=35 format=4 uid="uid://6xh333yffedr"]
 
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="1_mh3cn"]
 [ext_resource type="Script" uid="uid://m2tsrj6pj1qr" path="res://Scenes/Worlds/TutorialStage/stage_tutorial_01.gd" id="1_rtor7"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://cc1wyxa1c1k1b" path="res://Scripts/Wave/EnemyCountWave.gd" id="5_6u3l6"]
 [ext_resource type="TileSet" uid="uid://cfdft8illjhgc" path="res://Data/Tilesets/Objects.tres" id="5_aykhs"]
 [ext_resource type="Script" uid="uid://cdsyndnmwtyev" path="res://Scripts/Enemy/basic_damageable.gd" id="5_jhv27"]
-[ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="5_n5glu"]
 [ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="6_1mat7"]
 [ext_resource type="TileSet" uid="uid://c3kjp06qcwel" path="res://Data/Tilesets/Bridges.tres" id="6_76upa"]
 [ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="6_jhv27"]
@@ -41,26 +40,6 @@ shader_parameter/width = 0.8
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = false
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1rqn"]
-atlas = ExtResource("5_n5glu")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykt5y"]
-atlas = ExtResource("5_n5glu")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_supgr"]
-atlas = ExtResource("5_n5glu")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jio5"]
-atlas = ExtResource("5_n5glu")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fluff"]
-atlas = ExtResource("5_n5glu")
-region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jpkkl"]
 shader = ExtResource("3_ftc4e")
@@ -106,18 +85,13 @@ camera_transition = SubResource("Resource_xquvr")
 outlook_camera = NodePath("Cutscenes/Outlook")
 quest_resource = ExtResource("3_nm4sg")
 
-[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("shared_area")]
+[node name="Spawner" type="Node2D" parent="."]
 unique_name_in_owner = true
 process_priority = -100
 process_physics_priority = -100
 z_index = 100
 material = SubResource("ShaderMaterial_qt82l")
 script = ExtResource("4_nm4sg")
-frames = Array[Texture2D]([SubResource("AtlasTexture_m1rqn"), SubResource("AtlasTexture_ykt5y"), SubResource("AtlasTexture_supgr"), SubResource("AtlasTexture_3jio5"), SubResource("AtlasTexture_fluff")])
-image_offset = Vector2i(0, 16)
-image_change_offset = 0.1
-shared_area = NodePath("Area2D")
-enemiestospawn = 100000
 
 [node name="Area2D" type="Area2D" parent="Spawner"]
 process_physics_priority = 99

@@ -21,13 +21,13 @@ func _ready():
 	circle_shape = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(circle_shape, 8)
 	renderer = EnemyRenderer.new(self)
-	for i in threadcount:
-		threads.append(Thread.new())
+	#for i in threadcount:
+	#	threads.append(Thread.new())
 
 func _physics_process(delta):
 	gothrough(delta)
 
-var threads: Array[Thread]
+#var threads: Array[Thread]
 var avoidthread: Thread
 var threadcount = 2
 var queue_for_deletion: Array = []
@@ -38,8 +38,9 @@ func spawn_enemy(enemy_type: EnemyArchetype, stat_holder: StatHolder):
 	return _new_spawn_enemy_with_type(spawndirection, enemy_type, stat_holder)
 
 var th = Thread.new()
-var mutex = Mutex.new()
 var custom_delta = 0.0
+
+var half_iter := false
 func gothrough(delta):
 	var playerpos = Global.player.global_position
 	var space = get_world_2d().direct_space_state
@@ -75,6 +76,9 @@ func gothrough(delta):
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	query.collision_mask = collision_mask
+	#var iterarr = enemy_objects.slice(0, enemy_objects.size() / 2.0)
+	#if half_iter:
+	#	iterarr = enemy_objects.slice(enemy_objects.size() / 2.0)
 	for enemy in enemy_objects:
 		query.transform = enemy.transform
 		var result = space.intersect_shape(query)
@@ -88,7 +92,7 @@ func gothrough(delta):
 						par.get_parent().enemy_hit(self, enemy, 0)
 					else:
 						print("No method found for enemy_hit")
-
+	half_iter = !half_iter
 
 func avoidance_calc():
 	for i in enemy_objects.size():

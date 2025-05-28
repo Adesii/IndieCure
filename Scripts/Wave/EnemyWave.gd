@@ -37,7 +37,7 @@ func handle_default_spawn(delta):
 
 func spawn_enemy():
 	if enemy_count < max_enemies:
-		var enemy_type = enemy_types[randi() % enemy_types.size()]
+		var enemy_type = enemy_types.pick_random()
 		var enemy = EnemySpawner.instance.spawn_enemy(enemy_type, statholder)
 		enemy.health.value_changing.connect(_on_enemy_health_changed)
 		enemy_count += 1

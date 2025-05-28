@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyArchetype" load_steps=3 format=3 uid="uid://cxex50lcu3bb"]
+
+[ext_resource type="Texture2D" uid="uid://dlu55dsvovogv" path="res://Characters/Anny/Textures/idle_right.png" id="1_t6yvt"]
+[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="2_fyt62"]
+
+[resource]
+script = ExtResource("2_fyt62")
+framesstrip = ExtResource("1_t6yvt")
+image_size = Vector2i(64, 64)
+image_offset = Vector2i(0, 0)
+default_flip_h = true
+metadata/_custom_type_script = "uid://bbcm8d4x3de2j"
