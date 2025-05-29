@@ -19,7 +19,7 @@ void fragment() {
 
 
 	uv.y = 1.0 - uv.y;
-	
+
 	COLOR = texture(TEXTURE, uv);
 }
 

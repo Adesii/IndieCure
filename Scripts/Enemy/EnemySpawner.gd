@@ -95,15 +95,10 @@ func gothrough(delta):
 	half_iter = !half_iter
 
 func avoidance_calc():
-	for i in enemy_objects.size():
-		if i >= enemy_objects.size():
-			break
-		var enemy = enemy_objects[i]
-		if enemy == null:
-			continue
+	for enemy in enemy_objects:
 		var collisiongroupresult = CollisionAvoidance.handle_collisiongroup(enemy, enemy.positionkey, 8)
 		if collisiongroupresult.cellfull:
-			enemy.avoidancevelocity = - enemy.velocity * 0.99
+			enemy.avoidancevelocity = - enemy.velocity * 1.02
 			continue
 		enemy.positionkey = collisiongroupresult.last_position_key
 		var collisionresult = CollisionAvoidance.avoid_others(enemy, enemy.positionkey, 32)

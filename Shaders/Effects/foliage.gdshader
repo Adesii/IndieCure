@@ -136,5 +136,5 @@ void fragment() {
 	else{
 		COLOR.a *= clamp(xfade+yfade*2.0,0.8,1.0);
 	}
-	
+
 }
