@@ -98,11 +98,13 @@ func avoidance_calc():
 	for enemy in enemy_objects:
 		var collisiongroupresult = CollisionAvoidance.handle_collisiongroup(enemy, enemy.positionkey, 8)
 		if collisiongroupresult.cellfull:
-			enemy.avoidancevelocity = - enemy.velocity * 1.02
+			enemy.variable_speed = move_toward(enemy.variable_speed, -0.1, 2)
 			continue
+		enemy.variable_speed = move_toward(enemy.variable_speed, 1, 2)
 		enemy.positionkey = collisiongroupresult.last_position_key
 		var collisionresult = CollisionAvoidance.avoid_others(enemy, enemy.positionkey, 32)
-		enemy.avoidancevelocity = collisionresult
+		#enemy.avoidancevelocity = collisionresult
+		enemy.avoidancevelocity = enemy.avoidancevelocity.move_toward(collisionresult, 5)
 
 func calc(delta, count, startoffset, playerpos, space):
 	renderer.reset_index()
@@ -110,14 +112,14 @@ func calc(delta, count, startoffset, playerpos, space):
 		if i + startoffset >= enemy_objects.size():
 			break
 		var enemy = enemy_objects[i + startoffset]
-		var movement_vector = playerpos - enemy.global_position
+		var movement_vector = (playerpos - enemy.global_position) # + (enemy.avoidancevelocity.normalized())
 		var offset: Vector2 = (movement_vector.normalized() * enemy.speed.get_value() * delta)
 
 		enemy.animation_lifetime += delta
 		
 		enemy.invulnerability -= delta
 
-		enemy.velocity = offset
+		enemy.velocity = enemy.velocity.move_toward(offset, 5 * delta)
 		if enemy.lastfliptime > 0:
 			enemy.lastfliptime -= delta
 		else:
@@ -127,7 +129,7 @@ func calc(delta, count, startoffset, playerpos, space):
 		if enemy.health.current_value <= 0:
 			queue_for_deletion.append(enemy)
 			continue
-		enemy.global_position += enemy.velocity + enemy.avoidancevelocity
+		enemy.global_position += (enemy.velocity + (enemy.avoidancevelocity * delta)) * enemy.variable_speed
 
 		if enemy.animation_lifetime >= 0.2:
 			enemy.image_offset_animation += 1

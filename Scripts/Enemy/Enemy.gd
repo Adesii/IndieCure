@@ -3,7 +3,8 @@ extends AnimatedMassObject
 
 var velocity: Vector2
 var avoidancevelocity: Vector2
-var positionkey: int
+var variable_speed: float = 1.0
+var positionkey: Vector2i
 
 var layer: String = "front"
 

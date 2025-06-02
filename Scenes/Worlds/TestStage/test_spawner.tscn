@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dainm42iw828w"]
+[gd_scene load_steps=12 format=3 uid="uid://dainm42iw828w"]
 
 [ext_resource type="PackedScene" uid="uid://co8sc7kh0j36g" path="res://Scenes/Worlds/template_stage.tscn" id="1_20rvb"]
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="2_r4h72"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://t4p4j40s4wss" path="res://Data/Enemies/EA_Toffee.tres" id="5_rr0g4"]
 [ext_resource type="PackedScene" uid="uid://birva82iuyap4" path="res://Inventory/Items/test_shoe/shoe.tscn" id="6_eynhn"]
 [ext_resource type="Resource" uid="uid://c8m0c7pkib65w" path="res://Data/Enemies/EA_Cimp.tres" id="6_jhi1f"]
-[ext_resource type="Resource" uid="uid://cxex50lcu3bb" path="res://Data/Enemies/EA_Fish.tres" id="7_c3ody"]
 [ext_resource type="Resource" uid="uid://d0j2y528e240y" path="res://Inventory/Weapons/Thighble/Tighble.tres" id="7_rr0g4"]
 [ext_resource type="Resource" uid="uid://che604nsso76u" path="res://Inventory/Weapons/4/4.tres" id="8_03rpw"]
 [ext_resource type="Resource" uid="uid://b14hdt4forppw" path="res://Characters/Anny/Weapons/Guitar/Guitar.tres" id="9_jhi1f"]
@@ -24,7 +23,7 @@ script = ExtResource("3_46xb2")
 wave_duration = 1000.0
 spawn_rate = 0.01
 max_enemies = 1000
-enemy_types = Array[ExtResource("4_eynhn")]([ExtResource("5_rr0g4"), ExtResource("6_jhi1f"), ExtResource("7_c3ody")])
+enemy_types = Array[ExtResource("4_eynhn")]([ExtResource("5_rr0g4"), ExtResource("6_jhi1f")])
 health_attr = 2.0
 metadata/_custom_type_script = "uid://r80uhwxhwut2"
 
