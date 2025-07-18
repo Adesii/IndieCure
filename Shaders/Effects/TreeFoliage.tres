@@ -10,9 +10,9 @@ frequency = 0.0343
 fractal_lacunarity = 1.835
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l33ow"]
-seamless = true
-color_ramp = SubResource("Gradient_q1e1y")
 noise = SubResource("FastNoiseLite_pc5cj")
+color_ramp = SubResource("Gradient_q1e1y")
+seamless = true
 
 [resource]
 shader = ExtResource("1_4723m")

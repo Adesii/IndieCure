@@ -148,6 +148,8 @@ enum FollowLockAxis {
 			FollowMode.PATH:
 				if is_instance_valid(follow_path):
 					_should_follow_checker()
+				else:
+					_should_follow = false
 			FollowMode.GROUP:
 				_follow_targets_size_check()
 			_:
@@ -190,7 +192,7 @@ enum FollowLockAxis {
 
 ## Applies a zoom level to the [param PhantomCamera2D], which effectively
 ## overrides the [param zoom] property of the [param Camera2D] node.
-@export var zoom: Vector2 = Vector2.ONE:
+@export_custom(PROPERTY_HINT_LINK, "") var zoom: Vector2 = Vector2.ONE:
 	set = set_zoom,
 	get = get_zoom
 
@@ -271,7 +273,8 @@ enum FollowLockAxis {
 ## The damping amount can be specified in the individual axis.[br][br]
 ## [b]Lower value[/b] = faster / sharper camera movement.[br]
 ## [b]Higher value[/b] = slower / heavier camera movement.
-@export var follow_damping_value: Vector2 = Vector2(0.1, 0.1):
+@export_custom(PROPERTY_HINT_LINK, "")
+var follow_damping_value: Vector2 = Vector2(0.1, 0.1):
 	set = set_follow_damping_value,
 	get = get_follow_damping_value
 
@@ -282,6 +285,29 @@ enum FollowLockAxis {
 	get = get_lock_axis
 var _follow_axis_is_locked: bool = false
 var _follow_axis_lock_value: Vector2 = Vector2.ZERO
+
+## Makes the [param PhantomCamera2D] copy the rotation of its [member follow_target][br]
+## This behavior is only available when [member follow_mode] is set and only has one [member follow_target].[br][br]
+## [b]Important:[/b] Be sure to disable [member Camera2D.ignore_rotation] on the [Camera2D] node to enable this feature.
+@export var rotate_with_target: bool = false:
+	set = set_rotate_with_target,
+	get = get_rotate_with_target
+var _should_rotate_with_target: bool = false
+
+## Offsets the rotation when [member rotate_with_target] is enabled.
+@export_range(-360, 360, 0.001, "radians_as_degrees") var rotation_offset: float = 0:
+	set = set_rotation_offset,
+	get = get_rotation_offset
+
+## Enables rotational damping when [member rotate_with_target] is enabled.
+@export var rotation_damping: bool = false:
+	set = set_rotation_damping,
+	get = get_rotation_damping
+
+## Defines the damping amount for the [member rotate_with_target].
+@export_range(0, 1) var rotation_damping_value: float = 0.1:
+	set = set_rotation_damping_value,
+	get = get_rotation_damping_value
 
 
 @export_subgroup("Follow Group")
@@ -445,7 +471,8 @@ var _has_multiple_follow_targets: bool = false
 var _follow_targets_single_target_index: int = 0
 var _follow_targets: Array[Node2D] = []
 
-var _follow_velocity_ref: Vector2 = Vector2.ZERO # Stores and applies the velocity of the movement
+var _follow_velocity_ref: Vector2 = Vector2.ZERO # Stores and applies the velocity of the follow movement
+var _rotation_velocity_ref: float = 0 # Stores and applies the velocity of the rotation movement
 
 var _has_follow_path: bool = false
 
@@ -465,7 +492,7 @@ var _tile_size_perspective_scaler: Vector2 = Vector2.ONE
 
 var _limit_inactive_pcam: bool = false
 
-var _target_transform: Transform2D = Transform2D()
+var _follow_target_position: Vector2 = Vector2.ZERO
 
 var _transform_output: Transform2D = Transform2D()
 var _transform_noise: Transform2D = Transform2D()
@@ -517,7 +544,8 @@ func _validate_property(property: Dictionary) -> void:
 			"follow_offset", \
 			"follow_damping", \
 			"follow_damping_value", \
-			"follow_axis_lock":
+			"follow_axis_lock", \
+			"rotate_with_target":
 				property.usage = PROPERTY_USAGE_NO_EDITOR
 
 	if property.name == "follow_offset":
@@ -525,8 +553,6 @@ func _validate_property(property: Dictionary) -> void:
 		follow_mode == FollowMode.GLUED:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
-	if property.name == "follow_damping_value" and not follow_damping:
-		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 	###############
 	## Follow Group
@@ -553,6 +579,26 @@ func _validate_property(property: Dictionary) -> void:
 			"dead_zone_height", \
 			"show_viewfinder_in_play":
 				property.usage = PROPERTY_USAGE_NO_EDITOR
+
+
+	#####################
+	## Rotate With Target
+	#####################
+	if property.name == "rotate_with_target" and follow_mode == FollowMode.GROUP:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+
+
+	if not rotate_with_target or follow_mode == FollowMode.GROUP:
+		match property.name:
+			"rotation_damping", \
+			"rotation_offset", \
+			"rotation_damping_value":
+				property.usage = PROPERTY_USAGE_NO_EDITOR
+
+	if property.name == "rotation_damping_value":
+		if not rotation_damping:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+
 
 	#######
 	## Zoom
@@ -583,11 +629,19 @@ func _enter_tree() -> void:
 
 	priority_override = false
 
-	_should_follow_checker()
-	if follow_mode == FollowMode.GROUP:
-		_follow_targets_size_check()
-	elif follow_mode == FollowMode.NONE:
-		_is_parents_physics()
+	match follow_mode:
+		FollowMode.NONE:
+			_is_parents_physics()
+		FollowMode.PATH:
+			if is_instance_valid(follow_path):
+				_should_follow_checker()
+			else:
+				_should_follow = false
+		FollowMode.GROUP:
+			_follow_targets_size_check()
+			_should_follow_checker()
+		_:
+			_should_follow_checker()
 
 	if not visibility_changed.is_connected(_check_visibility):
 		visibility_changed.connect(_check_visibility)
@@ -670,16 +724,16 @@ func _limit_checker() -> void:
 
 func _follow(delta: float) -> void:
 	_set_follow_position()
-	_interpolate_position(_target_transform.origin, delta)
+	_interpolate_position(_follow_target_position, delta)
 
 
 func _set_follow_position() -> void:
 	match follow_mode:
 		FollowMode.GLUED:
-			_target_transform.origin = follow_target.global_position
+			_follow_target_position = follow_target.global_position
 
 		FollowMode.SIMPLE:
-			_target_transform.origin = _get_target_position_offset()
+			_follow_target_position = _get_target_position_offset()
 
 		FollowMode.GROUP:
 			if _has_multiple_follow_targets:
@@ -698,14 +752,14 @@ func _set_follow_position() -> void:
 						zoom = clamp(_phantom_camera_manager.screen_size.x / rect.size.x, auto_zoom_min, auto_zoom_max) * Vector2.ONE
 					else:
 						zoom = clamp(_phantom_camera_manager.screen_size.y / rect.size.y, auto_zoom_min, auto_zoom_max) * Vector2.ONE
-				_target_transform.origin = rect.get_center() + follow_offset
+				_follow_target_position = rect.get_center() + follow_offset
 			else:
-				_target_transform.origin = follow_targets[_follow_targets_single_target_index].global_position + follow_offset
+				_follow_target_position = follow_targets[_follow_targets_single_target_index].global_position + follow_offset
 
 		FollowMode.PATH:
 			var path_position: Vector2 = follow_path.global_position
 
-			_target_transform.origin = \
+			_follow_target_position = \
 			follow_path.curve.get_closest_point(
 				_get_target_position_offset() - path_position
 			) + path_position
@@ -713,7 +767,7 @@ func _set_follow_position() -> void:
 		FollowMode.FRAMED:
 			if not Engine.is_editor_hint():
 				if not _is_active:
-					_target_transform.origin = _get_target_position_offset()
+					_follow_target_position = _get_target_position_offset()
 				else:
 					viewport_position = (get_follow_target().get_global_transform_with_canvas().get_origin() + follow_offset) / get_viewport_rect().size
 					var framed_side_offset: Vector2 = _get_framed_side_offset()
@@ -724,47 +778,65 @@ func _set_follow_position() -> void:
 
 						if dead_zone_width == 0 || dead_zone_height == 0:
 							if dead_zone_width == 0 && dead_zone_height != 0:
-								_target_transform.origin = _get_target_position_offset()
+								_follow_target_position = _get_target_position_offset()
 							elif dead_zone_width != 0 && dead_zone_height == 0:
 								glo_pos = _get_target_position_offset()
 								glo_pos.x += target_position.x - global_position.x
-								_target_transform.origin = glo_pos
+								_follow_target_position = glo_pos
 							else:
-								_target_transform.origin = _get_target_position_offset()
+								_follow_target_position = _get_target_position_offset()
 
 						# If a horizontal dead zone is reached
 						if framed_side_offset.x != 0 and framed_side_offset.y == 0:
-							_target_transform.origin.y = _transform_output.origin.y
-							_target_transform.origin.x = target_position.x
+							_follow_target_position.y = _transform_output.origin.y
+							_follow_target_position.x = target_position.x
 							_follow_framed_offset.y = global_position.y - _get_target_position_offset().y
 							dead_zone_reached.emit(Vector2(framed_side_offset.x, 0))
 							# If a vertical dead zone is reached
 						elif framed_side_offset.x == 0 and framed_side_offset.y != 0:
-							_target_transform.origin.x = _transform_output.origin.x
-							_target_transform.origin.y = target_position.y
+							_follow_target_position.x = _transform_output.origin.x
+							_follow_target_position.y = target_position.y
 							_follow_framed_offset.x = global_position.x - _get_target_position_offset().x
 							dead_zone_reached.emit(Vector2(0, framed_side_offset.y))
 						# If a deadzone corner is reached
 						else:
-							_target_transform.origin = target_position
+							_follow_target_position = target_position
 							dead_zone_reached.emit(Vector2(framed_side_offset.x, framed_side_offset.y))
 					else:
 						_follow_framed_offset = _transform_output.origin - _get_target_position_offset()
 						return
 			else:
-				_target_transform.origin = _get_target_position_offset()
+				_follow_target_position = _get_target_position_offset()
 
 
 func _set_follow_velocity(index: int, value: float):
 	_follow_velocity_ref[index] = value
 
+func _set_rotation_velocity(index: int, value: float):
+	_rotation_velocity_ref = value
 
 func _interpolate_position(target_position: Vector2, delta: float) -> void:
+	var output_rotation: float = global_transform.get_rotation()
+	if rotate_with_target:
+		if rotation_damping and not Engine.is_editor_hint():
+			output_rotation = _smooth_damp(
+				follow_target.get_rotation() + rotation_offset,
+				_transform_output.get_rotation(),
+				0,
+				_rotation_velocity_ref,
+				_set_rotation_velocity,
+				rotation_damping_value,
+				delta
+			)
+		else:
+			output_rotation = follow_target.get_rotation() + rotation_offset
+
 	if _limit_inactive_pcam and not _tween_skip:
 		target_position = _set_limit_clamp_position(target_position)
 
 	global_position = target_position
-	if follow_damping:
+
+	if follow_damping and not Engine.is_editor_hint():
 		var output_position: Vector2
 		for i in 2:
 			output_position[i] = _smooth_damp(
@@ -776,9 +848,9 @@ func _interpolate_position(target_position: Vector2, delta: float) -> void:
 				follow_damping_value[i],
 				delta
 			)
-		_transform_output = Transform2D(global_rotation, output_position)
+		_transform_output = Transform2D(output_rotation, output_position)
 	else:
-		_transform_output = Transform2D(global_rotation, target_position)
+		_transform_output = Transform2D(output_rotation, target_position)
 
 
 func _smooth_damp(target_axis: float, self_axis: float, index: int, current_velocity: float, set_velocity: Callable, damping_time: float, delta: float) -> float:
@@ -1087,31 +1159,39 @@ func emit_noise(value: Transform2D) -> void:
 func teleport_position() -> void:
 	_follow_velocity_ref = Vector2.ZERO
 	_set_follow_position()
-	_transform_output.origin = _target_transform.origin
+	_transform_output.origin = _follow_target_position
 	_phantom_camera_manager.pcam_teleport.emit(self)
+
+
+# TODO: Enum link does link to anywhere is being tracked in: https://github.com/godotengine/godot/issues/106828
+## Returns true if this [param PhantomCamera2D]'s [member follow_mode] is not set to [enum FollowMode]
+## and has a valid [member follow_target].
+func is_following() -> bool:
+	return _should_follow
 
 #endregion
 
 
 #region Setter & Getter Functions
 
-## Assigns new Zoom value.
+## Assigns new [member zoom] value.
 func set_zoom(value: Vector2) -> void:
 	zoom = value
 	queue_redraw()
 
-## Gets current Zoom value.
+## Gets current [member zoom] value.
 func get_zoom() -> Vector2:
 	return zoom
 
 
-## Assigns new Priority value.
+## Assigns new [member priority] value.
 func set_priority(value: int) -> void:
-	priority = abs(value)
+	priority = maxi(0, value)
+	if not is_node_ready(): return
 	if not Engine.has_singleton(_constants.PCAM_MANAGER_NODE_NAME): return
 	Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME).pcam_priority_changed.emit(self)
 
-## Gets current Priority value.
+## Gets current [member priority] value.
 func get_priority() -> int:
 	return priority
 
@@ -1342,6 +1422,7 @@ func set_follow_damping_value(value: Vector2) -> void:
 func get_follow_damping_value() -> Vector2:
 	return follow_damping_value
 
+
 ## Assigns a new [member follow_axis] member. Value is based on [enum FollowLockAxis] enum.
 func set_lock_axis(value: FollowLockAxis) -> void:
 	follow_axis_lock = value
@@ -1366,6 +1447,44 @@ func set_lock_axis(value: FollowLockAxis) -> void:
 ## Gets the current [member follow_axis_lock] value. Value is based on [enum FollowLockAxis] enum.
 func get_lock_axis() -> FollowLockAxis:
 	return follow_axis_lock
+
+
+## Enables or disables [member rotate_with_target].
+func set_rotate_with_target(value: bool) -> void:
+	rotate_with_target = value
+	notify_property_list_changed()
+
+## Gets the current [member rotate_with_target] value.
+func get_rotate_with_target() -> bool:
+	return rotate_with_target
+
+
+## Sets the [member rotation_offset].
+func set_rotation_offset(value: float) -> void:
+	rotation_offset = value
+
+## Gets the current [member rotation_offset] value.
+func get_rotation_offset() -> float:
+	return rotation_offset
+
+
+## Enables or disables [member rotation_damping].
+func set_rotation_damping(value: bool) -> void:
+	rotation_damping = value
+	notify_property_list_changed()
+
+## Gets the [member rotation_damping] value.
+func get_rotation_damping() -> bool:
+	return rotation_damping
+
+
+## Set the [member rotation_damping_value].
+func set_rotation_damping_value(value: float) -> void:
+	rotation_damping_value = value
+
+## Gets the [member rotation_damping_value] value.
+func get_rotation_damping_value() -> float:
+	return rotation_damping_value
 
 
 ## Enables or disables [member snap_to_pixel].
