@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dpbos4yne4kny" path="res://Inventory/Scripts/inventoryItem.gd" id="1_kh0kg"]
 [ext_resource type="Texture2D" uid="uid://e55sptn8kdu3" path="res://Inventory/Items/test_shoe/shoe.png" id="2_5g5cn"]
 [ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="2_jt3xm"]
-[ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_opplc"]
+[ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_nohn4"]
 
 [sub_resource type="Resource" id="Resource_nohn4"]
 resource_local_to_scene = true
@@ -16,6 +16,5 @@ modifier = 1
 script = ExtResource("1_kh0kg")
 name = "shoe"
 texture = ExtResource("2_5g5cn")
-stats = Array[ExtResource("3_opplc")]([])
 stat_upgrades = Array[ExtResource("2_jt3xm")]([SubResource("Resource_nohn4")])
 type = 2

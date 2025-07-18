@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://orwo705hx202" path="res://Inventory/Weapons/4/4.tscn" id="1_lyy0u"]
 [ext_resource type="Script" uid="uid://dpbos4yne4kny" path="res://Inventory/Scripts/inventoryItem.gd" id="2_qpeg8"]
-[ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="3_i6ock"]
+[ext_resource type="Script" uid="uid://dya7twpb8fl8q" path="res://Scripts/GAS/statupgraderes.gd" id="3_s6mek"]
 [ext_resource type="Script" uid="uid://d4c3fgeut1ogj" path="res://Scripts/GAS/Attributes/AttributePair.gd" id="3_telsj"]
 
 [sub_resource type="Resource" id="Resource_s6mek"]
@@ -52,8 +52,8 @@ fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7jsau"]
 width = 64
 height = 64
-color_ramp = SubResource("Gradient_s6mek")
 noise = SubResource("FastNoiseLite_1xu4v")
+color_ramp = SubResource("Gradient_s6mek")
 
 [resource]
 script = ExtResource("2_qpeg8")
@@ -61,5 +61,4 @@ name = "Spill"
 texture = SubResource("NoiseTexture2D_7jsau")
 scene = ExtResource("1_lyy0u")
 stats = Array[ExtResource("3_telsj")]([SubResource("Resource_s6mek"), SubResource("Resource_1xu4v"), SubResource("Resource_3lmvp"), SubResource("Resource_u0jwl"), SubResource("Resource_72ta0"), SubResource("Resource_udl8j")])
-stat_upgrades = Array[ExtResource("3_i6ock")]([])
 type = 1

@@ -24,46 +24,30 @@
 [sub_resource type="Resource" id="Resource_tbksy"]
 script = ExtResource("4_47e11")
 axis = 1
-joy_index = -1
 
 [sub_resource type="Resource" id="Resource_vedpc"]
 script = ExtResource("6_ybjmr")
-order = 0
 
 [sub_resource type="Resource" id="Resource_47e11"]
 script = ExtResource("7_4c7te")
 lower_threshold = 0.05
-upper_threshold = 1.0
 
 [sub_resource type="Resource" id="Resource_8kv1v"]
 script = ExtResource("3_4c7te")
-override_action_settings = false
-is_remappable = false
-display_name = ""
-display_category = ""
 input = SubResource("Resource_tbksy")
 modifiers = Array[ExtResource("5_6lmaw")]([SubResource("Resource_vedpc"), SubResource("Resource_47e11")])
-triggers = Array[ExtResource("7_7miia")]([])
 
 [sub_resource type="Resource" id="Resource_4c7te"]
 script = ExtResource("4_47e11")
-axis = 0
-joy_index = -1
 
 [sub_resource type="Resource" id="Resource_6lmaw"]
 script = ExtResource("7_4c7te")
 lower_threshold = 0.05
-upper_threshold = 1.0
 
 [sub_resource type="Resource" id="Resource_t48xi"]
 script = ExtResource("3_4c7te")
-override_action_settings = false
-is_remappable = false
-display_name = ""
-display_category = ""
 input = SubResource("Resource_4c7te")
 modifiers = Array[ExtResource("5_6lmaw")]([SubResource("Resource_6lmaw")])
-triggers = Array[ExtResource("7_7miia")]([])
 
 [sub_resource type="Resource" id="Resource_uudck"]
 script = ExtResource("1_7u43p")
@@ -72,21 +56,13 @@ input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_8kv1v"), S
 
 [sub_resource type="Resource" id="Resource_77kgw"]
 script = ExtResource("9_ddpgs")
-button = 0
-joy_index = -1
 
 [sub_resource type="Resource" id="Resource_0ebfv"]
 script = ExtResource("10_06p7k")
-actuation_threshold = 0.5
 
 [sub_resource type="Resource" id="Resource_rifx2"]
 script = ExtResource("3_4c7te")
-override_action_settings = false
-is_remappable = false
-display_name = ""
-display_category = ""
 input = SubResource("Resource_77kgw")
-modifiers = Array[ExtResource("5_6lmaw")]([])
 triggers = Array[ExtResource("7_7miia")]([SubResource("Resource_0ebfv")])
 
 [sub_resource type="Resource" id="Resource_45vkt"]
@@ -98,12 +74,9 @@ input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_rifx2")])
 script = ExtResource("13_ybjmr")
 x = 2
 y = 3
-joy_index = -1
 
 [sub_resource type="Resource" id="Resource_11ppj"]
 script = ExtResource("7_4c7te")
-lower_threshold = 0.2
-upper_threshold = 1.0
 
 [sub_resource type="Resource" id="Resource_5gvgm"]
 script = ExtResource("18_06p7k")
@@ -111,21 +84,13 @@ vertical = true
 
 [sub_resource type="Resource" id="Resource_e4p06"]
 script = ExtResource("14_7miia")
-apply_clamp = true
 input_min = -1.0
-input_max = 1.0
-output_min = 0.0
-output_max = 1.0
-x = true
-y = true
-z = true
 
 [sub_resource type="Resource" id="Resource_4greo"]
 script = ExtResource("15_0nuev")
 
 [sub_resource type="Resource" id="Resource_xvrk5"]
 script = ExtResource("14_ybjmr")
-relative_input = false
 
 [sub_resource type="Resource" id="Resource_mwunj"]
 script = ExtResource("17_ddpgs")
@@ -133,13 +98,8 @@ value = Vector3(0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_ddpgs"]
 script = ExtResource("3_4c7te")
-override_action_settings = false
-is_remappable = false
-display_name = ""
-display_category = ""
 input = SubResource("Resource_7miia")
 modifiers = Array[ExtResource("5_6lmaw")]([SubResource("Resource_11ppj"), SubResource("Resource_5gvgm"), SubResource("Resource_e4p06"), SubResource("Resource_4greo"), SubResource("Resource_xvrk5"), SubResource("Resource_mwunj")])
-triggers = Array[ExtResource("7_7miia")]([])
 
 [sub_resource type="Resource" id="Resource_06p7k"]
 script = ExtResource("1_7u43p")
@@ -149,17 +109,10 @@ input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_ddpgs")])
 [sub_resource type="Resource" id="Resource_3rc5a"]
 script = ExtResource("9_ddpgs")
 button = 1
-joy_index = -1
 
 [sub_resource type="Resource" id="Resource_hm74y"]
 script = ExtResource("3_4c7te")
-override_action_settings = false
-is_remappable = false
-display_name = ""
-display_category = ""
 input = SubResource("Resource_3rc5a")
-modifiers = Array[ExtResource("5_6lmaw")]([])
-triggers = Array[ExtResource("7_7miia")]([])
 
 [sub_resource type="Resource" id="Resource_4guba"]
 script = ExtResource("1_7u43p")
@@ -168,6 +121,5 @@ input_mappings = Array[ExtResource("3_4c7te")]([SubResource("Resource_hm74y")])
 
 [resource]
 script = ExtResource("2_0asnl")
-display_name = ""
 mappings = Array[ExtResource("1_7u43p")]([SubResource("Resource_uudck"), SubResource("Resource_45vkt"), SubResource("Resource_06p7k"), SubResource("Resource_4guba")])
 metadata/_custom_type_script = "uid://ub34q1ap6yqr"

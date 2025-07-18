@@ -11,17 +11,13 @@
 [sub_resource type="Resource" id="Resource_n0ba6"]
 script = ExtResource("2_um84g")
 name = "Tutorial"
-description = ""
 id = "0wpOk-sFx5"
-optional = false
 graph_editor_position = Vector2(160, 80)
 graph_editor_size = Vector2(280, 516)
 
 [sub_resource type="Resource" id="Resource_um84g"]
 script = ExtResource("3_2x2h1")
-description = ""
 id = "zNWqu53xfA"
-optional = false
 graph_editor_position = Vector2(880, 80)
 graph_editor_size = Vector2(468, 541)
 
@@ -29,14 +25,12 @@ graph_editor_size = Vector2(468, 541)
 script = ExtResource("1_n0ba6")
 from = SubResource("Resource_n0ba6")
 to = SubResource("Resource_um84g")
-edge_type = 0
 
 [sub_resource type="Resource" id="Resource_87olq"]
 script = ExtResource("4_87olq")
 type = "var:=="
 key = "wave_completed"
 id = "1388dz-tlA"
-optional = false
 graph_editor_position = Vector2(480, 200)
 graph_editor_size = Vector2(377, 309)
 metadata/value = true
@@ -50,7 +44,6 @@ edge_type = 1
 [sub_resource type="Resource" id="Resource_qrr16"]
 script = ExtResource("5_vq1ax")
 id = "KHB4HXOdQN"
-optional = false
 graph_editor_position = Vector2(1420, 80)
 graph_editor_size = Vector2(141, 78)
 
@@ -58,7 +51,6 @@ graph_editor_size = Vector2(141, 78)
 script = ExtResource("1_n0ba6")
 from = SubResource("Resource_um84g")
 to = SubResource("Resource_qrr16")
-edge_type = 0
 
 [resource]
 script = ExtResource("7_l4v64")
