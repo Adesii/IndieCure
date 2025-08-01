@@ -135,4 +135,10 @@ func setup_debug_console():
 	LimboConsole.register_command(func(scname): create_portal_to(scname), "portal", "Creates a portal that can be entered to a stage")
 	LimboConsole.add_argument_autocomplete_source("portal", 0,
 		func(): return scene_directory.directoryMap.keys())
+	LimboConsole.register_command(func(speed):
+		if speed >= 0.1:
+			Engine.time_scale = speed
+		else:
+			Engine.time_scale = 1
+		, "timescale", "Sets the game time scale")
 #endregion
