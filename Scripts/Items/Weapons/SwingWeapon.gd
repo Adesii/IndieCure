@@ -13,8 +13,9 @@ func _on_attack():
 		return
 	attacking = true
 	var swings = Stat.Get(self, "attack_amount") as int
+	already_dealt_damage.clear()
 	for i in range(swings):
-		overlapping_areas = {}
+		already_dealt_damage.clear()
 		#ternary operator to determine direction of swing (even or odd) (1 or -1)
 		swing_sprite.visible = true
 		swing_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
@@ -35,8 +36,10 @@ func _on_attack():
 
 		swing_sprite.visible = false
 		swing_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+		already_dealt_damage.clear()
 
 		await Global.create_timer(Stat.Get(self, "attack_speed") / 2).timeout
+		
 
 	swing_sprite.visible = false
 	swing_sprite.rotation = deg_to_rad(-50)
@@ -52,13 +55,18 @@ func _ready():
 	_on_attack()
 #region Damage Calculations
 var overlapping_areas: Dictionary = {}
+var already_dealt_damage: Dictionary = {}
 func _physics_process(_delta):
 	#only attack each area_shape once for each attack
 	for area in overlapping_areas.keys():
 		for shape in overlapping_areas[area]:
-			Stat.Damage(self, area, {"enemy": shape})
-	for area in overlapping_areas.keys():
-		overlapping_areas[area] = []
+			if not already_dealt_damage.has(shape):
+				Stat.Damage(self, area, {"enemy": shape})
+				if not already_dealt_damage.has(area):
+					already_dealt_damage.set(area, [])
+				if not already_dealt_damage[area].has(shape):
+					already_dealt_damage[area].append(shape)
+	overlapping_areas.clear()
 
 
 func enemy_hit(area, enemy, area_shape_index: int):
