@@ -34,14 +34,7 @@ func create_damage_number() -> Node2D:
 	else:
 		var old_damage_number = damage_numbers_pool[latest_id]
 		latest_id = (latest_id + 1) % max_amount
-		if old_damage_number.tween:
-			old_damage_number.tween.kill()
-			old_damage_number.tween.stop()
-			old_damage_number.tween = null
-		if old_damage_number.movement_tween:
-			old_damage_number.movement_tween.kill()
-			old_damage_number.movement_tween.stop()
-			old_damage_number.movement_tween = null
+		old_damage_number.reset()
 		return old_damage_number
 
 func remove(damage_number: Node2D):

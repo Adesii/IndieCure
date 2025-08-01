@@ -11,5 +11,5 @@ func _ready():
 	await Global.create_timer(Stat.Get(self, "attack_duration")).timeout
 	queue_free()
 
-func _get_stat(attribute_name, subobj=null):
+func _get_stat(attribute_name, subobj = null):
 	return Stat.Get(parent_weapon, attribute_name, subobj)

@@ -1,8 +1,6 @@
 extends Node2D
 class_name EnemySpawner
 
-static var instance: EnemySpawner
-
 @export var active_spawner := false
 ## Collision mask to use for the ray cast.
 @export_flags_2d_physics var collision_mask: int
@@ -17,7 +15,7 @@ var renderer: EnemyRenderer
 var circle_shape
 
 func _ready():
-	instance = self
+	Global.spawner = self
 	circle_shape = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(circle_shape, 8)
 	renderer = EnemyRenderer.new(self)

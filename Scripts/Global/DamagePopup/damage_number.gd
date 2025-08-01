@@ -59,11 +59,13 @@ func start():
 	await tween.finished
 	await movement_tween.finished
 
-	tween = null
-	movement_tween = null
-
 	remove()
 
+func reset():
+	tween.kill()
+	tween = create_tween()
+	movement_tween.kill()
+	movement_tween = create_tween()
 var arc_direction: int = 1
 var arc_amount = 0.0
 

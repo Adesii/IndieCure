@@ -18,6 +18,8 @@ var current_scene = null
 var main_camera: Camera2D
 var phantom_host: PhantomCameraHost
 
+var spawner: EnemySpawner
+
 var attack_direction = Vector2(1, 0)
 
 
