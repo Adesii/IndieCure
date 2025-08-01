@@ -4,8 +4,11 @@ instance uniform bool fliph = false;
 instance uniform int framecount = 4;
 instance uniform int frame = 0;
 
+varying vec4 modulate;
+
 void vertex() {
 	// Called for every vertex the material is visible on.
+	modulate = COLOR;
 }
 
 void fragment() {
@@ -19,8 +22,9 @@ void fragment() {
 
 
 	uv.y = 1.0 - uv.y;
+	vec4 sample = texture(TEXTURE, uv);
 
-	COLOR = texture(TEXTURE, uv);
+	COLOR = mix(sample,vec4(1,1,1,sample.a),modulate.r -1.0);
 }
 
 //void light() {

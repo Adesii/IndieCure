@@ -24,7 +24,7 @@ wave_duration = 1000.0
 spawn_rate = 0.01
 max_enemies = 1000
 enemy_types = Array[ExtResource("4_eynhn")]([ExtResource("5_rr0g4"), ExtResource("6_jhi1f")])
-health_attr = 2.0
+health_attr = 20.0
 metadata/_custom_type_script = "uid://r80uhwxhwut2"
 
 [node name="Spawner" parent="." index="2"]

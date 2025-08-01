@@ -69,7 +69,7 @@ func update_instance(index: int, enemy: AnimatedMassObject):
 	mi_shadow.set_instance_shader_parameter("fliph", enemy.flip_h if !archetype.default_flip_h else not enemy.flip_h) # TODO: Figure out how to pass this data efficiently
 	mi_shadow.set_instance_shader_parameter("framecount", enemy.archetype.framesstrip.get_width() / enemy.archetype.image_size.x) # TODO: Figure out how to pass this data efficiently
 	mi_shadow.set_instance_shader_parameter("frame", enemy.image_offset_animation) # TODO: Figure out how to pass this data efficiently
-	mi_shadow.modulate = enemy.modulate
+	#mi_shadow.modulate = enemy.modulate
 
 
 	if !mi.visible:
