@@ -30,13 +30,14 @@ func _physics_process(delta: float) -> void:
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	query.collision_mask = collision_mask
-	var result = space.intersect_shape(query, 1)
+	query.exclude = [get_rid()]
+	var result := space.intersect_shape(query)
 	if result:
 		for r in result:
 			if r.collider is Area2D:
 				var par = r.collider.get_parent()
 				if par.has_method("enemy_hit"):
-					par.enemy_hit(self, null, 0)
+					par.enemy_hit(get_parent(), null, 0)
 				else:
 					push_warning("Warning: No method 'enemy_hit' found on collider parent. ", r.collider.get_parent(), " is not a valid weapon or has the wrong area designated to it")
 		

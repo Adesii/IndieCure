@@ -48,7 +48,7 @@ shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = false
 
-[sub_resource type="Resource" id="Resource_bq1lq"]
+[sub_resource type="Resource" id="Resource_ftc4e"]
 resource_local_to_scene = true
 script = ExtResource("6_jhv27")
 attribute_name = "health"
@@ -151,21 +151,23 @@ texture = ExtResource("11_qt82l")
 offset = Vector2(0, -53.185)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Map/Polygon2D"]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Polygon2D/StaticBody2D"]
 polygon = PackedVector2Array(775, 11, 749, -15, 746, -47, 772, -60, 772, -107, 811, -117, 843, -31, 835, 4)
 
-[node name="Area2D" type="Area2D" parent="Map/Polygon2D" node_paths=PackedStringArray("node_to_destroy")]
+[node name="BoulderHitArea" type="Area2D" parent="Map/Polygon2D" node_paths=PackedStringArray("node_to_destroy")]
 position = Vector2(781, -51)
 collision_layer = 4
 collision_mask = 4
+monitoring = false
+monitorable = false
 script = ExtResource("5_jhv27")
 node_to_destroy = NodePath("..")
-health_attribute = SubResource("Resource_bq1lq")
+health_attribute = SubResource("Resource_ftc4e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Polygon2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Polygon2D/BoulderHitArea"]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_jhv27")
 
