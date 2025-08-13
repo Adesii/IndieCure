@@ -1,6 +1,6 @@
 [remap]
 
-importer="aseprite_wizard.plugin"
+importer="aseprite_wizard.plugin.spriteframes"
 type="SpriteFrames"
 uid="uid://bpguxm0nouw8w"
 path="res://.godot/imported/NeuroSama.aseprite-aaaa139603e1435a9047909e1373cb5c.res"
@@ -12,7 +12,10 @@ dest_files=["res://.godot/imported/NeuroSama.aseprite-aaaa139603e1435a9047909e13
 
 [params]
 
-split_layers=false
-exclude_layers_pattern="ref"
-only_visible_layers=false
-sheet_type="Packed"
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=true
+sheet/sheet_type="packed"
+sheet/sheet_columns=12
+sheet/frame_padding=0
+sheet/scale=1
+animation/round_fps=true

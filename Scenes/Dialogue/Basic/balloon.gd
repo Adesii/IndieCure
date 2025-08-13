@@ -146,13 +146,13 @@ func next(next_id: String) -> void:
 
 func load_character_portrait(character: String) -> Texture2D:
 	if character == "" or character == "???":
-		return preload("uid://cv5rwhfuodu13")
-	var char_path = "res://Characters/Portraits/%s.png" % [character.to_lower()]
+		return preload("uid://ctq0n21b6fyps")
+	var char_path = "res://Characters/Portraits/%s.aseprite" % [character.to_lower()]
 	if FileAccess.file_exists(char_path):
 		return load(char_path)
 	else:
 		printerr("Character portrait not found for " + character)
-		return preload("uid://cv5rwhfuodu13")
+		return preload("uid://ctq0n21b6fyps")
 
 #region Signals
 

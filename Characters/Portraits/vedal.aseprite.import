@@ -1,7 +1,7 @@
 [remap]
 
 importer="aseprite_wizard.plugin.static-texture"
-type="AtlasTexture"
+type="PortableCompressedTexture2D"
 uid="uid://cwkttuwf486vg"
 path="res://.godot/imported/vedal.aseprite-dff414c1e40bffb856517935c7a0acbc.res"
 
@@ -12,5 +12,9 @@ dest_files=["res://.godot/imported/vedal.aseprite-dff414c1e40bffb856517935c7a0ac
 
 [params]
 
-exclude_layers_pattern=""
-only_visible_layers=false
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
+first_frame_only=true
+sheet/sheet_type="packed"
+sheet/sheet_columns=12
+sheet/scale=1

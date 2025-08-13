@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsfs8yseoxnrd"]
+[gd_scene load_steps=10 format=3 uid="uid://dsfs8yseoxnrd"]
 
 [ext_resource type="Script" uid="uid://c3ouwiy23d5sd" path="res://Scenes/Dialogue/Basic/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -48,8 +48,17 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h0v4h"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_right = 0.0
+content_margin_bottom = 4.0
+color = Color(0.601223, 0.601223, 0.6012228, 1)
+thickness = 2
+vertical = true
+
 [node name="ExampleBalloon" type="CanvasLayer"]
-layer = 100
+layer = 200
 script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="."]
@@ -95,13 +104,15 @@ layout_mode = 2
 [node name="CharacterPortrait" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer/Panel"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
+layout_mode = 0
 offset_right = 200.0
 offset_bottom = 210.0
 
 [node name="HSeparator" type="VSeparator" parent="Balloon/Panel/Dialogue/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_constants/separation = 45
+theme_override_styles/separator = SubResource("StyleBoxLine_h0v4h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue/HBoxContainer"]
 layout_mode = 2
