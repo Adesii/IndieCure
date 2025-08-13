@@ -3,7 +3,7 @@ extends "../static_texture_import_plugin_base.gd"
 
 ##
 ## Static texture importer (Split).
-## Imports first frame from Aseprite file as texture in multiple resources
+## Imports Aseprite layer as texture (either first frame or full spritesheet)
 ##
 
 func _get_importer_name():
@@ -37,7 +37,9 @@ func _import(source_file, save_path, options, platform_variants, gen_files):
 		"layer": i_data.layer,
 		"output_filename": '',
 		"output_folder": source_path,
-		"first_frame_only": true,
+		"first_frame_only": i_data.import_options.get("first_frame_only", false),
+		"trim_cels": i_data.import_options.get("trim_cels", false),
+		"scale": i_data.import_options.get("scale"),
 	}
 
 	var result = _generate_texture(absolute_source_file, aseprite_opts)

@@ -1,6 +1,8 @@
 @tool
 extends "../base_sprite_resource_creator.gd"
 
+const wizard_config = preload("../../config/wizard_config.gd")
+
 var _DEFAULT_ANIMATION_LIBRARY = "" # GLOBAL
 
 func create_animations(target_node: Node, player: AnimationPlayer,  aseprite_files: Dictionary, options: Dictionary):
@@ -27,22 +29,30 @@ func _import(target_node: Node, player: AnimationPlayer, aseprite_files: Diction
 	else:
 		target_node.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 
-	_setup_texture(target_node, sprite_sheet, content, context)
-	var result = _configure_animations(target_node, player, content, context, options.keep_anim_length)
+	var texture := _load_texture(sprite_sheet, options.get("should_create_portable_texture", false))
+
+	_setup_texture(target_node, texture, content, context, options.slice != "")
+	var result = _configure_animations(target_node, player, content, context, options)
 	if result != result_code.SUCCESS:
 		return result
 
 	return _cleanup_animations(target_node, player, content, options)
 
 
-func _load_texture(sprite_sheet: String) -> Texture2D:
+func _load_texture(sprite_sheet: String, use_portable_tex: bool) -> Texture2D:
+	if use_portable_tex:
+		return _load_compressed_texture(sprite_sheet)
+
 	var texture = ResourceLoader.load(sprite_sheet, 'Image', ResourceLoader.CACHE_MODE_IGNORE)
 	texture.take_over_path(sprite_sheet)
 	return texture
 
 
-func _configure_animations(target_node: Node, player: AnimationPlayer, content: Dictionary, context: Dictionary, keep_anim_length: bool):
+func _configure_animations(target_node: Node, player: AnimationPlayer, content: Dictionary, context: Dictionary, options: Dictionary):
 	var frames = _aseprite.get_content_frames(content)
+	var slice_rect = null
+	if options.slice != "":
+		options["slice_rect"] = _aseprite.get_slice_rect(content, options.slice)
 
 	if not player.has_animation_library(_DEFAULT_ANIMATION_LIBRARY):
 		player.add_animation_library(_DEFAULT_ANIMATION_LIBRARY, AnimationLibrary.new())
@@ -51,18 +61,20 @@ func _configure_animations(target_node: Node, player: AnimationPlayer, content: 
 		var result = result_code.SUCCESS
 		for tag in content.meta.frameTags:
 			var selected_frames = frames.slice(tag.from, tag.to + 1)
-			result = _add_animation_frames(target_node, player, tag.name, selected_frames, context, keep_anim_length, tag.direction, int(tag.get("repeat", -1)))
+			result = _add_animation_frames(target_node, player, tag.name, selected_frames, context, options, tag.direction, int(tag.get("repeat", -1)))
 			if result != result_code.SUCCESS:
 				break
 		return result
 	else:
-		return _add_animation_frames(target_node, player, "default", frames, context, keep_anim_length)
+		return _add_animation_frames(target_node, player, "default", frames, context, options)
 
 
-func _add_animation_frames(target_node: Node, player: AnimationPlayer, anim_name: String, frames: Array, context: Dictionary, keep_anim_length: bool, direction = 'forward', repeat = -1):
+func _add_animation_frames(target_node: Node, player: AnimationPlayer, anim_name: String, frames: Array, context: Dictionary, options: Dictionary, direction = 'forward', repeat = -1):
 	var animation_name = anim_name
 	var library_name = _DEFAULT_ANIMATION_LIBRARY
 	var is_loopable = _config.is_default_animation_loop_enabled()
+	var slice_rect = options.get("slice_rect")
+	var is_importing_slice: bool = slice_rect != null
 
 	var anim_tokens := anim_name.split("/")
 
@@ -95,8 +107,9 @@ func _add_animation_frames(target_node: Node, player: AnimationPlayer, anim_name
 	)
 
 	var animation = player.get_animation(full_name)
-	_create_meta_tracks(target_node, player, animation)
-	var frame_track = _get_property_track_path(player, target_node, _get_frame_property())
+	_cleanup_tracks(target_node, player, animation)
+
+	var frame_track = _get_property_track_path(player, target_node, _get_frame_property(is_importing_slice))
 	var frame_track_index = _create_track(target_node, animation, frame_track)
 
 	if direction == "reverse" or direction == "pingpong_reverse":
@@ -112,9 +125,16 @@ func _add_animation_frames(target_node: Node, player: AnimationPlayer, anim_name
 
 	for i in range(repetition):
 		for frame in frames:
-			var frame_key = _get_frame_key(target_node, frame, context)
+			var frame_key = _get_frame_key(target_node, frame, context, slice_rect)
 			animation.track_insert_key(frame_track_index, animation_length, frame_key)
-			animation_length += frame.duration / 1000
+
+			var duration = frame.duration
+			if options.get("convert_to_fps"):
+				var old_ms = options.get("convert_ms_field")
+				var target_fps = options.get("convert_fps_field")
+				duration = (frame.duration / old_ms) * (1000 / target_fps)
+
+			animation_length += duration / 1000
 
 		# Godot 4 has an Animation.LOOP_PINGPONG mode, however it does not
 		# behave like in Aseprite, so I'm keeping the custom implementation
@@ -126,14 +146,14 @@ func _add_animation_frames(target_node: Node, player: AnimationPlayer, anim_name
 			working_frames.reverse()
 
 			for frame in working_frames:
-				var frame_key = _get_frame_key(target_node, frame, context)
+				var frame_key = _get_frame_key(target_node, frame, context, slice_rect)
 				animation.track_insert_key(frame_track_index, animation_length, frame_key)
 				animation_length += frame.duration / 1000
 
 	# if keep_anim_length is enabled only adjust length if
 	# - there aren't other tracks besides metas and frame
 	# - the current animation is shorter than new one
-	if not keep_anim_length or (animation.get_track_count() == (_get_meta_prop_names().size() + 1) or animation.length < animation_length):
+	if not options.keep_anim_length or (animation.get_track_count() == 1 or animation.length < animation_length):
 		animation.length = animation_length
 
 	animation.loop_mode = Animation.LOOP_LINEAR if is_loopable else Animation.LOOP_NONE
@@ -148,7 +168,7 @@ func _validate_animation_name(name: String) -> bool:
 	return not _INVALID_TOKENS.any(func(token: String): return token in name)
 
 
-func _create_track(target_node: Node, animation: Animation, track: String):
+func _create_track(target_node: Node, animation: Animation, track: String) -> int:
 	var track_index = animation.find_track(track, Animation.TYPE_VALUE)
 
 	if track_index != -1:
@@ -171,84 +191,84 @@ func _cleanup_animations(target_node: Node, player: AnimationPlayer, content: Di
 	if not (content.meta.has("frameTags") and content.meta.frameTags.size() > 0):
 		return result_code.SUCCESS
 
-	_remove_unused_animations(content, player)
+	_remove_unused_animations(target_node, player, content)
 
-	if options.get("cleanup_hide_unused_nodes", false):
-		_hide_unused_nodes(target_node, player, content)
+	_hide_unused_nodes(player, content)
 
 	return result_code.SUCCESS
 
-func _remove_unused_animations(content: Dictionary, player: AnimationPlayer):
-	pass # FIXME it's not removing unused animations anymore. Sample impl bellow
-#	var tags = ["RESET"]
-#	for t in content.meta.frameTags:
-#		var a = t.name
-#		if a.begins_with(_config.get_animation_loop_exception_prefix()):
-#			a = a.substr(_config.get_animation_loop_exception_prefix().length())
-#		tags.push_back(a)
 
-#   var track = _get_frame_track_path(player, sprite)
-#	for a in player.get_animation_list():
-#		if tags.has(a):
-#			continue
-#
-#		var animation = player.get_animation(a)
-#		if animation.get_track_count() != 1:
-#			var t = animation.find_track(track)
-#			if t != -1:
-#				animation.remove_track(t)
-#			continue
-#
-#		if animation.find_track(track) != -1:
-#			player.remove_animation(a)
+## remove tracks and animations for nodes without animation tag
+func _remove_unused_animations(target_node: Node, player: AnimationPlayer, content: Dictionary):
+	var tags: Array[String] = []
+	for t in content.meta.frameTags:
+		tags.push_back(_animation_name_without_loop_prefix(t.name))
+
+	for a in player.get_animation_list():
+		if tags.has(a):
+			continue
+		var animation := player.get_animation(a)
+
+		for p in _get_props_to_cleanup():
+			var track = _get_property_track_path(player, target_node, p)
+			var track_index = animation.find_track(track, Animation.TYPE_VALUE)
+			if track_index != -1:
+				animation.remove_track(track_index)
 
 
-func _hide_unused_nodes(target_node: Node, player: AnimationPlayer, content: Dictionary):
+		if animation.get_track_count() == 0:
+			var p = _get_animation_data(a)
+			player.get_animation_library(p.library).remove_animation(p.animation)
+
+
+## control visibility track when node has "hide unused" option available
+func _hide_unused_nodes(player: AnimationPlayer, content: Dictionary):
 	var root_node := player.get_node(player.root_node)
 	var all_animations := player.get_animation_list()
-	var all_sprite_nodes := []
+	var all_sprite_nodes: Array[Node] = []
 	var animation_sprites := {}
 
 	for a in all_animations:
 		var animation := player.get_animation(a)
-		var sprite_nodes := []
+		var sprite_nodes: Array[Node] = []
 
+		# get all supported nodes in animation
 		for track_idx in animation.get_track_count():
 			var raw_path := animation.track_get_path(track_idx)
-
-			if raw_path.get_subname(0) == "visible":
-				continue
 
 			var path := _remove_properties_from_path(raw_path)
 			var sprite_node := root_node.get_node(path)
 
-			if !(sprite_node is Sprite2D || sprite_node is Sprite3D):
+			if not _is_supported_node(sprite_node):
 				continue
 
-			if sprite_nodes.has(sprite_node):
+			# ignore nodes with no wizard config or not supposed to be hidden
+			if not wizard_config.has_config(sprite_node) or not wizard_config.load_config(sprite_node).get("set_vis_track", false):
 				continue
-			sprite_nodes.append(sprite_node)
+
+			if not sprite_nodes.has(sprite_node):
+				sprite_nodes.append(sprite_node)
+				if not all_sprite_nodes.has(sprite_node):
+					all_sprite_nodes.append(sprite_node)
 
 		animation_sprites[animation] = sprite_nodes
-		for sn in sprite_nodes:
-			if all_sprite_nodes.has(sn):
-				continue
-			all_sprite_nodes.append(sn)
 
-	for animation in animation_sprites:
-		var sprite_nodes : Array = animation_sprites[animation]
+	for animation: Animation in animation_sprites:
+		var sprite_nodes : Array[Node] = animation_sprites[animation]
 		for node in all_sprite_nodes:
-			if sprite_nodes.has(node):
-				continue
-			var visible_track = _get_property_track_path(player, node, "visible")
-			if animation.find_track(visible_track) != -1:
-				continue
-			var visible_track_index = _create_track(node, animation, visible_track)
-			animation.track_insert_key(visible_track_index, 0, false)
+			# node should be visible if they are in the list and have tracks available
+			var node_visibility: bool = sprite_nodes.has(node) and _relevant_track_count(node, player, animation) > 0
+			var visible_track := _get_property_track_path(player, node, "visible")
+			var visible_track_index := _create_track(node, animation, visible_track)
+			animation.track_insert_key(visible_track_index, 0, node_visibility)
 
 
 func list_layers(file: String, only_visibles = false) -> Array:
 	return _aseprite.list_layers(file, only_visibles)
+
+
+func list_slices(file: String) -> Array:
+	return _aseprite.list_slices(file)
 
 
 func _remove_properties_from_path(path: NodePath) -> NodePath:
@@ -262,25 +282,64 @@ func _remove_properties_from_path(path: NodePath) -> NodePath:
 	return string_path as NodePath
 
 
-func _create_meta_tracks(target_node: Node, player: AnimationPlayer, animation: Animation):
-	for prop in _get_meta_prop_names():
-		var track = _get_property_track_path(player, target_node, prop)
-		var track_index = _create_track(target_node, animation, track)
-		animation.track_insert_key(track_index, 0, true if prop == "visible" else target_node.get(prop))
+func _cleanup_tracks(target_node: Node, player: AnimationPlayer, animation: Animation):
+	for track_key in ["texture", "hframes", "vframes", "region_rect", "frame"]:
+		var track = _get_property_track_path(player, target_node, track_key)
+		var track_index = animation.find_track(track, Animation.TYPE_VALUE)
+		if track_index != -1:
+			animation.remove_track(track_index)
 
 
-func _setup_texture(target_node: Node, sprite_sheet: String, content: Dictionary, context: Dictionary):
+func _setup_texture(target_node: Node, texture: Texture2D, content: Dictionary, context: Dictionary, is_importing_slice: bool):
 	push_error("_setup_texture not implemented!")
 
 
-func _get_frame_property() -> String:
+func _get_frame_property(is_importing_slice: bool) -> String:
 	push_error("_get_frame_property not implemented!")
 	return ""
 
 
-func _get_frame_key(target_node: Node, frame: Dictionary, context: Dictionary):
+func _get_frame_key(target_node: Node, frame: Dictionary, context: Dictionary, slice_info: Variant):
 	push_error("_get_frame_key not implemented!")
 
 
-func _get_meta_prop_names():
-	push_error("_get_meta_prop_names not implemented!")
+func _get_props_to_cleanup() -> Array[String]:
+	push_error("_props_to_cleanup not implemented!")
+	return []
+
+
+func _is_supported_node(target_node: Node):
+	return target_node is Sprite2D or target_node is Sprite3D or target_node is TextureRect
+
+
+func _get_animation_data(animaton_name: String) -> Dictionary:
+	var parts = animaton_name.split("/")
+
+	if parts.size() == 2:
+		return {
+			"library": parts[0],
+			"animation": parts[1],
+		}
+	return {
+		"library": _DEFAULT_ANIMATION_LIBRARY,
+		"animation": parts[0],
+	}
+
+
+func _relevant_track_count(target_node: Node, player: AnimationPlayer, animation: Animation) -> int:
+	var track_count := 0
+	for p in _get_props_to_cleanup():
+		if p == "visible":
+			continue
+		var track = _get_property_track_path(player, target_node, p)
+		var track_index = animation.find_track(track, Animation.TYPE_VALUE)
+		if track_index != -1:
+			track_count += 1
+
+	return track_count
+
+
+func _animation_name_without_loop_prefix(animation_name: String) -> String:
+	if animation_name.begins_with(_config.get_animation_loop_exception_prefix()):
+		return animation_name.substr(_config.get_animation_loop_exception_prefix().length())
+	return animation_name

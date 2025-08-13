@@ -11,6 +11,7 @@ var target_node: Node
 var file_system: EditorFileSystem = EditorInterface.get_resource_filesystem()
 
 var _slice: String = ""
+var _source_uid: int = -1
 var _source: String = ""
 var _file_dialog_aseprite: EditorFileDialog
 var _output_folder_dialog: EditorFileDialog
@@ -50,6 +51,9 @@ var _interface_section_state
 
 @onready var _embed_label := $dock_fields/VBoxContainer/extra/sections/output/section_content/content/embed/Label as Label
 @onready var _embed_field :=  $dock_fields/VBoxContainer/extra/sections/output/section_content/content/embed/CheckBox as CheckBox
+
+@onready var _scale_field :=  $dock_fields/VBoxContainer/extra/sections/output/section_content/content/scale/SpinBox as SpinBox
+
 
 @onready var _import_button := $dock_fields/VBoxContainer/import as Button
 
@@ -168,7 +172,7 @@ func _setup_config():
 
 func _load_common_config(cfg):
 	if cfg.has("source"):
-		_set_source(cfg.source)
+		_set_source(cfg.source, cfg.get("source_uid", -1))
 
 	# keeping this to be backwards compatible
 	if cfg.get("layer", "") != "":
@@ -194,8 +198,9 @@ func _load_common_config(cfg):
 	_out_filename_field.text = cfg.get("o_name", "")
 	_visible_layers_field.button_pressed = cfg.get("only_visible", false)
 	_ex_pattern_field.text = cfg.get("o_ex_p", "")
-	
+
 	_embed_field.button_pressed = cfg.get("embed_tex", false)
+	_scale_field.value = float(cfg.get("scale", 1))
 
 	_load_config(cfg)
 	_handle_embed_visibility()
@@ -208,7 +213,20 @@ func _load_common_default_config():
 	_load_default_config()
 
 
-func _set_source(source):
+func _set_source(source, uid: int = -1):
+	if uid == -1 or not ResourceUID.has_id(uid):
+		if ResourceLoader.exists(source):
+			_source_uid = ResourceLoader.get_resource_uid(source)
+	else:
+		_source_uid = uid
+		var source_path = ResourceUID.get_id_path(uid)
+		_set_source_fields(source_path)
+		return
+
+	_set_source_fields(source)
+
+
+func _set_source_fields(source):
 	_source = source
 	_source_field.text = _source
 	_source_field.tooltip_text = _source
@@ -264,7 +282,7 @@ func _setup_field_listeners():
 	_out_folder_field.pressed.connect(_on_out_folder_pressed)
 
 	_import_button.pressed.connect(_on_import_pressed)
-	
+
 	_embed_field.pressed.connect(_on_embed_button_pressed)
 
 
@@ -337,6 +355,7 @@ func _get_current_config():
 
 	var cfg := {
 		"source": _source,
+		"source_uid": _source_uid,
 		"layers": _layer_field.get_selected_layers(),
 		"slice": _slice,
 		"o_folder": _output_folder,
@@ -344,6 +363,7 @@ func _get_current_config():
 		"only_visible": _visible_layers_field.button_pressed,
 		"o_ex_p": _ex_pattern_field.text,
 		"embed_tex": _embed_field.button_pressed,
+		"scale": str(_scale_field.value),
 	}
 
 	for c in child_config:
@@ -369,6 +389,7 @@ func _get_import_options(default_folder: String):
 		"output_filename": _out_filename_field.text,
 		"layers": _layer_field.get_selected_layers(),
 		"embed_tex": _embed_field.button_pressed,
+		"scale": str(_scale_field.value),
 	}
 
 

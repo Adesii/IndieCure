@@ -16,8 +16,12 @@ func _get_priority():
 
 func _get_import_options(_path, _i):
 	return [
+		{"name": "first_frame_only", "default_value": true},
 		{"name": "layer/exclude_layers_pattern", "default_value": config.get_default_exclusion_pattern()},
 		{"name": "layer/only_visible_layers",    "default_value": false},
+		{"name": "layer/merge_duplicate_layers", "default_value": false},
+		{"name": "sheet/trim_cels", "default_value": false},
+		{"name": "sheet/scale", "default_value": 1 },
 		{
 			"name": "output/layers_resources_folder",
 			"default_value": "",
@@ -31,4 +35,8 @@ func _layer_extension() -> String:
 
 
 func _get_base_import_options(options: Dictionary):
-	return  {}
+	return  {
+		"trim_cels": options["sheet/trim_cels"],
+		"first_frame_only": options["first_frame_only"],
+		"scale": str(options["sheet/scale"]),
+	}
