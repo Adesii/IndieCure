@@ -84,8 +84,10 @@ unique_name_in_owner = true
 process_priority = -100
 process_physics_priority = -100
 z_index = 100
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_qt82l")
 script = ExtResource("4_nm4sg")
+collision_mask = 4
 
 [node name="Area2D" type="Area2D" parent="Spawner"]
 process_physics_priority = 99
