@@ -73,6 +73,9 @@ func _on_mouse_exited():
 
 
 func _show_popup_menu():
+	# https://github.com/godotneers/G.U.I.D.E/issues/88
+	# We use DisplayServer.mouse_get_position() to get the position of the mouse
+	# in a way that works with multiple monitors.
 	_popup_menu.popup(Rect2(get_global_mouse_position(), Vector2.ZERO))
 
 

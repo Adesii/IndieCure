@@ -3,6 +3,9 @@
 class_name GUIDEModifierNormalize
 extends GUIDEModifier
 
+func is_same_as(other:GUIDEModifier) -> bool:
+	return other is GUIDEModifierNormalize
+
 func _modify_input(input:Vector3, delta:float, value_type:GUIDEAction.GUIDEActionValueType) -> Vector3:
 	if not input.is_finite():
 		return Vector3.INF

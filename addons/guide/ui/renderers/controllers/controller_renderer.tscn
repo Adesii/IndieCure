@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsaylcb5ixjxk"]
 
-[ext_resource type="Script" uid="uid://36m8lqkgha6a" path="res://addons/guide/ui/renderers/controllers/controller_renderer.gd" id="1_yt13e"]
+[ext_resource type="Script" path="res://addons/guide/ui/renderers/controllers/controller_renderer.gd" id="1_yt13e"]
 [ext_resource type="Texture2D" uid="uid://bmgxqbypegjxh" path="res://addons/guide/ui/renderers/textures/arrow_horizontal.svg" id="2_nv2ob"]
 [ext_resource type="Texture2D" uid="uid://bu5nlug6uf03w" path="res://addons/guide/ui/renderers/textures/arrow_vertical.svg" id="3_ejti1"]
 
 [node name="ControllerRenderer" type="MarginContainer"]
+process_mode = 3
 offset_right = 100.0
 offset_bottom = 100.0
 size_flags_horizontal = 0
@@ -112,6 +113,11 @@ layout_mode = 2
 stretch_mode = 5
 
 [node name="Back" type="TextureRect" parent="HBoxContainer/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+stretch_mode = 5
+
+[node name="TouchPad" type="TextureRect" parent="HBoxContainer/Controls"]
 unique_name_in_owner = true
 layout_mode = 2
 stretch_mode = 5
