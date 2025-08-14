@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterSpeechSound" load_steps=3 format=3 uid="uid://ch5hkjfjwleud"]
+
+[ext_resource type="AudioStream" uid="uid://gdhw7h3m7ii3" path="res://Sound/base_speech.wav" id="1_a748c"]
+[ext_resource type="Script" uid="uid://cfan2l3xnqqmu" path="res://Scripts/Characters/SpeechSound.gd" id="1_fwf40"]
+
+[resource]
+script = ExtResource("1_fwf40")
+pitch_base = 1.0999999999912689
+metadata/_custom_type_script = "uid://cfan2l3xnqqmu"

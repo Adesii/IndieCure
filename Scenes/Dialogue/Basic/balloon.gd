@@ -39,6 +39,8 @@ var dialogue_line: DialogueLine:
 ## A cooldown timer for delaying the balloon hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
 
+var current_line_character: String = ""
+
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
 
@@ -53,6 +55,9 @@ var mutation_cooldown: Timer = Timer.new()
 
 @onready var character_portrait: TextureRect = %CharacterPortrait
 
+## The audio player for the balloon speech
+@onready var audio_player: AudioStreamPlayer = $Balloon/Speech
+
 
 func _exit_tree() -> void:
 	InputHandler.start_gameplay()
@@ -61,6 +66,7 @@ func _ready() -> void:
 	InputHandler.start_cutscene()
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
+	dialogue_label.spoke.connect(on_spoke)
 
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
@@ -110,7 +116,9 @@ func apply_dialogue_line() -> void:
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
 
-	character_portrait.texture = load_character_portrait(dialogue_line.character)
+	current_line_character = dialogue_line.character
+
+	character_portrait.texture = load_character_portrait(current_line_character)
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
@@ -203,3 +211,21 @@ var auto_skip_enabled: bool = false
 func toggle_auto_skip():
 	auto_skip_enabled = not auto_skip_enabled
 	next(dialogue_line.next_id)
+
+var speech_time = 0.0
+var last_speech_time = 0
+
+func on_spoke(letter: String, letter_index: int, speed: float):
+	last_speech_time = Time.get_ticks_msec()
+	var default_speech: CharacterSpeechSound = preload("uid://onqxvdjjysaj")
+	if current_line_character != "" or current_line_character != "???":
+		var char_path = "res://Characters/Portraits/%s_speech.tres" % [current_line_character.to_lower()]
+		if FileAccess.file_exists(char_path):
+			default_speech = load(char_path)
+
+	if last_speech_time - speech_time < default_speech.time_between_sound_ms:
+		return
+	speech_time = last_speech_time
+	audio_player.stream = default_speech.base_sound
+	audio_player.pitch_scale = default_speech.pitch_base + randf_range(-default_speech.pitch_variance, default_speech.pitch_variance)
+	audio_player.play()

@@ -171,6 +171,8 @@ offset_bottom = 1059.0
 layout_mode = 2
 text = "SKIP"
 
+[node name="Speech" type="AudioStreamPlayer" parent="Balloon"]
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
 [connection signal="pressed" from="Balloon/MarginContainer/CheckButton" to="." method="toggle_auto_skip"]
