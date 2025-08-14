@@ -23,9 +23,13 @@ const EXTRA_CSV_LOCALES = "editor/translations/extra_csv_locales"
 const INCLUDE_CHARACTER_IN_TRANSLATION_EXPORTS = "editor/translations/include_character_in_translation_exports"
 ## Includes a "_notes" column in CSV exports
 const INCLUDE_NOTES_IN_TRANSLATION_EXPORTS = "editor/translations/include_notes_in_translation_exports"
+## Automatically update the project's list of translatable files when dialogue files are added or removed
+const UPDATE_POT_FILES_AUTOMATICALLY = "editor/translations/update_pot_files_automatically"
 
 ## A custom test scene to use when testing dialogue.
 const CUSTOM_TEST_SCENE_PATH = "editor/advanced/custom_test_scene_path"
+## Extra script files to include in the auto-complete-able list
+const EXTRA_AUTO_COMPLETE_SCRIPT_SOURCES = "editor/advanced/extra_auto_complete_script_sources"
 
 ## The custom balloon for this game.
 const BALLOON_PATH = "runtime/balloon_path"
@@ -38,9 +42,12 @@ const WARN_ABOUT_METHOD_PROPERTY_OR_SIGNAL_NAME_CONFLICTS = "runtime/warn_about_
 const IGNORE_MISSING_STATE_VALUES = "runtime/advanced/ignore_missing_state_values"
 ## Whether or not the project is utilising dotnet.
 const USES_DOTNET = "runtime/advanced/uses_dotnet"
+## Maximum length of text prefix in auto-generated IDs
+const AUTO_GENERATED_ID_PREFIX_LENGTH = "editor/translations/auto_generated_id_prefix_length"
+## Use only UUID for auto-generated IDs without text prefix
+const USE_UUID_ONLY_FOR_IDS = "editor/translations/use_uuid_only_for_ids"
 
-
-const SETTINGS_CONFIGURATION = {
+static var SETTINGS_CONFIGURATION = {
 	WRAP_LONG_LINES: {
 		value = false,
 		type = TYPE_BOOL,
@@ -68,6 +75,8 @@ const SETTINGS_CONFIGURATION = {
 	EXTRA_CSV_LOCALES: {
 		value = [],
 		type = TYPE_PACKED_STRING_ARRAY,
+		hint = PROPERTY_HINT_TYPE_STRING,
+		hint_string = "%d:" % [TYPE_STRING],
 		is_advanced = true
 	},
 	INCLUDE_CHARACTER_IN_TRANSLATION_EXPORTS: {
@@ -80,11 +89,23 @@ const SETTINGS_CONFIGURATION = {
 		type = TYPE_BOOL,
 		is_advanced = true
 	},
+	UPDATE_POT_FILES_AUTOMATICALLY: {
+		value = true,
+		type = TYPE_BOOL,
+		is_advanced = true
+	},
 
 	CUSTOM_TEST_SCENE_PATH: {
 		value = preload("./test_scene.tscn").resource_path,
 		type = TYPE_STRING,
 		hint = PROPERTY_HINT_FILE,
+		is_advanced = true
+	},
+	EXTRA_AUTO_COMPLETE_SCRIPT_SOURCES: {
+		value = [],
+		type = TYPE_PACKED_STRING_ARRAY,
+		hint = PROPERTY_HINT_TYPE_STRING,
+		hint_string = "%d/%d:*.*" % [TYPE_STRING, PROPERTY_HINT_FILE],
 		is_advanced = true
 	},
 
@@ -96,6 +117,8 @@ const SETTINGS_CONFIGURATION = {
 	STATE_AUTOLOAD_SHORTCUTS: {
 		value = [],
 		type = TYPE_PACKED_STRING_ARRAY,
+		hint = PROPERTY_HINT_TYPE_STRING,
+		hint_string = "%d:" % [TYPE_STRING],
 	},
 	WARN_ABOUT_METHOD_PROPERTY_OR_SIGNAL_NAME_CONFLICTS: {
 		value = false,
@@ -112,7 +135,19 @@ const SETTINGS_CONFIGURATION = {
 		value = false,
 		type = TYPE_BOOL,
 		is_hidden = true
-	}
+	},
+	AUTO_GENERATED_ID_PREFIX_LENGTH: {
+		value = 30,
+		type = TYPE_INT,
+		hint = PROPERTY_HINT_RANGE,
+		hint_string = "0,100,1",
+		is_advanced = true
+	},
+	USE_UUID_ONLY_FOR_IDS: {
+		value = false,
+		type = TYPE_BOOL,
+		is_advanced = true
+	},
 }
 
 

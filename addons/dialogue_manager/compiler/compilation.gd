@@ -186,7 +186,7 @@ func import_content(path: String, prefix: String, imported_line_map: Dictionary,
 					else:
 						content[i] = "%s=>< %s/%s" % [line.split("=>< ")[0], title_hash, bits[1]]
 
-				elif not jump in ["END", "END!"]:
+				elif not jump in ["END", "END!"] and not jump.begins_with("{{"):
 					content[i] = "%s=>< %s/%s" % [line.split("=>< ")[0], str(path.hash()), jump]
 
 			elif "=> " in line:
@@ -199,7 +199,7 @@ func import_content(path: String, prefix: String, imported_line_map: Dictionary,
 					else:
 						content[i] = "%s=> %s/%s" % [line.split("=> ")[0], title_hash, bits[1]]
 
-				elif not jump in ["END", "END!"]:
+				elif not jump in ["END", "END!"] and not jump.begins_with("{{"):
 					content[i] = "%s=> %s/%s" % [line.split("=> ")[0], str(path.hash()), jump]
 
 		imported_paths.append(path)
@@ -486,6 +486,7 @@ func parse_match_line(tree_line: DMTreeLine, line: DMCompiledLine, siblings: Arr
 	# Check that all children are when or else.
 	for child in tree_line.children:
 		if child.type == DMConstants.TYPE_WHEN: continue
+		if child.type == DMConstants.TYPE_UNKNOWN: continue
 		if child.type == DMConstants.TYPE_CONDITION and child.text.begins_with("else"): continue
 
 		result = add_error(child.line_number, child.indent, DMConstants.ERR_EXPECTED_WHEN_OR_ELSE)
