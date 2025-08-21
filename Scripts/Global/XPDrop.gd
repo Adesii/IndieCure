@@ -20,20 +20,25 @@ var max_xp_per_drop = 1000
 
 var enemy_drop_amount = 10;
 
-@onready var renderer: MassRenderer = MassRenderer.new()
+var drops: Array[xp_drop]
+
+var renderer: MultiRenderer
 
 var circle_shape
 
 func _ready():
 	circle_shape = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(circle_shape, 4)
+
+	xp_texture = preload("uid://cav63ncdxq45b")
+	renderer = MultiRenderer.new(self)
 	pass # Replace with function body.
 
 func _physics_process(_delta):
-	pass
+	renderer.reset_index()
 	var offset = xp_texture.get_size() / 2
 	var space = get_world_2d().direct_space_state
-	for drop in renderer._objects:
+	for drop in drops:
 		if drop == null:
 			continue
 		
@@ -57,17 +62,17 @@ func _physics_process(_delta):
 
 			if drop.pickup_time > 3.0:
 				dead_xp.append(picked_xp(drop))
-				continue
+				#continue
 
 			# lerp the position using the pickup time and easeInCirc function
 			drop.global_position = drop_movement + drop.global_position
 			if drop.global_position.distance_to(Global.player.global_position) < 5:
 				dead_xp.append(picked_xp(drop))
-				continue
+				#continue
 
-		drop.texture = xp_texture
-		var drawrect = Rect2(0, 0, xp_texture.get_width(), xp_texture.get_height())
-		drawrect.position = - offset
+		#drop.archetype.framesstrip = xp_texture
+		var drawrect = Rect2(0, 0, drop.archetype.framesstrip.get_width(), drop.archetype.framesstrip.get_height())
+		drop.position = - offset
 
 		drop.texture_rect = drawrect
 
@@ -75,6 +80,7 @@ func _physics_process(_delta):
 		drawrect.position.y -= drawrect.size.y + 2
 		drop.shadow_texture_rect = drawrect
 		drop.shadow_texture_rect.position.y += offset.y * 2
+		renderer.update_enemy(drop)
 		if drop.picked_up:
 			continue
 
@@ -92,11 +98,10 @@ func _physics_process(_delta):
 					drop.pickup_time = randf_range(0, 0.01)
 
 	for xp in dead_xp:
-		renderer.remove_object(xp)
+		renderer.remove_item(xp.archetype)
+		drops.erase(xp)
 	dead_xp.clear()
 	
-	queue_redraw()
-
 func picked_xp(obj):
 	# TODO: add xp to global player... needs a way to get the player later on when multiplayer is a thing
 	Stat.Modify(Global.player, "xp", obj.amount, "+")
@@ -105,11 +110,7 @@ func picked_xp(obj):
 
 var dead_xp = []
 
-func _draw():
-	renderer.end_render() # figure out if this is a good idea
-
 func drop_xp(dropposition: Vector2, amount: int):
-	return
 	#var space = get_world_2d().direct_space_state
 	#var query = PhysicsShapeQueryParameters2D.new()
 	#query.shape_rid = circle_shape
@@ -134,16 +135,10 @@ func drop_xp(dropposition: Vector2, amount: int):
 	var drop = xp_drop.new()
 	drop.global_position = dropposition
 	drop.amount = amount
+	drop.archetype = preload("uid://cx0vsrxrerg52")
 	#drop.has_shadow = true
-
-	drop.rendering_rid = RenderingServer.canvas_item_create()
-	RenderingServer.canvas_item_set_parent(drop.rendering_rid, get_parent().get_canvas_item())
-
-	drop.rendering_shadow_rid = RenderingServer.canvas_item_create()
-
-	RenderingServer.canvas_item_set_parent(drop.rendering_shadow_rid, Global.shadow_canvas_group.get_canvas_item())
-
-	renderer.add_object(drop)
+	renderer.add_item(drop.archetype)
+	drops.append(drop)
 
 	# Add the shape to the shared area
 	#PhysicsServer2D.area_add_shape(
@@ -153,7 +148,6 @@ func drop_xp(dropposition: Vector2, amount: int):
 	# Register the generated id to the bullet
 	#drop.physics_rid = _circle_shape
 
-	queue_redraw()
 	
 func easeInCirc(x):
 	return 1 - sqrt(1 - pow(x, 2));

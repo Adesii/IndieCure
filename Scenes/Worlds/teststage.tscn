@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cntqfk0bxryf4" path="res://Scripts/Wave/WavesController.gd" id="1_ekpmd"]
 [ext_resource type="Script" uid="uid://r80uhwxhwut2" path="res://Scripts/Wave/TimedWave.gd" id="2_m1wva"]
-[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="3_ekpmd"]
+[ext_resource type="Script" uid="uid://ylee74bau3y2" path="res://Scripts/Enemy/MultiRenderItem.gd" id="3_ekpmd"]
 [ext_resource type="TileSet" uid="uid://dob75ug4l0in2" path="res://Data/Tilesets/BaseGround.tres" id="4_k10oy"]
 [ext_resource type="Resource" uid="uid://t4p4j40s4wss" path="res://Data/Enemies/EA_Toffee.tres" id="4_m1wva"]
 [ext_resource type="Material" uid="uid://c7pjxm1l1xc2r" path="res://Shaders/Effects/TreeFoliage.tres" id="5_1i2cj"]

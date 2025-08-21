@@ -48,5 +48,4 @@ script = ExtResource("1_pguks")
 character_animations = ExtResource("1_puejc")
 icon = SubResource("CompressedTexture2D_xmsmy")
 attribute_set = SubResource("Resource_7fnjd")
-starter_equipment = Array[ExtResource("5_wc7e7")]([])
 unlocked_character = true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MultiRenderItem" load_steps=3 format=3 uid="uid://cx0vsrxrerg52"]
+
+[ext_resource type="Texture2D" uid="uid://cav63ncdxq45b" path="res://Textures/XP/exp-0002_G38vvP.png" id="1_uv1kx"]
+[ext_resource type="Script" uid="uid://ylee74bau3y2" path="res://Scripts/Enemy/MultiRenderItem.gd" id="2_uv1kx"]
+
+[resource]
+script = ExtResource("2_uv1kx")
+framesstrip = ExtResource("1_uv1kx")
+image_size = Vector2i(9, 9)
+object_size = 10

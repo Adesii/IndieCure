@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 instance uniform bool fliph = false;
-instance uniform int framecount = 4;
+instance uniform int framecount = 0;
 instance uniform int frame = 0;
 
 varying vec4 modulate;
@@ -17,8 +17,10 @@ void fragment() {
 	if (!fliph) {
 		uv.x = 1.0 - uv.x;
 	}
-	uv.x = uv.x / float(framecount); // Assuming frames are evenly distributed across the texture
-	uv.x += float(frame) / float(framecount);
+	if(framecount != 0){
+		uv.x = uv.x / float(framecount); // Assuming frames are evenly distributed across the texture
+		uv.x += float(frame) / float(framecount);
+	}
 
 
 	uv.y = 1.0 - uv.y;

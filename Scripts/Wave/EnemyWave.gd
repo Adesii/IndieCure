@@ -10,7 +10,7 @@ class_name EnemyWave
 		return spawn_rate
 
 @export var max_enemies: int = 200
-@export var enemy_types: Array[EnemyArchetype] = []
+@export var enemy_types: Array[MultiRenderItem] = []
 
 @export_category("Wave Enemy Attributes")
 @export var health_attr := 5.0

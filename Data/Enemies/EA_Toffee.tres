@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="EnemyArchetype" load_steps=3 format=3 uid="uid://t4p4j40s4wss"]
+[gd_resource type="Resource" script_class="MultiRenderItem" load_steps=3 format=3 uid="uid://t4p4j40s4wss"]
 
 [ext_resource type="Texture2D" uid="uid://bnsyi0230y5v7" path="res://Enemies/Tof/evil_tof-0005.png" id="1_8n5rt"]
-[ext_resource type="Script" uid="uid://bbcm8d4x3de2j" path="res://Scripts/Enemy/EnemyArchetype.gd" id="2_b5mm8"]
+[ext_resource type="Script" uid="uid://ylee74bau3y2" path="res://Scripts/Enemy/MultiRenderItem.gd" id="2_8n5rt"]
 
 [resource]
-script = ExtResource("2_b5mm8")
+script = ExtResource("2_8n5rt")
 framesstrip = ExtResource("1_8n5rt")
 image_size = Vector2i(32, 32)
 image_offset = Vector2i(0, 16)
-metadata/_custom_type_script = "uid://bbcm8d4x3de2j"
+shadow = true

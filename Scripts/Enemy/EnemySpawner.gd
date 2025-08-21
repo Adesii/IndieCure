@@ -10,7 +10,7 @@ var enemyTypeStats: Array[StatHolder] = []
 var enemyCanvas: PackedInt64Array = []
 
 var enemy_objects: Array[MassObject]
-var renderer: EnemyRenderer
+var renderer: MultiRenderer
 
 var circle_shape
 
@@ -18,7 +18,7 @@ func _ready():
 	Global.spawner = self
 	circle_shape = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(circle_shape, 8)
-	renderer = EnemyRenderer.new(self)
+	renderer = MultiRenderer.new(self)
 	#for i in threadcount:
 	#	threads.append(Thread.new())
 
@@ -30,7 +30,7 @@ var avoidthread: Thread
 var threadcount = 2
 var queue_for_deletion: Array = []
 
-func spawn_enemy(enemy_type: EnemyArchetype, stat_holder: StatHolder):
+func spawn_enemy(enemy_type: MultiRenderItem, stat_holder: StatHolder):
 	var spawndirection = Vector2.from_angle(randf() * 2 * PI).normalized() * 400
 	spawndirection += Global.player.position
 	return _new_spawn_enemy_with_type(spawndirection, enemy_type, stat_holder)
@@ -52,7 +52,7 @@ func gothrough(delta):
 		for del in queue_for_deletion:
 			enemy_objects.erase(del)
 			CollisionAvoidance.free_unit(del, del.positionkey)
-			renderer.remove_enemy(del.archetype)
+			renderer.remove_item(del.archetype)
 			Global.xp_drop_node.drop_xp(del.global_position, randi_range(10, 30))
 
 		queue_for_deletion.clear()
@@ -183,7 +183,7 @@ func calc(delta, count, startoffset, playerpos, space):
 #		enemy.shadow_texture_rect = drawrect
 
 
-func _new_spawn_enemy_with_type(spawn_location: Vector2, enemy_type: EnemyArchetype, stat_holder: StatHolder) -> MassObject:
+func _new_spawn_enemy_with_type(spawn_location: Vector2, enemy_type: MultiRenderItem, stat_holder: StatHolder) -> MassObject:
 	var enemy = Enemy.new()
 	enemy.global_position = spawn_location
 
@@ -205,7 +205,7 @@ func _new_spawn_enemy_with_type(spawn_location: Vector2, enemy_type: EnemyArchet
 	enemy.archetype = enemy_type
 
 	enemy_objects.append(enemy)
-	renderer.add_enemy(enemy_type)
+	renderer.add_item(enemy_type)
 	return enemy
 
 func _set_stat(attribute, value, subobj):
